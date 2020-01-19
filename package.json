@@ -1,7 +1,7 @@
 {
   "name": "js-project",
   "version": "1.0.0",
-  "description": "javascript project bootcamp 16",
+  "description": "javascript project bootcamp 17",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env.mode development --config ./webpack/config.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/salikovskiy/javascript-project-goit.git"
+    "url": "link to yours github"
   },
   "keywords": [],
-  "author": "Alexander Salikovskiy <ssalikovskiy@gmail.com>",
+  "author": "Maksim",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/salikovskiy/javascript-project-goit/issues"
+    "url": "link to yours github"
   },
-  "homepage": "https://github.com/salikovskiy/javascript-project-goit#readme",
+  "homepage": "link to yours github",
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.5.5",

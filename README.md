@@ -23,14 +23,14 @@
 Получение обьявлений по категориям axios.get('https://dashads.goit.co.ua/ads/all?category=${ номер категории }&page=${ номер страницы }')
 ---------------------------- авторизация ----------
 
-регистрация юзера --- axios.post('https://dashads.goit.co.ua/auth/register`, { email: email, password: password, name: name, })
+регистрация юзера --- axios.post('https://dashads.goit.co.ua/api/v1/auth/register`, { email: email, password: password, name: name, })
 при регистрации пользователя в ответ получаем обьект в котором будет вся служебная информация про юзера ! все его обьявления и его избранные, а так же token
-вход для зарегистрированных юзеров --- axios.post(https://dashads.goit.co.ua/auth/login, { email: "test9@gmail.com", password: "qwerty" })
+вход для зарегистрированных юзеров --- axios.post('https://dashads.goit.co.ua/api/v1/auth/login', { email: "test9@gmail.com", password: "qwerty" })
 в ответ получаем такой же обьект как и при регистрации + обязательно указать email и login при запросе иначе будет ошибка, также ошибка будет при не правильном вводе
-выход пользователя axios.post(https://dashads.goit.co.ua/auth/logout, { email: email, password: password, }, { headers: { Authorization: token, })
+выход пользователя axios.post('https://dashads.goit.co.ua/api/v1/auth/logout', { email: email, password: password, }, { headers: { Authorization: token, })
 обязательно указать обьект с email и password который вводили для входа в приложение и передать token, произойдет розлогирование и старый token больше не будет подходить для входа
 
 ---------------------------- добавление обьявлений ----------
-карточка для добавления товара --- axios.post(https://dashads.goit.co.ua/ads, { images : '', title: '', category: '', price: ', pho: '', description : '' }, { headers: { Authorization: this.userToken, }, }) одна для всех с обязательными полями для заполнения, при добавлении обьявления оно автоматически будет лежать вверху общего поиска
-удаление обьявления --- axios.delete(https://dashads.goit.co.ua/ds/${adId}, { headers: { Authorization: token, }, }); передаем token юзера и по нему удаляем
+карточка для добавления товара --- axios.post(https://dashads.goit.co.ua/api/v1/auth/ads, { images : '', title: '', category: '', price: ', pho: '', description : '' }, { headers: { Authorization: this.userToken, }, }) одна для всех с обязательными полями для заполнения, при добавлении обьявления оно автоматически будет лежать вверху общего поиска
+удаление обьявления --- axios.delete(https://dashads.goit.co.ua/api/v1/ads/${adId}, { headers: { Authorization: token, }, }); передаем token юзера и по нему удаляем
 ```
