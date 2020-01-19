@@ -1,4 +1,4 @@
-## Bootcamp 16 🔥
+## Bootcamp 17 🔥
 
 [Trello](https://trello.com/invite/b/Q8zzxdyU/325756c89520fe8514819ad18b2c853a/bootcamp17)
 
