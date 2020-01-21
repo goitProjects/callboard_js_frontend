@@ -90,9 +90,6 @@ html {
   padding-bottom: 14px;
   background-color: #1e2939;
 }
-.burger-menu{
- background-color: transparent;
-}
 
 .mob-header{
   display: flex;
@@ -116,6 +113,22 @@ html {
   width:36px;
   height: 36px;
   background-color: #ff6b08;
+}
+.products-button{
+  padding-top: 26px;
+  padding-bottom: 26px;
+  background-color: #121d2e;
+  
+}
+.products-button__load{
+  display: block;
+  margin: 0 auto;
+  font-family: "Montserrat-SemiBold";
+  font-size: 18px;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 .block-footer{
   display:flex;
