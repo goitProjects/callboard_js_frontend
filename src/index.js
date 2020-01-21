@@ -1,4 +1,2 @@
-'use strict';
-
-
 import "./components/startPage";
+import "./components/preloader/js";
