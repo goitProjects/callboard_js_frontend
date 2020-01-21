@@ -10,4 +10,10 @@ export default {
       throw e;
     }
   }
+  // addCategory(){
+
+  // },
+  // deleteElem(){
+
+  // }
 };
