@@ -1,1 +1,1 @@
-import "./components/startPage";
+import "./components/searchBar";
