@@ -78,6 +78,45 @@ html {
   padding: 0;
   margin: 0;
 }
+.container{
+  width: 280px;
+  margin:0 auto;
+}
+.tab-leck-block{
+  display:none;
+}
+.header{
+  padding-top: 18px;
+  padding-bottom: 14px;
+  background-color: #1e2939;
+}
+.burger-menu{
+ background-color: transparent;
+}
+
+.mob-header{
+  display: flex;
+  justify-content: space-between;
+}
+.block-logo{
+  display: flex;
+  position: relative;
+}
+.logo{
+  position: absolute;
+  top: 10px;
+  left: 13px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-family: "Montserrat-Bold";
+}
+.circle{
+  border-radius: 50%;
+  width:36px;
+  height: 36px;
+  background-color: #ff6b08;
+}
 .block-footer{
   display:flex;
 }
