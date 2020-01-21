@@ -1,36 +1,33 @@
 .Card_cardItem {
-    width: 278px;
-    margin-bottom: 120px;
-    border: 3px solid #8b0c0c;
+  width: 280px;
+  height: 306px;
+  border: 3px solid #8b0c0c;
 }
 
 .Card_img {
-    width: 122px;
-    height: 122px;
-    margin: 0 auto;
+  width: 280px;
+
+  margin: 0 auto;
 }
 
 .Card_description {
-    font-size: 12px;
-    color: #000000;
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 700;
+  font-size: 12px;
+  color: #000000;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
 }
 
 .Card_price {
-    font-size: 12px;
-    color: #e96105;
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 700;
+  font-size: 12px;
+  color: #e96105;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
 }
 
-@media (min-width: 768px){
-
-
-
-    
+@media (min-width: 768px) {
+  .Card_img {
+    width: 122px;
+  }
 }
-
-
