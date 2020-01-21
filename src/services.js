@@ -150,5 +150,24 @@ export default {
       console.log(e);
       throw e;
     }
+  },
+  ref:{
+    btntabletFilter: document.querySelector(".tablet-filter"),
+    btnSearch: document.querySelector(".tablet-filter"),
+    buttonReg: document.querySelector(".registration-button"),
+    buttonLogin: document.querySelector(".registration-enter"),
+    imgLogo: document.querySelector(".logo"),
+    navForm: document.querySelector(".navigation-form"),
+    tabletFilter: document.querySelector(".tablet-filter"),
+    btnAddPromo: document.querySelector(".navigation-promo"),
+    filterUl: document.querySelector(".navigation-filter__list"),
+    popularItem: document.querySelector(".products-collection-popular"),
+    computerCategory: document.querySelector(".navigation-promo"),
+    pastimeCategory: document.querySelector(".navigation-promo"),
+    exchangeCategory: document.querySelector(".navigation-promo"),
+    transportCategory: document.querySelector(".navigation-promo"),
+    businessCategory: document.querySelector(".navigation-promo"),
   }
 };
+
+
