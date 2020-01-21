@@ -8,10 +8,6 @@ export default {
 
     try {
       const data = await axios.get("/api/v1/ads/all");
-<<<<<<< HEAD
-      return console.log(data);
-
-=======
       return data.data.ads;
     } catch (e) {
       throw e;
@@ -150,7 +146,6 @@ export default {
     try {
       const data = await axios.delete(`/api/v1/ads/${id}`, opt);
       return data;
->>>>>>> default-page
     } catch (e) {
       console.log(e);
       throw e;
