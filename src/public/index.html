@@ -8,28 +8,32 @@
   </head>
   <body>
     <a href="#" class="registration-btn">Регистрация</a>
-    <div class="auth-modal hide">
-      <img
-        src="../icons/close/close-24px.svg"
-        alt="close-icon"
-        class="close-icon"
-      />
-      <p class="auth-text">
-        Для авторизации можете использовать <span>Google Account:</span>
-      </p>
-      <a href="https://myaccount.google.com" class="auth-google-btn">Google</a>
-      <p class="auth-text">
-        Или войдите в приложение используя <span>e-mail и пароль:</span>
-      </p>
-      <div class="inputs-container">
-        <input type="text" name="name" placeholder="Имя" class="hide" />
-        <input type="email" name="email" placeholder="E-mail" />
-        <input type="password" name="password" placeholder="Пароль" />
-      </div>
-      <div class="auth-btns">
-        <button class="btn-login">Войти</button>
-        <button class="btn-registration">Регистрация</button>
-      </div>
+    <a href="#" class="logout">Log Out</a>
+    <div class="auth-modal-overlay hide">
+      <form class="auth-modal">
+        <img
+          src="../icons/close/close-24px.svg"
+          alt="close-icon"
+          class="close-icon"
+        />
+        <p class="auth-text">
+          Для авторизации можете использовать <span>Google Account:</span>
+        </p>
+        <a href="https://myaccount.google.com" class="auth-google-btn"
+          >Google</a
+        >
+        <p class="auth-text">
+          Или войдите в приложение используя <span>e-mail и пароль:</span>
+        </p>
+        <div class="inputs-container">
+          <input type="email"  name="email" placeholder="E-mail" />
+          <input type="password" name="password" placeholder="Пароль" />
+        </div>
+        <div class="auth-btns">
+          <button type="submit" class="btn-login">Войти</button>
+          <button type="submit" class="btn-registration">Регистрация</button>
+        </div>
+      </form>
     </div>
   </body>
 </html>

@@ -14,12 +14,15 @@
   margin: 0;
   padding: 0;
 }
-body {
-  background: #000;
+
+.auth-modal-overlay {
+  background-color: #000000;
+  /* opacity: 0.302; */
 }
 
 .auth-modal {
   background: #ffffff;
+  box-shadow: 12.5px 21.651px 55px 0px rgba(29, 29, 27, 0.3);
   margin: auto;
   padding: 42px 18px;
   width: 280px;
@@ -28,6 +31,7 @@ body {
   line-height: 17px;
   letter-spacing: 0.3px;
   position: relative;
+  /* opacity: 1; */
 }
 
 .auth-text {
@@ -75,7 +79,7 @@ body {
 
 input[name="email"], 
 input[name="password"], 
-input[name="name"] {
+input[type="text"] {
   width: 260px;
   height: 57px;
   border: 1px solid #ced2d1;
@@ -89,7 +93,7 @@ input[name="name"] {
   justify-content: space-between;
 }
 
-.btn-login, .btn-registration {
+.btn-login, .btn-registration, .btn-confirm {
   width: 113px;
   height: 51px;
   border: 1px solid #ced2d1;
@@ -100,7 +104,7 @@ input[name="name"] {
   text-transform: uppercase;
 }
 
-.btn-login:hover, .btn-registration:hover {
+.btn-login:hover, .btn-registration:hover, .btn-confirm:hover {
   background-color: #ff6b08;
   color: #ffffff;
   cursor: pointer;
@@ -123,13 +127,13 @@ input[name="name"] {
   .auth-google-btn {
     margin: 0 0 42px 0;
   }
-  input[name="email"], input[name="password"], input[name="name"] {
+  input[name="email"], input[name="password"], input[type="text"] {
     width: 100%;
   }
   input[name="password"] {
     margin-bottom: 36px;
   }
-  .btn-login, .btn-registration {
+  .btn-login, .btn-registration, .btn-confirm {
     width: 202px;
     height: 60px;
     font-size: 12px;
@@ -140,13 +144,3 @@ input[name="name"] {
   opacity: 0;
   visibility: hidden;
 }
-
-
-/* bg under modal:
-  background-color: rgb(0, 0, 0);
-  opacity: 0.302; */
-
-    /* background-color: rgb(255, 255, 255);
-    box-shadow: 12.5px 21.651px 55px 0px rgba(29, 29, 27, 0.3);
-    width: 529px;
-    height: 525px; */
