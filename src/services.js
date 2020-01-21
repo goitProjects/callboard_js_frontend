@@ -57,12 +57,12 @@ export default {
     }
   },
 
-  async getAdsByCategory(categoryId) {
+  async getAdsByCategory(categoryId, limit) {
     // Получить объявления выбранной категории
     // services.getAdsByCategory(2).then(console.log)
 
     try {
-      const data = await axios.get(`/api/v1/ads//all?category=${categoryId}`);
+      const data = await axios.get(`/api/v1/ads//all?category=${categoryId}&limit=${limit}`);
       return data;
     } catch (e) {
       console.log(e);
@@ -150,5 +150,6 @@ export default {
       console.log(e);
       throw e;
     }
-  }
+  },
 };
+
