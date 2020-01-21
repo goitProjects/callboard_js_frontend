@@ -73,7 +73,9 @@ body {
   text-align: center;
 }
 
-input[name="email"], input[name="password"] {
+input[name="email"], 
+input[name="password"], 
+input[name="name"] {
   width: 260px;
   height: 57px;
   border: 1px solid #ced2d1;
@@ -121,7 +123,7 @@ input[name="email"], input[name="password"] {
   .auth-google-btn {
     margin: 0 0 42px 0;
   }
-  input[name="email"], input[name="password"] {
+  input[name="email"], input[name="password"], input[name="name"] {
     width: 100%;
   }
   input[name="password"] {
