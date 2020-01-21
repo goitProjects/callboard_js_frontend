@@ -1,5 +1,5 @@
 // import services from "../../services";
-// import css from "./style.css";
+// import "./startPage.css";
 
 
 // export const fetcher = async () => {
