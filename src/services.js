@@ -162,11 +162,15 @@ export default {
     btnAddPromo: document.querySelector(".navigation-promo"),
     filterUl: document.querySelector(".navigation-filter__list"),
     popularItem: document.querySelector(".products-collection-popular"),
-    computerCategory: document.querySelector(".navigation-promo"),
-    pastimeCategory: document.querySelector(".navigation-promo"),
-    exchangeCategory: document.querySelector(".navigation-promo"),
-    transportCategory: document.querySelector(".navigation-promo"),
-    businessCategory: document.querySelector(".navigation-promo"),
+    computerCategory: document.querySelector(".products-collection-computer"),
+    pastimeCategory: document.querySelector(".products-collection-pastime"),
+    exchangeCategory: document.querySelector(".products-collection-exchange"),
+    transportCategory: document.querySelector(".products-collection-transport"),
+    businessCategory: document.querySelector(".products-collection-business"),
+    workCategory: document.querySelector(".products-collection-work"),
+    realEstateCategory: document.querySelector(".products-collection-realestate"),
+    freeCategory: document.querySelector(".products-collection-giveFree"),
+
   }
 };
 

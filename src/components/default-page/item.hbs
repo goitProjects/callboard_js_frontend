@@ -1,3 +1,7 @@
 {{#each this}}
-<p>{{title}}</p>
+<li class="Card_cardItem">
+  <img class="Card_img" src="{{this.images}}" alt="" />
+  <p class="Card_description">{{this.description}}</p>
+  <span class="Card_price">{{this.price}}</span>
+</li>  
 {{/each}}
