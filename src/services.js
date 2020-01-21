@@ -151,5 +151,27 @@ export default {
       throw e;
     }
   },
+  ref:{
+    btntabletFilter: document.querySelector(".tablet-filter"),
+    btnSearch: document.querySelector(".tablet-filter"),
+    buttonReg: document.querySelector(".registration-button"),
+    buttonLogin: document.querySelector(".registration-enter"),
+    imgLogo: document.querySelector(".logo"),
+    navForm: document.querySelector(".navigation-form"),
+    tabletFilter: document.querySelector(".tablet-filter"),
+    btnAddPromo: document.querySelector(".navigation-promo"),
+    filterUl: document.querySelector(".navigation-filter__list"),
+    popularItem: document.querySelector(".products-collection-popular"),
+    computerCategory: document.querySelector(".products-collection-computer"),
+    pastimeCategory: document.querySelector(".products-collection-pastime"),
+    exchangeCategory: document.querySelector(".products-collection-exchange"),
+    transportCategory: document.querySelector(".products-collection-transport"),
+    businessCategory: document.querySelector(".products-collection-business"),
+    workCategory: document.querySelector(".products-collection-work"),
+    realEstateCategory: document.querySelector(".products-collection-realestate"),
+    freeCategory: document.querySelector(".products-collection-giveFree"),
+
+  }
 };
+
 
