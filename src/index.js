@@ -96,3 +96,4 @@ function insertItems(item) {
 function createListMarkup(items) {
   return template(items);
 }
+import "./components/default-page/default-page";

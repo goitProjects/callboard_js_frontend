@@ -1,64 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-  </head>
-  <body>
-   
-    <button class="btn">freg</button>
-    <div class="container">
-      <div class="overlay">
-        <div class="modal">
-          <div class="wrapper">
-              <!-- <button class="left-mobile-arrow"></button> -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link rel="text/css" href="normalize.css">
+  <link rel="text/css" href="style.css">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navigation">
+      <div class="container">
+        <div class="mob-header">
+          <button class="burger-menu"></button>
+          <a href="#" class="logo">Logo</a>
+          <button class="search"></button>
         </div>
-      
+        <a href="#" class="logo">Logo</a>
+        <div class="navigation-form"></div>  <!-- search bar -->
+        <button class="tablet-filter">Фильтры</button>
+        <div class="registration">
+          <button class="registration-button">Регистрация </button>
+          <button class="registration-enter">Войти </button>
+        </div>
+        <button class="navigation-promo">Создать объявление</button>
       </div>
-     
-      <svg version="1.1" id="Capa_1" x="0px" y="0px"
-      width="24px" height="24px" viewBox="0 0 510 510">
-      <g>
-        <g id="favorite">
-          <path fill="red" stroke="red" d="M255,489.6l-35.7-35.7C86.7,336.6,0,257.55,0,160.65C0,81.6,61.2,20.4,140.25,20.4c43.35,0,86.7,20.4,114.75,53.55
-            C283.05,40.8,326.4,20.4,369.75,20.4C448.8,20.4,510,81.6,510,160.65c0,96.9-86.7,175.95-219.3,293.25L255,489.6z"/>
-        </g>
-      </g>
-      <g>
-      </g>
-      <g>
-      </g>
-      <g>
-      </g>
-      <g>
-      </g>
-      <g>
-      </g>
-      <g>
-      </g>
-      <g>
-      </g>
-      <g>
-      </g>
-      <g>
-      </g>
-      <g>
-      </g>
-      <g>
-      </g>
-      <g>
-      </g>
-      <g>
-      </g>
-      <g>
-      </g>
-      <g>
-      </g>
-      </svg>
-      
+      <div class="navigation-filter">
+        <ul class="navigation-filter__list"></ul>
+        <button class="navigation-filter__clear">Очистить</button>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="products">
+      <div class="container">
+        <div class="products-collection-popular"></div>
+        <div class="products-collection-computer"></div>
+        <div class="products-collection-pastime"></div>
+        <div class="products-collection-exchange"></div>
+        <div class="products-collection-transport"></div>
+        <div class="products-collection-business"></div>
+        <div class="products-collection-work"></div>
+        <div class="products-collection-realestate"></div>
+        <div class="products-collection-giveFree"></div>
+      </div>
+      <div class="products-button">
+        <button class="products-button__load">Загрузить еще</button>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="block-footer">
+      <p>&copy;2020 </p>
+      <p>All Rights Reserved</p>
+      <p>Developed with by <a href="#" class="info-students">GoIT Students</a></p>
     </div>
-  </div>
-  </body>
+  </footer>
+
+</body>
+
 </html>
