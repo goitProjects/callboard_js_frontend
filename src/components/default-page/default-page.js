@@ -19,11 +19,9 @@ function tradeCategory(categoryArr, domElement) {
 }
 
 const itemPopular = services.getAllAds().then(res => {
-
   popularCategory(res.docs, services.ref.popularItem);
 });
 const itemComputer = services.getAdsByCategory(4).then(res => {
-  console.log(res)
   compCategory(res.data.ads.docs, services.ref.computerCategory);
 });
 
