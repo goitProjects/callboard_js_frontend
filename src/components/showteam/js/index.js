@@ -1,17 +1,19 @@
-import '../css/styles.css';
+import "../css/styles.css";
 
-const showTeamBtn = document.getElementById('show-team__btn');
-const showTeamBox = document.getElementById('show-team__box');
-const teamBoxOverlay = document.querySelector('.team__box-overlay');
+const showTeamBtn = document.getElementById("show-team-modal");
+const showTeamBox = document.getElementById("show-team__box");
+const teamBoxOverlay = document.querySelector(".team__box-overlay");
+const closeTeamBoxBtn = document.querySelector(".team__box-close-btn");
 
-showTeamBtn.addEventListener('click', handleShowTeam);
-showTeamBox.addEventListener('click', handleCloseBox);
+showTeamBtn.addEventListener("click", handleShowTeam);
+showTeamBox.addEventListener("click", handleCloseBox);
 
 function handleShowTeam() {
-  showTeamBox.classList.remove('is-hidden');
+  showTeamBox.classList.remove("is-hidden");
 }
 
 function handleCloseBox(e) {
-  if (e.target !== teamBoxOverlay) return;
-  showTeamBox.classList.add('is-hidden');
+  if (e.target === teamBoxOverlay || e.target === closeTeamBoxBtn) {
+    showTeamBox.classList.add("is-hidden");
+  }
 }
