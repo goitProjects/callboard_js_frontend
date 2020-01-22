@@ -1,0 +1,27 @@
+@media (min-width: 768px){
+  .container{
+    width: 688px;
+  }
+  .mob-header{
+    display:none;
+  }
+  .tab-leck-block{
+    display: block;
+  }
+  .header__waper-firstLine-navigation{
+    display: flex;
+    justify-content: space-between;
+
+  }
+  .wrapper-registrationLogoutPromo{
+    display: flex;
+    justify-content: space-between;
+  }
+  .navigation__logout{
+    display: none;
+  }
+  .header__wrapper-secondLine-navigation{
+    display: flex;
+    justify-content: space-between;
+  }
+}
