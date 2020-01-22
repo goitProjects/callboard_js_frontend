@@ -66,3 +66,5 @@ const itemTrade = services.getAdsByCategory(8).then(res => {
 const itemPasTime = services.getAdsByCategory(6).then(res => {
   pastimeCategory(res.data.ads.docs, services.ref.pastimeCategory);
 });
+
+
