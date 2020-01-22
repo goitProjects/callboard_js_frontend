@@ -172,6 +172,12 @@ export default {
     freeCategory: document.querySelector(".products-collection-giveFree"),
 
   }
+  // addCategory(){
+
+  // },
+  // deleteElem(){
+
+  // }
 };
 
 
