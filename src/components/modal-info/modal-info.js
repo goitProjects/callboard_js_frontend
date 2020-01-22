@@ -2,26 +2,34 @@ import services from "../../services.js";
 import template from "./modal-info.hbs";
 import "./modal-info.css";
 
+
 const section=document.querySelector('section');
-const container = section.querySelector(".mainContainer");
+// const container = section.querySelector(".mainContainer");
 const wrapper = document.querySelector(".modal-info__wrapper");
 const overlay = document.querySelector(".modal-info__overlay");
-const div=container.querySelectorAll('div');
-const li=document.getElementById('byId');
-container.addEventListener("click", handleClick);
+// const div=container.querySelectorAll('div');
+const ul=document.querySelector('.products-collection-computer-list');
+const div=document.querySelector('.products-collection-computer');
+ul.addEventListener("click", handleClick);
 overlay.addEventListener("click", handleOverlay);
 document.addEventListener("keydown", handleKeyPress);
 
+
+
 let svg;
 async function handleClick(e) {
-  container.classList.add("show-modal");
+  // ul.classList.add("show-modal");
 
-  container.removeEventListener("click", handleClick);
-
+  
+  // ul.removeEventListener("click", handleClick);
  
-  await services.getUserAds(e.target.dataset.id).then(res => {
+  await services.getUserAds(li.dataset.id).then(res => {
   console.log(res)
     show(res.data.goal);
+    
+    let li=document.querySelector('.Card_cardItem');
+    li.classList.add("show-modal");
+    
     let button = document.querySelector(".modal-info__buy-button");
     let link = document.querySelector(".modal-info__link");
 
@@ -65,7 +73,7 @@ async function handleClick(e) {
 
 
 function closeModal(e) {
-  container.classList.remove("show-modal");
+  ul.classList.remove("show-modal");
   // container.addEventListener("click", handleClick);
 }
 
@@ -87,7 +95,7 @@ function show(itm) {
 }
 
 function insertItems(item) {
-  wrapper.insertAdjacentHTML("beforeend", item);
+  div.insertAdjacentHTML("beforeend", item);
 }
 
 function createListMarkup(items) {
