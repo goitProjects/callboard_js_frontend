@@ -20,7 +20,7 @@
           <button class="search"></button>
         </div>
         <a href="#" class="logo">Logo</a>
-        <div class="navigation-form"></div>  <!-- search bar -->
+        <div class="navigation-form"></div> <!-- search bar -->
         <button class="tablet-filter">Фильтры</button>
         <div class="registration">
           <button class="registration-button">Регистрация </button>
@@ -37,15 +37,32 @@
   <main>
     <section class="products">
       <div class="container">
-        <div class="products-collection-popular"></div>
-        <div class="products-collection-computer"></div>
-        <div class="products-collection-pastime"></div>
-        <div class="products-collection-exchange"></div>
-        <div class="products-collection-transport"></div>
-        <div class="products-collection-business"></div>
-        <div class="products-collection-work"></div>
-        <div class="products-collection-realestate"></div>
-        <div class="products-collection-giveFree"></div>
+        <div class="scrolling">
+          <ul id="scroll-box">
+            <li class="scroll-box_item isActive">1</li>
+            <li class="scroll-box_item">2</li>
+            <li class="scroll-box_item">3</li>
+            <li class="scroll-box_item">4</li>
+            <li class="scroll-box_item">5</li>
+            <li class="scroll-box_item">6</li>
+            <li class="scroll-box_item">7</li>
+            <li class="scroll-box_item">8</li>
+            <li class="scroll-box_item">9</li>
+            <li class="scroll-box_item">10</li>
+          </ul>
+          <ul id="scroll-pagination"></ul>
+          <button id="prev-scroll">prev</button>
+          <button id="next-scroll">next</button>
+        </div>
+        <!-- <div class="products-collection-popular scrolling"></div>
+        <div class="products-collection-computer scrolling"></div>
+        <div class="products-collection-pastime scrolling"></div>
+        <div class="products-collection-exchange scrolling"></div>
+        <div class="products-collection-transport scrolling"></div>
+        <div class="products-collection-business scrolling"></div>
+        <div class="products-collection-work scrolling"></div>
+        <div class="products-collection-realestate scrolling"></div>
+        <div class="products-collection-giveFree scrolling"></div> -->
       </div>
       <div class="products-button">
         <button class="products-button__load">Загрузить еще</button>

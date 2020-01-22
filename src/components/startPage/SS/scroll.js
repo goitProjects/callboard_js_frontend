@@ -1,6 +1,6 @@
 'use strict';
 
-import '../SS/style.css';
+import '../SS/scroll-style.css';
 
 // отдельная функция которая на вход принимает массив с обьявлениями и выводит его с возможностью скролить пока не закончатся и начинать заново с первого обьявления в массиве
 
@@ -14,214 +14,120 @@ export const scroll = async () => {
         prvBtn: document.getElementById('prev-scroll')
     }
 
-    let boxCount = refs.scrollBox.childElementCount;
-    const dots = [];
 
+    // РАБОТА С ПАГИНАЦИЕЙ!!!
+
+    let boxCount = refs.scrollBox.childElementCount; //количество детей бокса с элементами
+    const dots = []; //массив дотс-пагинейшн
+
+    //создать элементы пагинации не больше 4х
     if (boxCount != 1) {
         for (let i = 0; boxCount < 4 ? i < boxCount : i < 4; i++) {
             dots.push('<li class="dots"></li>');
         }
     }
 
-    refs.scrollPag.insertAdjacentHTML("beforeend", (dots.reduce((acc, el) => acc += el, '')));
+    refs.scrollPag.insertAdjacentHTML("beforeend", (dots.reduce((acc, el) => acc += el, ''))); //добавляем доты
 
-    console.log(refs.scrollPag)
 
-    refs.scrollPag.addEventListener('click', getPagImg);
+    function hoverPagEl() {
+        const hoverDot = document.querySelector('.dots');
+        const hoverDots = document.querySelectorAll('.dots');
 
-    function getPagImg(e) {
-        e.preventDefault();
-        console.dir(e.target)
-        // console.dir(refs.scrollPag)
+
+        if (hoverDot <= 4) {
+            hoverDot.style.backgroundColor = 'orange';
+            hoverDot.style.borderColor = 'orange';
+        }
+
+        console.dir(hoverDot.style)
     }
 
-    let currentIdx = 0;
-    // addItems(currentIdx);
+    hoverPagEl()
 
-    console.dir(refs.container);
+    // ЗАДАНО ДЕЙСТВУЮЩИЙ ИНДЕКС!!!
 
+    let currentIdx = 0; //действующий индекс
 
-    
+    // ДОБАВЛЕНИЕ И УДАЛЕНИЕ АКТИВНОГО ЭЛЕМЕНТА
 
-// ----------------------------------------------------------------------------------
-    // refs.nxtBtn.addEventListener('click', incrementIdx)
-    // refs.prvBtn.addEventListener('click', decrementIdx)
+    //функция добавляет активный клас предварительно удаляя действующий
+    function addActive() {
+        //удаление предидущего активного класса
+        delActive();
+        refs.scrollBox.children[currentIdx].classList.add('isActive');
+    }
 
+    //функция удаляет предидущий активный класс
+    function delActive() {
+        const active = refs.scrollBox.querySelector('.isActive');
+        active.classList.remove('isActive');
+    }
 
+    // ---------------------------------------------------------------------------------------
 
-    // function incrementIdx(e) {
-    //     e.preventDefault();
-    //     if (currentIdx === scroll.length - 1) {
-    //         currentIdx = 0
-    //     } else {
-    //         currentIdx += 1;
-    //     }
+    // СЛУШАТЕЛЬ КЛИКОВ ПАГИНАЦИИ
 
-    //     console.log(currentIdx)
+    refs.scrollPag.addEventListener('click', getPagImg); //вешаем слушателя
 
-    //     addItems()
-    // };
+    // функция-колбэк слушающая клики элементов пагинации
+    function getPagImg(e) {
+        e.preventDefault();
 
-    // function decrementIdx(e) {
-    //     e.preventDefault();
-    //     if (currentIdx === (0)) {
-    //         currentIdx = arr.length - 1;
-    //     } else {
-    //         currentIdx -= 1;
-    //     }
+        //получить индекс-пагинейшн
+        function getPagIdx() {
+            for (let i = 0; i <= e.currentTarget.childNodes.length - 1; i++) {
+                if (e.currentTarget.childNodes[i] === e.target) {
+                    return i;
+                }
+            }
+        }
 
-    //     console.log(currentIdx)
+        currentIdx = getPagIdx(); //переприсваиваем поточный индекс
 
-    //     addItems()
-    // };
+        //проверяем произойшол ли клик в родителе(пока не понял что хотел этим добиться)
+        if (e.target && e.currentTarget) {
+            //ВЫЗОВ ОСНОВНОЙ ФУНКЦИИ(ДОБАВЛЯЕТ АКТИВНЫЙ КЛАС)
+            addActive();
+        } else {
+            return
+        }
 
-    // function addItems() {
-    //     const currentItems = arr.reduce((acc, el, idx) => {
+    }
 
-    //         // acc += el;
+    // ----------------------------------------------------------------------------------
 
-    //         if (refs.container.style.width < '688px') {
-    //             if (currentIdx === idx) {
-    //                 acc += el;
-    //             }
-    //         }
+    // СЛУШАТЕЛИ КЛИКОВ КНОПОК
 
+    refs.nxtBtn.addEventListener('click', incrementIdx) //слушатель правой кнопки
+    refs.prvBtn.addEventListener('click', decrementIdx) //слушатель левой кнопки
 
-    //         if (refs.container.style.width >= '688px') {
+    function incrementIdx(e) {
+        e.preventDefault();
+        if (currentIdx === refs.scrollBox.children.length - 1) {
+            currentIdx = 0
+        } else {
+            currentIdx += 1;
+        }
 
-    //             acc += el
+        console.log(currentIdx);
 
-    //         }
+        addActive();
+    };
 
-    //         if (refs.container.style.width >= '1200px') {
-    //             console.dir(container.style.width);
-    //             // for (let i = currentIdx; i < currentIdx + 3; i++) {
-    //             //     acc += el
-    //             // }
+    function decrementIdx(e) {
+        e.preventDefault();
+        if (currentIdx === (0)) {
+            currentIdx = refs.scrollBox.children.length - 1;
+        } else {
+            currentIdx -= 1;
+        }
 
-    //         }
+        console.log(currentIdx)
 
-    //         return acc;
-
-    //     }, '');
-
-    //     refs.scroll_container.innerHTML = "";
-    //     refs.scroll_container.insertAdjacentHTML("beforeend", currentItems);
-    // }
+        addActive();
+    };
 
 }
 
 scroll();
-
-
-// --------------------------------------------------------------------------------------
-// function Slider(element) {
-//     this.loadStatic();
-//     this.el = document.querySelector(element);
-//     this.init();
-// }
- 
-// Slider.prototype = {
-//     init: function () {
-//         this.links = this.el.querySelectorAll("#slider-nav a");
-//         this.wrapper = this.el.querySelector("#slider-wrapper");
-//         this.nextBtn = this.el.querySelector("#next");
-//         this.prevBtn = this.el.querySelector("#prev");
-//         this.navigate();
-//     },
-//     navigate: function () {
- 
-//         var self = this;
- 
-//         for (var i = 0; i < this.links.length; ++i) {
-//             var link = this.links[i];
-//             link.addEventListener("click", function (e) {
-//                 self.slide(this);
-//             });
-//         }
- 
-//         self.prevBtn.style.display = 'none';
- 
-//         self.nextBtn.addEventListener('click', function (e) {
-//             var currentSlideNumber = document.querySelector('#slider-nav a.current').getAttribute("data-slide");
-//             var nextSlide = document.querySelector('[data-slide="' + (parseInt(currentSlideNumber, 10) + 1) + '"]');
- 
-//             nextSlide.click();
-//         }, false);
- 
-//         self.prevBtn.addEventListener('click', function (e) {
-//             var currentSlideNumber = document.querySelector('#slider-nav a.current').getAttribute("data-slide");
-//             var prevSlide = document.querySelector('[data-slide="' + (parseInt(currentSlideNumber, 10) - 1) + '"]');
- 
-//             prevSlide.click();
-//         }, false);
- 
-//         self.close();
-//     },
- 
-//     slide: function (element) {
-//         this.setCurrentLink(element);
- 
-//         var index = parseInt(element.getAttribute("data-slide"), 10) + 1;
-//         var currentSlide = this.el.querySelector(".slide:nth-child(" + index + ")");
- 
-//         this.wrapper.style.left = "-" + currentSlide.offsetLeft + "px";
- 
-//         if (index < this.links.length)
-//             this.nextBtn.style.display = 'block';
-//         else if (index == this.links.length)
-//             this.nextBtn.style.display = 'none';
- 
-//         if (index > 1)
-//             this.prevBtn.style.display = 'block';
-//         else if (index == 1)
-//             this.prevBtn.style.display = 'none';
-//     },
- 
-//     setCurrentLink: function (link) {
-//         var parent = link.parentNode;
-//         var a = parent.querySelectorAll("a");
- 
-//         link.className = "current";
-//         this.currentElement = link;
- 
-//         for (var j = 0; j < a.length; ++j) {
-//             var cur = a[j];
-//             if (cur !== link) {
-//                 cur.className = "";
-//             }
-//         }
-//     },
- 
-//     loadStatic: function () {
- 
-//         var self = this;
- 
-//         var link = document.createElement('link');
-//         link.rel = 'stylesheet';
-//         link.href = 'assets/popupSlider.css';
-//         document.head.appendChild(link);
- 
-//         var sliderHTML = '';
- 
-//         var xhr = new XMLHttpRequest();
-//         xhr.open('GET', 'assets/popupSlider.html', false);
-//         xhr.send();
-//         if (xhr.status != 200) {
-//             alert('Can not load the popupSlider.html. Got the error ' + xhr.status + ': ' + xhr.statusText);
-//         } else {
-//             sliderHTML = xhr.responseText;
-//         }
- 
-//         var div = document.createElement('div');
-//         div.innerHTML = sliderHTML;
-//         document.body.appendChild(div);
-//     },
- 
-//     close: function () {
-//         document.getElementById('cq-popup-btclose').onclick = function () {
-//             document.getElementById('cq-popup-bg').remove();
-//             document.getElementById('cq-popup').remove();
-//         }
-//     }
-// };
