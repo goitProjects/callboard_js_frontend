@@ -161,13 +161,24 @@ export default {
     tabletFilter: document.querySelector(".tablet-filter"),
     btnAddPromo: document.querySelector(".navigation-promo"),
     filterUl: document.querySelector(".navigation-filter__list"),
-    popularItem: document.querySelector(".products-collection-popular"),
-    computerCategory: document.querySelector(".navigation-promo"),
-    pastimeCategory: document.querySelector(".navigation-promo"),
-    exchangeCategory: document.querySelector(".navigation-promo"),
-    transportCategory: document.querySelector(".navigation-promo"),
-    businessCategory: document.querySelector(".navigation-promo"),
+    mainCatalog: document.querySelector(".mainBord"),
+    popularItem: document.querySelector(".products-collection-popular-list"),
+    computerCategory: document.querySelector(".products-collection-computer-list"),
+    pastimeCategory: document.querySelector(".products-collection-pastime-list"),
+    exchangeCategory: document.querySelector(".products-collection-exchange-list"),
+    // transportCategory: document.querySelector(".products-collection-transport-list"),
+    // businessCategory: document.querySelector(".products-collection-business-list"),
+    // workCategory: document.querySelector(".products-collection-work-list"),
+    // realEstateCategory: document.querySelector(".products-collection-realestate-list"),
+    // freeCategory: document.querySelector(".products-collection-giveFree-list"),
+
   }
+  // addCategory(){
+
+  // },
+  // deleteElem(){
+
+  // }
 };
 
 
