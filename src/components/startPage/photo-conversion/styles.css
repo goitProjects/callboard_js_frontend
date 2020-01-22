@@ -1,0 +1,20 @@
+.popular-wrapper {
+  margin-top: 58px;
+  background-color: #ffffff;
+}
+
+.popular-title {
+  font-family: 'Montserrat-Medium'; 
+  color: #000000;
+}
+
+.popular-description {
+    font-family: 'Montserrat-Regular'; 
+    color: #a8a8a8;
+}
+
+.products a{
+  color: #ff6b08;
+  cursor: pointer;
+  text-decoration: none;
+}

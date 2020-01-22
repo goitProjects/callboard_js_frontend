@@ -129,7 +129,16 @@ html {
   background-color: transparent;
   border: none;
   cursor: pointer;
+<<<<<<< HEAD
+}
+.block-footer{
+  display:flex;
+}
+
+
+=======
 } */
+>>>>>>> first_page_html
 /* section-----FOOTER===================== */
 .footer{
   padding-top: 36px;
