@@ -1,5 +1,3 @@
-import services from "../../services.js";
-
 const input = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-btn");
 
@@ -10,4 +8,3 @@ const expand = () => {
 
 searchBtn.addEventListener("click", expand);
 
-services.getAllAds().then(console.log);
