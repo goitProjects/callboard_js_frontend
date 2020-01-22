@@ -16,8 +16,7 @@
 }
 
 .auth-modal-overlay {
-  background-color: #000000;
-  /* opacity: 0.302; */
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .auth-modal {
@@ -31,7 +30,6 @@
   line-height: 17px;
   letter-spacing: 0.3px;
   position: relative;
-  /* opacity: 1; */
 }
 
 .auth-text {
