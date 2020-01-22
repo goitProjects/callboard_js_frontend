@@ -101,10 +101,11 @@ input[type="text"] {
 
 .auth-btns {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 }
 
-.btn-login, .btn-registration, .btn-confirm {
+.btn-login, .btn-confirm {
   width: 113px;
   height: 51px;
   border: 1px solid #ced2d1;
@@ -114,12 +115,23 @@ input[type="text"] {
   letter-spacing: 0.3px;
   text-transform: uppercase;
 }
+.btn-registration {
+  text-decoration: none;
+  color: #000;
+  font-family: 'Montserrat500', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.3px;
+  margin-top: 10px;
+}
 
-.btn-login:hover, .btn-registration:hover, .btn-confirm:hover {
+.btn-login:hover, .btn-confirm:hover {
   background-color: #ff6b08;
   color: #ffffff;
   cursor: pointer;
   border: none;
+}
+.btn-registration:hover {
+  color: #0000ff;
 }
 
 @media (min-width: 768px) {
@@ -146,10 +158,13 @@ input[type="text"] {
   input[name="password"] {
     margin-bottom: 36px;
   }
-  .btn-login, .btn-registration, .btn-confirm {
+  .btn-login, .btn-confirm {
     width: 202px;
     height: 60px;
     font-size: 12px;
+  }
+  .btn-registration {
+    font-size: 10px;
   }
 }
 

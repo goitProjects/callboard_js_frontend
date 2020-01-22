@@ -8,13 +8,13 @@ const refs = {
   headerRegistrationBtn: document.querySelector('.registration-btn'),
   inputsContainer: document.querySelector('.inputs-container'),
   authBtns: document.querySelector('.auth-btns'),
-  logout: document.querySelector('.logout')
+  logout: document.querySelector('.logout-from-acc')
 };
 
 refs.headerRegistrationBtn.addEventListener('click', openModal);
 refs.overlay.addEventListener('click', closeModal);
 refs.authModalWindow.addEventListener('click', registerOrLogin);
-refs.logout.addEventListener('click', logout);
+refs.logout.addEventListener('click', logoutFromAcc);
 
 function openModal() {
   refs.overlay.classList.remove('hide-modal');
@@ -59,15 +59,24 @@ async function registerOrLogin(e) {
         user.name = nameInput.value;
         user.email = emailInput.value;
         user.password = passwordInput.value;
-        const dataRegister = await services.postRegisterNewUser(user)
+
+        const dataRegister = await services.postRegisterNewUser(user);
+        services.userData = dataRegister.userData;
+        services.token = dataRegister.token;
+        services.ads = dataRegister.ads;
+        services.favorites = dataRegister.favorites;
+        services.isAuth = true;
+        console.log(services);
+
         localStorage.setItem('token', dataRegister.data.token);
+
         refs.overlay.classList.add('hide-modal');
         refs.overlay.classList.remove('show-modal');
         PNotify.success({
           title: 'Success!',
           text: 'You can log in now using your email and password.'
         });
-      } catch(e) {
+      } catch (e) {
         console.log(e);
         PNotify.error({
           title: 'Something went wrong :(',
@@ -87,6 +96,13 @@ async function registerOrLogin(e) {
         password: e.currentTarget.elements.password.value
       };
       const dataLogin = await services.postLoginUser(user);
+      services.userData = dataLogin.userData;
+      services.token = dataLogin.token;
+      services.ads = dataLogin.ads;
+      services.favorites = dataLogin.favorites;
+      services.isAuth = true;
+      console.log(services);
+
       refs.overlay.classList.add('hide-modal');
       refs.overlay.classList.remove('show-modal');
       PNotify.success({
@@ -108,7 +124,10 @@ async function registerOrLogin(e) {
   }
 }
 
-function logout() {
+function logoutFromAcc() {
+  services.postLogoutUser({ headers: { Authorization: services.token } });
   localStorage.removeItem('token');
   refs.authModalWindow.reset();
+  services.isAuth = false;
+  console.log('LOGGED OUT!!!!!!!!!!');
 }
