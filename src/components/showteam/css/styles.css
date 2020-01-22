@@ -1,8 +1,10 @@
-
-.team__box{
+.team__box {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms linear;
 }
 
 .team__box-overlay {
@@ -28,8 +30,9 @@
   padding: 10px;
 }
 
-.is-hidden {
-  display: none;
+.is-open {
+  opacity: 1;
+  pointer-events: initial;
 }
 
 .team__image {
@@ -56,7 +59,7 @@
 .team__description {
   padding: 30px 10px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   color: rgb(0, 0, 0);
   line-height: 1.2;
 }

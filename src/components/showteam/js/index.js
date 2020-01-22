@@ -9,11 +9,11 @@ showTeamBtn.addEventListener("click", handleShowTeam);
 showTeamBox.addEventListener("click", handleCloseBox);
 
 function handleShowTeam() {
-  showTeamBox.classList.remove("is-hidden");
+  showTeamBox.classList.add("is-open");
 }
 
 function handleCloseBox(e) {
   if (e.target === teamBoxOverlay || e.target === closeTeamBoxBtn) {
-    showTeamBox.classList.add("is-hidden");
+    showTeamBox.classList.remove("is-open");
   }
 }
