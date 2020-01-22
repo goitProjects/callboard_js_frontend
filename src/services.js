@@ -3,7 +3,7 @@ axios.defaults.baseURL = "https://dashads.goit.co.ua";
 
 export default {
   userData: null,
-  token: null,
+  token: localStorage.getItem('token'),
   ads: null,
   favorites: null,
   isAuth: false,
@@ -103,12 +103,14 @@ export default {
   },
 
   async postLogoutUser(user) {
+    console.log('postLogoutUser',this.token)
     // Логаут пользователя
     // services.postLogoutUser({ email: "em@ss.ua", password: "111111"},{headers: {Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjViZWE2MmFhNzhiNjUxNzdmZjUwMCIsImlhdCI6MTU3OTUzMjcyN30.b8ReEjHn-KbHsls0cvm8GauQOr6sEqqcjZxD1KfqtzI"}}).then(console.log)
 
     try {
-      const data = await axios.post("/api/v1/auth/logout", user);
-      return data;
+      const data = await axios.post("/api/v1/auth/logout", { headers: { Authorization: this.token } });
+      console.log('logout', data)
+      // return data;
     } catch (e) {
       console.log(e);
       throw e;
