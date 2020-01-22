@@ -102,8 +102,7 @@ export default {
     }
   },
 
-  async postLogoutUser(user) {
-    console.log('postLogoutUser',this.token)
+  async postLogoutUser() {
     // Логаут пользователя
     // services.postLogoutUser({ email: "em@ss.ua", password: "111111"},{headers: {Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjViZWE2MmFhNzhiNjUxNzdmZjUwMCIsImlhdCI6MTU3OTUzMjcyN30.b8ReEjHn-KbHsls0cvm8GauQOr6sEqqcjZxD1KfqtzI"}}).then(console.log)
 
