@@ -161,6 +161,7 @@ export default {
     tabletFilter: document.querySelector(".tablet-filter"),
     btnAddPromo: document.querySelector(".navigation-promo"),
     filterUl: document.querySelector(".navigation-filter__list"),
+    mainCatalog: document.querySelector(".mainBord"),
     popularItem: document.querySelector(".products-collection-popular"),
     computerCategory: document.querySelector(".products-collection-computer"),
     pastimeCategory: document.querySelector(".products-collection-pastime"),
