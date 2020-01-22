@@ -36,15 +36,19 @@
 
 --------------------------- favorites ------------
 получение favorites:  axios.get(`https://dashads.goit.co.ua/api/user/favorites, {
-headers: { Authorization: token }}`)
+headers: { Authorization: token }})
 
 запись favorites: axios.put(`https://dashads.goit.co.ua/api/user/favorite/${id}`, {
-        headers: { Authorization: token }` },
+        headers: { Authorization: token }
       });
 
 удаление favorites: axios.delete(`https://dashads.goit.co.ua/api/user/favorite/${id}`, {
-        headers: { Authorization: token }` },
+        headers: { Authorization: token }
       });
 
---------------------------- добавление favorites ------------
+---------------------------  получение своих обьявлений user ------------
+
+получение all ads: axios.get(`https://dashads.goit.co.ua/ads`, {
+        headers: { Authorization: token }
+      });
 ```
