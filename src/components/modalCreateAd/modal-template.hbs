@@ -1,0 +1,19 @@
+<div class="modal-create-ad__window">
+	<div class="modal-create-ad__content">
+		<button class="btn-close">Закрыть</button>
+		<h4>Создать объявление</h4>
+		<input class="modal-create-ad__input-name" type="text" placeholder="Название товара" />
+		<input class="modal-create-ad__input-upload-photos" type="file" />
+		<input class="modal-create-ad__input-upload-photos" type="file" />
+		<textarea class="modal-create-ad__input-description" placeholder="Описание товара"></textarea>
+		<select class="modal-create-ad__select-category">
+			{{#each this}}
+			<option>{{this.category}}</option>
+			{{/each}}
+		</select>
+		<input class="modal-create-ad__input-price" type="number" placeholder="0.00 грн" />
+		<input class="modal-create-ad__input-phone" type="tel" placeholder="+38 (0--) --- -- --" />
+		<button class="modal-create-ad__submit">Добавить</button>
+	</div>
+</div>
+<div class="modal-create-ad__overlay"></div>
