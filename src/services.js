@@ -157,11 +157,12 @@ export default {
       throw e;
     }
   },
-  ref:{
+  refs:{
     btntabletFilter: document.querySelector(".tablet-filter"),
     btnSearch: document.querySelector(".tablet-filter"),
     buttonReg: document.querySelector(".registration-button"),
     buttonLogin: document.querySelector(".registration-enter"),
+    logout: document.querySelector('.exit'),
     imgLogo: document.querySelector(".logo"),
     navForm: document.querySelector(".navigation-form"),
     tabletFilter: document.querySelector(".tablet-filter"),

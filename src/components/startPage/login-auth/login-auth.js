@@ -5,20 +5,20 @@ import PNotify from '../../../../node_modules/pnotify/dist/es/PNotify.js';
 const refs = {
   overlay: document.querySelector('.auth-modal-overlay'),
   authModalWindow: document.querySelector('.auth-modal'),
-  headerRegistrationBtn: document.querySelector('.registration-btn'),
   inputsContainer: document.querySelector('.inputs-container'),
   authBtns: document.querySelector('.auth-btns'),
-  logout: document.querySelector('.logout-from-acc')
+  registerBlock: document.querySelector('.navigation__registration'),
+  logoutBlock: document.querySelector('.navigation__logout')
 };
 
-refs.headerRegistrationBtn.addEventListener('click', openModal);
+services.refs.buttonLogin.addEventListener('click', openModal);
+services.refs.logout.addEventListener('click', logoutFromAcc);
 refs.overlay.addEventListener('click', closeModal);
 refs.authModalWindow.addEventListener('click', registerOrLogin);
-refs.logout.addEventListener('click', logoutFromAcc);
 
 function openModal() {
-  refs.overlay.classList.remove('hide-modal');
-  refs.overlay.classList.add('show-modal');
+  refs.overlay.classList.remove('hide');
+  refs.overlay.classList.add('show');
 }
 
 function closeModal(e) {
@@ -26,8 +26,8 @@ function closeModal(e) {
     e.target.classList.contains('close-icon') ||
     e.target === e.currentTarget
   ) {
-    refs.overlay.classList.add('hide-modal');
-    refs.overlay.classList.remove('show-modal');
+    refs.overlay.classList.add('hide');
+    refs.overlay.classList.remove('show');
   }
 }
 
@@ -61,17 +61,17 @@ async function registerOrLogin(e) {
         user.password = passwordInput.value;
 
         const dataRegister = await services.postRegisterNewUser(user);
-        services.userData = dataRegister.userData;
-        services.token = dataRegister.token;
-        services.ads = dataRegister.ads;
-        services.favorites = dataRegister.favorites;
+        services.userData = dataRegister.data.userData;
+        services.token = dataRegister.data.token;
+        services.ads = dataRegister.data.ads;
+        services.favorites = dataRegister.data.favorites;
         services.isAuth = true;
         console.log(services);
 
         localStorage.setItem('token', dataRegister.data.token);
 
-        refs.overlay.classList.add('hide-modal');
-        refs.overlay.classList.remove('show-modal');
+        refs.overlay.classList.add('hide');
+        refs.overlay.classList.remove('show');
         PNotify.success({
           title: 'Success!',
           text: 'You can log in now using your email and password.'
@@ -96,15 +96,15 @@ async function registerOrLogin(e) {
         password: e.currentTarget.elements.password.value
       };
       const dataLogin = await services.postLoginUser(user);
-      services.userData = dataLogin.userData;
-      services.token = dataLogin.token;
-      services.ads = dataLogin.ads;
-      services.favorites = dataLogin.favorites;
+      services.userData = dataLogin.data.userData;
+      services.token = dataLogin.data.token;
+      services.ads = dataLogin.data.ads;
+      services.favorites = dataLogin.data.favorites;
       services.isAuth = true;
       console.log(services);
 
-      refs.overlay.classList.add('hide-modal');
-      refs.overlay.classList.remove('show-modal');
+      refs.overlay.classList.add('hide');
+      refs.overlay.classList.remove('show');
       PNotify.success({
         title: 'Success!',
         text: 'You are logged in.'

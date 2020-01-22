@@ -168,12 +168,12 @@ input[type="text"] {
   }
 }
 
-.hide-modal {
+.hide {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
-.show-modal {
+.show {
   opacity: 1;
   visibility: visible;
   pointer-events: initial;
