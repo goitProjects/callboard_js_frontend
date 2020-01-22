@@ -130,8 +130,58 @@ html {
   border: none;
   cursor: pointer;
 }
+<<<<<<< HEAD
 .block-footer{
   display:flex;
 }
 
 
+=======
+/* section-----FOOTER===================== */
+.footer{
+  padding-top: 36px;
+  padding-bottom: 38px;
+  background-color: #1e2939;
+}
+.block-footer__item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.block-footer__item>p{
+  font-family: "Montserrat-Regular";
+  font-size: 12px;
+  letter-spacing: 0.36px;
+  line-height: 23px;
+  color: #ffffff;
+}
+.footer-developed{
+  display: flex;
+  align-items: center;
+}
+.info-students{
+  color: #ffffff;
+}
+.block-footer__item:nth-child(1){
+  margin-bottom: 10px;
+}
+.footer-copirate{
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right:1px solid #ffffff;
+}
+.copirate-svg{
+  display: block;
+  margin-right: 5px;
+  width: 18px;
+  height:18px;
+  fill: #ffffff;
+}
+.heart-svg{
+  display: block;
+  margin: 0 5px;
+  width: 16px;
+  height:16px;
+  fill: #ff6b08;
+}
+>>>>>>> first_page_html
