@@ -187,7 +187,7 @@ button#modal-info__favorite {
   cursor: pointer;
 }
 
-g#favorite {
+#favorite {
   fill: red;
 }
 
