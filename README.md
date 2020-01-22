@@ -33,4 +33,18 @@
 ---------------------------- добавление обьявлений ----------
 карточка для добавления товара --- axios.post(https://dashads.goit.co.ua/api/v1/ads, { images : '', title: '', category: '', price: ', pho: '', description : '' }, { headers: { Authorization: this.userToken, }, }) одна для всех с обязательными полями для заполнения, при добавлении обьявления оно автоматически будет лежать вверху общего поиска
 удаление обьявления --- axios.delete(https://dashads.goit.co.ua/api/v1/ads/${adId}, { headers: { Authorization: token, }, }); передаем token юзера и по нему удаляем
+
+--------------------------- favorites ------------
+получение favorites:  axios.get(`https://dashads.goit.co.ua/api/user/favorites, {
+headers: { Authorization: token }}`)
+
+запись favorites: axios.put(`https://dashads.goit.co.ua/api/user/favorite/${id}`, {
+        headers: { Authorization: token }` },
+      });
+
+удаление favorites: axios.delete(`https://dashads.goit.co.ua/api/user/favorite/${id}`, {
+        headers: { Authorization: token }` },
+      });
+
+--------------------------- добавление favorites ------------
 ```
