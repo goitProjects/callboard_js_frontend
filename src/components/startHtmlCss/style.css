@@ -130,13 +130,11 @@ html {
   border: none;
   cursor: pointer;
 }
-<<<<<<< HEAD
 .block-footer{
   display:flex;
 }
 
 
-=======
 /* section-----FOOTER===================== */
 .footer{
   padding-top: 36px;
@@ -184,4 +182,3 @@ html {
   height:16px;
   fill: #ff6b08;
 }
->>>>>>> first_page_html
