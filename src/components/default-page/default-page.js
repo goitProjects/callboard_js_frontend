@@ -39,6 +39,11 @@ function pastimeCategory(categoryArr, domElement) {
 }
 
 const itemPopular = services.getAllAds().then(res => {
+<<<<<<< HEAD
+=======
+  console.log(res);
+  console.log(res.categories[1].category);
+>>>>>>> userAccount
   popularCategory(res.docs, services.ref.popularItem);
 });
 const itemComputer = services.getAdsByCategory(4).then(res => {
