@@ -1,0 +1,369 @@
+body {
+  box-sizing: border-box;
+  position: relative;
+  font-size: 18px;
+  font-family: "Montserrat", serif;
+}
+
+.wrapper {
+  width: 320px;
+  border: none;
+  margin: 0 auto;
+  background-color: #fff;
+  position: relative;
+}
+
+.container.show-modal .overlay {
+  opacity: 1;
+
+  visibility: visible;
+  pointer-events: initial;
+}
+
+.container.show-modal .modal {
+  transform: scale(1);
+}
+
+.close {
+  background-color: red;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: fixed; */
+
+  width: 100vw;
+
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 899;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+}
+
+.modal {
+
+  width: 320px;
+  background-color: #fff;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  transform: scale(1.1);
+  transition: transform 200ms ease-in-out;
+}
+
+button.left-mobile-arrow {
+  margin-top: 34px;
+  margin-left: 20px;
+  margin-bottom: 23px;
+  display: block;
+  width: 18px;
+  height: 18px;
+  border: none;
+  background-color: #fff;
+  background-image: url("../icons/arrow-2/arrow_back-black-18dp/1x/baseline_arrow_back_black_18dp.png");
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+button.left-mobile-arrow:focus {
+  outline: none;
+}
+
+span.name {
+  font-size: inherit;
+  color: #000;
+  font-family: inherit;
+  font-weight: bold;
+  padding-left: 23px;
+}
+
+span.price {
+  color: #ff6b08;
+  font-family: inherit;
+  font-weight: bold;
+  display: block;
+  margin-top: 53px;
+  padding-left: 23px;
+  margin-bottom: 32px;
+}
+
+img.image-item {
+  /* background-color: rgb(255, 255, 255);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1); */
+  width: 280px;
+  height: 230px;
+  position: absolute;
+  transform: translate(11%, 16%);
+}
+
+button.buy-button {
+  background-color: rgb(255, 107, 8);
+  width: 280px;
+  height: 60px;
+  border: none;
+  margin-left: 6%;
+  margin-bottom: 18px;
+  transition: all 0.3s;
+}
+/* button.buy-button:focus::before {
+  opacity: 0;
+  transform: scale(0.5, 0.5);
+  cursor: pointer;
+}
+button.buy-button::after {
+  opacity: 0;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transform: scale(1.2, 1.2);
+}
+button.buy-button:hover::after {
+  opacity: 1;
+  transform: scale(1, 1);
+} */
+
+@keyframes wobble-horizontal {
+  16.65% {
+    transform: translateX(8px);
+  }
+  33.3% {
+    transform: translateX(-6px);
+  }
+  49.95% {
+    transform: translateX(4px);
+  }
+  66.6% {
+    transform: translateX(-2px);
+  }
+  83.25% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.buy-button {
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+}
+.buy-button:hover {
+  animation-name: wobble-horizontal;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+
+button.buy-button:focus{
+  outline: none;
+}
+
+button.buy-button > span {
+  color: #fff;
+  font-size: 16px;
+}
+
+span.favorites {
+  color: #878686;
+  font-size: 12px;
+  font-weight: light;
+  display: inline-block;
+  margin-left: 6%;
+  margin-bottom: 40px;
+}
+
+span.description {
+  display: block;
+  color: #878686;
+  font-size: 12px;
+  font-weight: light;
+  margin-left: 6%;
+}
+
+p.about {
+  font-weight: normal;
+  font-size: 13px;
+  margin-left: 6%;
+  padding-right: 20px;
+}
+
+button.favorite {
+  width: 15px;
+  height: 15px;
+  background-image: url("../icons/heart/heart.svg");
+  background-repeat: no-repeat;
+  border: none;
+  display: inline-block;
+  position: absolute;
+  bottom: 12.2%;
+  left: 34%;
+  background-color: #fff;
+}
+
+g#favorite {
+  fill: red;
+}
+
+button.favorite:focus {
+  outline: none;
+}
+
+img.image-item {
+  width: 230px;
+  height: 230px;
+}
+
+.modal-img {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  height: 305px;
+  position: relative;
+  left: 6%;
+  margin-bottom: 142px;
+}
+
+/* MEDIA */
+
+@media (min-width: 718px) {
+  .wrapper {
+    width: 650px;
+    height: 430px;
+  }
+
+  .modal {
+    width: 650px;
+    height: 470px;
+  }
+
+  button.left-mobile-arrow {
+    margin-top: 34px;
+    margin-left: 91%;
+    margin-bottom: 23px;
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    background-image: url("../icons/close/close-24px.svg");
+    background-repeat: no-repeat;
+  }
+
+  span.name {
+    margin-left: 50%;
+  }
+
+  span.price {
+    margin-left: 50%;
+  }
+
+  .modal-img {
+    left: 4%;
+    bottom: 124px;
+  }
+
+  button.buy-button {
+    position: absolute;
+    left: 47%;
+    top: 32%;
+    margin-top: 90px;
+  }
+
+  span.favorites {
+    position: absolute;
+    left: 47%;
+    bottom: 17%;
+  }
+
+  button.favorite {
+    left: 67%;
+    bottom: 26%;
+  }
+
+  span.description {
+    position: absolute;
+    left: 47%;
+    bottom: 17%;
+  }
+
+  p.about {
+    position: absolute;
+    left: 47%;
+    bottom: 4%;
+    padding-right: 20px;
+  }
+}
+
+@media (min-width: 1036px) {
+  .wrapper {
+    width: 780px;
+    height: 450px;
+  }
+
+  .modal {
+    width: 780px;
+    height: 470px;
+  }
+
+  img.image-item {
+    bottom: 25%;
+  }
+
+  .modal-img {
+    bottom: 4%;
+    left: 8%;
+    margin-bottom: 142px;
+  }
+
+  span.name {
+    position: absolute;
+    top: 12%;
+    right: 42%;
+  }
+
+  span.price {
+    margin-left: 0;
+    position: absolute;
+    top: 16%;
+    right: 37%;
+  }
+
+  button.left-mobile-arrow {
+    width: 48px;
+    height: 48px;
+    background-image: url("../icons/close/close-24px.svg");
+  }
+
+  button.buy-button {
+    left: 46%;
+    top: 32%;
+  }
+
+  span.favorites {
+    left: 46%;
+    top: 70%;
+  }
+
+  button.favorite {
+    position: absolute;
+    left: 63%;
+    top: 70%;
+  }
+  span.description {
+    left: 46%;
+    top: 79%;
+  }
+
+  p.about {
+    padding-right: 60px;
+    left: 46%;
+    top: 82%;
+  }
+}
