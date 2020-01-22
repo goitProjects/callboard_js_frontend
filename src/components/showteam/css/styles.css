@@ -1,0 +1,58 @@
+/* html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+} */
+
+.team__box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team__box-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(190, 190, 190, 0.5);
+}
+
+.team__content-box {
+  display: flex;
+  width: 600px;
+  height: auto;
+  justify-content: space-between;
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.team__image {
+  display: block;
+  width: 400px;
+  height: auto;
+}
+
+.team__description {
+  font-size: 14px;
+  font-family: 'Montserrat';
+  color: rgb(0, 0, 0);
+  line-height: 1.2;
+  margin-top: 10px;
+}
