@@ -1,5 +1,5 @@
 {{#each this}}
-<li class="Card_cardItem">
+<li class="Card_cardItem" data-id="{{this._id}}">
   <img class="Card_img" src="{{this.images}}" alt="" />
   <p class="Card_description">{{this.description}}</p>
   <span class="Card_price">{{this.price}}</span>
