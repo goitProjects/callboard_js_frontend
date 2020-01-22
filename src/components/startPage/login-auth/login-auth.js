@@ -17,7 +17,8 @@ refs.authModalWindow.addEventListener('click', registerOrLogin);
 refs.logout.addEventListener('click', logout);
 
 function openModal() {
-  refs.overlay.classList.remove('hide');
+  refs.overlay.classList.remove('hide-modal');
+  refs.overlay.classList.add('show-modal');
 }
 
 function closeModal(e) {
@@ -25,7 +26,8 @@ function closeModal(e) {
     e.target.classList.contains('close-icon') ||
     e.target === e.currentTarget
   ) {
-    refs.overlay.classList.add('hide');
+    refs.overlay.classList.add('hide-modal');
+    refs.overlay.classList.remove('show-modal');
   }
 }
 
@@ -43,7 +45,6 @@ async function registerOrLogin(e) {
     user.name = nameInput.value;
     user.email = emailInput.value;
     user.password = passwordInput.value;
-    console.log('user :', user);
     refs.authBtns.innerHTML = '';
     const confirmBtn = document.createElement('button');
     confirmBtn.type = 'submit';
@@ -54,14 +55,30 @@ async function registerOrLogin(e) {
     confirmBtn.addEventListener('click', submitRegistrationInfo);
 
     async function submitRegistrationInfo() {
-      user.name = nameInput.value;
-      user.email = emailInput.value;
-      user.password = passwordInput.value;
-      const dataRegister = await services
-        .postRegisterNewUser(user)
-        .then(console.log)
-        .catch(e => console.log(e));
-      localStorage.setItem('token', dataRegister.data.token);
+      try {
+        user.name = nameInput.value;
+        user.email = emailInput.value;
+        user.password = passwordInput.value;
+        const dataRegister = await services.postRegisterNewUser(user)
+        localStorage.setItem('token', dataRegister.data.token);
+        refs.overlay.classList.add('hide-modal');
+        refs.overlay.classList.remove('show-modal');
+        PNotify.success({
+          title: 'Success!',
+          text: 'You can log in now using your email and password.'
+        });
+      } catch(e) {
+        console.log(e);
+        PNotify.error({
+          title: 'Something went wrong :(',
+          text: 'Password should contain from 6 to 12 charecters.',
+          modules: {
+            Desktop: {
+              desktop: true
+            }
+          }
+        });
+      }
     }
   } else if (e.target.classList.contains('btn-login')) {
     try {
@@ -70,7 +87,8 @@ async function registerOrLogin(e) {
         password: e.currentTarget.elements.password.value
       };
       const dataLogin = await services.postLoginUser(user);
-      refs.overlay.classList.add('hide');
+      refs.overlay.classList.add('hide-modal');
+      refs.overlay.classList.remove('show-modal');
       PNotify.success({
         title: 'Success!',
         text: 'You are logged in.'
@@ -78,7 +96,7 @@ async function registerOrLogin(e) {
       localStorage.setItem('token', dataLogin.data.token);
     } catch (e) {
       PNotify.error({
-        title: 'Error',
+        title: 'Oops!',
         text: 'Email or password is incorrect.',
         modules: {
           Desktop: {
@@ -92,4 +110,5 @@ async function registerOrLogin(e) {
 
 function logout() {
   localStorage.removeItem('token');
+  refs.authModalWindow.reset();
 }

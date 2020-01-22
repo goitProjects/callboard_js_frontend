@@ -2,6 +2,12 @@ import axios from "axios";
 axios.defaults.baseURL = "https://dashads.goit.co.ua";
 
 export default {
+  userData: null,
+  token: null,
+  ads: null,
+  favorites: null,
+  isAuth: false,
+  
   async getAllAds() {
     // Получить все объявления
     // services.getAllAds().then(console.log)
@@ -173,5 +179,3 @@ export default {
 
   }
 };
-
-

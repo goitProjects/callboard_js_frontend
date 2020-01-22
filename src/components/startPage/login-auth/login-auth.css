@@ -17,6 +17,16 @@
 
 .auth-modal-overlay {
   background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
 }
 
 .auth-modal {
@@ -30,6 +40,7 @@
   line-height: 17px;
   letter-spacing: 0.3px;
   position: relative;
+  transition: transform 200ms ease-in-out;
 }
 
 .auth-text {
@@ -84,6 +95,8 @@ input[type="text"] {
   color: #bbbbbb;
   padding-left: 17px;
   margin-bottom: 20px;
+  font-family: 'Montserrat600', sans-serif;
+  font-size: 10px;
 }
 
 .auth-btns {
@@ -126,7 +139,9 @@ input[type="text"] {
     margin: 0 0 42px 0;
   }
   input[name="email"], input[name="password"], input[type="text"] {
-    width: 100%;
+    width: 96%;
+    font-family: 'Montserrat500', sans-serif;
+    font-size: 13px;
   }
   input[name="password"] {
     margin-bottom: 36px;
@@ -138,7 +153,13 @@ input[type="text"] {
   }
 }
 
-.hide {
+.hide-modal {
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
+}
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
 }
