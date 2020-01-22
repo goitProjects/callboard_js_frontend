@@ -53,27 +53,37 @@
   </header>
   <main>
     <section class="products">
-        <div class="mainBord container"></div>
-<div class="corectcategoty">
-
-</div>
-        <div class="start">
-        <div class="products-collection-popular">
-         <!-- div
-        h2
-      a
-    p
-  ul -->
-        </div>
-        <div class="products-collection-computer"></div>
-        <div class="products-collection-pastime"></div>
-        <div class="products-collection-exchange"></div>
-        <div class="products-collection-transport"></div>
-        <div class="products-collection-business"></div>
-        <div class="products-collection-work"></div>
-        <div class="products-collection-realestate"></div>
-        <div class="products-collection-giveFree"></div>
-               </div>
+      <div class="container">
+        <div class="popular-wrapper">
+          <h2 class="popular-title">Популярное</h2>
+          <a href="#" class="load-more">Смотреть все</a>
+          <p class="popular-description">Товары домашнего обихода, видео, аудио, наушники, камеры,  аксессуары и многое другое.</p>
+          <ul></ul>
+      </div> 
+      <div class="collection-wrapper">
+      <div class="products-collection-popular"><h2 class="popular-title">Компьютеры и аксессуары</h2>
+        <a href="#">Смотреть все</a>
+        <p class="popular-description"></p>
+        <ul></ul>  </div>
+           <div class="products-collection-computer"><h2 class="popular-title">Отдых и спорт </h2>
+            <a href="#">Смотреть все</a>
+            <p class="popular-description"></p>
+            <ul></ul></div>
+           <div class="products-collection-pastime"><h2 class="popular-title">Обмен</h2>
+            <a href="#">Смотреть все</a>
+            <p class="popular-description"></p>
+            <ul></ul></div>
+           <div class="products-collection-exchange"><h2 class="popular-title">Популярное</h2>
+            <a href="#">Смотреть все</a>
+            <p class="popular-description"></p>
+            <ul></ul></div>
+           <div class="products-collection-transport"></div>
+           <div class="products-collection-business"></div>
+           <div class="products-collection-work"></div>
+           <div class="products-collection-realestate"></div>
+           <div class="products-collection-giveFree"></div>
+      </div>
+      </div>
       <div class="products-button">
         <button class="products-button__load">Загрузить еще</button>
       </div>
@@ -108,6 +118,13 @@
       </ul>
     </div>
   </footer>
+
+  <!-- Верстка для демонстрации работы метода конвертации фото в Base64(если не нужно-удалить) -->
+  <input id="inputFileToLoad" type="file"/>
+  <button>load</button>
+  <div>Data URL:</div>
+  <div id="result"></div>
+  <!-- Верстка для демонстрации работы метода конвертации фото в Base64(если не нужно-удалить) -->
 </body>
 
 </html>
