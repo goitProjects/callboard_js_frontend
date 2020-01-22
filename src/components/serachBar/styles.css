@@ -33,3 +33,13 @@
 #search_form label {
     margin: 10px;
 }
+
+#search_clear {
+    height: 30px;
+    width: 30px;
+    font-size: 20px;
+    border-radius: 50%;
+    line-height: 25px;
+    background: none;
+    outline: none;
+}

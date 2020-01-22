@@ -45,7 +45,6 @@ export default {
   async getAdsLimit(limit, page) {
     // Изменить лимит количества объявлений на одной странице
     // services.getAdsLimit(20, 1).then(console.log)
-
     try {
       const data = await axios.get(
         `/api/v1/ads/all?limit=${limit}&page=${page}`
@@ -151,6 +150,7 @@ export default {
       throw e;
     }
   },
+
   ref:{
     btntabletFilter: document.querySelector(".tablet-filter"),
     btnSearch: document.querySelector(".tablet-filter"),
@@ -171,6 +171,14 @@ export default {
     realEstateCategory: document.querySelector(".products-collection-realestate"),
     freeCategory: document.querySelector(".products-collection-giveFree"),
 
+  },
+
+  srch: {
+    form: document.getElementById("search_form"),
+    input: document.getElementById("search_input"),
+    btn: document.getElementById("search_button"),
+    list: document.getElementById("search_list"),
+    clear: document.getElementById("search_clear")
   }
 };
 
