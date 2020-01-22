@@ -171,14 +171,6 @@ export default {
     realEstateCategory: document.querySelector(".products-collection-realestate"),
     freeCategory: document.querySelector(".products-collection-giveFree"),
 
-  },
-
-  srch: {
-    form: document.getElementById("search_form"),
-    input: document.getElementById("search_input"),
-    btn: document.getElementById("search_button"),
-    list: document.getElementById("search_list"),
-    clear: document.getElementById("search_clear")
   }
 };
 

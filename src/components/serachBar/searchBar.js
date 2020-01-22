@@ -1,24 +1,32 @@
 import services from "../../services";
+import searchBar from ".";
 
 export default {
+  refs: {
+    form: document.getElementById("search_form"),
+    input: document.getElementById("search_input"),
+    btn: document.getElementById("search_button"),
+    list: document.getElementById("search_list"),
+    clear: document.getElementById("search_clear"),
+    radioBlock: document.getElementById("search_radio-block")
+  },
+
   async getBoardCategories() {
     // Получаем от сервера все категории и отрисовываем их на главной странице
 
-    console.log("Начинаю загрузку категорий");
     const allCategories = await services.getAllAds();
 
     allCategories.categories.map(el => {
-      services.srch.form.insertAdjacentHTML(
+      this.refs.radioBlock.insertAdjacentHTML(
         "beforeend",
-        `<input type="radio" id="${el._id}" name="checkCategory" >`
+        `<input class="search_radio" type="radio" id="${el._id}" name="checkCategory" >`
       );
-      services.srch.form.insertAdjacentHTML(
+      this.refs.radioBlock.insertAdjacentHTML(
         "beforeend",
-        `<label for="${el._id}">${el.category}</label>`
+        `<label class="search_label" for="${el._id}">${el.category}</label>`
       );
     });
-
-    console.log("Категории загружены");
+    console.log(this.refs.form);
   },
 
   async getSearchResult(e) {
@@ -26,12 +34,13 @@ export default {
     // объявлениям. Если есть - определяем id категории и ищем по ней
 
     e.preventDefault();
-    services.srch.btn.disabled = true;
-    services.srch.list.innerHTML = "";
+    this.refs.btn.disabled = true;
+    this.refs.list.innerHTML = "";
     const radioButtons = document.getElementsByName("checkCategory");
     let flag = false;
     let idCatogory = null;
     let count = [];
+
     for (let i = 0; i < radioButtons.length; i++) {
       if (radioButtons[i].checked) {
         idCatogory = i;
@@ -41,36 +50,30 @@ export default {
       }
     }
 
+    // Реализация поиска по ключевому слову среди всех объявлений
     const searchByAllAds = async () => {
-      // Реализация поиска по ключевому слову среди всех объявлений
-
       const allAds = await services.getAdsLimit(999, 1);
       const adsArray = allAds.data.ads.docs;
 
       adsArray.filter(el => {
         const titleName = el.title.toLowerCase();
-        const inputValue = services.srch.input.value;
+        const inputValue = this.refs.input.value;
         if (titleName.includes(inputValue)) {
           const newLi = document.createElement("li");
           newLi.className = "search_list-item";
           newLi.dataset.id = el._id;
-          services.srch.list.appendChild(newLi);
+          this.refs.list.appendChild(newLi);
           newLi.insertAdjacentHTML("beforeend", el.title);
           count.push(el);
         }
       });
-      services.srch.btn.disabled = false;
-      services.srch.list.insertAdjacentHTML("beforebegin", `Результат поиска: ${count.length} совпадений`)
-      console.log('Результат поиска: ', count.length, ' совпадений');
+      this.refs.btn.disabled = false;
     };
 
+    // реализация поиска по ключевому слову в выбранной категории
     const searchByCategories = async () => {
-      // реализация поиска по ключевому слову в выбранной категории
-
-      console.log("Начинаю выполение поиска по выбранной категории");
       const allAds = await services.getAdsByCategory(idCatogory, 150);
       const allTitles = allAds.data.ads.docs;
-      let count = [];
 
       allTitles.map(el => {
         const titleName = el.title.toLowerCase();
@@ -82,11 +85,9 @@ export default {
           refs.list.appendChild(newLi);
           newLi.insertAdjacentHTML("beforeend", el.title);
           count.push(el);
-          console.log('Результат поиска: ', count)
         }
       });
-      console.log('Результат поиска: ', count.length, ' совпадений');
-      services.srch.btn.disabled = false;
+      this.refs.btn.disabled = false;
     };
 
     if (flag) {
@@ -98,9 +99,12 @@ export default {
     }
   },
 
-  async clearSearchResult() {
-    // Очищаем результаты поиска и деактивируем чекбоксы
-    const deActivateRadioBtn = document.getElementsByName('checkCategory');
-    deActivateRadioBtn.checked = false;
+  // Очищаем результаты поиска и деактивируем чекбоксы
+  async clearSearchResult(e) {
+    e.preventDefault();
+    const deActivateRadioBtn = document.getElementsByName("checkCategory");
+    deActivateRadioBtn.forEach(el => (el.checked = false));
+    searchBar.refs.input.value = "";
+    searchBar.refs.list.innerHTML = "";
   }
 };

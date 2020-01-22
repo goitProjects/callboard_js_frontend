@@ -5,6 +5,12 @@ import services from "../../services";
 
 export default searchBar;
 
+// Подгружаем все доступные категории из БД и отрисовываем в фильтрах
 searchBar.getBoardCategories();
-services.srch.form.addEventListener("submit", searchBar.getSearchResult);
-services.srch.clear.addEventListener("submit", searchBar.clearSearchResult);
+
+// Запускаем поиск по ключевому слову. Совпадения ищет в заголовках
+searchBar.refs.form.addEventListener("submit", searchBar.getSearchResult);
+
+// Сброс. Очищаем input.value, radio.checked и результаты поиска
+searchBar.refs.clear.addEventListener("click", searchBar.clearSearchResult);
+
