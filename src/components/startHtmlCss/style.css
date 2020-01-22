@@ -105,7 +105,7 @@ html {
   left: 13px;
   text-decoration: none;
   text-transform: uppercase;
-  color: #ffffff;
+  color: rgb(255, 255, 255);
   font-family: "Montserrat-Bold";
 }
 .circle{
@@ -114,13 +114,13 @@ html {
   height: 36px;
   background-color: #ff6b08;
 }
-.products-button{
+/* .products-button{
   padding-top: 26px;
   padding-bottom: 26px;
   background-color: #121d2e;
   
-}
-.products-button__load{
+} */
+/* .products-button__load{
   display: block;
   margin: 0 auto;
   font-family: "Montserrat-SemiBold";
@@ -129,13 +129,20 @@ html {
   background-color: transparent;
   border: none;
   cursor: pointer;
-}
+} */
 /* section-----FOOTER===================== */
 .footer{
   padding-top: 36px;
   padding-bottom: 38px;
   background-color: #1e2939;
 }
+.block-footer{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: rgba(255, 255, 255,0.2);
+}
+
 .block-footer__item{
   display: flex;
   justify-content: center;
@@ -146,29 +153,34 @@ html {
   font-size: 12px;
   letter-spacing: 0.36px;
   line-height: 23px;
-  color: #ffffff;
+  color: rgba(255, 255, 255,0.2);
 }
 .footer-developed{
   display: flex;
   align-items: center;
 }
 .info-students{
-  color: #ffffff;
+  color: rgba(255, 255, 255,0.2);
 }
 .block-footer__item:nth-child(1){
   margin-bottom: 10px;
 }
+.footer-reserved{
+  color: rgba(255, 255, 255,0.2);
+  border:none;
+}
 .footer-copirate{
   padding-right: 10px;
   margin-right: 10px;
-  border-right:1px solid #ffffff;
+  color: rgba(255, 255, 255,0.2);
+  border-right:1px solid rgba(255, 255, 255,0.2);
 }
 .copirate-svg{
   display: block;
   margin-right: 5px;
   width: 18px;
   height:18px;
-  fill: #ffffff;
+  fill: rgba(255, 255, 255,0.2);
 }
 .heart-svg{
   display: block;
