@@ -26,10 +26,6 @@ export default {
         <label class="category__list-item-label" for="${el._id}">${el.category}</label>
         </li> `
       );
-      // searchBar.refsearch.catList.insertAdjacentHTML(
-      //   "beforeend",
-      //   `<label class="search_label" for="${el._id}">${el.category}</label>`
-      // );
     });
   },
 
@@ -59,7 +55,7 @@ export default {
       const allAds = await services.getAdsLimit(999, 1);
       const adsArray = allAds.data.ads.docs;
       searchBar.refsearch.mainTable.innerHTML = "";
-
+      
       adsArray.filter(el => {
         const titleName = el.title.toLowerCase();
         const inputValue = searchBar.refsearch.input.value;
