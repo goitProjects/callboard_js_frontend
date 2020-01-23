@@ -45,7 +45,7 @@ else{
   overlay.style.zIndex = "999";
 
   await services.getUserAds(e.target.closest(".Card_cardItem").dataset.id).then(res => {
-    show(res.data.goal);
+  show(res.data.goal);
     
 
     let button = document.querySelector(".modal-info__buy-button");
@@ -70,16 +70,16 @@ else{
     });
 
     // BUTTON FOR ADDING TO FAVORITES
-    let icon = document.querySelector("#modal-info__favorite");
-    icon.addEventListener("click", e => {
-      if (!icon.classList.contains("js-fav")) {
-        icon.classList.add("js-fav");
+    // let icon = document.querySelector("#modal-info__favorite");
+    // icon.addEventListener("click", e => {
+    //   if (!icon.classList.contains("js-fav")) {
+    //     icon.classList.add("js-fav");
 
-        fav.style.height = "16px";
-        fav.style.width = "16px";
-        console.log("click");
-        fav.style.visibility = "visible";
-      }
+    //     fav.style.height = "16px";
+    //     fav.style.width = "16px";
+    //     console.log("click");
+    //     fav.style.visibility = "visible";
+    //   }
 
       // icon.classList.toggle('js-fav');
       // fav.style.visibility = "hidden";
@@ -97,29 +97,62 @@ else{
       // icon.style.visibility="visible"
       //   }
     });
-  });
+  // });
 }
 }
 
 
 const body=document.querySelector('body');
-body.addEventListener('click',addFavorite )
+body.addEventListener('click', addFavorite )
 
 
 async function addFavorite(e) {
-  const a=await handleClick();
-  console.log(a)
-  // const li = document.querySelector(".Card_cardItem");
-  // await handleClick(services.addToFavorites(e.target.closest('.Card_cardItem'))).then(res=>console.log(res))
-  // services.addToFavorites(li.dataset.id).then(res => {
-  //   show(res);
-  // });
+ 
+  let icon = document.querySelector("#modal-info__favorite");
+  const li = document.querySelector(".Card_cardItem");
+    
+  if(icon){
+    icon.addEventListener("click", e => {
+      if(!e.target.classList.contains("js-fav")){
+        icon.classList.add("js-fav");
+  
+          fav.style.height = "16px";
+          fav.style.width = "16px";
+          fav.style.visibility = "visible";
+          services.addToFavorites(li.dataset.id, {}, { headers:  { Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8" }}).then(console.log);
+        }
+      
+       
+      // if (!e.target.classList.contains("js-fav")) {
+      //   icon.classList.add("js-fav");
+
+      //   fav.style.height = "16px";
+      //   fav.style.width = "16px";
+      //   console.log("click");
+      //   fav.style.visibility = "visible";
+      //   services.addToFavorites(li.dataset.id, {}, { headers:  { Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8" }}).then(console.log);
+      // }
+
+    
+    
+  
+     else if(e.target.classList.contains("js-fav")){
+        icon.classList.remove("js-fav");
+        fav.style.visibility="hidden";
+      icon.style.visibility="visible";
+      services.deleteFavorites("5e27012306c82737fc27f69f", { headers: { Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8" }}).then(console.log)
+      }
+    });
+  }
 }
 
-async function deleteFavorite(e) {
+    // const li = document.querySelector(".Card_cardItem");
+    // console.log(li.dataset.id)
 
-  await services.deleteFavorites(li.dataset.id).then(res => console.log(res));
-}
+  // services.addToFavorites(li.dataset.id, {}, { headers:  { Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8" }}).then(console.log)
+//  services.getFavorites({ headers: { Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8" }}).then(console.log)
+//  services.deleteFavorites("5e27012306c82737fc27f69f", { headers: { Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8" }}).then(console.log)
+// })
 
 
 
