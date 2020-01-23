@@ -45,7 +45,6 @@ export default {
   async getAdsLimit(limit, page) {
     // Изменить лимит количества объявлений на одной странице
     // services.getAdsLimit(20, 1).then(console.log)
-
     try {
       const data = await axios.get(
         `/api/v1/ads/all?limit=${limit}&page=${page}`
@@ -57,12 +56,12 @@ export default {
     }
   },
 
-  async getAdsByCategory(categoryId) {
+  async getAdsByCategory(categoryId, limit) {
     // Получить объявления выбранной категории
     // services.getAdsByCategory(2).then(console.log)
 
     try {
-      const data = await axios.get(`/api/v1/ads//all?category=${categoryId}`);
+      const data = await axios.get(`/api/v1/ads//all?category=${categoryId}&limit=${limit}`);
       return data;
     } catch (e) {
       console.log(e);
@@ -151,6 +150,7 @@ export default {
       throw e;
     }
   },
+
   ref:{
     btntabletFilter: document.querySelector(".tablet-filter"),
     btnSearch: document.querySelector(".tablet-filter"),
