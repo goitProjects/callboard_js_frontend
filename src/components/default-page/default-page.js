@@ -19,16 +19,19 @@ function tradeCategory(categoryArr, domElement) {
 }
 
 const itemPopular = services.getAdsLimit(4,1).then(res => {
+  console.log(1,res)
   popularCategory(res.data.ads.docs, services.ref.popularItem);
 });
-const itemComputer = services.getAdsByCategory(4).then(res => {
+const itemComputer = services.getAdsByCategory(4,4).then(res => {
+  console.log(2,res)
   compCategory(res.data.ads.docs, services.ref.computerCategory);
 });
-
-const itemWorks = services.getAdsByCategory(3).then(res => {
+const itemWorks = services.getAdsByCategory(3,4).then(res => {
+  console.log(3,res)
   worksCategory(res.data.ads.docs, services.ref.pastimeCategory);
 });
-const itemTrade = services.getAdsByCategory(8).then(res => {
+const itemTrade = services.getAdsByCategory(8,4).then(res => {
+  console.log(4,res)
   tradeCategory(res.data.ads.docs, services.ref.exchangeCategory);
 });
 

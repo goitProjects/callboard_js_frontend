@@ -7,6 +7,8 @@ const overlay = document.querySelector(".modal-info__overlay");
 const ul = document.querySelector(".products");
 const section = document.querySelector("section.products");
 let fav = document.querySelector(".fav");
+const list = document.querySelector("ul#search_list");
+
 
 ul.addEventListener("click", handleClick, true);
 overlay.addEventListener("click", handleOverlay);
@@ -14,22 +16,23 @@ document.addEventListener("keydown", handleKeyPress);
 
 let svg;
 
-// FETCHING DATA AND RENDERING 
+// FETCHING DATA AND RENDERING
 async function handleClick(e) {
-  console.log('fef')
   ul.removeEventListener("click", handleClick, true);
-
 
   mainTable.innerHTML = "";
   const li = document.querySelector(".Card_cardItem");
+  li.addEventListener("click", handleClick, true);
   overlay.classList.add("show-modal");
   overlay.style.opacity = "1";
   overlay.style.display = "block";
   overlay.style.position = "fixed";
   overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  overlay.style.zIndex = "999";
 
   await services.getUserAds(li.dataset.id).then(res => {
     show(res.data.goal);
+    
 
     let button = document.querySelector(".modal-info__buy-button");
 
@@ -46,7 +49,7 @@ async function handleClick(e) {
       button.style.border = "2px solid #ff6b08";
     });
 
-    // BUTTON FOR CLOSING WINDOW 
+    // BUTTON FOR CLOSING WINDOW
     let closingBtn = document.querySelector(".modal-info__left-mobile-arrow");
     closingBtn.addEventListener("click", e => {
       closeModal();
@@ -55,7 +58,6 @@ async function handleClick(e) {
     // BUTTON FOR ADDING TO FAVORITES
     let icon = document.querySelector("#modal-info__favorite");
     icon.addEventListener("click", e => {
-     
       if (!icon.classList.contains("js-fav")) {
         icon.classList.add("js-fav");
 
@@ -63,16 +65,15 @@ async function handleClick(e) {
         fav.style.width = "16px";
         console.log("click");
         fav.style.visibility = "visible";
-    }
-   
-   
+      }
+
       // icon.classList.toggle('js-fav');
       // fav.style.visibility = "hidden";
 
       // icon.style.visibility = "visible";
-    
-    // icon.classList.remove('js-fav')
-  
+
+      // icon.classList.remove('js-fav')
+
       //  icon.classList.remove('js-fav')
 
       //   else {
@@ -83,15 +84,14 @@ async function handleClick(e) {
       //   }
     });
   });
-  }
-
-
-async function addFavorite(e){
-  await services.addToFavorites(li.dataset.id).then(res=>console.log(res))
 }
 
-async function deleteFavorite(e){
-  await services.deleteFavorites(li.dataset.id).then(res=>console.log(res))
+async function addFavorite(e) {
+  await services.addToFavorites(li.dataset.id).then(res => console.log(res));
+}
+
+async function deleteFavorite(e) {
+  await services.deleteFavorites(li.dataset.id).then(res => console.log(res));
 }
 
 // })
@@ -103,8 +103,6 @@ function closeModal(e) {
   section.style = "none";
   ul.addEventListener("click", handleClick, true);
   console.log("clicked");
-
-  // ul.addEventListener("click", handleClick, false);
 }
 
 // FUNCTION FOR CLOSING MODAL BY PRESSING 'ESCAPE'

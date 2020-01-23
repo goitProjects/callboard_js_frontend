@@ -114,6 +114,11 @@ button.modal-info__buy-button {
   transition: all 0.3s;
 }
 
+button.modal-info__buy-button:focus,
+button.modal-info__buy-button:hover{
+  cursor: pointer;
+}
+
 @keyframes wobble-horizontal {
   16.65% {
     transform: translateX(8px);
