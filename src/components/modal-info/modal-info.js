@@ -18,11 +18,25 @@ let svg;
 
 // FETCHING DATA AND RENDERING
 async function handleClick(e) {
+ 
+  const liItem = document.querySelector(".Card_cardItem");
   ul.removeEventListener("click", handleClick, true);
+  if(!e.target.closest('.Card_cardItem') || e.currentTarget.className === 'Card_cardItem'){
+    return
+  }
+  
+  // const liItem = document.querySelector(".Card_cardItem");
+  // ul.removeEventListener("click", handleClick, true);
 
+  // if(e.target.closest("Li")===liItem){
+  //   console.log('fwf')
+  //   // overlay.classList.remove("show-modal");
+    
+  // }
+else{
   mainTable.innerHTML = "";
-  const li = document.querySelector(".Card_cardItem");
-  li.addEventListener("click", handleClick, true);
+ 
+  // liItem.addEventListener("click", handleClick, true);
   overlay.classList.add("show-modal");
   overlay.style.opacity = "1";
   overlay.style.display = "block";
@@ -30,7 +44,7 @@ async function handleClick(e) {
   overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
   overlay.style.zIndex = "999";
 
-  await services.getUserAds(li.dataset.id).then(res => {
+  await services.getUserAds(e.target.closest(".Card_cardItem").dataset.id).then(res => {
     show(res.data.goal);
     
 
@@ -85,23 +99,22 @@ async function handleClick(e) {
     });
   });
 }
-
-// const body=document.querySelector('body');
-// body.addEventListener('click',addFavorite )
+}
 
 
-// async function addFavorite(e) {
-//   const li = document.querySelector(".Card_cardItem");
-//   await handleClick(li.dataset.id).then(res=>console.log(res))
-//   // services.addToFavorites(li.dataset.id).then(res => {
-//   //   show(res);
-//   // });
+const body=document.querySelector('body');
+body.addEventListener('click',addFavorite )
 
 
-
-// }
-services.addToFavorites().then(res=>console.log(res))
-
+async function addFavorite(e) {
+  const a=await handleClick();
+  console.log(a)
+  // const li = document.querySelector(".Card_cardItem");
+  // await handleClick(services.addToFavorites(e.target.closest('.Card_cardItem'))).then(res=>console.log(res))
+  // services.addToFavorites(li.dataset.id).then(res => {
+  //   show(res);
+  // });
+}
 
 async function deleteFavorite(e) {
 
