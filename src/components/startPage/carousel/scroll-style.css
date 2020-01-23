@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.scrolling {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 446px;
+    padding: 30px 0 56px;
+}
+
+.scrolling_title {
+    font-size: 20px;
+    font-family: "Montserrat";
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    line-height: 1.2;
+
+    margin-bottom: 16px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.scrolling_main-box {
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 320px;
+}
+
+.scroll-box {
+    position: relative;
+    display: flex;
+    transition: transform .5s;
+    will-change: transform;
+    z-index: 1;
+    height: 100%;
+    list-style: none;
+}
+
+.scroll-box_item {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    overflow: hidden;
+    flex: 0 0 100%;
+}
+
+.scroll-pagination {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+    left: 42%;
+    bottom: 36px;
+    width: 46px;
+}
+
+.dots {
+    background-color: #ccc;
+    border-radius: 50%;
+    list-style: none;
+    width: 6px;
+    height: 6px;
+}
+
+.prev-scroll,
+.next-scroll {
+    background-color: #f4f4f4;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    top: 124px;
+    width: 135px;
+    height: 69%;
+    opacity: 0;
+    z-index: 3;
+    box-shadow: 2.5px 4.33px 10px 0px #1d1d1b1c;
+    border-style: none;
+}
+
+.next-scroll {
+    right: 0px;
+}
+
+
+.prev-scroll:hover,
+.next-scroll:hover {
+    background-color: rgb(233, 97, 5);
+
+
+}
+
+.prev-scroll::after,
+.next-scroll::after {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    fill: #030303;
+    width: 16px;
+    height: 16px;
+    content: "";
+}
+
+.prev-scroll::after {
+    background-image: url(../carousel/svg/keyboard-left-button.svg);
+    top: 21px;
+    right: 8px;
+}
+
+.next-scroll::after {
+    background-image: url(../carousel/svg/keyboard-right-button.svg);
+    top: 21px;
+    left: 8px;
+}
+
+
+@media (min-width: 768px) {
+
+    .scrolling_window {
+        overflow: hidden;
+    }
+
+    .scrolling_main-box {
+        width: calc(50% - 16px);
+        overflow: visible;
+    }
+
+    .scroll-box_item {
+        margin: 0 10px;
+    }
+
+    .scroll-pagination {
+        display: none;
+    }
+
+    .prev-scroll,
+    .next-scroll {
+        top: 204px;
+        width: 32px;
+        height: 60px;
+        opacity: 1;
+
+    }
+
+    .prev-scroll {
+        left: -14px;
+    }
+
+    .next-scroll {
+        right: -14px;
+    }
+}
+
+@media (min-width: 1280px) {
+    /* #container {
+        width: 1200px;
+        padding: 0;
+        margin: 0 auto;
+    } */
+
+    .scrolling_main-box {
+        width: calc(25% - 20px);
+    }
+}
