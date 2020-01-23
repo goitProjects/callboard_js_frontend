@@ -18,8 +18,9 @@ function tradeCategory(categoryArr, domElement) {
   domElement.insertAdjacentHTML("beforeend", categoryLayout);
 }
 
-const itemPopular = services.getAllAds().then(res => {
-  popularCategory(res.docs, services.ref.popularItem);
+const itemPopular = services.getAdsLimit(4,1).then(res => {
+  console.log(res)
+  popularCategory(res.data.ads.docs, services.ref.popularItem);
 });
 const itemComputer = services.getAdsByCategory(4).then(res => {
   compCategory(res.data.ads.docs, services.ref.computerCategory);

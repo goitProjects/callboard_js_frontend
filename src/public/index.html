@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Document</title>
 </head>
+
 <body>
   <header class="header">
     <nav class="navigation">
@@ -103,13 +105,6 @@
           <ul class="products-collection-exchange-list"></ul>
         </div>
       </div>
-      <div class="products-button">
-        <button class="products-button__load">Загрузить еще</button>
-      </div>
-      <button class="test-btn js-test-btn">Toch me!</button>
-      <div class="preloader js-preloader is-hidden" id="spinner">
-        <span class="load"></span>
-      </div>
     </section>
   </main>
   </section>
@@ -140,25 +135,26 @@
     </div>
   </footer>
 
+  <!-- Preloader -->
+  <button class="test-btn js-test-btn">Toch me!</button>
+  <div class="preloader js-preloader is-hidden" id="spinner">
+    <span class="load"></span>
+  </div>
+  <!-- Preloader -->
+
   <!-- MODAL LOGIN WINDOW -->
   <div class="auth-modal-overlay-login hide">
     <form class="auth-modal-login">
-      <img
-        src="../icons/close/close-24px.svg"
-        alt="close-icon"
-        class="close-icon"
-      />
+      <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
       <p class="auth-text">
         Для авторизации можете использовать <span>Google Account:</span>
       </p>
-      <a href="https://myaccount.google.com" class="auth-google-btn"
-        >Google</a
-      >
+      <a href="https://myaccount.google.com" class="auth-google-btn">Google</a>
       <p class="auth-text">
         Или войдите в приложение используя <span>e-mail и пароль:</span>
       </p>
       <div class="inputs-container">
-        <input type="email"  name="email" placeholder="E-mail" />
+        <input type="email" name="email" placeholder="E-mail" />
         <input type="password" name="password" placeholder="Пароль" />
       </div>
       <div class="auth-btns">
@@ -169,34 +165,28 @@
   </div>
   <!-- MODAL LOGIN WINDOW -->
 
-    <!-- MODAL REGISTRATION WINDOW -->
-    <div class="auth-modal-overlay-register hide">
-      <form class="auth-modal-register">
-        <img
-          src="../icons/close/close-24px.svg"
-          alt="close-icon"
-          class="close-icon"
-        />
-        <p class="auth-text">
-          Для авторизации можете использовать <span>Google Account:</span>
-        </p>
-        <a href="https://myaccount.google.com" class="auth-google-btn"
-          >Google</a
-        >
-        <p class="auth-text">
-          Или войдите в приложение используя <span>e-mail и пароль:</span>
-        </p>
-        <div class="inputs-container">
-          <input type="text" name="name" placeholder="Имя" />
-          <input type="email"  name="email" placeholder="E-mail" />
-          <input type="password" name="password" placeholder="Пароль" />
-        </div>
-        <div class="auth-btns">
-          <button type="submit" class="btn-confirm">Регистрация</button>
-        </div>
-      </form>
-    </div>
-    <!-- MODAL REGISTRATION WINDOW -->
+  <!-- MODAL REGISTRATION WINDOW -->
+  <div class="auth-modal-overlay-register hide">
+    <form class="auth-modal-register">
+      <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
+      <p class="auth-text">
+        Для авторизации можете использовать <span>Google Account:</span>
+      </p>
+      <a href="https://myaccount.google.com" class="auth-google-btn">Google</a>
+      <p class="auth-text">
+        Или войдите в приложение используя <span>e-mail и пароль:</span>
+      </p>
+      <div class="inputs-container">
+        <input type="text" name="name" placeholder="Имя" />
+        <input type="email" name="email" placeholder="E-mail" />
+        <input type="password" name="password" placeholder="Пароль" />
+      </div>
+      <div class="auth-btns">
+        <button type="submit" class="btn-confirm">Регистрация</button>
+      </div>
+    </form>
+  </div>
+  <!-- MODAL REGISTRATION WINDOW -->
 </body>
 
 </html>
