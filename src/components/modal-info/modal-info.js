@@ -86,15 +86,29 @@ async function handleClick(e) {
   });
 }
 
-async function addFavorite(e) {
-  await services.addToFavorites(li.dataset.id).then(res => console.log(res));
-}
+// const body=document.querySelector('body');
+// body.addEventListener('click',addFavorite )
+
+
+// async function addFavorite(e) {
+//   const li = document.querySelector(".Card_cardItem");
+//   await handleClick(li.dataset.id).then(res=>console.log(res))
+//   // services.addToFavorites(li.dataset.id).then(res => {
+//   //   show(res);
+//   // });
+
+
+
+// }
+services.addToFavorites().then(res=>console.log(res))
+
 
 async function deleteFavorite(e) {
+
   await services.deleteFavorites(li.dataset.id).then(res => console.log(res));
 }
 
-// })
+
 
 // FUNCTION FOR CLOSING MODAL
 function closeModal(e) {
