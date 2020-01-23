@@ -1,3 +1,9 @@
-import "./components/startPage";
-import "./components/default-page/default-page";
-import "./components/userAccount/userAccount"
+import "./components/startHtmlCss";
+// import "./components/default-page/default-page";
+import "./components/preloader/js";
+import "./components/startPage/cardItem/card";
+import "../src/components/userAccount/userAccount.js";
+import '../src/components/startPage/login-auth/login-auth';
+import '../src/components/startPage/login-auth/login-auth.css';
+// import "../src/components/startPage/userAccount/userAccount"
+import "./components/startPage/photo-conversion/photo-conversion";

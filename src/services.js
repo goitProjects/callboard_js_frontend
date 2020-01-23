@@ -2,6 +2,12 @@ import axios from "axios";
 axios.defaults.baseURL = "https://dashads.goit.co.ua";
 
 export default {
+  userData: null,
+  token: localStorage.getItem('token'),
+  ads: null,
+  favorites: null,
+  isAuth: false,
+  
   async getAllAds() {
     // Получить все объявления
     // services.getAllAds().then(console.log)
@@ -96,13 +102,14 @@ export default {
     }
   },
 
-  async postLogoutUser(user) {
+  async postLogoutUser() {
     // Логаут пользователя
     // services.postLogoutUser({ email: "em@ss.ua", password: "111111"},{headers: {Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjViZWE2MmFhNzhiNjUxNzdmZjUwMCIsImlhdCI6MTU3OTUzMjcyN30.b8ReEjHn-KbHsls0cvm8GauQOr6sEqqcjZxD1KfqtzI"}}).then(console.log)
 
     try {
-      const data = await axios.post("/api/v1/auth/logout", user);
-      return data;
+      const data = await axios.post("/api/v1/auth/logout", { headers: { Authorization: this.token } });
+      console.log('logout', data)
+      // return data;
     } catch (e) {
       console.log(e);
       throw e;
@@ -151,25 +158,27 @@ export default {
       throw e;
     }
   },
-  ref:{
+  refs:{
     btntabletFilter: document.querySelector(".tablet-filter"),
     btnSearch: document.querySelector(".tablet-filter"),
     buttonReg: document.querySelector(".registration-button"),
     buttonLogin: document.querySelector(".registration-enter"),
+    logout: document.querySelector('.exit'),
     imgLogo: document.querySelector(".logo"),
     navForm: document.querySelector(".navigation-form"),
     tabletFilter: document.querySelector(".tablet-filter"),
     btnAddPromo: document.querySelector(".navigation-promo"),
     filterUl: document.querySelector(".navigation-filter__list"),
-    popularItem: document.querySelector(".products-collection-popular"),
-    computerCategory: document.querySelector(".products-collection-computer"),
-    pastimeCategory: document.querySelector(".products-collection-pastime"),
-    exchangeCategory: document.querySelector(".products-collection-exchange"),
-    transportCategory: document.querySelector(".products-collection-transport"),
-    businessCategory: document.querySelector(".products-collection-business"),
-    workCategory: document.querySelector(".products-collection-work"),
-    realEstateCategory: document.querySelector(".products-collection-realestate"),
-    freeCategory: document.querySelector(".products-collection-giveFree"),
+    mainCatalog: document.querySelector(".mainBord"),
+    popularItem: document.querySelector(".products-collection-popular-list"),
+    computerCategory: document.querySelector(".products-collection-computer-list"),
+    pastimeCategory: document.querySelector(".products-collection-pastime-list"),
+    exchangeCategory: document.querySelector(".products-collection-exchange-list"),
+    // transportCategory: document.querySelector(".products-collection-transport-list"),
+    // businessCategory: document.querySelector(".products-collection-business-list"),
+    // workCategory: document.querySelector(".products-collection-work-list"),
+    // realEstateCategory: document.querySelector(".products-collection-realestate-list"),
+    // freeCategory: document.querySelector(".products-collection-giveFree-list"),
 
   }
   // addCategory(){

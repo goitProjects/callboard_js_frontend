@@ -1,0 +1,24 @@
+{{#each this}}
+<li class="user__acc-my-add" data-fav-id={{this._id}}>
+    <div class="img-div">
+        <img src={{images}} alt=`name-of ${{title}}` />
+    </div>
+    <div>
+        <div class="user__acc-title-price">
+            <h3 class="user__acc-title">{{title}}</h3>
+            <span class="user__acc-price">{{price}}</span>
+        </div>
+        <p class="user__acc-add-desctiption">{{description}}</p>
+        <button class="user__acc-del-myadd">Видалити оголошення</button>
+    </div>
+</li>
+{{/each}}
+
+{{!-- 
+{{#each this}}
+<li class="Card_cardItem" data-id="{{this._id}}">
+  <img class="Card_img" src="{{this.images}}" alt="" />
+  <p class="Card_description">{{this.description}}</p>
+  <span class="Card_price">{{this.price}}</span>
+</li>  
+{{/each}} --}}
