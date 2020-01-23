@@ -92,13 +92,10 @@
     font-size: 14px;
     letter-spacing: 0.28px;
     color: #ffffff;
-    background-color: transparent;
+    background-color: #ff6b08;
     border: none;
     cursor: pointer;
     
-  }
-  .navigation-promo:hover{
-    background-color: #ff6b08;
   }
 
   /* second-Line-navigation style===================================== */
