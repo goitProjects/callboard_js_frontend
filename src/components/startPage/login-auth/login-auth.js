@@ -25,7 +25,7 @@ services.refs.logout.addEventListener('click', logoutFromAcc);
 refs.overlayLogin.addEventListener('click', closeModal);
 refs.overlayRegister.addEventListener('click', closeModal);
 
-// document.addEventListener('DOMContentLoaded', stayLoggedIn);
+document.addEventListener('DOMContentLoaded', stayLoggedIn);
 
 function showLoginModal() {
   refs.overlayLogin.classList.remove('hide');
@@ -46,8 +46,7 @@ async function login(e) {
       services.ads = dataLogin.data.ads;
       services.favorites = dataLogin.data.favorites;
       services.isAuth = true;
-      console.log(services);
-      localStorage.setItem('token', services.token);
+      localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
       changeUIforLoggedUser();
     } catch (e) {
       PNotify.error({
@@ -86,8 +85,7 @@ async function register(e) {
       services.ads = dataRegister.data.ads;
       services.favorites = dataRegister.data.favorites;
       services.isAuth = true;
-      console.log(services);
-      localStorage.setItem('token', dataRegister.data.token);
+      localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
       changeUIforLoggedUser();
     } catch (e) {
       PNotify.error({
@@ -108,7 +106,7 @@ function registerFromModal(e) {
 // logout fn works, even though if throws errors
 function logoutFromAcc() {
   services.postLogoutUser();
-  localStorage.setItem('token', null);
+  localStorage.setItem('loginInfo', null);
   refs.authModalRegister.reset();
   refs.authModalLogin.reset();
   services.isAuth = false;
@@ -150,10 +148,18 @@ function changeUIforLoggedUser() {
   });
 }
 
-// function stayLoggedIn(e) {
-//   if(services.token !== null) {
+function stayLoggedIn() {
+  const servicesFromLS = JSON.parse(localStorage.getItem('loginInfo'))
+  if(servicesFromLS !== null) {
+    refs.registerBlock.style.display = 'none';
+    refs.logoutBlock.style.display = 'block';
+    refs.loggedUser.textContent = servicesFromLS.userData.name;
 
-//     services.isAuth = true;
-//     changeUIforLoggedUser();
-//   }
-// }
+    services.userData = servicesFromLS.userData;
+    services.token = servicesFromLS.token;
+    services.ads = servicesFromLS.ads;
+    services.favorites = servicesFromLS.favorites;
+    services.isAuth = true;
+  }
+  console.log(services)
+}

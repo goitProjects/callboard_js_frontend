@@ -3,7 +3,7 @@ axios.defaults.baseURL = "https://dashads.goit.co.ua";
 
 export default {
   userData: null,
-  token: localStorage.getItem('token'),
+  token: null,
   ads: null,
   favorites: null,
   isAuth: false,
