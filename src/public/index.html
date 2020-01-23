@@ -1,77 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Document</title>
-</head>
-
-<body>
-  <header class="header">
-    <nav class="navigation">
-      <div class="container">
-        <div class="mob-header">
-          <button class="burger-menu">
-          </button>
-          <div class="block-logo">
-            <div class="circle"></div>
-            <a href="#" class="logo">Logo</a>
-          </div>
-          <button class="search"></button>
-        </div>
-        <div class="tab-leck-block">
-          <div class="header__waper-firstLine-navigation">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navigation">
+        <div class="container">
+          <div class="mob-header">
+            <button class="burger-menu">
+            </button>
             <div class="block-logo">
               <div class="circle"></div>
               <a href="#" class="logo">Logo</a>
             </div>
-            <div class="wrapper-registrationLogoutPromo">
-            <div class="navigation__registration">
-              <button class="registration-button">Регистрация </button>
-              <button class="registration-enter">Войти </button>
-            </div>
-            <div class="navigation__logout">
-              <input type="text" class="user">
-              <button class="exit"> Выйти</button>
-            </div>
-            <button class="navigation-promo">Создать объявление</button>
+            <button class="search"></button>
+
+
+
+            
           </div>
-          </div>
-          <div class="header__wrapper-secondLine-navigation">
-            <div class="navigation-form"></div>
-            <button class="tablet-filter">Фильтры</button>
-            <div class="navigation-filter">
-              <ul class="navigation-filter__list"></ul>
-              <button class="navigation-filter__clear">Очистить</button>
+          <div class="tab-leck-block">
+            <div class="header__waper-firstLine-navigation">
+              <div class="block-logo">
+                <div class="circle"></div>
+                <a href="#" class="logo">Logo</a>
+              </div>
+              <div class="wrapper-registrationLogoutPromo">
+                <div class="navigation__registration">
+                  <button class="registration-button">Регистрация </button>
+                  <button class="registration-enter">Войти </button>
+                </div>
+                <div class="navigation__logout">
+                  <input type="text" class="user">
+                  <button class="exit"> Выйти</button>
+                </div>
+                <button class="navigation-promo">Создать объявление</button>
+              </div>
+            </div>
+            <div class="header__wrapper-secondLine-navigation">
+              <div class="navigation-form"></div>
+              <div class="block-filterClear">
+                <svg  class="icon-svg-filter"version="1.1" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 32 32">
+                  <title>tune-24px</title>
+                  <path d="M4 22.667v2.667h8v-2.667h-8zM4 6.667v2.667h13.333v-2.667h-13.333zM17.333 28v-2.667h10.667v-2.667h-10.667v-2.667h-2.667v8h2.667zM9.333 12v2.667h-5.333v2.667h5.333v2.667h2.667v-8h-2.667zM28 17.333v-2.667h-13.333v2.667h13.333zM20 12h2.667v-2.667h5.333v-2.667h-5.333v-2.667h-2.667v8z"></path>
+                  </svg>
+                  <ul class="navigation-filter__list"></ul>
+                <button class="navigation-filter__filter">Фильтры</button>
+                <svg class="icon-svg-clear" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                  <title>replay-24px-1</title>
+                  <path
+                    d="M16 6.667v-5.333l-6.667 6.667 6.667 6.667v-5.333c4.413 0 8 3.587 8 8s-3.587 8-8 8-8-3.587-8-8h-2.667c0 5.893 4.773 10.667 10.667 10.667s10.667-4.773 10.667-10.667-4.773-10.667-10.667-10.667z">
+                  </path>
+                </svg>
+                <button class="navigation-filter__clear">Очистить</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
-  </header>
-  <main>
-    <section class="products">
-      <div class="container">
-        <div style="height:400px"></div>
-        <!-- <div class="products-collection-popular"></div>
-        <div class="products-collection-computer"></div>
-        <div class="products-collection-pastime"></div>
-        <div class="products-collection-exchange"></div>
-        <div class="products-collection-transport"></div>
-        <div class="products-collection-business"></div>
-        <div class="products-collection-work"></div>
-        <div class="products-collection-realestate"></div>
-        <div class="products-collection-giveFree"></div> -->
-      </div>
-      <div class="products-button">
-        <button class="products-button__load">Загрузить еще</button>
-      </div>
-      <button class="test-btn js-test-btn">Toch me!</button>
-      <div class="preloader js-preloader is-hidden" id="spinner">
-        <span class="load"></span>
-      </div>
+      </nav>
+    </header>
+    <main>
+      <section class="products">
+        <div class="container mainTable">
+            <div class="products-collection-popular">
+              <h2 class="popular-title">Популярное</h2>
+              <a href="#">Смотреть все</a>
+              <p class="popular-description">
+                Товары домашнего обихода, видео, аудио, наушники, камеры,
+                аксессуары и многое другое.
+              </p>
+              <ul class="products-collection-popular-list"></ul>
+            </div>
+            <div class="products-collection-computer">
+              <h2 class="popular-title">Компьютеры и аксессуары</h2>
+              <a href="#">Смотреть все</a>
+              <p class="popular-description"></p>
+              <ul class="products-collection-computer-list"></ul>
+            </div>
+            <div class="products-collection-pastime">
+              <h2 class="popular-title">Отдых и спорт</h2>
+              <a href="#">Смотреть все</a>
+              <p class="popular-description"></p>
+              <ul class="products-collection-pastime-list"></ul>
+            </div>
+            <div class="products-collection-exchange">
+              <h2 class="popular-title">Обмен</h2>
+              <a href="#">Смотреть все</a>
+              <p class="popular-description"></p>
+              <ul class="products-collection-exchange-list"></ul>
+            </div>
+        </div>
+        <div class="products-button">
+          <button class="products-button__load">Загрузить еще</button>
+        </div>
+        <button class="test-btn js-test-btn">Toch me!</button>
+        <div class="preloader js-preloader is-hidden" id="spinner">
+          <span class="load"></span>
+        </div>
     </section>
   </main>
   <footer class="footer">
@@ -85,7 +114,7 @@
             </path>
           </svg>
           <p class="footer-copirate">2020</p>
-          <p>All Rights Reserved</p>
+          <p class="footer-reserved">All Rights Reserved</p>
         </li>
         <li class="block-footer__item">
           <p class="footer-developed">Developed with
@@ -99,6 +128,5 @@
       </ul>
     </div>
   </footer>
-</body>
-
+  </body>
 </html>

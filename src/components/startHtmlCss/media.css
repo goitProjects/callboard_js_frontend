@@ -5,23 +5,174 @@
   .mob-header{
     display:none;
   }
+  .header{
+    padding-top:34px;
+    padding-bottom: 30px;
+  }
   .tab-leck-block{
     display: block;
   }
+  /* first-Line-navigstion========================================== */
   .header__waper-firstLine-navigation{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 14px;
 
   }
   .wrapper-registrationLogoutPromo{
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
+  /* user-Active================== */
   .navigation__logout{
     display: none;
   }
+  .user{
+    min-width: 100px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 25px;
+    margin-right: 5px;
+
+  }
+  .exit{
+    margin-right: 30px;
+    font-family: "Montserrat-Regular";
+    font-size: 10px;
+    letter-spacing: 0.2px;
+    color: rgba(255, 255, 255,0.2);
+    background-color: transparent;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+  }
+  .exit:hover{
+    color: #ff6b08;
+  }
+  /* Registration===================================== */
+  .registration-button{
+    padding-right: 12px;
+    margin-right: 12px;
+    font-family: "Montserrat-Regular";
+    font-size: 10px;
+    letter-spacing: 0.2px;
+    color: rgba(255, 255, 255,0.2);
+    background-color: transparent;
+    height: 20px;
+    border: none;
+    border-right: 1px solid  rgba(255, 255, 255,0.2);
+    cursor: pointer;
+  }
+  .registration-enter {
+    margin-right: 30px;
+    font-family: "Montserrat-Regular";
+    font-size: 10px;
+    letter-spacing: 0.2px;
+    color: rgba(255, 255, 255,0.2);
+    background-color: transparent;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+  }
+  .registration-button:hover,
+  .registration-enter:hover{
+    color: #ff6b08;
+  }
+  .navigation-promo{
+    padding: 16px 0;
+    width: 200px;
+    font-family: "Montserrat-Bold";
+    font-size: 14px;
+    letter-spacing: 0.28px;
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    
+  }
+  .navigation-promo:hover{
+    background-color: #ff6b08;
+  }
+
+  /* second-Line-navigation style===================================== */
   .header__wrapper-secondLine-navigation{
     display: flex;
     justify-content: space-between;
   }
+  .block-filterClear{
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+  }
+  .navigation-filter__filter{
+    font-family:"Montserrat-Regular";
+    font-size: 10px;
+    letter-spacing: 0.3px;
+    color: rgba(255, 255, 255,0.2);
+    border: none;
+    background-color: transparent;
+    margin-right: 36px;
+    cursor: pointer;
+  }
+  .navigation-filter__clear{
+    font-family:"Montserrat-Regular";
+    font-size: 10px;
+    letter-spacing: 0.3px;
+    color: rgba(255, 255, 255,0.2);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  .navigation-filter__filter:hover,
+  .navigation-filter__clear:hover {
+    color: #ff6b08;
+  }
+  .icon-svg-filter{
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    fill: rgba(255, 255, 255,0.2);
+  }
+  .icon-svg-clear{
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    fill: rgba(255, 255, 255,0.2);
+
+  }
+
+  .navigation-filter__list{
+    display: none;
+  }
+
+ /* FOOTER============================= */
+ .block-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+ }
+ .block-footer__item:nth-child(1){
+  margin-bottom: 0;
+ }
+ .block-footer__item>p {
+  font-family: "Montserrat-Regular";
+  font-size: 12px;
+  letter-spacing: 0.36px;
+  line-height: 23px;
+  color: rgba(255, 255, 255,0.2);
+ }
+ .footer-reserved{
+  padding-right: 10px;
+  margin-right: 10px;
+  color: rgba(255, 255, 255,0.2);
+  border-right:1px solid rgba(255, 255, 255,0.2);
+ }
+}
+/* @MEDIA =======================================================*/
+@media (min-width: 992px){
+  
 }
