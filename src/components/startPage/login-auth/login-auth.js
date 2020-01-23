@@ -1,27 +1,24 @@
 import services from '../../../services';
+import './login-auth.css';
 import '../../../../node_modules/pnotify/dist/PNotifyBrightTheme.css';
 import PNotify from '../../../../node_modules/pnotify/dist/es/PNotify.js';
 
 const refs = {
   overlayLogin: document.querySelector('.auth-modal-overlay-login'),
   overlayRegister: document.querySelector('.auth-modal-overlay-register'),
-
   authModalLogin: document.querySelector('.auth-modal-login'),
   authModalRegister: document.querySelector('.auth-modal-register'),
-
   registerBlock: document.querySelector('.navigation__registration'),
   logoutBlock: document.querySelector('.navigation__logout'),
   loggedUser: document.querySelector('.logged-user')
 };
 
-services.refs.buttonLogin.addEventListener('click', showLoginModal);
+services.ref.buttonLogin.addEventListener('click', showLoginModal);
 refs.authModalLogin.addEventListener('click', login);
-
-services.refs.buttonReg.addEventListener('click', showRegisterModal);
+services.ref.buttonReg.addEventListener('click', showRegisterModal);
 refs.authModalRegister.addEventListener('click', register);
 refs.authModalLogin.addEventListener('click', registerFromModal);
-
-services.refs.logout.addEventListener('click', logoutFromAcc);
+services.ref.logout.addEventListener('click', logoutFromAcc);
 refs.overlayLogin.addEventListener('click', closeModal);
 refs.overlayRegister.addEventListener('click', closeModal);
 
