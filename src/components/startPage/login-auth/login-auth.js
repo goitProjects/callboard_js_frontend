@@ -1,4 +1,5 @@
 import services from '../../../services';
+import './login-auth.css';
 import '../../../../node_modules/pnotify/dist/PNotifyBrightTheme.css';
 import PNotify from '../../../../node_modules/pnotify/dist/es/PNotify.js';
 
