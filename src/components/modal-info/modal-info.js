@@ -19,10 +19,13 @@ let svg;
 // FETCHING DATA AND RENDERING
 async function handleClick(e) {
   ul.removeEventListener("click", handleClick, true);
+  const liItem = document.querySelector(".Card_cardItem");
 
+  if( e.target.closest(".Card_cardItem")!==liItem){
+return console.log(1)}else{console.log(2);
   mainTable.innerHTML = "";
-  const li = document.querySelector(".Card_cardItem");
-  li.addEventListener("click", handleClick, true);
+ 
+  // liItem.addEventListener("click", handleClick, true);
   overlay.classList.add("show-modal");
   overlay.style.opacity = "1";
   overlay.style.display = "block";
@@ -30,7 +33,7 @@ async function handleClick(e) {
   overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
   overlay.style.zIndex = "999";
 
-  await services.getUserAds(li.dataset.id).then(res => {
+  await services.getUserAds(.dataset.id).then(res => {
     show(res.data.goal);
     
 
@@ -85,6 +88,8 @@ async function handleClick(e) {
     });
   });
 }
+}
+
 
 async function addFavorite(e) {
   await services.addToFavorites(li.dataset.id).then(res => console.log(res));
