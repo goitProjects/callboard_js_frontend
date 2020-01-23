@@ -151,6 +151,17 @@ export default {
       throw e;
     }
   },
+
+  async addToFavorites(id){
+    try {
+      const data = await axios.put(`/api/user/favorite/${id}`);
+      return data;
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  },
+
   ref:{
     btntabletFilter: document.querySelector(".tablet-filter"),
     btnSearch: document.querySelector(".tablet-filter"),
@@ -180,5 +191,3 @@ export default {
 
   // }
 };
-
-

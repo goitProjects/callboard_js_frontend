@@ -4,61 +4,37 @@ body {
   font-size: 18px;
   font-family: "Montserrat", serif;
 }
-
-/* .modal-info__wrapper {
-  width: 320px;
-  height: 600px;
-  border: none;
-  margin: 0 auto;
-  background-color: #fff;
-  position: relative;
-} */
-
 .show-modal {
   opacity: 1;
-  /* background-color: #ff6b08; */
   visibility: visible;
   pointer-events: initial;
+  width: 100vw;
+  height: 100vh;
 }
-body{
+body {
   position: relative;
   overflow-x: hidden;
   overflow-y: scroll !important;
 }
 
-
-/* .show-modal .modal-info__modal {
+.show-modal .modal-info__modal {
   transform: scale(1);
-  
-} */
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(40%, 31.5%);
+}
 
 .modal-info__overlay {
-
-   /* top: 0;
-  left: 0; */
-  /* position: fixed; */
-  /* display: flex;
+  top: 0;
+  left: 0;
+  display: flex;
   justify-content: center;
-  align-items: center;*/
-  /* position: absolute;  */
-   /* width: 100vw;
-  height: 100vh; */
- 
-  
-  /* pointer-events: none;
-  opacity: 0;
-  visibility: hidden;  */
+  align-items: center;
   display: none;
   transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
 }
-
-.modal-info__modal{
-position: absolute;
-transform: translate(-50%,-50%);
-overflow: hidden;
-  top:  0;
-  left: 0;
-  bottom: 0;
+.modal-info__modal {
   width: 320px;
   height: 500px;
   background-color: #fff;
@@ -86,7 +62,7 @@ button.modal-info__left-mobile-arrow {
   visibility: hidden;
 }
 
-.fav{
+.fav {
   fill: red;
   background-repeat: no-repeat;
   border: none;
@@ -94,8 +70,9 @@ button.modal-info__left-mobile-arrow {
   position: absolute;
   bottom: 26.5%;
   left: 63%;
-  background-color: #fff;
+  background-color: none;
   cursor: pointer;
+  visibility: hidden;
 }
 
 button.modal-info__left-mobile-arrow:focus {
@@ -121,9 +98,9 @@ span.modal-info__price {
 }
 
 img.modal-info__image-item {
+  position: absolute;
   width: 230px;
   height: 230px;
-  position: absolute;
   transform: translate(11%, 16%);
 }
 
@@ -214,17 +191,9 @@ button#modal-info__favorite {
   bottom: 12.2%;
   left: 34%;
   background-color: #fff;
-  
+
   cursor: pointer;
 }
-
-/* .fav{
-  display: block;
-  fill: red;
-  width: 30px;
-  height: 30px;
-} */
-
 
 button#modal-info__favorite:focus {
   outline: none;
@@ -296,9 +265,9 @@ button#modal-info__favorite:focus {
     bottom: 25%;
   }
 
-  .fav{
+  .fav {
     bottom: 25%;
-  left: 66%;
+    left: 66%;
   }
 
   span.modal-info__description {
@@ -381,8 +350,8 @@ button#modal-info__favorite:focus {
     top: 82%;
   }
 
-  .fav{
+  .fav {
     bottom: 26.5%;
-  left: 63%;
+    left: 63%;
   }
 }
