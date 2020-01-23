@@ -1,3 +1,3 @@
 import "./components/startPage";
-import "../src/components/startPage/userAccount/userAccount.js"
-
+import "./components/default-page/default-page";
+import "./components/userAccount/userAccount.js"

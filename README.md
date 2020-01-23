@@ -31,6 +31,6 @@
 обязательно указать обьект с email и password который вводили для входа в приложение и передать token, произойдет розлогирование и старый token больше не будет подходить для входа
 
 ---------------------------- добавление обьявлений ----------
-карточка для добавления товара --- axios.post(https://dashads.goit.co.ua/api/v1/auth/ads, { images : '', title: '', category: '', price: ', pho: '', description : '' }, { headers: { Authorization: this.userToken, }, }) одна для всех с обязательными полями для заполнения, при добавлении обьявления оно автоматически будет лежать вверху общего поиска
+карточка для добавления товара --- axios.post(https://dashads.goit.co.ua/api/v1/ads, { images : '', title: '', category: '', price: ', pho: '', description : '' }, { headers: { Authorization: this.userToken, }, }) одна для всех с обязательными полями для заполнения, при добавлении обьявления оно автоматически будет лежать вверху общего поиска
 удаление обьявления --- axios.delete(https://dashads.goit.co.ua/api/v1/ads/${adId}, { headers: { Authorization: token, }, }); передаем token юзера и по нему удаляем
 ```
