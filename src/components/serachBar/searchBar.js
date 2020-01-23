@@ -2,13 +2,14 @@ import services from "../../services";
 import searchBar from ".";
 
 export default {
-  refs: {
+  refsearch: {
     form: document.getElementById("search_form"),
     input: document.getElementById("search_input"),
-    btn: document.getElementById("search_button"),
+    btn: document.getElementById("search_button-search"),
     list: document.getElementById("search_list"),
     clear: document.getElementById("search_clear"),
-    radioBlock: document.getElementById("search_radio-block")
+    radioBlock: document.getElementById("search_radio-block"),
+    mainTable: document.querySelector(".category-favorite_list")
   },
 
   async getBoardCategories() {
@@ -16,17 +17,19 @@ export default {
 
     const allCategories = await services.getAllAds();
 
+
+
     allCategories.categories.map(el => {
-      this.refs.radioBlock.insertAdjacentHTML(
+      searchBar.refsearch.radioBlock.insertAdjacentHTML(
         "beforeend",
         `<input class="search_radio" type="radio" id="${el._id}" name="checkCategory" >`
       );
-      this.refs.radioBlock.insertAdjacentHTML(
+      searchBar.refsearch.radioBlock.insertAdjacentHTML(
         "beforeend",
         `<label class="search_label" for="${el._id}">${el.category}</label>`
       );
     });
-    console.log(this.refs.form);
+
   },
 
   async getSearchResult(e) {
@@ -34,8 +37,8 @@ export default {
     // объявлениям. Если есть - определяем id категории и ищем по ней
 
     e.preventDefault();
-    this.refs.btn.disabled = true;
-    this.refs.list.innerHTML = "";
+    searchBar.refsearch.btn.disabled = true;
+    searchBar.refsearch.list.innerHTML = "";
     const radioButtons = document.getElementsByName("checkCategory");
     let flag = false;
     let idCatogory = null;
@@ -54,26 +57,31 @@ export default {
     const searchByAllAds = async () => {
       const allAds = await services.getAdsLimit(999, 1);
       const adsArray = allAds.data.ads.docs;
+      searchBar.refsearch.mainTable.innerHTML="";
 
       adsArray.filter(el => {
         const titleName = el.title.toLowerCase();
-        const inputValue = this.refs.input.value;
+        const inputValue = searchBar.refsearch.input.value;
         if (titleName.includes(inputValue)) {
+          console.log(el);
+          // const liAdd = itemHBS(el);
+          // searchBar.refsearch.list.insertAdjacentHTML("beforeend", liAdd)
           const newLi = document.createElement("li");
           newLi.className = "search_list-item";
           newLi.dataset.id = el._id;
-          this.refs.list.appendChild(newLi);
+          searchBar.refsearch.list.appendChild(newLi);
           newLi.insertAdjacentHTML("beforeend", el.title);
           count.push(el);
         }
       });
-      this.refs.btn.disabled = false;
+      searchBar.refsearch.btn.disabled = false;
     };
 
     // реализация поиска по ключевому слову в выбранной категории
     const searchByCategories = async () => {
       const allAds = await services.getAdsByCategory(idCatogory, 150);
       const allTitles = allAds.data.ads.docs;
+      searchBar.refsearch.mainTable.innerHTML="";
 
       allTitles.map(el => {
         const titleName = el.title.toLowerCase();
@@ -82,12 +90,12 @@ export default {
           const newLi = document.createElement("li");
           newLi.className = "search_list-item";
           newLi.dataset.id = el._id;
-          refs.list.appendChild(newLi);
+          refsearch.list.appendChild(newLi);
           newLi.insertAdjacentHTML("beforeend", el.title);
           count.push(el);
         }
       });
-      this.refs.btn.disabled = false;
+      searchBar.refsearch.btn.disabled = false;
     };
 
     if (flag) {
@@ -104,7 +112,7 @@ export default {
     e.preventDefault();
     const deActivateRadioBtn = document.getElementsByName("checkCategory");
     deActivateRadioBtn.forEach(el => (el.checked = false));
-    searchBar.refs.input.value = "";
-    searchBar.refs.list.innerHTML = "";
+    searchBar.refsearch.input.value = "";
+    searchBar.refsearch.list.innerHTML = "";
   }
 };
