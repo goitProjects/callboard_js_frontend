@@ -25,6 +25,8 @@ services.refs.logout.addEventListener('click', logoutFromAcc);
 refs.overlayLogin.addEventListener('click', closeModal);
 refs.overlayRegister.addEventListener('click', closeModal);
 
+// document.addEventListener('DOMContentLoaded', stayLoggedIn);
+
 function showLoginModal() {
   refs.overlayLogin.classList.remove('hide');
   refs.overlayLogin.classList.add('show');
@@ -45,7 +47,7 @@ async function login(e) {
       services.favorites = dataLogin.data.favorites;
       services.isAuth = true;
       console.log(services);
-      localStorage.setItem('token', dataLogin.data.token);
+      localStorage.setItem('token', services.token);
       changeUIforLoggedUser();
     } catch (e) {
       PNotify.error({
@@ -147,3 +149,11 @@ function changeUIforLoggedUser() {
     text: 'You are logged in.'
   });
 }
+
+// function stayLoggedIn(e) {
+//   if(services.token !== null) {
+
+//     services.isAuth = true;
+//     changeUIforLoggedUser();
+//   }
+// }
