@@ -16,9 +16,10 @@ let svg;
 
 // FETCHING DATA AND RENDERING 
 async function handleClick(e) {
+  console.log('fef')
   ul.removeEventListener("click", handleClick, true);
 
-  if(e.target.nodeName=='li'){
+
   mainTable.innerHTML = "";
   const li = document.querySelector(".Card_cardItem");
   overlay.classList.add("show-modal");
@@ -84,7 +85,6 @@ async function handleClick(e) {
   });
   }
 
-}
 
 async function addFavorite(e){
   await services.addToFavorites(li.dataset.id).then(res=>console.log(res))

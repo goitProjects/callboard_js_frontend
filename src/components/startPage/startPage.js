@@ -1,5 +1,4 @@
 // import services from "../../services";
-// import css from "../../css/styles.css";
 
 // export const fetcher = async () => {
 //   const response = await services.gellAllCategory();

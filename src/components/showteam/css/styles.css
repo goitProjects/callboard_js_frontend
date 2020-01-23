@@ -1,0 +1,66 @@
+.team__box {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms linear;
+}
+
+.team__box-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(30, 41, 57, 0.5);
+}
+
+.team__content-box {
+  position: relative;
+  top: 47.7%;
+  transform: translateY(-50%);
+  display: flex;
+  width: 1000px;
+  height: auto;
+  justify-content: space-between;
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+}
+
+.is-open {
+  display: flex;
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.team__image {
+  display: block;
+  width: 650px;
+  height: auto;
+}
+
+.team__box-close-btn {
+  display: block;
+  position: absolute;
+  top: 10;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  background-image: url("../images/icon_close.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+}
+
+.team__description {
+  padding: 30px 10px;
+  font-size: 16px;
+  font-family: "Montserrat";
+  color: rgb(0, 0, 0);
+  line-height: 1.2;
+}

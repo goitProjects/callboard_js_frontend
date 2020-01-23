@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
 
 <head>
   <meta charset="UTF-8" />
@@ -34,7 +40,17 @@
                 <div class="circle"></div>
                 <a href="#" class="logo">Logo</a>
               </div>
-              <div class="navigation-form"></div>
+              <div class="navigation-form">
+                <div class="search_bar">
+                  <form id="search_form">
+                      <input type="text" id="search_input">
+                      <input type="submit" id="search_button-search">
+                      <button id="search_clear">×</button>
+                      <br><br>
+                      <div class="search_radio-block" id="search_radio-block"></div>
+                  </form>
+              </div>
+              </div>
             </div>
             <button class="search"></button>
           </div>
@@ -66,15 +82,65 @@
             </div>
           </div>
         </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="products">
+      <div class="container mainTable">
+          <div class="modal-info__overlay">
+      
+              <div class="modal-info__modal"></div>
+                  <svg hidden
+                  class="fav js-fav"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 32 32"
+                >
+                  <title>favorite-icon-hover</title>
+                  <path
+                    d="M16 30.72l-2.24-2.24c-8.32-7.36-13.76-12.32-13.76-18.4 0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.080 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.080-5.44 11.040-13.76 18.4l-2.24 2.24z"
+                  ></path>
+                </svg>
+            
         </div>
-      </nav>
-    </header>
-    <main>
+        <ul id="search_list"></ul>
+        <div class="category-favorite_list">
+        <div class="products-collection-popular">
+          <h2 class="popular-title">Популярное</h2>
+          <a href="#">Смотреть все</a>
+          <p class="popular-description">
+            Товары домашнего обихода, видео, аудио, наушники, камеры,
+            аксессуары и многое другое.
+          </p>
+          <ul class="products-collection-popular-list"></ul>
+        </div>
+        <div class="products-collection-computer">
+          <h2 class="popular-title">Компьютеры и аксессуары</h2>
+          <a href="#">Смотреть все</a>
+          <p class="popular-description"></p>
+          <ul class="products-collection-computer-list"></ul>
+        </div>
+        <div class="products-collection-pastime">
+          <h2 class="popular-title">Отдых и спорт</h2>
+          <a href="#">Смотреть все</a>
+          <p class="popular-description"></p>
+          <ul class="products-collection-pastime-list"></ul>
+        </div>
+        <div class="products-collection-exchange">
+          <h2 class="popular-title">Обмен</h2>
+          <a href="#">Смотреть все</a>
+          <p class="popular-description"></p>
+          <ul class="products-collection-exchange-list"></ul>
+        </div>
+      <!-- </nav> -->
+    <!-- </header> -->
+    <!-- <main>
       <section class="products">
-        <div class="container mainTable">
+        <div class="container mainTable"> -->
           <!-- MODAL-INFO -->
            
-    <div class="modal-info__overlay">
+    <!-- <div class="modal-info__overlay">
       
         <div class="modal-info__modal"></div>
             <svg hidden
@@ -91,39 +157,10 @@
       
   </div>
       </div>
-      <!-- END OF MODAL-INFO STYLING -->
-            <div class="products-collection-popular">
-              <h2 class="popular-title">Популярное</h2>
-              <a href="#">Смотреть все</a>
-              <p class="popular-description">
-                Товары домашнего обихода, видео, аудио, наушники, камеры,
-                аксессуары и многое другое.
-              </p>
-              <ul class="products-collection-popular-list"></ul>
-            </div>
-            <div class="products-collection-computer">
-              <h2 class="popular-title">Компьютеры и аксессуары</h2>
-              <a href="#">Смотреть все</a>
-              <p class="popular-description"></p>
-              
-              <ul class="products-collection-computer-list"></ul>
-            </div>
-            <div class="products-collection-pastime">
-              <h2 class="popular-title">Отдых и спорт</h2>
-              <a href="#">Смотреть все</a>
-              <p class="popular-description"></p>
-              <ul class="products-collection-pastime-list"></ul>
-            </div>
-            <div class="products-collection-exchange">
-              <h2 class="popular-title">Обмен</h2>
-              <a href="#">Смотреть все</a>
-              <p class="popular-description"></p>
-              <ul class="products-collection-exchange-list"></ul>
-            </div>
+      </div>
     </section>
-  </main>
-  <!-- </section> -->
-  <!-- </main> -->
+  </main> -->
+
   <footer class="footer">
     <div class="container">
       <ul class="block-footer">
@@ -144,7 +181,7 @@
               <path
                 d="M16 30.72l-2.24-2.24c-8.32-7.36-13.76-12.32-13.76-18.4 0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.080 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.080-5.44 11.040-13.76 18.4l-2.24 2.24z">
               </path>
-            </svg> by <a href="#" class="info-students"> GoIT Students</a></p>
+            </svg> by <a href="" class="info-students"> GoIT Students</a></p>
         </li>
       </ul>
     </div>
@@ -204,4 +241,31 @@
   <!-- MODAL REGISTRATION WINDOW -->
 </body>
 
+
+    <!-- ShowTeam Modal -->
+    <div class="team__box" id="show-team__box">
+      <div class="team__box-overlay">
+        <div class="team__content-box">
+          <img
+            class="team__image"
+            src="../components/showteam/images/IMG_7123.JPG"
+            alt="Our team"
+          />
+            <button class="team__box-close-btn"></button>
+            <p class="team__description">
+              Это были наши лучшие дни вместе... <br />
+              Мы были счастливы и учились как могли... <br />
+            </p>
+        </div>
+      </div>
+    </div>
+    <!-- ShowTeam Modal -->
+
+    <!-- Верстка для демонстрации работы метода конвертаций фото в Base64(если не нужно-удалить) -->
+    <input id="inputFileToLoad" type="file" />
+    <button>load</button>
+    <div>Data URL:</div>
+    <div id="result"></div>
+    <!-- Верстка для демонстрации работы метода конвертаций фото в Base64(если не нужно-удалить) -->
+  </body>
 </html>
