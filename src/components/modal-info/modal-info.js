@@ -18,6 +18,7 @@ let svg;
 async function handleClick(e) {
   ul.removeEventListener("click", handleClick, true);
 
+  if(e.target.nodeName=='li'){
   mainTable.innerHTML = "";
   const li = document.querySelector(".Card_cardItem");
   overlay.classList.add("show-modal");
@@ -62,9 +63,7 @@ async function handleClick(e) {
         console.log("click");
         fav.style.visibility = "visible";
     }
-
-    services.addToFavorites(li.dataset.id).then(res=>console.log(res))
-
+   
    
       // icon.classList.toggle('js-fav');
       // fav.style.visibility = "hidden";
@@ -83,6 +82,16 @@ async function handleClick(e) {
       //   }
     });
   });
+  }
+
+}
+
+async function addFavorite(e){
+  await services.addToFavorites(li.dataset.id).then(res=>console.log(res))
+}
+
+async function deleteFavorite(e){
+  await services.deleteFavorites(li.dataset.id).then(res=>console.log(res))
 }
 
 // })

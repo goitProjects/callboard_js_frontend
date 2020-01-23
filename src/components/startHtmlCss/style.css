@@ -78,8 +78,8 @@ html {
   margin: 0;
 }
 .container{
-  width: 280px;
   margin:0 auto;
+  padding:0 20px;
 }
 .tab-leck-block{
   display:none;
@@ -113,22 +113,6 @@ html {
   height: 36px;
   background-color: #ff6b08;
 }
-/* .products-button{
-  padding-top: 26px;
-  padding-bottom: 26px;
-  background-color: #121d2e;
-  
-} */
-/* .products-button__load{
-  display: block;
-  margin: 0 auto;
-  font-family: "Montserrat-SemiBold";
-  font-size: 18px;
-  color: #ffffff;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-} */
 /* section-----FOOTER===================== */
 .footer{
   padding-top: 36px;
@@ -138,6 +122,8 @@ html {
 .block-footer{
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   flex-wrap: wrap;
   color: rgba(255, 255, 255,0.2);
 }
