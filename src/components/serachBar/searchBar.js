@@ -3,12 +3,13 @@ import searchBar from ".";
 
 export default {
   refsearch: {
-    form: document.getElementById("search_form"),
+    form: document.getElementById("search_bar"),
     input: document.getElementById("search_input"),
     btn: document.getElementById("search_button-search"),
     list: document.getElementById("search_list"),
-    clear: document.getElementById("search_clear"),
+    clear: document.getElementById("btn_refresh"),
     radioBlock: document.getElementById("search_radio-block"),
+    catList: document.getElementById("category__list"),
     mainTable: document.querySelector(".category-favorite_list")
   },
 
@@ -17,19 +18,19 @@ export default {
 
     const allCategories = await services.getAllAds();
 
-
-
     allCategories.categories.map(el => {
-      searchBar.refsearch.radioBlock.insertAdjacentHTML(
+      searchBar.refsearch.catList.insertAdjacentHTML(
         "beforeend",
-        `<input class="search_radio" type="radio" id="${el._id}" name="checkCategory" >`
+        ` <li class="category__list-item">
+        <input class="category__list-item-radio visually-hidden" type="radio" id="${el._id}" name="checkCategory" >
+        <label class="category__list-item-label" for="${el._id}">${el.category}</label>
+        </li> `
       );
-      searchBar.refsearch.radioBlock.insertAdjacentHTML(
-        "beforeend",
-        `<label class="search_label" for="${el._id}">${el.category}</label>`
-      );
+      // searchBar.refsearch.catList.insertAdjacentHTML(
+      //   "beforeend",
+      //   `<label class="search_label" for="${el._id}">${el.category}</label>`
+      // );
     });
-
   },
 
   async getSearchResult(e) {
@@ -57,7 +58,7 @@ export default {
     const searchByAllAds = async () => {
       const allAds = await services.getAdsLimit(999, 1);
       const adsArray = allAds.data.ads.docs;
-      searchBar.refsearch.mainTable.innerHTML="";
+      searchBar.refsearch.mainTable.innerHTML = "";
 
       adsArray.filter(el => {
         const titleName = el.title.toLowerCase();
@@ -80,7 +81,7 @@ export default {
     const searchByCategories = async () => {
       const allAds = await services.getAdsByCategory(idCatogory, 150);
       const allTitles = allAds.data.ads.docs;
-      searchBar.refsearch.mainTable.innerHTML="";
+      searchBar.refsearch.mainTable.innerHTML = "";
 
       allTitles.map(el => {
         const titleName = el.title.toLowerCase();
