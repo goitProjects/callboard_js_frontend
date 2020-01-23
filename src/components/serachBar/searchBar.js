@@ -63,7 +63,6 @@ export default {
         const titleName = el.title.toLowerCase();
         const inputValue = searchBar.refsearch.input.value;
         if (titleName.includes(inputValue)) {
-          console.log(el);
           // const liAdd = itemHBS(el);
           // searchBar.refsearch.list.insertAdjacentHTML("beforeend", liAdd)
           const newLi = document.createElement("li");
