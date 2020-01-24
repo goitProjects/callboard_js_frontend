@@ -9,4 +9,5 @@ import '../src/components/startPage/login-auth/login-auth.css';
 import "../src/components/startPage/userAccount/userAccount"
 import "./components/startPage/photo-conversion/photo-conversion";
 import "./components/serachBar/index.js";
-import "./components/startPage/login-auth/login-auth";
+import "./components/userAccount/userAccount.js";
+

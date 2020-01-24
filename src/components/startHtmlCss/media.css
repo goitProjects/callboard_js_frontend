@@ -161,7 +161,6 @@
     background-color: transparent;
     cursor: pointer;
   }
-
   .navigation-filter__filter:hover,
   .navigation-filter__clear:hover {
     color: #ff6b08;
