@@ -7,23 +7,30 @@ import '../carousel/scroll-style.css';
 export const scroll = async () => {
 
     const refs = {
-        container: document.querySelector('.container'),
+        mainTable: document.querySelector('.mainTable'),
+        scrollingAll: document.querySelectorAll('.scrolling'),
+        scrollBoxAll: document.querySelectorAll('.scroll-box'),
+        scrollPagAll: document.querySelectorAll('.scroll-pagination'),
+        nxtBtnAll: document.querySelectorAll('.next-scroll'),
+        prvBtnAll: document.querySelectorAll('.prev-scroll'),
+
         scrollBox: document.querySelector('.scroll-box'),
         scrollPag: document.querySelector('.scroll-pagination'),
         nxtBtn: document.querySelector('.next-scroll'),
         prvBtn: document.querySelector('.prev-scroll')
+
     }
 
     // ЗАДАНО ДЕЙСТВУЮЩИЙ ИНДЕКС!!!
 
-    let currentIdx = 0; //действующий индекс
+    const idxArr = []; //массив, хранящий индек текущего состояния смещения слайда
 
     let boxCount = refs.scrollBox.childElementCount; //количество детей бокса с элементами
 
     // АДАПТИВ ЛИСТА ДЛЯ МОБИЛЬНОЙ ПЛАТФОРМЫ
 
     // функция редактирующая лист для мобильной версии
-    function getMobileList() {
+    function MobileList() {
         if (window.screen.width < 768) {
             if (refs.scrollBox.childElementCount > 4) {
                 const scrollBoxAll = document.querySelectorAll('.scroll-box'); //массив всех элементов
@@ -36,7 +43,7 @@ export const scroll = async () => {
         }
     }
 
-    getMobileList()
+    // MobileList()
 
     // РАБОТА С ПАГИНАЦИЕЙ!!!
 
@@ -74,117 +81,168 @@ export const scroll = async () => {
         }
     }
 
+
+
+    // АДАПТИВ ЛИСТА ДЛЯ МОБИЛЬНОЙ ПЛАТФОРМЫ
+
+    // функция создающая лист пагинации для мобильной версии
+    function getMobilePagination() {
+
+        // console.log(refs.scrollBoxAll.length)
+        
+        for (let i = 0; i < refs.scrollBoxAll.length; i++) {
+            // console.log(i)
+            console.dir(refs.scrollBoxAll[i].children);
+
+            let i_refs = {
+                currentScrollBox: refs.scrollBoxAll[i],
+                currentScrollPag: refs.scrollPagAll[i],
+                currentNextBtn: refs.nxtBtnAll[i],
+                currentPrvBtn: refs.prvBtnAll[i]
+            }
+
+            // MobileList();
+
+            window.onload = function MobileList() {
+                console.log(i_refs.currentScrollBox)
+                if (window.screen.width < 768) {
+                    if (i_refs.currentScrollBox.childElementCount > 4) {
+                        // const scrollBoxAll = document.querySelectorAll('.scroll-box'); //массив всех элементов
+                        // const el = scrollBoxAll[0].children[refs.scrollBox.childElementCount - 1]; //последний элемент массива 
+                        // el.remove(); //удаляем последний
+                        // getMobileList();
+                    } else {
+                        return
+                    };
+                }
+            }
+        }
+    }
+
+    getMobilePagination();
+
+    // function MobileList() {
+    //     if (window.screen.width < 768) {
+    //         if (refs.scrollBox.childElementCount > 4) {
+    //             const scrollBoxAll = document.querySelectorAll('.scroll-box'); //массив всех элементов
+    //             const el = scrollBoxAll[0].children[refs.scrollBox.childElementCount - 1]; //последний элемент массива 
+    //             el.remove(); //удаляем последний
+    //             getMobileList();
+    //         } else {
+    //             return
+    //         };
+    //     }
+    // }
+
+
+
+
+
+
     // СМЕЩЕНИЕ СЛАЙДА
 
-    function changeSlide() {
-        refs.scrollBox.style.transform = `translateX(-${currentIdx}00%)`;
-    };
+    refs.mainTable.addEventListener('click', changeSlide);
 
-    // СЛУШАТЕЛИ КЛИКОВ КНОПОК
-
-    refs.nxtBtn.addEventListener('click', incrementIdx) //слушатель правой кнопки
-    refs.prvBtn.addEventListener('click', decrementIdx) //слушатель левой кнопки
-
-    function incrementIdx(e) {
-        e.preventDefault();
-        if (window.screen.width >= 1200) {
-            if (currentIdx >= refs.scrollBox.children.length - 4) {
-                currentIdx = 0;
-            } else {
-                currentIdx += 1;
-            }
-        } else if (window.screen.width >= 768) {
-            if (currentIdx >= refs.scrollBox.children.length - 2) {
-                currentIdx = 0;
-            } else {
-                currentIdx += 1;
-            }
-        } else if (window.screen.width < 768) {
-            if (currentIdx === refs.scrollBox.children.length - 1) {
-                currentIdx = 0
-            } else {
-                currentIdx += 1;
-            }
-        }
-
-        hoverPagEl();
-        changeSlide();
-    };
-
-    function decrementIdx(e) {
+    function changeSlide(e) {
         e.preventDefault();
 
-        if (window.screen.width >= 1200) {
-            if (currentIdx === 0) {
-                currentIdx = refs.scrollBox.children.length - 4;
-            } else {
-                currentIdx -= 1;
+        let currentIdx = 0;
+
+        for (let i = 0; i < refs.scrollBoxAll.length; i++) {
+
+            if (idxArr[i] == undefined) {
+                idxArr[i] = 0;
             }
-        } else if (window.screen.width >= 768) {
-            if (currentIdx === 0) {
-                currentIdx = refs.scrollBox.children.length - 2;
-            } else {
-                currentIdx -= 1;
+
+            currentIdx = idxArr[i];
+
+            // console.log(i)
+            // console.log(idxArr[i])
+            // console.log(currentIdx)
+
+            let i_refs = {
+                currentScrollBox: refs.scrollBoxAll[i],
+                currentScrollPag: refs.scrollPagAll[i],
+                currentNextBtn: refs.nxtBtnAll[i],
+                currentPrvBtn: refs.prvBtnAll[i]
             }
-        } else if (window.screen.width < 768) {
-            if (currentIdx === 0) {
-                currentIdx = refs.scrollBox.children.length - 1;
-            } else {
-                currentIdx -= 1;
+
+            if (e.target === i_refs.currentNextBtn) {
+                // console.log(i_refs.currentNextBtn);
+                incrementIdx();
             }
+
+            if (e.target === i_refs.currentPrvBtn) {
+                // console.log(i_refs.currentPrvBtn);
+                decrementIdx(e);
+            }
+
+            //функция плюсует индекс с которым мы работаем
+            function incrementIdx() {
+                if (window.screen.width >= 1200) {
+                    if (idxArr[i] >= i_refs.currentScrollBox.children.length - 4) {
+                        currentIdx = 0;
+                    } else {
+                        currentIdx += 1;
+                    }
+                } else if (window.screen.width >= 768) {
+                    if (idxArr[i] >= i_refs.currentScrollBox.children.length - 2) {
+                        currentIdx = 0;
+                    } else {
+                        currentIdx += 1;
+                    }
+                } else if (window.screen.width < 768) {
+                    if (idxArr[i] === i_refs.currentScrollBox.children.length - 1) {
+                        currentIdx = 0
+                    } else {
+                        currentIdx += 1;
+                    }
+                }
+
+                idxArr[i] = currentIdx;
+
+                getCurrentSlide();
+                // hoverPagEl();
+            };
+
+            //функция минусует индекс с которым мы работаем
+            function decrementIdx() {
+
+                if (window.screen.width >= 1200) {
+                    if (idxArr[i] === 0) {
+                        currentIdx = i_refs.currentScrollBox.children.length - 4;
+                    } else {
+                        currentIdx -= 1;
+                    }
+                } else if (window.screen.width >= 768) {
+                    if (idxArr[i] === 0) {
+                        currentIdx = i_refs.currentScrollBox.children.length - 2;
+                    } else {
+                        currentIdx -= 1;
+                    }
+                } else if (window.screen.width < 768) {
+                    if (idxArr[i] === 0) {
+                        currentIdx = i_refs.currentScrollBox.children.length - 1;
+                    } else {
+                        currentIdx -= 1;
+                    }
+                }
+
+                idxArr[i] = currentIdx;
+
+                getCurrentSlide();
+                // hoverPagEl();
+            };
+
+            //функция смещающая слайд
+            function getCurrentSlide() {
+                i_refs.currentScrollBox.style.transform = `translateX(-${currentIdx}00%)`;
+            }
+
         }
 
-        hoverPagEl();
-        changeSlide();
-    };
+    }
 
-    // ---------------------------------------------------------------------------------------
-
-    // СЛУШАТЕЛЬ КЛИКОВ ПАГИНАЦИИ//на*ер не нужен (ховер не работает на мобиле)  
-
-    // refs.scrollPag.addEventListener('click', getPagImg); //вешаем слушателя
-
-    // // функция-колбэк слушающая клики элементов пагинации
-    // function getPagImg(e) {
-    //     e.preventDefault();
-
-    //     //получить индекс-пагинейшн
-    //     function getPagIdx() {
-    //         for (let i = 0; i <= e.currentTarget.childNodes.length - 1; i++) {
-    //             if (e.currentTarget.childNodes[i] === e.target) {
-    //                 return i;
-    //             }
-    //         }
-    //     }
-
-    //     currentIdx = getPagIdx(); //переприсваиваем поточный индекс
-
-    //     //проверяем произойшол ли клик в родителе(пока не понял что хотел этим добиться)
-    //     if (e.target && e.currentTarget) {
-    //         //ВЫЗОВ ОСНОВНОЙ ФУНКЦИИ(ДОБАВЛЯЕТ АКТИВНЫЙ КЛАС)
-    //         addActive();
-    //     } else {
-    //         return
-    //     }
-
-    // }
-
-    // ДОБАВЛЕНИЕ И УДАЛЕНИЕ АКТИВНОГО ЭЛЕМЕНТА
-
-    //функция добавляет активный клас предварительно удаляя действующий
-    // function addActive() {
-    //     delActive(); //удаление предидущего активного класса
-    //     refs.scrollBox.children[currentIdx].classList.add('isActive'); //добавление нового активного класса
-    // }
-
-    //функция удаляет предидущий активный класс
-    // function delActive() {
-    //     const active = refs.scrollBox.querySelector('.isActive');
-    //     active.classList.remove('isActive');
-    // }
-
-    // ----------------------------------------------------------------------------------
-
-}
+};
 
 scroll();

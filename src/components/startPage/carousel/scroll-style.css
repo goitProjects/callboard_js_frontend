@@ -134,12 +134,13 @@ img {
     }
 
     .scrolling_main-box {
-        width: calc(50% - 16px);
+        /* width: calc(50% - 16px); */
+        width: 50%;
         overflow: visible;
     }
 
     .scroll-box_item {
-        margin: 0 10px;
+        /* margin: 0 10px; */
     }
 
     .scroll-pagination {
@@ -172,6 +173,7 @@ img {
     } */
 
     .scrolling_main-box {
-        width: calc(25% - 20px);
+        /* width: calc(25% - 20px); */
+        width: 25%;
     }
 }
