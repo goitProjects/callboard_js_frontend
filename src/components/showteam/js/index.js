@@ -6,7 +6,7 @@ const teamBoxOverlay = document.querySelector(".team__box-overlay");
 const closeTeamBoxBtn = document.querySelector(".team__box-close-btn");
 
 showTeamBtn.addEventListener("click", handleShowTeam);
-showTeamBox.addEventListener("click", handleCloseBox);
+// showTeamBox.addEventListener("click", handleCloseBox);
 
 function handleShowTeam(e) {
   e.preventDefault();
