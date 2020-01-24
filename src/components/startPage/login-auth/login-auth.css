@@ -116,12 +116,15 @@ input[type="text"] {
   text-transform: uppercase;
 }
 .btn-registration {
-  text-decoration: none;
-  color: #000;
+  border: none;
+  border-bottom: 1 solid #ff6b08;
+  background-color: transparent;
+  color: #ff6b08;
   font-family: 'Montserrat500', sans-serif;
   font-size: 9px;
   letter-spacing: 0.3px;
   margin-top: 10px;
+  padding:4px;
 }
 
 .btn-login:hover, .btn-confirm:hover {
@@ -131,7 +134,10 @@ input[type="text"] {
   border: none;
 }
 .btn-registration:hover {
-  color: #0000ff;
+  /* border: 1px solid #ff6b08 ; */
+  color: #ffffff;
+  background-color: #ff6b08;
+  border-radius: 10px;
 }
 
 @media (min-width: 768px) {

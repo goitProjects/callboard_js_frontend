@@ -124,13 +124,13 @@
     border-radius: 30px;
     cursor: pointer;
     background-color: #ff6b08;
-
   }
 
   .navigation-promo:hover {
     background-color: #fff;
     color: #ff6b08;
   }
+
 
   /* second-Line-navigation style===================================== */
   .header__wrapper-secondLine-navigation {

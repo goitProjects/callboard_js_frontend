@@ -13,21 +13,23 @@ const refs = {
   loggedUser: document.querySelector('.logged-user')
 };
 
-services.ref.buttonLogin.addEventListener('click', showLoginModal);
+services.ref.body.addEventListener('click', showLoginModal);
 refs.authModalLogin.addEventListener('click', login);
-services.ref.buttonReg.addEventListener('click', showRegisterModal);
+services.ref.body.addEventListener('click', showRegisterModal);
 refs.authModalRegister.addEventListener('click', register);
 refs.authModalLogin.addEventListener('click', registerFromModal);
 services.ref.logout.addEventListener('click', logoutFromAcc);
-refs.overlayLogin.addEventListener('click', closeModal);
-refs.overlayRegister.addEventListener('click', closeModal);
+services.ref.body.addEventListener('click', closeModal);
+services.ref.body.addEventListener('click', closeModal);
 document.addEventListener('DOMContentLoaded', stayLoggedIn);
-function showLoginModal() {
+function showLoginModal(e) {
+  if(e.target.classList == "registration-enter"||e.target.classList == "registration-button"){
   refs.overlayLogin.classList.remove('hide');
-  refs.overlayLogin.classList.add('show');
+  refs.overlayLogin.classList.add('show');}
 }
 
 async function login(e) {
+  if(e.target.classList == "registration-enter"){
   e.preventDefault();
   if (e.target.classList.contains('btn-login')) {
     try {
@@ -57,15 +59,18 @@ async function login(e) {
       });
     }
   }
-}
+}}
 
-function showRegisterModal() {
+function showRegisterModal(e){
+  if(
+    e.target.classList === "registration-button"||
+   e.target.classList === "btn-registration"
+   ){
   refs.overlayRegister.classList.remove('hide');
   refs.overlayRegister.classList.add('show');
-
   refs.overlayLogin.classList.add('hide');
   refs.overlayLogin.classList.remove('show');
-}
+}}
 
 async function register(e) {
   e.preventDefault();
@@ -99,7 +104,8 @@ async function register(e) {
 }
 
 function registerFromModal(e) {
-  if (e.target.classList.contains('btn-registration')) {
+  e.preventDefault();
+  if (e.target.classList ='btn-registration') {
     showRegisterModal();
   }
 }
@@ -117,8 +123,7 @@ function logoutFromAcc() {
 
 function closeModal(e) {
   if (
-    e.target.classList.contains('close-icon') ||
-    e.target === e.currentTarget
+    e.target.classList=='close-icon'
   ) {
     refs.authModalRegister.reset();
     refs.authModalLogin.reset();

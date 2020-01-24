@@ -164,6 +164,7 @@ export default {
   },
 
   ref:{
+    body: document.querySelector("body"),
     btntabletFilter: document.querySelector(".tablet-filter"),
     btnSearch: document.querySelector(".tablet-filter"),
     buttonReg: document.querySelector(".registration-button"),
