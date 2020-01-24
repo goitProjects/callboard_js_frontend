@@ -24,15 +24,15 @@
             <ul class="menu__box">
               <!-- strat login/registration buttons -->
               <div class="user_login-bar">
-              <div class="navigation__registration">
-                <button class="registration-button">Регистрация </button>
-                <button class="registration-enter">Войти </button>
+                <div class="navigation__registration">
+                  <button class="registration-button">Регистрация </button>
+                  <button class="registration-enter">Войти </button>
+                </div>
+                <div class="navigation__logout">
+                  <div class="logged-user"></div>
+                  <button class="exit"> Выйти</button>
+                </div>
               </div>
-              <div class="navigation__logout">
-                <div class="logged-user"></div>
-                <button class="exit"> Выйти</button>
-              </div>
-            </div>
               <!-- end login/registration buttons -->
               <!-- start search bar -->
               <div class="search-bar">
@@ -45,6 +45,48 @@
               <!-- categories list -->
               <div class="category category-mobile" id="search_radio-block">
                 <ul class="category__list" id="category__list">
+
+                  <li class="category__list-item">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="3"
+                      name="checkCategory">
+                    <label class="category__list-item-label" for="3">Работа</label>
+                  </li>
+                  <li class="category__list-item">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="2"
+                      name="checkCategory">
+                    <label class="category__list-item-label" for="2">Транспорт</label>
+                  </li>
+                  <li class="category__list-item">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="4"
+                      name="checkCategory">
+                    <label class="category__list-item-label" for="4">Електроніка</label>
+                  </li>
+                  <li class="category__list-item">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="5"
+                      name="checkCategory">
+                    <label class="category__list-item-label" for="5">Бізнес та послуги</label>
+                  </li>
+                  <li class="category__list-item">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="7"
+                      name="checkCategory">
+                    <label class="category__list-item-label" for="7">Віддам безкоштовно</label>
+                  </li>
+                  <li class="category__list-item">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="8"
+                      name="checkCategory">
+                    <label class="category__list-item-label" for="8">Обмін</label>
+                  </li>
+                  <li class="category__list-item">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="6"
+                      name="checkCategory">
+                    <label class="category__list-item-label" for="6">Відпочинок і спорт</label>
+                  </li>
+                  <li class="category__list-item">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="1"
+                      name="checkCategory">
+                    <label class="category__list-item-label" for="1">Нерухомість</label>
+                  </li>
+
                 </ul>
               </div>
               <!-- reset button -->
@@ -62,15 +104,15 @@
             <button id="logo-btn"></button>
           </div>
 
-        
-        
+
+
         </div>
 
 
 
 
         <div class="tab-leck-block">
-          <div class="header__waper-firstLine-navigation">         
+          <div class="header__waper-firstLine-navigation">
 
             <div class="laptop-block-LogoForm">
               <!--  desktop LOGO -->
@@ -88,7 +130,7 @@
                     <input class="search-bar__button" type="submit" value="" id="search_button-search" />
                   </form>
                 </div>
-                
+
                 <!-- END Строка поиска / кнопка поиска -->
 
               </div>
@@ -106,6 +148,49 @@
             <!-- Категории -->
             <div class="category" id="search_radio-block">
               <ul class="category__list" id="category__list-desktop">
+
+
+                <li class="category__list-item">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="3"
+                    name="checkCategory">
+                  <label class="category__list-item-label" for="3">Работа</label>
+                </li>
+                <li class="category__list-item">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="2"
+                    name="checkCategory">
+                  <label class="category__list-item-label" for="2">Транспорт</label>
+                </li>
+                <li class="category__list-item">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="4"
+                    name="checkCategory">
+                  <label class="category__list-item-label" for="4">Електроніка</label>
+                </li>
+                <li class="category__list-item">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="5"
+                    name="checkCategory">
+                  <label class="category__list-item-label" for="5">Бізнес та послуги</label>
+                </li>
+                <li class="category__list-item">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="7"
+                    name="checkCategory">
+                  <label class="category__list-item-label" for="7">Віддам безкоштовно</label>
+                </li>
+                <li class="category__list-item">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="8"
+                    name="checkCategory">
+                  <label class="category__list-item-label" for="8">Обмін</label>
+                </li>
+                <li class="category__list-item">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="6"
+                    name="checkCategory">
+                  <label class="category__list-item-label" for="6">Відпочинок і спорт</label>
+                </li>
+                <li class="category__list-item">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="1"
+                    name="checkCategory">
+                  <label class="category__list-item-label" for="1">Нерухомість</label>
+                </li>
+
               </ul>
             </div>
             <!-- END Категории -->
@@ -122,7 +207,7 @@
             </div>
           </div>
 
-          
+
         </div>
       </div>
     </nav>
@@ -168,7 +253,7 @@
     <div class="container">
       <ul class="block-footer">
         <li class="block-footer__item">
-          <p class="footer-copirate">	&copy; 2020</p>
+          <p class="footer-copirate"> &copy; 2020</p>
           <p class="footer-reserved">All Rights Reserved</p>
         </li>
         <li class="block-footer__item">
