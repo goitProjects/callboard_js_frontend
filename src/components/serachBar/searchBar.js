@@ -15,20 +15,35 @@ export default {
     catList: document.getElementById("category__list"),
     mainTable: document.querySelector(".category-favorite_list"),
     ListCategorySearch: null,
+    catListDesktop: document.getElementById("category__list-desktop"),
   },
 
   async getBoardCategories() {
     // Получаем от сервера все категории и отрисовываем их на главной странице
     const allCategories = await services.getAllAds();
     searchBar.refsearch.ListCategorySearch= allCategories
+    searchBar.refsearch.catList.innerHTML = "";
+    searchBar.refsearch.catListDesktop.innerHTML = "";
+
+ç
     allCategories.categories.map(el => {
-      searchBar.refsearch.catList.insertAdjacentHTML(
-        "beforeend",
-        ` <li class="category__list-item">
-        <input class="category__list-item-radio visually-hidden" type="radio" id="${el._id}" name="checkCategory" >
-        <label class="category__list-item-label" for="${el._id}">${el.category}</label>
-        </li> `
-      );
+      if (window.innerWidth < 1200) {
+        searchBar.refsearch.catList.insertAdjacentHTML(
+          "beforeend",
+          ` <li class="category__list-item">
+          <input class="category__list-item-radio visually-hidden" type="radio" id="${el._id}" name="checkCategory" >
+          <label class="category__list-item-label" for="${el._id}">${el.category}</label>
+          </li> `
+        );
+      } else {
+        searchBar.refsearch.catListDesktop.insertAdjacentHTML(
+          "beforeend",
+          ` <li class="category__list-item">
+          <input class="category__list-item-radio visually-hidden" type="radio" id="${el._id}" name="checkCategory" >
+          <label class="category__list-item-label" for="${el._id}">${el.category}</label>
+          </li> `
+        );
+      }
     });
   },
 

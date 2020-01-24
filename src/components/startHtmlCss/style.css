@@ -30,10 +30,7 @@
   font-family: Montserrat-ExtraLightItalic;
   src: url("./font/Montserrat-ExtraLightItalic.ttf");
 }
-@font-face {
-  font-family: Montserrat-Italic;
   src: url("./font/Montserrat-Italic.ttf");
-}
 @font-face {
   font-family: Montserrat-Light;
   src: url("./font/Montserrat-Light.ttf");
@@ -74,21 +71,31 @@
 html {
   box-sizing: border-box;
 }
+
 *,
 *::after,
 *::before {
-  box-sizing: inherit;
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
-.container{
+
+.container {
   margin: 0 auto;
   padding: 0 20px;
-  margin-bottom: 20px;
 }
+
+.header-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-content: center;
+}
+
 .tab-leck-block {
   display: none;
 }
+
 .header {
   padding-top: 18px;
   padding-bottom: 14px;
@@ -96,29 +103,27 @@ html {
   margin-bottom: 20px;
 }
 
+
+
 .mob-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
+
 .block-logo {
-  display: flex;
-  position: relative;
+  /* display: flex;
+  position: relative; */
 }
+
 .logo {
   /* position: absolute; */
-  top: 10px;
-  left: 13px;
-  color: rgb(5, 5, 5);
+  /* top: 10px;
+  left: 13px; */
+  text-decoration: none;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
   font-family: "Montserrat-Bold";
-}
-.button-popularAll{
-  background-color: transparent;
-  color: #ff6b08;
-  border: none;
-  border-bottom: 1px solid #ff6b08;
-  font-size: 12px;
-  cursor: pointer;
-  margin-top: 6px;
+  z-index: 5;
 }
 .circle {
   border-radius: 50%;
@@ -126,6 +131,7 @@ html {
   height: 36px;
   background-color: #ff6b08;
 }
+
 /* section-----FOOTER===================== */
 .footer {
   padding-top: 36px;
@@ -146,7 +152,8 @@ html {
   justify-content: center;
   align-items: center;
 }
-.block-footer__item > p {
+
+.block-footer__item>p {
   font-family: "Montserrat-Regular";
   font-size: 12px;
   letter-spacing: 0.36px;
@@ -157,12 +164,15 @@ html {
   display: flex;
   align-items: center;
 }
+
 .info-students {
   color: rgba(255, 255, 255, 0.2);
 }
+
 .block-footer__item:nth-child(1) {
   margin-bottom: 10px;
 }
+
 .footer-reserved {
   color: rgba(255, 255, 255, 0.2);
   border: none;
@@ -188,48 +198,85 @@ html {
   fill: #ff6b08;
 }
 
-.popular-wrapper {
-  width: 100%;
-  background-color: #ffffff;
-  font-family: 'Montserrat-Light'; 
+/* User login/logiut/registretion in burger menu */
+
+.user_login-bar {
   display: flex;
-  margin-top: 57px;
+  justify-content: center;
 }
 
-.popular-title {
-  color: #000000;
-  font-size: 20px;
+/* user-Active================== */
+.navigation__logout {
+  display: none;
 }
 
-.popular-description {
-    font-family: 'Montserrat-Regular'; 
-    color: #a8a8a8;
-}
-
-.collection-wrapper {
-  font-family: 'Montserrat-Medium'; 
-  color: #000000;
-  font-size: 20px;
-}
-
-
-.load-more-btn {
-  background-color: #ff6b08;
+.logged-user {
+  min-width: 100px;
+  padding: 0 10px;
   border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  color: white;
-  padding: 17px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 4px;
+  border-radius: 25px;
+  margin-right: 5px;
+
+}
+
+.exit {
+  margin-right: 30px;
+  font-family: "Montserrat-Regular";
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  color: rgba(255, 255, 255, 0.2);
+  background-color: transparent;
+  height: 20px;
+  border: none;
   cursor: pointer;
-  box-shadow: 0 5px 10px #ff6b08;
-  outline: none;
-  position: fixed;
-  right: 20px; 
-  top: 20%; 
+}
+
+.exit:hover {
+  color: #ff6b08;
+}
+
+/* Registration===================================== */
+.registration-button {
+  padding-right: 12px;
+  margin-right: 12px;
+  font-family: "Montserrat-Regular";
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  /* color: rgba(255, 255, 255, 0.2); */
+  color: #fff;
+  background-color: transparent;
+  height: 20px;
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.registration-enter {
+  margin-right: 30px;
+  font-family: "Montserrat-Regular";
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  /* color: rgba(255, 255, 255, 0.2); */
+  color: #ff6b08;
+  background-color: transparent;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.registration-button:hover,
+.registration-enter:hover {
+  color: rgb(255, 107, 8);
+}
+
+#logo-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-image: url(../serachBar/img/board-logo-small.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100px;
+  height: 50px;
 }
