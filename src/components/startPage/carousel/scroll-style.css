@@ -75,8 +75,8 @@ img {
     height: 6px;
 }
 
-.prev-scroll,
-.next-scroll {
+.prv-scroll,
+.nxt-scroll {
     background-color: #f4f4f4;
     cursor: pointer;
     overflow: hidden;
@@ -90,20 +90,20 @@ img {
     border-style: none;
 }
 
-.next-scroll {
+.nxt-scroll {
     right: 0px;
 }
 
 
-.prev-scroll:hover,
-.next-scroll:hover {
+.prv-scroll:hover,
+.nxt-scroll:hover {
     background-color: rgb(233, 97, 5);
 
 
 }
 
-.prev-scroll::after,
-.next-scroll::after {
+.prv-scroll::after,
+.nxt-scroll::after {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -114,13 +114,13 @@ img {
     content: "";
 }
 
-.prev-scroll::after {
+.prv-scroll::after {
     background-image: url(../carousel/svg/keyboard-left-button.svg);
     top: 21px;
     right: 8px;
 }
 
-.next-scroll::after {
+.nxt-scroll::after {
     background-image: url(../carousel/svg/keyboard-right-button.svg);
     top: 21px;
     left: 8px;
@@ -147,8 +147,8 @@ img {
         display: none;
     }
 
-    .prev-scroll,
-    .next-scroll {
+    .prv-scroll,
+    .nxt-scroll {
         top: 204px;
         width: 32px;
         height: 60px;
@@ -156,21 +156,16 @@ img {
 
     }
 
-    .prev-scroll {
+    .prv-scroll {
         left: -14px;
     }
 
-    .next-scroll {
+    .nxt-scroll {
         right: -14px;
     }
 }
 
 @media (min-width: 1280px) {
-    /* #container {
-        width: 1200px;
-        padding: 0;
-        margin: 0 auto;
-    } */
 
     .scrolling_main-box {
         /* width: calc(25% - 20px); */

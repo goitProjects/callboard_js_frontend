@@ -7,6 +7,7 @@
 @media (min-width: 768px) {
   .container {
     width: 688px;
+    padding-bottom: 20px;
   }
 
   .mob-header {
@@ -24,13 +25,9 @@
   .tab-leck-block {
     display: block;
   }
-<<<<<<< HEAD
-
-=======
   .tablet-navigationForm{
     display: block;
   }
->>>>>>> default-page
   /* first-Line-navigstion========================================== */
   .header__waper-firstLine-navigation {
     display: flex;
@@ -49,12 +46,7 @@
   .navigation__logout {
     display: none;
   }
-<<<<<<< HEAD
-
-  .user {
-=======
   .logged-user{
->>>>>>> default-page
     min-width: 100px;
     padding: 0 10px;
     border: none;
@@ -123,13 +115,6 @@
     cursor: pointer;
 
   }
-<<<<<<< HEAD
-
-  .navigation-promo:hover {
-    background-color: #ff6b08;
-  }
-=======
->>>>>>> default-page
 
   /* second-Line-navigation style===================================== */
   .header__wrapper-secondLine-navigation {
@@ -143,16 +128,9 @@
     align-items: center;
     margin-right: 16px;
   }
-<<<<<<< HEAD
-
-  .navigation-filter__filter {
-    font-family: "Montserrat-Regular";
-    font-size: 10px;
-=======
   .navigation-filter__filter{
     font-family:"Montserrat-Regular";
     font-size: 12px;
->>>>>>> default-page
     letter-spacing: 0.3px;
     color: rgba(255, 255, 255, 0.2);
     border: none;
@@ -160,16 +138,9 @@
     margin-right: 36px;
     cursor: pointer;
   }
-<<<<<<< HEAD
-
-  .navigation-filter__clear {
-    font-family: "Montserrat-Regular";
-    font-size: 10px;
-=======
   .navigation-filter__clear{
     font-family:"Montserrat-Regular";
     font-size: 12px;
->>>>>>> default-page
     letter-spacing: 0.3px;
     color: rgba(255, 255, 255, 0.2);
     border: none;
@@ -195,12 +166,8 @@
     width: 20px;
     height: 20px;
     margin-right: 10px;
-<<<<<<< HEAD
-    fill: rgba(255, 255, 255, 0.2);
-=======
     fill: rgba(255, 255, 255,0.2);
     transform: rotate(-95deg);
->>>>>>> default-page
 
   }
 
@@ -208,44 +175,6 @@
     display: none;
   }
 
-<<<<<<< HEAD
-  /* FOOTER============================= */
-  .block-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .block-footer__item:nth-child(1) {
-    margin-bottom: 0;
-  }
-
-  .block-footer__item>p {
-    font-family: "Montserrat-Regular";
-    font-size: 12px;
-    letter-spacing: 0.36px;
-    line-height: 23px;
-    color: rgba(255, 255, 255, 0.2);
-  }
-
-  .footer-reserved {
-    padding-right: 10px;
-    margin-right: 10px;
-    color: rgba(255, 255, 255, 0.2);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    width: 1200px;
-    padding: 0;
-    margin: 0 auto;
-  }
-}
-
-/* @MEDIA */
-=======
  /* FOOTER============================= */
  .block-footer{
   display: flex;
@@ -306,4 +235,3 @@
     padding-bottom: 60px;
   }
 }
->>>>>>> default-page
