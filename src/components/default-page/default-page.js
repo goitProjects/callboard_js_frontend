@@ -47,7 +47,7 @@ const defaultInfoBord = document.querySelector('.category-favorite_list');
 document
   .getElementById('btn_refresh')
   .addEventListener('click', loadDefaultPage);
-document.getElementById('btn-logo').addEventListener('click', loadDefaultPage);
+// document.getElementById('btn-logo').addEventListener('click', loadDefaultPage);
 
 function loadDefaultPage(e) {
   defaultInfoBord.style.display = 'block';
