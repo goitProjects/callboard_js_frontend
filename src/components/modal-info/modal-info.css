@@ -15,9 +15,10 @@ body {
 .show-modal .modal-info__modal {
   transform: scale(1);
   position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(40%, 31.5%);
+  top: 20%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
 }
 
 .modal-info__overlay {
@@ -30,6 +31,11 @@ body {
   transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
 }
 .modal-info__modal {
+  position: absolute;
+  /* top: 50%;
+  left: 50%;
+  transform: translateY(50%);
+  transform: translateX(-50%); */
   width: 320px;
   height: 500px;
   background-color: #fff;

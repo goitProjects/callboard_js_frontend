@@ -12,6 +12,7 @@ const section = document.querySelector("section.products");
 let fav = document.querySelector(".fav");
 let fav2 = document.querySelector(".fav2");
 const list = document.querySelector("ul#search_list");
+let favoriteBtn = document.querySelector(".favorites-top");
 
 ul.addEventListener("click", handleClick, true);
 overlay.addEventListener("click", handleOverlay);
@@ -27,7 +28,6 @@ const tmp = localStorage.getItem("token");
 async function handleClick(e) {
   const liItem = document.querySelector(".Card_cardItem");
 
-  let favoriteBtn = document.querySelector(".favorites-top");
   let svgHeart = document.querySelector(".heart");
   let img=document.querySelector('.Card_img');
   console.log("target:", e.target, "current:", e.currentTarget);
@@ -108,14 +108,14 @@ async function handleClick(e) {
                 fav.style.width = "16px";
                 fav.style.visibility = "visible";
                 // favoriteBtn.classList.add('js-fav');
-                fav2.style.height = "16px";
-                fav2.style.width = "16px";
-                fav2.style.left = "50%";
-                fav2.style.visibility = "visible";
+                // fav2.style.height = "16px";
+                // fav2.style.width = "16px";
+                // fav2.style.left = "50%";
+                // fav2.style.visibility = "visible";
 
                 const deletelFavoritIcon = e => {
                   fav.removeEventListener("click", deletelFavoritIcon);
-                  favoriteBtn.removeEventListener("click", deletelFavoritIcon);
+                  // favoriteBtn.removeEventListener("click", deletelFavoritIcon);
 
                   services
                     .deleteFavorites(liItem.dataset.id, {
@@ -135,13 +135,13 @@ async function handleClick(e) {
                 };
 
                 fav.addEventListener("click", deletelFavoritIcon);
-                favoriteBtn.addEventListener("click", deletelFavoritIcon);
+                // favoriteBtn.addEventListener("click", deletelFavoritIcon);
                 // PNOTIFY
                 PNotify_1.notice("Product already added to your favorites!");
               } else {
                 const addToFavorite = e => {
                   icon.removeEventListener("click", addToFavorite);
-                  favoriteBtn.removeEventListener("click", addToFavorite);
+                  // favoriteBtn.removeEventListener("click", addToFavorite);
 
                   fav.style.visibility = "hidden";
                   icon.style.visibility = "visible";
@@ -169,7 +169,7 @@ async function handleClick(e) {
                   console.log("add");
                 };
                 icon.addEventListener("click", addToFavorite);
-                favoriteBtn.addEventListener("click", addToFavorite);
+                // favoriteBtn.addEventListener("click", addToFavorite);
               }
             });
         } else {
