@@ -11,14 +11,16 @@ const closeTeamBoxBtn = document.querySelector(".team__box-close-btn");
 
 function handleShowTeam(e) {
   e.preventDefault();
-  showTeamBox.classList.add("is-open");
+  console.log(1);
+  showTeamBox.style.display = "block";
 }
 
 function handleCloseBox(e) {
+  e.preventDefault();
   if (e.target === teamBoxOverlay || e.target === closeTeamBoxBtn) {
-    showTeamBox.classList.remove("is-open");
+    showTeamBox.style.display = "none";
   }
 }
 
-// showTeamBtn.addEventListener("click", handleShowTeam);
-// showTeamBox.addEventListener("click", handleCloseBox);
+showTeamBtn.addEventListener("click", handleShowTeam);
+showTeamBox.addEventListener("click", handleCloseBox);
