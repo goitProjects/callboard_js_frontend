@@ -1,5 +1,5 @@
 // import spinner from './preloader.js';
-// import '../css/styles.css';
+import '../css/styles.css';
 
 // const testBtn = document.querySelector('.js-test-btn');
 // const preloader = document.querySelector('.js-preloader');

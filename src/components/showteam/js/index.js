@@ -1,12 +1,13 @@
 import "../css/styles.css";
 
+
+
 const showTeamBtn = document.querySelector(".info-students");
 const showTeamBox = document.getElementById("show-team__box");
 const teamBoxOverlay = document.querySelector(".team__box-overlay");
 const closeTeamBoxBtn = document.querySelector(".team__box-close-btn");
 
-showTeamBtn.addEventListener("click", handleShowTeam);
-// showTeamBox.addEventListener("click", handleCloseBox);
+
 
 function handleShowTeam(e) {
   e.preventDefault();
@@ -18,3 +19,6 @@ function handleCloseBox(e) {
     showTeamBox.classList.remove("is-open");
   }
 }
+
+// showTeamBtn.addEventListener("click", handleShowTeam);
+// showTeamBox.addEventListener("click", handleCloseBox);
