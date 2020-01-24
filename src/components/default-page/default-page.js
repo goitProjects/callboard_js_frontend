@@ -19,7 +19,6 @@ function tradeCategory(categoryArr, domElement) {
 }
 
 const itemPopular = services.getAdsLimit(4,1).then(res => {
-  console.log(res)
   popularCategory(res.data.ads.docs, services.ref.popularItem);
 });
 const itemComputer = services.getAdsByCategory(4).then(res => {

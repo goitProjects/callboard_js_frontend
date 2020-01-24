@@ -1,8 +1,7 @@
-import { fetcher } from "./startPage";
-import './login-auth/login-auth.css';
-import './login-auth/login-auth';
+// import { fetcher } from "./startPage";
 
-export default fetcher;
+
+// export default fetcher;
 
 
 

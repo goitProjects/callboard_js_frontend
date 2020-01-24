@@ -173,8 +173,8 @@ export const createNewAd = () => {
   createModal().then(addModalListeners);
 };
 
-//services.ref.btnAddPromo.addEventListener('click', createNewAd);
+services.ref.btnAddPromo.addEventListener('click', createNewAd);
 
-console.log(services);
+//console.log(services);
 
 
