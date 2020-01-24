@@ -1,4 +1,4 @@
-import "./styles.css";
+
 const inp = document.querySelector("#inputFileToLoad");
 const btn = document.querySelector("button");
 

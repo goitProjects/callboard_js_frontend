@@ -70,6 +70,19 @@ button.modal-info__left-mobile-arrow {
   visibility: hidden;
 }
 
+.fav2{
+  fill: red;
+  background-repeat: no-repeat;
+  border: none;
+  display: inline-block;
+  position: absolute;
+  bottom: 70%;
+  left: 55%;
+  background-color: none;
+  cursor: pointer;
+  /* visibility: hidden; */
+}
+
 button.modal-info__left-mobile-arrow:focus {
   outline: none;
 }

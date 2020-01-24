@@ -43,7 +43,7 @@ async function login(e) {
       services.ads = dataLogin.data.ads;
       services.favorites = dataLogin.data.favorites;
       services.isAuth = true;
-      console.log(services);
+      // console.log(services);
       localStorage.setItem('token', services.token);
       changeUIforLoggedUser();
     } catch (e) {
@@ -83,7 +83,7 @@ async function register(e) {
       services.ads = dataRegister.data.ads;
       services.favorites = dataRegister.data.favorites;
       services.isAuth = true;
-      console.log(services);
+      // console.log(services);
       localStorage.setItem('token', dataRegister.data.token);
       changeUIforLoggedUser();
     } catch (e) {
@@ -109,7 +109,6 @@ function logoutFromAcc() {
   refs.authModalRegister.reset();
   refs.authModalLogin.reset();
   services.isAuth = false;
-
   refs.registerBlock.style.display = 'block';
   refs.logoutBlock.style.display = 'none';
 }
@@ -126,6 +125,7 @@ function closeModal(e) {
     refs.overlayRegister.classList.remove('show');
     refs.overlayLogin.classList.add('hide');
     refs.overlayLogin.classList.remove('show');
+    PNotify.closeAll();
   }
 }
 
@@ -141,10 +141,10 @@ function changeUIforLoggedUser() {
   refs.overlayRegister.classList.add('hide');
   refs.overlayRegister.classList.remove('show');
 
-  PNotify.success({
+ setTimeout( PNotify.success({
     title: 'Success!',
     text: 'You are logged in.'
-  });
+  }),1000);
 }
 
 // function stayLoggedIn(e) {
