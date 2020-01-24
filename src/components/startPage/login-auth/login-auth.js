@@ -1,23 +1,13 @@
 import services from '../../../services';
-<<<<<<< HEAD
 import './login-auth.css';
-=======
->>>>>>> userAccountFix
 import '../../../../node_modules/pnotify/dist/PNotifyBrightTheme.css';
 import PNotify from '../../../../node_modules/pnotify/dist/es/PNotify.js';
 
 const refs = {
   overlayLogin: document.querySelector('.auth-modal-overlay-login'),
   overlayRegister: document.querySelector('.auth-modal-overlay-register'),
-<<<<<<< HEAD
   authModalLogin: document.querySelector('.auth-modal-login'),
   authModalRegister: document.querySelector('.auth-modal-register'),
-=======
-
-  authModalLogin: document.querySelector('.auth-modal-login'),
-  authModalRegister: document.querySelector('.auth-modal-register'),
-
->>>>>>> userAccountFix
   registerBlock: document.querySelector('.navigation__registration'),
   logoutBlock: document.querySelector('.navigation__logout'),
   loggedUser: document.querySelector('.logged-user')
@@ -31,9 +21,7 @@ refs.authModalLogin.addEventListener('click', registerFromModal);
 services.ref.logout.addEventListener('click', logoutFromAcc);
 refs.overlayLogin.addEventListener('click', closeModal);
 refs.overlayRegister.addEventListener('click', closeModal);
-
 document.addEventListener('DOMContentLoaded', stayLoggedIn);
-
 function showLoginModal() {
   refs.overlayLogin.classList.remove('hide');
   refs.overlayLogin.classList.add('show');
@@ -53,16 +41,8 @@ async function login(e) {
       services.ads = dataLogin.data.ads;
       services.favorites = dataLogin.data.favorites;
       services.isAuth = true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
       services.categories = dataLogin.data.categories;
       //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
->>>>>>> create_ad
-      // console.log(services);
-=======
-      console.log(services);
->>>>>>> userAccountFix
       localStorage.setItem('token', services.token);
       changeUIforLoggedUser();
     } catch (e) {
@@ -102,16 +82,10 @@ async function register(e) {
       services.ads = dataRegister.data.ads;
       services.favorites = dataRegister.data.favorites;
       services.isAuth = true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
       services.categories = dataRegister.data.categories;
       //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
->>>>>>> create_ad
-      // console.log(services);
-=======
-      console.log(services);
->>>>>>> userAccountFix
+
       localStorage.setItem('token', dataRegister.data.token);
       changeUIforLoggedUser();
     } catch (e) {
@@ -137,10 +111,6 @@ function logoutFromAcc() {
   refs.authModalRegister.reset();
   refs.authModalLogin.reset();
   services.isAuth = false;
-<<<<<<< HEAD
-=======
-
->>>>>>> userAccountFix
   refs.registerBlock.style.display = 'block';
   refs.logoutBlock.style.display = 'none';
 }

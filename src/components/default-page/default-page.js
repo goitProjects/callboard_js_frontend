@@ -1,7 +1,6 @@
 import services from '../../services.js';
 import itemHBS from './item.hbs';
 import preloader from './../preloader/js/preloader';
-
 function popularCategory(categoryArr, domElement) {
   const categoryLayout = itemHBS(categoryArr);
   domElement.insertAdjacentHTML('beforeend', categoryLayout);
@@ -14,30 +13,10 @@ function worksCategory(categoryArr, domElement) {
   const categoryLayout = itemHBS(categoryArr);
   domElement.insertAdjacentHTML('beforeend', categoryLayout);
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-function transportCategory(categoryArr, domElement) {
-  const categoryLayout = itemHBS(categoryArr);
-  domElement.insertAdjacentHTML("beforeend", categoryLayout);
-}
-function BisCategory(categoryArr, domElement) {
-  const categoryLayout = itemHBS(categoryArr);
-  domElement.insertAdjacentHTML("beforeend", categoryLayout);
-}
-function FreeCategory(categoryArr, domElement) {
-  const categoryLayout = itemHBS(categoryArr);
-  domElement.insertAdjacentHTML("beforeend", categoryLayout);
-}
-=======
->>>>>>> 6bc09222e93c3c69656f6eaf56b9c6b111bd9b07
->>>>>>> userAccountFix
 function tradeCategory(categoryArr, domElement) {
   const categoryLayout = itemHBS(categoryArr);
   domElement.insertAdjacentHTML('beforeend', categoryLayout);
 }
-<<<<<<< HEAD
-
 const defaultInfo = {
   popularInfo: null,
   computerInfo: null,
@@ -50,28 +29,6 @@ const defaultInfo = {
 const itemPopular = services.getAdsLimit(4, 1).then(res => {
   defaultInfo.popularInfo = res.data.ads.docs;
   popularCategory(defaultInfo.popularInfo, services.ref.popularItem);
-=======
-<<<<<<< HEAD
-function realEstateCategory(categoryArr, domElement) {
-  const categoryLayout = itemHBS(categoryArr);
-  domElement.insertAdjacentHTML("beforeend", categoryLayout);
-}
-function pastimeCategory(categoryArr, domElement) {
-  const categoryLayout = itemHBS(categoryArr);
-  domElement.insertAdjacentHTML("beforeend", categoryLayout);
-}
-
-const itemPopular = services.getAllAds().then(res => {
-  console.log(res);
-  console.log(res.categories[1].category);
-  popularCategory(res.docs, services.ref.popularItem);
-=======
-
-const itemPopular = services.getAdsLimit(4,1).then(res => {
-  console.log(res)
-  popularCategory(res.data.ads.docs, services.ref.popularItem);
->>>>>>> 6bc09222e93c3c69656f6eaf56b9c6b111bd9b07
->>>>>>> userAccountFix
 });
 const itemComputer = services.getAdsByCategory(4, 4, 1).then(res => {
   defaultInfo.computerInfo = res.data.ads.docs;
@@ -81,28 +38,16 @@ const itemWorks = services.getAdsByCategory(3, 4, 1).then(res => {
   defaultInfo.workInfo = res.data.ads.docs;
   worksCategory(res.data.ads.docs, services.ref.pastimeCategory);
 });
-<<<<<<< HEAD
-<<<<<<< HEAD
-const itemTrade = services.getAdsByCategory(8,4).then(res => {
-  defaultInfo.tradeInfo=res.data.ads.docs;
-=======
 const itemTrade = services.getAdsByCategory(8, 4, 1).then(res => {
   defaultInfo.tradeInfo = res.data.ads.docs;
->>>>>>> create_ad
   tradeCategory(res.data.ads.docs, services.ref.exchangeCategory);
 });
-
 const defaultInfoBord = document.querySelector('.category-favorite_list');
 
-<<<<<<< HEAD
-document.getElementById('btn_refresh').addEventListener("click",loadDefaultPage);
-document.getElementById("logo-btn").addEventListener("click", loadDefaultPage);
-=======
 document
   .getElementById('btn_refresh')
   .addEventListener('click', loadDefaultPage);
 document.getElementById('btn-logo').addEventListener('click', loadDefaultPage);
->>>>>>> create_ad
 
 function loadDefaultPage(e) {
   defaultInfoBord.style.display = 'block';
@@ -133,7 +78,6 @@ async function handlClickPopupal(e) {
     favoritCategory = res.data.ads.docs;
 
     loadMoreBtn.addEventListener('click', showMoreAds);
-  
     allCategoryViewCreate(favoritCategory);
   });
   services.ref.mainTable.style.display = 'none';
@@ -175,12 +119,6 @@ async function handlClickPopupal2(e) {
   pageList.after(loadMoreBtn);
 
   preloader.show();
-<<<<<<< HEAD
-await services.getAdsLimit(1,1).then(res => {
- const  favoritCategory = res.data.ads.docs;
- allCategoryViewCreate(favoritCategory)})
-    services.ref.mainTable.style.display= "none"
-=======
 
   await services.getAdsByCategory(category, limit, page).then(res => {
     itemsFromCategory = res.data.ads.docs;
@@ -209,43 +147,11 @@ await services.getAdsLimit(1,1).then(res => {
     
       
     services.ref.mainTable.style.display = 'none';
->>>>>>> create_ad
     preloader.hide();
   }
 
 }
 
-=======
-<<<<<<< HEAD
-const itemTransport = services.getAdsByCategory(2).then(res => {
-  transportCategory(res.data.ads.docs, services.ref.transportCategory);
-});
-const itembisness = services.getAdsByCategory(5).then(res => {
-  BisCategory(res.data.ads.docs, services.ref.businessCategory);
-});
-const itemFree = services.getAdsByCategory(7).then(res => {
-  FreeCategory(res.data.ads.docs, services.ref.freeCategory);
-});
-const itemrealestate = services.getAdsByCategory(1).then(res => {
-  realEstateCategory(res.data.ads.docs, services.ref.realEstateCategory);
-});
-const itemTrade = services.getAdsByCategory(8).then(res => {
-  tradeCategory(res.data.ads.docs, services.ref.exchangeCategory);
-});
-const itemPasTime = services.getAdsByCategory(6).then(res => {
-  pastimeCategory(res.data.ads.docs, services.ref.pastimeCategory);
-});
-=======
-const itemTrade = services.getAdsByCategory(8).then(res => {
-  tradeCategory(res.data.ads.docs, services.ref.exchangeCategory);
-});
-
-
-
-
-
-
->>>>>>> userAccountFix
 
 
 
@@ -286,12 +192,3 @@ const itemTrade = services.getAdsByCategory(8).then(res => {
 // const itemPasTime = services.getAdsByCategory(6).then(res => {
 //   pastimeCategory(res.data.ads.docs, services.ref.pastimeCategory);
 // });
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 6bc09222e93c3c69656f6eaf56b9c6b111bd9b07
->>>>>>> userAccountFix
-
-
-=======
->>>>>>> create_ad
