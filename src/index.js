@@ -6,3 +6,4 @@ import "./components/startPage/cardItem/card";
 import "../src/components/startPage/userAccount/userAccount"
 import "./components/startPage/photo-conversion/photo-conversion";
 import "./components/serachBar/index.js";
+

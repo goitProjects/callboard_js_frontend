@@ -5,13 +5,18 @@ import services from "../../services";
 
 export default searchBar;
 
-
-// Подгружаем все доступные категории из БД и отрисовываем в фильтрах
+searchBar.renderSearchBarForm();
 searchBar.getBoardCategories();
 
-// Запускаем поиск по ключевому слову. Совпадения ищет в заголовках
-searchBar.refsearch.form.addEventListener("submit", searchBar.getSearchResult);
+const searchBarForm = document.getElementById('search_bar');
+searchBarForm.addEventListener("submit", searchBar.getSearchResult);
 
-// Сброс. Очищаем input.value, radio.checked и результаты поиска
-searchBar.refsearch.clear.addEventListener("click", searchBar.clearSearchResult);
+searchBar.refsearch.clear.addEventListener(
+  "click",
+  searchBar.clearSearchResult
+);
 
+searchBar.refsearch.clearDesktop.addEventListener(
+  "click",
+  searchBar.clearSearchResult
+);

@@ -23,7 +23,7 @@
             <!-- start content inside menu -->
             <ul class="menu__box">
               <!-- strat login/registration buttons -->
-              <div class="user_login-bar">
+              <div class="user_login-bar user_login-bar-mobile">
                 <div class="navigation__registration">
                   <button class="registration-button">Регистрация </button>
                   <button class="registration-enter">Войти </button>
@@ -34,56 +34,48 @@
                 </div>
               </div>
               <!-- end login/registration buttons -->
+
+
               <!-- start search bar -->
-              <div class="search-bar">
-                <form class="search-bar__form" action="" id="search_bar">
-                  <input class="search-bar__input" type="search" id="search_input" placeholder="Я ищу ..."
-                    autocomplete="off" />
-                  <input class="search-bar__button" type="submit" value="" id="search_button-search" />
-                </form>
+              <div class="search-bar" id="search-bar-mobile">
+
               </div>
+
+
               <!-- categories list -->
               <div class="category category-mobile" id="search_radio-block">
                 <ul class="category__list" id="category__list">
 
                   <li class="category__list-item">
-                    <input class="category__list-item-radio visually-hidden" type="radio" id="3"
-                      name="checkCategory">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="3" name="checkCategory">
                     <label class="category__list-item-label" for="3">Работа</label>
                   </li>
                   <li class="category__list-item">
-                    <input class="category__list-item-radio visually-hidden" type="radio" id="2"
-                      name="checkCategory">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="2" name="checkCategory">
                     <label class="category__list-item-label" for="2">Транспорт</label>
                   </li>
                   <li class="category__list-item">
-                    <input class="category__list-item-radio visually-hidden" type="radio" id="4"
-                      name="checkCategory">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="4" name="checkCategory">
                     <label class="category__list-item-label" for="4">Електроніка</label>
                   </li>
                   <li class="category__list-item">
-                    <input class="category__list-item-radio visually-hidden" type="radio" id="5"
-                      name="checkCategory">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="5" name="checkCategory">
                     <label class="category__list-item-label" for="5">Бізнес та послуги</label>
                   </li>
                   <li class="category__list-item">
-                    <input class="category__list-item-radio visually-hidden" type="radio" id="7"
-                      name="checkCategory">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="7" name="checkCategory">
                     <label class="category__list-item-label" for="7">Віддам безкоштовно</label>
                   </li>
                   <li class="category__list-item">
-                    <input class="category__list-item-radio visually-hidden" type="radio" id="8"
-                      name="checkCategory">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="8" name="checkCategory">
                     <label class="category__list-item-label" for="8">Обмін</label>
                   </li>
                   <li class="category__list-item">
-                    <input class="category__list-item-radio visually-hidden" type="radio" id="6"
-                      name="checkCategory">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="6" name="checkCategory">
                     <label class="category__list-item-label" for="6">Відпочинок і спорт</label>
                   </li>
                   <li class="category__list-item">
-                    <input class="category__list-item-radio visually-hidden" type="radio" id="1"
-                      name="checkCategory">
+                    <input class="category__list-item-radio visually-hidden" type="radio" id="1" name="checkCategory">
                     <label class="category__list-item-label" for="1">Нерухомість</label>
                   </li>
 
@@ -91,7 +83,7 @@
               </div>
               <!-- reset button -->
               <div class="search-btns search-btns-mobile">
-                <button class="btn-refresh " id="btn_refresh">Очистить</button>
+                <button class="btn-refresh" id="btn_refresh">Очистить</button>
               </div>
               <!-- end search bar -->
             </ul>
@@ -120,21 +112,32 @@
                 <button id="logo-btn"></button>
               </div>
 
-              <div class="navigation-form">
+              <div class="navigation-form" id="navigation-form">
 
                 <!-- Строка поиска / кнопка поиска -->
-                <div class="search-bar">
-                  <form class="search-bar__form" action="" id="search_bar">
-                    <input class="search-bar__input" type="search" id="search_input" placeholder="Я ищу ..."
-                      autocomplete="off" />
-                    <input class="search-bar__button" type="submit" value="" id="search_button-search" />
-                  </form>
+                <div class="search-bar" id="search-bar-desktop">
+
                 </div>
 
                 <!-- END Строка поиска / кнопка поиска -->
 
               </div>
             </div>
+
+              <!-- strat login/registration buttons -->
+              <div class="user_login-bar user_login-bar-desktop">
+                <div class="navigation__registration">
+                  <button class="registration-button">Регистрация </button>
+                  <button class="registration-enter">Войти </button>
+                </div>
+                <div class="navigation__logout">
+                  <div class="logged-user"></div>
+                  <button class="exit"> Выйти</button>
+                </div>
+              </div>
+              <!-- end login/registration buttons -->
+
+
             <div class="wrapper-registrationLogoutPromo">
               <button class="navigation-promo">Создать объявление</button>
             </div>
@@ -151,43 +154,35 @@
 
 
                 <li class="category__list-item">
-                  <input class="category__list-item-radio visually-hidden" type="radio" id="3"
-                    name="checkCategory">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="3" name="checkCategory">
                   <label class="category__list-item-label" for="3">Работа</label>
                 </li>
                 <li class="category__list-item">
-                  <input class="category__list-item-radio visually-hidden" type="radio" id="2"
-                    name="checkCategory">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="2" name="checkCategory">
                   <label class="category__list-item-label" for="2">Транспорт</label>
                 </li>
                 <li class="category__list-item">
-                  <input class="category__list-item-radio visually-hidden" type="radio" id="4"
-                    name="checkCategory">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="4" name="checkCategory">
                   <label class="category__list-item-label" for="4">Електроніка</label>
                 </li>
                 <li class="category__list-item">
-                  <input class="category__list-item-radio visually-hidden" type="radio" id="5"
-                    name="checkCategory">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="5" name="checkCategory">
                   <label class="category__list-item-label" for="5">Бізнес та послуги</label>
                 </li>
                 <li class="category__list-item">
-                  <input class="category__list-item-radio visually-hidden" type="radio" id="7"
-                    name="checkCategory">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="7" name="checkCategory">
                   <label class="category__list-item-label" for="7">Віддам безкоштовно</label>
                 </li>
                 <li class="category__list-item">
-                  <input class="category__list-item-radio visually-hidden" type="radio" id="8"
-                    name="checkCategory">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="8" name="checkCategory">
                   <label class="category__list-item-label" for="8">Обмін</label>
                 </li>
                 <li class="category__list-item">
-                  <input class="category__list-item-radio visually-hidden" type="radio" id="6"
-                    name="checkCategory">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="6" name="checkCategory">
                   <label class="category__list-item-label" for="6">Відпочинок і спорт</label>
                 </li>
                 <li class="category__list-item">
-                  <input class="category__list-item-radio visually-hidden" type="radio" id="1"
-                    name="checkCategory">
+                  <input class="category__list-item-radio visually-hidden" type="radio" id="1" name="checkCategory">
                   <label class="category__list-item-label" for="1">Нерухомість</label>
                 </li>
 
@@ -200,7 +195,7 @@
 
               <!-- Кнопки "Фильтр" и "Очистить" -->
               <div class="search-btns">
-                <button class="btn-refresh " id="btn_refresh">Очистить</button>
+                <button class="btn-refresh " id="btn_refresh-desktop">Очистить</button>
               </div>
               <!-- END Кнопки "Фильтр" и "Очистить" -->
 
