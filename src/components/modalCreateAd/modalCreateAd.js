@@ -4,7 +4,7 @@ import './modal-styles.css';
 import PNotify from 'pnotify/dist/es/PNotify';
 import '../../../node_modules/pnotify/dist/PNotifyBrightTheme.css';
 
-//Getting categories for selector in modal window
+//Getting category names for selector in modal window (o4eNb ToPmo3it)
 let categories = [];
 const getCategories = async () => {
   const response = await services.getAllAds();
@@ -12,38 +12,23 @@ const getCategories = async () => {
   return categories;
 };
 getCategories()
-  .then(cat => categories = cat.map(name => name))
-  .then(console.log);
- 
-
+  .then(cat => categories = cat.map(name => name));
 
 
 //Post Ad to server
-function postAd(name, photos, desc, cat, price, phone) {
-  //console.log('submit btn');
-  services
-    .postLoginUser({ email: 'em@ss.ua', password: '111111' })
-    .then(console.log);
-  services
-    .postAddNewAd(
-      {
-        images: photos,
-        title: name,
-        category: 1,
-        price: price,
-        phone: phone,
-        description: desc
-      },
-      {
-        headers: {
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjViZWE2MmFhNzhiNjUxNzdmZjUwMCIsImlhdCI6MTU3OTUzNDkzOX0._ZUC5CkNlmkqFcADbOMECx65yUCYCLNUwV37Q36466k'
-        }
-      }
-    )
-    .then(console.log);
-};
+async function postAd(name, photos = [], desc, cat = 1, price, phone) {
+  const token = localStorage.getItem('token')
 
+  const getinfodate = {
+    images: photos,
+    title: name,
+    category: cat,
+    price: price,
+    phone: phone,
+    description: desc
+  };
+await services.postAddNewAd(getinfodate,{headers: {Authorization: token}}).then(console.log);
+};
 
 //Main function
 export const createNewAd = () => {
@@ -55,7 +40,7 @@ export const createNewAd = () => {
     body.insertAdjacentHTML('afterbegin', markup);
   }
 
-  //Add listeners in modal window after creating modal
+  //Add listeners in modal after creating window
   const addModalListeners = () => {
     const modal = {
       window: document.querySelector('.modal-create-ad'),
@@ -150,19 +135,9 @@ export const createNewAd = () => {
           break;
 
         default:
-          // console.log(`
-          //   name: ${input.name.value}
-          //   photo: 1111
-          //   desc: ${input.description.value} 
-          //   category: ${input.category.value} 
-          //   price: ${input.price.value} 
-          //   phone: ${input.phone.value} 
-            
-          // `);
-          postAd();
+          postAd(input.name.value, [], input.description.value, 1, input.price.value, input.phone.value);
           break;
-        }
-        
+      }
     };
 
     modal.submit.addEventListener('click', verifyAndPostAd);
@@ -174,7 +149,5 @@ export const createNewAd = () => {
 };
 
 services.ref.btnAddPromo.addEventListener('click', createNewAd);
-
-//console.log(services);
 
 

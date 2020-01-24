@@ -67,12 +67,12 @@ export default {
     }
   },
 
-  async getAdsByCategory(categoryId, limit) {
+  async getAdsByCategory(categoryId, limit, page) {
     // Получить объявления выбранной категории
     // services.getAdsByCategory(2).then(console.log)
 
     try {
-      const data = await axios.get(`/api/v1/ads//all?category=${categoryId}&limit=${limit}`);
+      const data = await axios.get(`/api/v1/ads/all?category=${categoryId}&limit=${limit}&page=${page}`);
       return data;
     } catch (e) {
       console.log(e);
@@ -179,6 +179,9 @@ export default {
     computerCategory: document.querySelector(".products-collection-computer-list"),
     pastimeCategory: document.querySelector(".products-collection-pastime-list"),
     exchangeCategory: document.querySelector(".products-collection-exchange-list"),
+    mainTable: document.querySelector(".category-favorite_list"),
+    allCategoryView : document.querySelector(".search_list-item"),
+    buttonPopularAll: document.querySelector(".button-popularAll"),
     // transportCategory: document.querySelector(".products-collection-transport-list"),
     // businessCategory: document.querySelector(".products-collection-business-list"),
     // workCategory: document.querySelector(".products-collection-work-list"),

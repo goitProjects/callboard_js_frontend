@@ -44,7 +44,9 @@ async function login(e) {
       services.favorites = dataLogin.data.favorites;
       services.isAuth = true;
       services.categories = dataLogin.data.categories;
-      localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
+      //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
+      // console.log(services);
+      localStorage.setItem('token', services.token);
       changeUIforLoggedUser();
     } catch (e) {
       PNotify.error({
@@ -84,7 +86,9 @@ async function register(e) {
       services.favorites = dataRegister.data.favorites;
       services.isAuth = true;
       services.categories = dataRegister.data.categories;
-      localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
+      //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
+      // console.log(services);
+      localStorage.setItem('token', dataRegister.data.token);
       changeUIforLoggedUser();
     } catch (e) {
       PNotify.error({
@@ -109,7 +113,6 @@ function logoutFromAcc() {
   refs.authModalRegister.reset();
   refs.authModalLogin.reset();
   services.isAuth = false;
-
   refs.registerBlock.style.display = 'block';
   refs.logoutBlock.style.display = 'none';
 }
@@ -126,6 +129,7 @@ function closeModal(e) {
     refs.overlayRegister.classList.remove('show');
     refs.overlayLogin.classList.add('hide');
     refs.overlayLogin.classList.remove('show');
+    PNotify.closeAll();
   }
 }
 
@@ -141,10 +145,10 @@ function changeUIforLoggedUser() {
   refs.overlayRegister.classList.add('hide');
   refs.overlayRegister.classList.remove('show');
 
-  PNotify.success({
+ setTimeout( PNotify.success({
     title: 'Success!',
     text: 'You are logged in.'
-  });
+  }),1000);
 }
 
 function stayLoggedIn() {
@@ -159,7 +163,6 @@ function stayLoggedIn() {
     services.ads = servicesFromLS.ads;
     services.favorites = servicesFromLS.favorites;
     services.isAuth = true;
-    dataRegister = servicesFromLS.categories;
+    //dataRegister = servicesFromLS.categories;
   }
-  console.log(services)
 }

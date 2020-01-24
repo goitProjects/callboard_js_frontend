@@ -5,7 +5,6 @@
   box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
   list-style-type: none;
 }
-​
 .Card_img {
   padding-top: 38px;
   max-height: 180px;
@@ -14,7 +13,6 @@
   margin: 0 auto;
   margin-bottom: 28px;
 }
-​
 .Card_description {
   text-align: center;
   font-size: 12px;
@@ -24,8 +22,6 @@
   font-weight: 700;
   margin-bottom: 12px;
 }
-​
-​
 .Card_price {
   display: block;
   margin: o auto;
@@ -37,24 +33,20 @@
   font-weight: 700;
   padding-bottom: 26px;
 }
-​
 .Card_cardItem:hover {
   background-color: #dcdde0;
 }
-​
 .favorites-top {
   position: absolute;
   top: 10%;
   left: 81%;
   border: none;
   background: transparent;
-} 
-​
+}
 .heart {
   fill: white;
   width: 14px;
 }
-​
 .favorites-buttom {
   position: absolute;
   bottom: 10%;
@@ -62,25 +54,25 @@
   border: none; 
   background: transparent;
 }
-​
 .fullscreen {
   fill: white;
   width: 20px;
 }
-​
-@media (min-width: 768px) {
+.products-list-item{
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (min-width: 768px){ 
   .Card_cardItem {
     height: 306px;
     width: 336px;
   }
 }
-​
 .Card_img {
   padding-top: 38px;
   max-height: 180px;
   max-width: 280px;
 }
-​
 @media (min-width: 1280px) {
   .Card_cardItem {
     height: 306px;
