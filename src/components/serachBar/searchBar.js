@@ -10,6 +10,7 @@ export default {
     clear: document.getElementById("btn_refresh"),
     radioBlock: document.getElementById("search_radio-block"),
     catList: document.getElementById("category__list"),
+    catListDesktop: document.getElementById("category__list-desktop"),
     mainTable: document.querySelector(".category-favorite_list")
   },
 
@@ -19,13 +20,23 @@ export default {
     const allCategories = await services.getAllAds();
 
     allCategories.categories.map(el => {
-      searchBar.refsearch.catList.insertAdjacentHTML(
-        "beforeend",
-        ` <li class="category__list-item">
-        <input class="category__list-item-radio visually-hidden" type="radio" id="${el._id}" name="checkCategory" >
-        <label class="category__list-item-label" for="${el._id}">${el.category}</label>
-        </li> `
-      );
+      if (window.innerWidth < 1200) {
+        searchBar.refsearch.catList.insertAdjacentHTML(
+          "beforeend",
+          ` <li class="category__list-item">
+          <input class="category__list-item-radio visually-hidden" type="radio" id="${el._id}" name="checkCategory" >
+          <label class="category__list-item-label" for="${el._id}">${el.category}</label>
+          </li> `
+        );
+      } else {
+        searchBar.refsearch.catListDesktop.insertAdjacentHTML(
+          "beforeend",
+          ` <li class="category__list-item">
+          <input class="category__list-item-radio visually-hidden" type="radio" id="${el._id}" name="checkCategory" >
+          <label class="category__list-item-label" for="${el._id}">${el.category}</label>
+          </li> `
+        );
+      }
     });
   },
 
@@ -55,7 +66,7 @@ export default {
       const allAds = await services.getAdsLimit(999, 1);
       const adsArray = allAds.data.ads.docs;
       searchBar.refsearch.mainTable.innerHTML = "";
-      
+
       adsArray.filter(el => {
         const titleName = el.title.toLowerCase();
         const inputValue = searchBar.refsearch.input.value;
