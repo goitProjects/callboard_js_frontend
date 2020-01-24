@@ -1,0 +1,177 @@
+@font-face {
+  font-family: 'Montserrat500';
+  font-style: semi-bold;
+  src: url('../../../font/Montserrat/Montserrat-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat600';
+  font-style: bold;
+  src: url('../../../font/Montserrat/Montserrat-Bold.ttf');
+}
+
+/* * {
+  margin: 0;
+  padding: 0;
+} */
+
+.auth-modal-overlay-login, .auth-modal-overlay-register {
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+}
+
+.auth-modal-login, .auth-modal-register {
+  background: #ffffff;
+  box-shadow: 12.5px 21.651px 55px 0px rgba(29, 29, 27, 0.3);
+  margin: auto;
+  padding: 42px 18px;
+  width: 280px;
+  font-family: 'Montserrat600', sans-serif;
+  font-size: 10px;
+  line-height: 17px;
+  letter-spacing: 0.3px;
+  position: relative;
+  transition: transform 200ms ease-in-out;
+}
+
+.auth-text {
+  margin-bottom: 20px;
+}
+
+.auth-text span {
+  display: block;
+}
+
+.close-icon {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.auth-google-btn {
+  width: 160px;
+  height: 51px;
+  background-color: #fafafa;
+  background-image: url(../../../images/google-icon.png);
+  background-repeat: no-repeat;
+  background-position: 24% 50%;
+  padding-left: 20px;
+  color: #000;
+  box-shadow: 0px 2px 2px 0px rgba(29, 29, 27, 0.1);
+  font-family: 'Montserrat600', sans-serif;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 23px;
+  letter-spacing: 0.3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}
+.auth-google-btn:hover {
+  cursor: pointer;
+}
+
+.inputs-container {
+  text-align: center;
+}
+
+input[name="email"], 
+input[name="password"], 
+input[type="text"] {
+  width: 260px;
+  height: 57px;
+  border: 1px solid #ced2d1;
+  color: #bbbbbb;
+  padding-left: 17px;
+  margin-bottom: 20px;
+  font-family: 'Montserrat600', sans-serif;
+  font-size: 10px;
+}
+
+.auth-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-login, .btn-confirm {
+  width: 113px;
+  height: 51px;
+  border: 1px solid #ced2d1;
+  background-color: #ffffff;
+  font-family: 'Montserrat600', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+.btn-registration {
+  text-decoration: none;
+  color: #000;
+  font-family: 'Montserrat500', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.3px;
+  margin-top: 10px;
+}
+
+.btn-login:hover, .btn-confirm:hover {
+  background-color: #ff6b08;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+}
+.btn-registration:hover {
+  color: #0000ff;
+}
+
+@media (min-width: 768px) {
+  .auth-modal-login, .auth-modal-register {
+    width: 530px;
+    padding: 50px 54px;
+    font-family: 'Montserrat500', sans-serif;
+    font-size: 13px;
+  }
+  .auth-text span {
+    display: inline-block;
+  }
+  .auth-text {
+    margin-bottom: 35px;
+  }
+  .auth-google-btn {
+    margin: 0 0 42px 0;
+  }
+  input[name="email"], input[name="password"], input[type="text"] {
+    width: 96%;
+    font-family: 'Montserrat500', sans-serif;
+    font-size: 13px;
+  }
+  input[name="password"] {
+    margin-bottom: 36px;
+  }
+  .btn-login, .btn-confirm {
+    width: 202px;
+    height: 60px;
+    font-size: 12px;
+  }
+  .btn-registration {
+    font-size: 10px;
+  }
+}
+
+.hide {
+display: none;
+}
+.show {
+display: block;
+  pointer-events: initial;
+}
