@@ -1,83 +1,77 @@
-html {
-  box-sizing: border-box;
+.userAccount__overlay-hide {
+  display: none;
 }
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
+.userAccount__overlay {
+  width: 100vw;
+  min-height: 100vh;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  background: rgba(133, 128, 128, 0.5);
+  padding: 3rem;
+  position: absolute;
+  transition: transform 200ms ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-body {
-  font-family: "Open Sans", "Arial", sans-serif;
-  font-size: 14px;
-  line-height: 26px;
-  font-weight: 400;
-  color: #555252;
+.userAccount__modal {
+  background: #ffffff;
+  box-shadow: 12.5px 21.651px 55px 0px rgba(29, 29, 27, 0.3);
+  padding: 42px 18px;
+  font-family: 'Montserrat600', sans-serif;
+  font-size: 10px;
+  line-height: 17px;
+  letter-spacing: 0.3px;
+  transition: transform 200ms ease-in-out;
 }
 
-img {
+.userAccount__favorite-section-title,
+.userAccount__ads-section-title {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.userAccount__favorite-list,
+.userAccount__ads-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  list-style: none;
+}
+
+.userAccount__favorite-list-item,
+.userAccount__ads-list-item {
+  width: 500px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.userAccount__img {
   display: block;
-  max-width: 100%;
+  width: 180px;
   height: auto;
 }
 
-/* Личный кабинет пользователя */
-.user__acc-adds,
-.user__acc-my-adds {
-  margin: 0 auto;
-  display: center center;
+.userAccount__info {
+  width: 280px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.user__acc-fav-add,
-.user__acc-my-add {
-  margin: 0 auto;
-  width: 90%;
-  min-height: 180px;
-  margin: 8px;
-  background-color: #f4f6fc;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-.user__acc-fav-add:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
-.user__acc-my-add:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  flex-direction: column;
 }
 
-.user__acc-fav-section-title {
-  display: block;
-  font-family: "Roboto", sans-serif;
-  font-size: 20px;
-  line-height: auto;
-  font-weight: 700;
-  text-align: left;
-  padding: 5px;
-  color: #323334;
+.userAccount__price {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
-.user__acc-title,
-.user__acc-price {
-  font-family: "Roboto", sans-serif;
-  padding: 5px;
-  color: #323334;
-}
-.user__acc-title {
-  font-size: 16px;
-}
-.user__acc-price {
-  font-size: 18px;
-  font-weight: bold;
-}
-.user__acc-add-desctiption {
-  font-size: 14px;
-  color: #58595a;
-}
-.user__acc-del-fav,
-.user__acc-del-myadd {
-  border: none;
+.userAccount__delete-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
