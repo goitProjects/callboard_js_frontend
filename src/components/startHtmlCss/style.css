@@ -290,9 +290,23 @@ html {
   border: none;
   padding: 0;
   margin: 0;
-  background-image: url(../serachBar/img/board-logo-small.png);
+  background-image: url(../serachBar/img/brd-logotype.png);
   background-repeat: no-repeat;
   background-position: center center;
   width: 100px;
   height: 50px;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.user_login-bar-mobile {
+  display: block;
+}
+
+.user_login-bar-desktop {
+  display: none;
+}
+
+.navigation__registration {
+  text-align: center;
 }

@@ -29,6 +29,7 @@
     flex-wrap: wrap;
     align-items: center;
     margin: 0 auto;
+    margin-right: 140px;
   }
 
   .tablet-navigationForm {
@@ -120,13 +121,15 @@
     color: #ffffff;
     background-color: #ff6b08;
     border: none;
+    border-radius: 30px;
     cursor: pointer;
     background-color: #ff6b08;
 
   }
 
   .navigation-promo:hover {
-    /* background-color: #ff6b08; */
+    background-color: #fff;
+    color: #ff6b08;
   }
 
   /* second-Line-navigation style===================================== */
@@ -232,6 +235,14 @@
     display: none;
   }
 
+  .user_login-bar-mobile {
+    display: none;
+  }
+
+  .user_login-bar-desktop {
+    display: block;
+  }
+
   .tablet-blockLogo {
     display: none;
   }
@@ -241,6 +252,10 @@
     align-items: center;
     margin-right: 16px;
     margin-top: 32px;
+  }
+
+  .tab-leck-block {
+    margin-right: 0;
   }
 
   .navigation__registration {
