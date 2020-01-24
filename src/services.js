@@ -2,6 +2,10 @@ import axios from "axios";
 axios.defaults.baseURL = "https://dashads.goit.co.ua";
 
 export default {
+  image: [],
+  getImage(img){
+   return this.image = img
+  },
   async getAllAds() {
     // Получить все объявления
     // services.getAllAds().then(console.log)

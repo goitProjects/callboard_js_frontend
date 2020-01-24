@@ -1,6 +1,6 @@
 //import "./components/startPage";
-import "./components/modalCreateAd";
 import "./components/startHtmlCss";
+import "./components/modalCreateAd";
 import "./components/default-page/default-page";
 import "./components/preloader/js";
 import "./components/startPage/cardItem/card";
