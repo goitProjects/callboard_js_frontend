@@ -1,4 +1,4 @@
-import services from '../../services.js';
+import services from '../../services';
 import itemHBS from './item.hbs';
 import preloader from './../preloader/js/preloader';
 function popularCategory(categoryArr, domElement) {
@@ -55,7 +55,11 @@ function loadDefaultPage(e) {
 
 document
   .querySelector('.button-popularAll')
-  .addEventListener('click', handlClickPopupal2);
+  .addEventListener('click', handlClickPopupal);
+
+
+  services.ref.mainTable.addEventListener('click', handlClickPopupal2);
+
 function allCategoryViewCreate(element) {
   const categoryLayout = itemHBS(element);
   services.ref.allCategoryView.insertAdjacentHTML('beforeend', categoryLayout);
@@ -106,16 +110,19 @@ async function handlClickPopupal(e) {
 
 //Add More for all categories
 async function handlClickPopupal2(e) {
+ if(e.target.className === "button-category-view"){
+
   let itemsFromCategory = [];
   let page = 1;
   const limit = 8;
-  const category = 1;
+  const category = e.target.id;
 
   //Creating Load More Button
-  const loadMoreBtn = document.createElement('button');
-  loadMoreBtn.setAttribute('class', 'default-page__load-more-btn');
-  loadMoreBtn.innerHTML = 'Load More';
-  const pageList = document.getElementById('search_list');
+  let loadMoreBtn = document.querySelector(".products-button__load");
+  document.querySelector(".products-button").style.display="block";
+console.log(loadMoreBtn)
+  let pageList = document.querySelector(".search_list-item");
+
   pageList.after(loadMoreBtn);
 
   preloader.show();
@@ -149,7 +156,7 @@ async function handlClickPopupal2(e) {
     services.ref.mainTable.style.display = 'none';
     preloader.hide();
   }
-
+ }
 }
 
 

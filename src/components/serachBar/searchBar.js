@@ -143,7 +143,8 @@ export default {
     e.preventDefault();
     const deActivateRadioBtn = document.getElementsByName("checkCategory");
     deActivateRadioBtn.forEach(el => (el.checked = false));
-    searchBar.refsearch.input.value = "";
+    const searchBarInput = document.getElementById("search_input");
+    searchBarInput.value = ""
     searchBar.refsearch.list.innerHTML = "";
   }
 };

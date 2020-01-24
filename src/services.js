@@ -182,6 +182,8 @@ export default {
     mainTable: document.querySelector(".category-favorite_list"),
     allCategoryView : document.querySelector(".search_list-item"),
     buttonPopularAll: document.querySelector(".button-popularAll"),
+    buttonCategoryView: document.querySelectorAll(".button-category-view"),
+    buttonMoreOpen: document.querySelector(".products-button__load"),
     // transportCategory: document.querySelector(".products-collection-transport-list"),
     // businessCategory: document.querySelector(".products-collection-business-list"),
     // workCategory: document.querySelector(".products-collection-work-list"),

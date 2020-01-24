@@ -107,6 +107,14 @@ html {
   cursor: pointer;
   text-decoration: none;
 }
+.button-category-view{
+  border: none;
+  border-bottom: 1px solid #ff6b08;
+  background-color: transparent;
+  color: #ff6b08;
+  cursor: pointer;
+  text-decoration: none;
+}
 
 .tab-leck-block {
   display: none;
@@ -309,4 +317,22 @@ html {
 
 .navigation__registration {
   text-align: center;
+}
+
+.products-button{
+  padding-top: 26px;
+  padding-bottom: 26px;
+  background-color: #121d2e;
+  display: none;
+}
+.products-button__load{
+  height: 100px;
+  width: 600px;
+  margin: 0 auto;
+  font-family: "Montserrat-SemiBold";
+  font-size: 18px;
+  color: #ffffff;
+  background-color:transparent;
+  border: none;
+  cursor: pointer;
 }
