@@ -1,11 +1,15 @@
+
 .popular-wrapper {
-  margin-top: 58px;
+  width: 100%;
   background-color: #ffffff;
+  font-family: 'Montserrat-Light'; 
+  display: flex;
+  margin-top: 57px;
 }
 
 .popular-title {
-  font-family: 'Montserrat-Medium'; 
   color: #000000;
+  font-size: 20px;
 }
 
 .popular-description {
@@ -13,8 +17,39 @@
     color: #a8a8a8;
 }
 
+.collection-wrapper {
+  font-family: 'Montserrat-Medium'; 
+  color: #000000;
+  font-size: 20px;
+}
+
 .products a{
+  font-size: 12px;
   color: #ff6b08;
-  cursor: pointer;
   text-decoration: none;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 6px;
+  /* flex-direction: space-between; */
+}
+
+.load-more-btn {
+  background-color: #ff6b08;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: white;
+  padding: 17px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 4px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px #ff6b08;
+  outline: none;
+  position: fixed;
+  right: 20px; 
+  top: 20%; 
 }
