@@ -32,15 +32,15 @@ const itemPopular = services.getAdsLimit(4, 1).then(res => {
   defaultInfo.popularInfo = res.data.ads.docs;
   popularCategory(defaultInfo.popularInfo, services.ref.popularItem);
 });
-const itemComputer = services.getAdsByCategory(4, 4).then(res => {
+const itemComputer = services.getAdsByCategory(4, 4, 1).then(res => {
   defaultInfo.computerInfo = res.data.ads.docs;
   compCategory(res.data.ads.docs, services.ref.computerCategory);
 });
-const itemWorks = services.getAdsByCategory(3, 4).then(res => {
+const itemWorks = services.getAdsByCategory(3, 4, 1).then(res => {
   defaultInfo.workInfo = res.data.ads.docs;
   worksCategory(res.data.ads.docs, services.ref.pastimeCategory);
 });
-const itemTrade = services.getAdsByCategory(8, 4).then(res => {
+const itemTrade = services.getAdsByCategory(8, 4, 1).then(res => {
   defaultInfo.tradeInfo = res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.exchangeCategory);
 });
