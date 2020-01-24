@@ -6,6 +6,13 @@ export default {
   getImage(img){
    return this.image = img
   },
+  userData: null,
+  token: null,
+  ads: null,
+  favorites: null,
+  isAuth: false,
+  categories: null,
+  
   async getAllAds() {
     // Получить все объявления
     // services.getAllAds().then(console.log)
@@ -100,13 +107,14 @@ export default {
     }
   },
 
-  async postLogoutUser(user) {
+  async postLogoutUser() {
     // Логаут пользователя
     // services.postLogoutUser({ email: "em@ss.ua", password: "111111"},{headers: {Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjViZWE2MmFhNzhiNjUxNzdmZjUwMCIsImlhdCI6MTU3OTUzMjcyN30.b8ReEjHn-KbHsls0cvm8GauQOr6sEqqcjZxD1KfqtzI"}}).then(console.log)
 
     try {
-      const data = await axios.post("/api/v1/auth/logout", user);
-      return data;
+      const data = await axios.post("/api/v1/auth/logout", { headers: { Authorization: this.token } });
+      console.log('logout', data)
+      // return data;
     } catch (e) {
       console.log(e);
       throw e;
@@ -155,11 +163,12 @@ export default {
       throw e;
     }
   },
-  ref:{
+  refs:{
     btntabletFilter: document.querySelector(".tablet-filter"),
     btnSearch: document.querySelector(".tablet-filter"),
     buttonReg: document.querySelector(".registration-button"),
     buttonLogin: document.querySelector(".registration-enter"),
+    logout: document.querySelector('.exit'),
     imgLogo: document.querySelector(".logo"),
     navForm: document.querySelector(".navigation-form"),
     tabletFilter: document.querySelector(".tablet-filter"),

@@ -109,9 +109,9 @@ button.modal-create-ad__btn-close {
   background-color: rgb(0, 0, 0);
   opacity: 0.302;
 }
-.closed {
+/* .closed {
   display: none;
-}
+} */
 
 @media (min-width: 768px) {
   .modal-create-ad__window {
