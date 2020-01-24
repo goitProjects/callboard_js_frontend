@@ -11,11 +11,6 @@ body {
   width: 100vw;
   height: 100vh;
 }
-body {
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: scroll !important;
-}
 
 .show-modal .modal-info__modal {
   transform: scale(1);
@@ -103,6 +98,11 @@ img.modal-info__image-item {
   height: 230px;
   transform: translate(11%, 16%);
 }
+
+/* .stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+} */
 
 button.modal-info__buy-button {
   background-color: rgb(255, 107, 8);
