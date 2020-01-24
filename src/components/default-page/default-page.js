@@ -55,7 +55,7 @@ const defaultInfoBord =  document.querySelector('.category-favorite_list');
 
 
 document.getElementById('btn_refresh').addEventListener("click",loadDefaultPage);
-document.getElementById("btn-logo").addEventListener("click", loadDefaultPage);
+document.getElementById("logo-btn").addEventListener("click", loadDefaultPage);
 
 function loadDefaultPage(e){
   defaultInfoBord.style.display = "block";
@@ -71,7 +71,7 @@ function allCategoryViewCreate(element) {
 
 async function handlClickPopupal (e){
   preloader.show();
-await services.getAdsLimit(20,1).then(res => {
+await services.getAdsLimit(1,1).then(res => {
  const  favoritCategory = res.data.ads.docs;
  allCategoryViewCreate(favoritCategory)})
     services.ref.mainTable.style.display= "none"

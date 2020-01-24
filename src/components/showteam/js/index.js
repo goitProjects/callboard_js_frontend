@@ -1,7 +1,5 @@
 import "../css/styles.css";
 
-
-
 const showTeamBtn = document.querySelector(".info-students");
 const showTeamBox = document.getElementById("show-team__box");
 const teamBoxOverlay = document.querySelector(".team__box-overlay");
@@ -11,7 +9,6 @@ const closeTeamBoxBtn = document.querySelector(".team__box-close-btn");
 
 function handleShowTeam(e) {
   e.preventDefault();
-  console.log(1);
   showTeamBox.style.display = "block";
 }
 

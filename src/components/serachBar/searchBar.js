@@ -24,8 +24,6 @@ export default {
     searchBar.refsearch.ListCategorySearch= allCategories
     searchBar.refsearch.catList.innerHTML = "";
     searchBar.refsearch.catListDesktop.innerHTML = "";
-
-ç
     allCategories.categories.map(el => {
       if (window.innerWidth < 1200) {
         searchBar.refsearch.catList.insertAdjacentHTML(

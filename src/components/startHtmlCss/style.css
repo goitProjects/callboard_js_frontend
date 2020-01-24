@@ -30,7 +30,6 @@
   font-family: Montserrat-ExtraLightItalic;
   src: url("./font/Montserrat-ExtraLightItalic.ttf");
 }
-  src: url("./font/Montserrat-Italic.ttf");
 @font-face {
   font-family: Montserrat-Light;
   src: url("./font/Montserrat-Light.ttf");
@@ -67,11 +66,9 @@
   font-family: Montserrat-ThinItalic;
   src: url("./font/Montserrat-ThinItalic.ttf");
 }
-
 html {
   box-sizing: border-box;
 }
-
 *,
 *::after,
 *::before {
@@ -79,17 +76,36 @@ html {
   padding: 0;
   margin: 0;
 }
-
 .container {
   margin: 0 auto;
-  padding: 0 20px;
 }
-
 .header-container {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-start;
   align-content: center;
+}
+.popular-wrapper {
+  margin-top: 58px;
+  background-color: #ffffff;
+}
+​
+.popular-title {
+  font-family: 'Montserrat-Medium'; 
+  color: #000000;
+}
+.popular-description {
+    font-family: 'Montserrat-Regular'; 
+    color: #a8a8a8;
+}
+
+.button-popularAll{
+  border: none;
+  border-bottom: 1px solid #ff6b08;
+  background-color: transparent;
+  color: #ff6b08;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .tab-leck-block {
@@ -110,10 +126,10 @@ html {
   justify-content: center;
 }
 
-.block-logo {
+/* .block-logo {
   /* display: flex;
   position: relative; */
-}
+
 
 .logo {
   /* position: absolute; */

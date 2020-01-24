@@ -244,8 +244,8 @@ input[type="radio"].visually-hidden {
     position: absolute;
     display: flex;
     align-items: center;
-    top: 8%;
-    left: 10%;
+    top: 30px;
+    left: 30px;
     width: 26px;
     height: 26px;
     cursor: pointer;
@@ -322,7 +322,7 @@ input[type="radio"].visually-hidden {
     } 
 
     .menu__btn {
-        top: 9%;
-        left: 7%;
+        top: 40px;
+        left: 30px;
       }
 }
