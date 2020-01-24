@@ -70,6 +70,7 @@
   font-family: Montserrat-ThinItalic;
   src: url("./font/Montserrat-ThinItalic.ttf");
 }
+
 html {
   box-sizing: border-box;
 }
@@ -80,10 +81,10 @@ html {
   padding: 0;
   margin: 0;
 }
-
-.container {
+.container{
   margin: 0 auto;
   padding: 0 20px;
+  margin-bottom: 20px;
 }
 .tab-leck-block {
   display: none;
@@ -92,6 +93,7 @@ html {
   padding-top: 18px;
   padding-bottom: 14px;
   background-color: #1e2939;
+  margin-bottom: 20px;
 }
 
 .mob-header {
@@ -103,12 +105,10 @@ html {
   position: relative;
 }
 .logo {
-  position: absolute;
+  /* position: absolute; */
   top: 10px;
   left: 13px;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: rgb(255, 255, 255);
+  color: rgb(5, 5, 5);
   font-family: "Montserrat-Bold";
 }
 .circle {

@@ -1,5 +1,8 @@
 import services from "../../services";
 import searchBar from ".";
+import SearchHBS from "./search.hbs";
+import showPreloader from "../preloader/js/preloader";
+
 
 export default {
   refsearch: {
@@ -10,14 +13,14 @@ export default {
     clear: document.getElementById("btn_refresh"),
     radioBlock: document.getElementById("search_radio-block"),
     catList: document.getElementById("category__list"),
-    mainTable: document.querySelector(".category-favorite_list")
+    mainTable: document.querySelector(".category-favorite_list"),
+    ListCategorySearch: null,
   },
 
   async getBoardCategories() {
     // Получаем от сервера все категории и отрисовываем их на главной странице
-
     const allCategories = await services.getAllAds();
-
+    searchBar.refsearch.ListCategorySearch= allCategories
     allCategories.categories.map(el => {
       searchBar.refsearch.catList.insertAdjacentHTML(
         "beforeend",
@@ -32,10 +35,9 @@ export default {
   async getSearchResult(e) {
     // Делаем проверку, есть ли активный чекбокс. Если нет - ищем по всем
     // объявлениям. Если есть - определяем id категории и ищем по ней
-
     e.preventDefault();
     searchBar.refsearch.btn.disabled = true;
-    searchBar.refsearch.list.innerHTML = "";
+    showPreloader.show();
     const radioButtons = document.getElementsByName("checkCategory");
     let flag = false;
     let idCatogory = null;
@@ -52,45 +54,55 @@ export default {
 
     // Реализация поиска по ключевому слову среди всех объявлений
     const searchByAllAds = async () => {
-      const allAds = await services.getAdsLimit(999, 1);
+      const allAds = await services.getAdsLimit(10, 1);
       const adsArray = allAds.data.ads.docs;
-      searchBar.refsearch.mainTable.innerHTML = "";
-      
+      searchBar.refsearch.mainTable.style.display = "none";
       adsArray.filter(el => {
         const titleName = el.title.toLowerCase();
-        const inputValue = searchBar.refsearch.input.value;
+        const inputValue = searchBar.refsearch.input.value.toLowerCase();
         if (titleName.includes(inputValue)) {
-          // const liAdd = itemHBS(el);
-          // searchBar.refsearch.list.insertAdjacentHTML("beforeend", liAdd)
-          const newLi = document.createElement("li");
-          newLi.className = "search_list-item";
-          newLi.dataset.id = el._id;
-          searchBar.refsearch.list.appendChild(newLi);
-          newLi.insertAdjacentHTML("beforeend", el.title);
-          count.push(el);
+          searchBar.refsearch.list.insertAdjacentHTML(
+            "beforeend",
+            createSearchElement(el)
+          );
+          // const newLi = document.createElement("li");
+          // newLi.className = "search_list-item";
+          // newLi.dataset.id = el._id;
+          // searchBar.refsearch.list.appendChild(newLi);
+          // newLi.insertAdjacentHTML("beforeend", el.title);
+          // count.push(el);
         }
       });
+      showPreloader.hide();
       searchBar.refsearch.btn.disabled = false;
     };
 
+    function createSearchElement(el) {
+      return SearchHBS(el);
+    }
     // реализация поиска по ключевому слову в выбранной категории
     const searchByCategories = async () => {
       const allAds = await services.getAdsByCategory(idCatogory, 150);
       const allTitles = allAds.data.ads.docs;
-      searchBar.refsearch.mainTable.innerHTML = "";
-
       allTitles.map(el => {
         const titleName = el.title.toLowerCase();
-
+        searchBar.refsearch.mainTable.style.display = "none";
         if (titleName.includes(inputValue) && checkedCategory === el.category) {
-          const newLi = document.createElement("li");
-          newLi.className = "search_list-item";
-          newLi.dataset.id = el._id;
-          refsearch.list.appendChild(newLi);
-          newLi.insertAdjacentHTML("beforeend", el.title);
-          count.push(el);
+          console.log(el);
+          console.log(createSearchElement(el));
+          searchBar.refsearch.list.insertAdjacentHTML(
+            "beforeend",
+            createSearchElement(el)
+          );
+          // const newLi = document.createElement("li");
+          // newLi.className = "search_list-item";
+          // newLi.dataset.id = el._id;
+          // refsearch.list.appendChild(newLi);
+          // newLi.insertAdjacentHTML("beforeend", el.title);
+          // count.push(el);
         }
       });
+      showPreloader.hide();
       searchBar.refsearch.btn.disabled = false;
     };
 
@@ -112,3 +124,4 @@ export default {
     searchBar.refsearch.list.innerHTML = "";
   }
 };
+// refsearch.checkboxCategory = searchBar.getBoardCategories()

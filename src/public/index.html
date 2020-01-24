@@ -1,20 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Document</title>
 </head>
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Document</title>
-</head>
-
 <body>
   <header class="header">
     <nav class="navigation">
@@ -24,7 +15,7 @@
           </button>
           <div class="block-logo">
             <div class="circle"></div>
-            <a href="#" class="logo">Logo</a>
+            <button class="logo" id="btn-logo">Logo</button>
           </div>
           <button class="search"></button>
         </div>
@@ -33,13 +24,13 @@
             <div class="tablet-blockLogo">
               <div class="block-logo">
                 <div class="circle"></div>
-                <a href="#" class="logo">Logo</a>
+                <button class="logo" id="btn-logo">Logo</button>
               </div>
             </div>
             <div class="laptop-block-LogoForm">
               <div class="block-logo">
                 <div class="circle"></div>
-                <a href="#" class="logo">Logo</a>
+                <button class="logo" id="btn-logo">Logo</button>
               </div>
 
 
@@ -100,11 +91,11 @@
   <main>
     <section class="products">
       <div class="container mainTable">
-        <ul id="search_list"></ul>
+        <ul id="search_list" class="search_list-item"></ul>
         <div class="category-favorite_list">
         <div class="products-collection-popular">
           <h2 class="popular-title">Популярное</h2>
-          <a href="#">Смотреть все</a>
+          <button class="button-popularAll">Смотреть все</button>
           <p class="popular-description">
             Товары домашнего обихода, видео, аудио, наушники, камеры,
             аксессуары и многое другое.
@@ -132,7 +123,6 @@
       </div>
     </section>
   </main>
-
   <footer class="footer">
     <div class="container">
       <ul class="block-footer">
@@ -156,27 +146,13 @@
             </svg> by <a href="" class="info-students"> GoIT Students</a></p>
         </li>
       </ul>
-    </div>
-  </footer>
-
-  <!-- Preloader -->
-  <button class="test-btn js-test-btn">Toch me!</button>
-  <div class="preloader js-preloader is-hidden" id="spinner">
-    <span class="load"></span>
-  </div>
-  <!-- Preloader -->
-
-  <!-- MODAL LOGIN WINDOW -->
+        <!-- MODAL LOGIN WINDOW -->
   <div class="auth-modal-overlay-login hide">
     <form class="auth-modal-login">
       <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
       <p class="auth-text">
-        Для авторизации можете использовать <span>Google Account:</span>
-      </p>
-      <a href="https://myaccount.google.com" class="auth-google-btn">Google</a>
-      <p class="auth-text">
-        Или войдите в приложение используя <span>e-mail и пароль:</span>
-      </p>
+        Войдите в приложение используя <span>e-mail и пароль:</span>
+     </p>
       <div class="inputs-container">
         <input type="email" name="email" placeholder="E-mail" />
         <input type="password" name="password" placeholder="Пароль" />
@@ -194,11 +170,7 @@
     <form class="auth-modal-register">
       <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
       <p class="auth-text">
-        Для авторизации можете использовать <span>Google Account:</span>
-      </p>
-      <a href="https://myaccount.google.com" class="auth-google-btn">Google</a>
-      <p class="auth-text">
-        Или войдите в приложение используя <span>e-mail и пароль:</span>
+         Войдите в приложение используя <span>e-mail и пароль:</span>
       </p>
       <div class="inputs-container">
         <input type="text" name="name" placeholder="Имя" />
@@ -210,8 +182,19 @@
       </div>
     </form>
   </div>
+      <div class="preloader js-preloader is-hidden" id="spinner">
+        <span class="load"></span>
+      </div>
+    </div>
+  </footer>
+<div class="containet-modal-window" style="display: none;">   <!-- SECTION MODAL WINDOW-->
+  <!-- Preloader -->
+
+  <!-- Preloader -->
+
+
   <!-- MODAL REGISTRATION WINDOW -->
-</body>
+
 
 
   <!-- ShowTeam Modal -->
@@ -235,6 +218,9 @@
   <div>Data URL:</div>
   <div id="result"></div>
   <!-- Верстка для демонстрации работы метода конвертаций фото в Base64(если не нужно-удалить) -->
+
+
+</div>      <!--  CLOSE SECTION MODAL WINDOW--->
 </body>
 
 </html>

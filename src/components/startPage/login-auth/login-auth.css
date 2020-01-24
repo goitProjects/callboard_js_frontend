@@ -169,12 +169,9 @@ input[type="text"] {
 }
 
 .hide {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+display: none;
 }
 .show {
-  opacity: 1;
-  visibility: visible;
+display: block;
   pointer-events: initial;
 }
