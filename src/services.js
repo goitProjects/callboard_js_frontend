@@ -2,11 +2,16 @@ import axios from "axios";
 axios.defaults.baseURL = "https://dashads.goit.co.ua";
 
 export default {
+  image: [],
+  getImage(img){
+   return this.image = img
+  },
   userData: null,
-  token: localStorage.getItem('token'),
+  token: null,
   ads: null,
   favorites: null,
   isAuth: false,
+  categories: null,
   
   async getAllAds() {
     // Получить все объявления
@@ -62,12 +67,12 @@ export default {
     }
   },
 
-  async getAdsByCategory(categoryId, limit) {
+  async getAdsByCategory(categoryId, limit, page) {
     // Получить объявления выбранной категории
     // services.getAdsByCategory(2).then(console.log)
 
     try {
-      const data = await axios.get(`/api/v1/ads//all?category=${categoryId}&limit=${limit}`);
+      const data = await axios.get(`/api/v1/ads/all?category=${categoryId}&limit=${limit}&page=${page}`);
       return data;
     } catch (e) {
       console.log(e);

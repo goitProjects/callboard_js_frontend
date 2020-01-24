@@ -23,27 +23,16 @@ const refs = {
   loggedUser: document.querySelector('.logged-user')
 };
 
-<<<<<<< HEAD
 services.ref.buttonLogin.addEventListener('click', showLoginModal);
 refs.authModalLogin.addEventListener('click', login);
 services.ref.buttonReg.addEventListener('click', showRegisterModal);
 refs.authModalRegister.addEventListener('click', register);
 refs.authModalLogin.addEventListener('click', registerFromModal);
 services.ref.logout.addEventListener('click', logoutFromAcc);
-=======
-services.refs.buttonLogin.addEventListener('click', showLoginModal);
-refs.authModalLogin.addEventListener('click', login);
-
-services.refs.buttonReg.addEventListener('click', showRegisterModal);
-refs.authModalRegister.addEventListener('click', register);
-refs.authModalLogin.addEventListener('click', registerFromModal);
-
-services.refs.logout.addEventListener('click', logoutFromAcc);
->>>>>>> userAccountFix
 refs.overlayLogin.addEventListener('click', closeModal);
 refs.overlayRegister.addEventListener('click', closeModal);
 
-// document.addEventListener('DOMContentLoaded', stayLoggedIn);
+document.addEventListener('DOMContentLoaded', stayLoggedIn);
 
 function showLoginModal() {
   refs.overlayLogin.classList.remove('hide');
@@ -65,6 +54,11 @@ async function login(e) {
       services.favorites = dataLogin.data.favorites;
       services.isAuth = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      services.categories = dataLogin.data.categories;
+      //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
+>>>>>>> create_ad
       // console.log(services);
 =======
       console.log(services);
@@ -109,6 +103,11 @@ async function register(e) {
       services.favorites = dataRegister.data.favorites;
       services.isAuth = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      services.categories = dataRegister.data.categories;
+      //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
+>>>>>>> create_ad
       // console.log(services);
 =======
       console.log(services);
@@ -134,7 +133,7 @@ function registerFromModal(e) {
 // logout fn works, even though if throws errors
 function logoutFromAcc() {
   services.postLogoutUser();
-  localStorage.setItem('token', null);
+  localStorage.setItem('loginInfo', null);
   refs.authModalRegister.reset();
   refs.authModalLogin.reset();
   services.isAuth = false;
@@ -158,13 +157,9 @@ function closeModal(e) {
     refs.overlayRegister.classList.remove('show');
     refs.overlayLogin.classList.add('hide');
     refs.overlayLogin.classList.remove('show');
-<<<<<<< HEAD
     PNotify.closeAll();
-=======
->>>>>>> userAccountFix
-  }
 }
-
+}
 function changeUIforLoggedUser() {
   // change UI for logged user
   refs.registerBlock.style.display = 'none';
@@ -177,23 +172,26 @@ function changeUIforLoggedUser() {
   refs.overlayRegister.classList.add('hide');
   refs.overlayRegister.classList.remove('show');
 
-<<<<<<< HEAD
+
  setTimeout( PNotify.success({
     title: 'Success!',
     text: 'You are logged in.'
   }),1000);
-=======
-  PNotify.success({
-    title: 'Success!',
-    text: 'You are logged in.'
-  });
->>>>>>> userAccountFix
+
 }
 
-// function stayLoggedIn(e) {
-//   if(services.token !== null) {
+function stayLoggedIn() {
+  const servicesFromLS = JSON.parse(localStorage.getItem('loginInfo'))
+  if(servicesFromLS !== null) {
+    refs.registerBlock.style.display = 'none';
+    refs.logoutBlock.style.display = 'block';
+    refs.loggedUser.textContent = servicesFromLS.userData.name;
 
-//     services.isAuth = true;
-//     changeUIforLoggedUser();
-//   }
-// }
+    services.userData = servicesFromLS.userData;
+    services.token = servicesFromLS.token;
+    services.ads = servicesFromLS.ads;
+    services.favorites = servicesFromLS.favorites;
+    services.isAuth = true;
+    //dataRegister = servicesFromLS.categories;
+  }
+}

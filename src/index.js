@@ -1,4 +1,8 @@
+//import "./components/startPage";
 import "./components/startHtmlCss";
+import "./components/modalCreateAd";
+import "./components/default-page/default-page";
+// import "./components/default-page/default-page";
 import "./components/default-page/default-page";
 import "./components/preloader/js";
 import "./components/showteam/js";

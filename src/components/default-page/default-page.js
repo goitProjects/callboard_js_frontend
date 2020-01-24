@@ -1,23 +1,18 @@
-import services from "../../services.js";
-import itemHBS from "./item.hbs";
-import preloader from "./../preloader/js/preloader";
-
-
-
-
-
+import services from '../../services.js';
+import itemHBS from './item.hbs';
+import preloader from './../preloader/js/preloader';
 
 function popularCategory(categoryArr, domElement) {
   const categoryLayout = itemHBS(categoryArr);
-  domElement.insertAdjacentHTML("beforeend", categoryLayout);
+  domElement.insertAdjacentHTML('beforeend', categoryLayout);
 }
 function compCategory(categoryArr, domElement) {
   const categoryLayout = itemHBS(categoryArr);
-  domElement.insertAdjacentHTML("beforeend", categoryLayout);
+  domElement.insertAdjacentHTML('beforeend', categoryLayout);
 }
 function worksCategory(categoryArr, domElement) {
   const categoryLayout = itemHBS(categoryArr);
-  domElement.insertAdjacentHTML("beforeend", categoryLayout);
+  domElement.insertAdjacentHTML('beforeend', categoryLayout);
 }
 <<<<<<< HEAD
 =======
@@ -39,22 +34,21 @@ function FreeCategory(categoryArr, domElement) {
 >>>>>>> userAccountFix
 function tradeCategory(categoryArr, domElement) {
   const categoryLayout = itemHBS(categoryArr);
-  domElement.insertAdjacentHTML("beforeend", categoryLayout);
+  domElement.insertAdjacentHTML('beforeend', categoryLayout);
 }
 <<<<<<< HEAD
 
-const defaultInfo={
-popularInfo: null,
-computerInfo:null,
-workInfo:null,
-tradeInfo:null,
-defaultBtnClear: document.querySelector('.btn-refresh'),
-defaultLogoLoader: document.querySelectorAll(".logo")
+const defaultInfo = {
+  popularInfo: null,
+  computerInfo: null,
+  workInfo: null,
+  tradeInfo: null,
+  defaultBtnClear: document.querySelector('.btn-refresh'),
+  defaultLogoLoader: document.querySelectorAll('.logo')
 };
 
-
-const itemPopular = services.getAdsLimit(4,1).then(res => {
-  defaultInfo.popularInfo=res.data.ads.docs;
+const itemPopular = services.getAdsLimit(4, 1).then(res => {
+  defaultInfo.popularInfo = res.data.ads.docs;
   popularCategory(defaultInfo.popularInfo, services.ref.popularItem);
 =======
 <<<<<<< HEAD
@@ -79,45 +73,146 @@ const itemPopular = services.getAdsLimit(4,1).then(res => {
 >>>>>>> 6bc09222e93c3c69656f6eaf56b9c6b111bd9b07
 >>>>>>> userAccountFix
 });
-const itemComputer = services.getAdsByCategory(4,4).then(res => {
-  defaultInfo.computerInfo=res.data.ads.docs;
+const itemComputer = services.getAdsByCategory(4, 4, 1).then(res => {
+  defaultInfo.computerInfo = res.data.ads.docs;
   compCategory(res.data.ads.docs, services.ref.computerCategory);
 });
-const itemWorks = services.getAdsByCategory(3,4).then(res => {
-  defaultInfo.workInfo=res.data.ads.docs;
+const itemWorks = services.getAdsByCategory(3, 4, 1).then(res => {
+  defaultInfo.workInfo = res.data.ads.docs;
   worksCategory(res.data.ads.docs, services.ref.pastimeCategory);
 });
 <<<<<<< HEAD
+<<<<<<< HEAD
 const itemTrade = services.getAdsByCategory(8,4).then(res => {
   defaultInfo.tradeInfo=res.data.ads.docs;
+=======
+const itemTrade = services.getAdsByCategory(8, 4, 1).then(res => {
+  defaultInfo.tradeInfo = res.data.ads.docs;
+>>>>>>> create_ad
   tradeCategory(res.data.ads.docs, services.ref.exchangeCategory);
 });
 
-const defaultInfoBord =  document.querySelector('.category-favorite_list');
+const defaultInfoBord = document.querySelector('.category-favorite_list');
 
-
+<<<<<<< HEAD
 document.getElementById('btn_refresh').addEventListener("click",loadDefaultPage);
 document.getElementById("logo-btn").addEventListener("click", loadDefaultPage);
+=======
+document
+  .getElementById('btn_refresh')
+  .addEventListener('click', loadDefaultPage);
+document.getElementById('btn-logo').addEventListener('click', loadDefaultPage);
+>>>>>>> create_ad
 
-function loadDefaultPage(e){
-  defaultInfoBord.style.display = "block";
+function loadDefaultPage(e) {
+  defaultInfoBord.style.display = 'block';
 }
 
-
-document.querySelector(".button-popularAll").addEventListener('click',handlClickPopupal);
+document
+  .querySelector('.button-popularAll')
+  .addEventListener('click', handlClickPopupal2);
 function allCategoryViewCreate(element) {
   const categoryLayout = itemHBS(element);
-  services.ref.allCategoryView.insertAdjacentHTML("beforeend", categoryLayout);
+  services.ref.allCategoryView.insertAdjacentHTML('beforeend', categoryLayout);
 }
+//create More popular list
+async function handlClickPopupal(e) {
+  let favoritCategory = [];
+  let page = 1;
+  const limit = 8;
 
+  //Creating Load More Button
+  const loadMoreBtn = document.createElement('button');
+  loadMoreBtn.setAttribute('class', 'default-page__load-more-btn');
+  loadMoreBtn.innerHTML = 'Load More';
+  const pageList = document.getElementById('search_list');
+  pageList.after(loadMoreBtn);
 
-async function handlClickPopupal (e){
   preloader.show();
+  await services.getAdsLimit(limit, page).then(res => {
+    favoritCategory = res.data.ads.docs;
+
+    loadMoreBtn.addEventListener('click', showMoreAds);
+  
+    allCategoryViewCreate(favoritCategory);
+  });
+  services.ref.mainTable.style.display = 'none';
+  preloader.hide();
+
+  async function showMoreAds() {
+    page++;
+    preloader.show();
+    await services.getAdsLimit(limit, page).then(res => {
+      favoritCategory = res.data.ads.docs;
+      
+      if (favoritCategory.length === 0) {
+        loadMoreBtn.remove();
+      } else {
+        allCategoryViewCreate(favoritCategory);
+      }
+      
+    });
+    //console.log(favoritCategory);
+      
+    services.ref.mainTable.style.display = 'none';
+    preloader.hide();
+  }
+}
+// close popular fun
+
+//Add More for all categories
+async function handlClickPopupal2(e) {
+  let itemsFromCategory = [];
+  let page = 1;
+  const limit = 8;
+  const category = 1;
+
+  //Creating Load More Button
+  const loadMoreBtn = document.createElement('button');
+  loadMoreBtn.setAttribute('class', 'default-page__load-more-btn');
+  loadMoreBtn.innerHTML = 'Load More';
+  const pageList = document.getElementById('search_list');
+  pageList.after(loadMoreBtn);
+
+  preloader.show();
+<<<<<<< HEAD
 await services.getAdsLimit(1,1).then(res => {
  const  favoritCategory = res.data.ads.docs;
  allCategoryViewCreate(favoritCategory)})
     services.ref.mainTable.style.display= "none"
+=======
+
+  await services.getAdsByCategory(category, limit, page).then(res => {
+    itemsFromCategory = res.data.ads.docs;
+
+    loadMoreBtn.addEventListener('click', showMoreAds2);
+    allCategoryViewCreate(itemsFromCategory);
+  });
+
+  services.ref.mainTable.style.display = 'none';
+  preloader.hide();
+
+  //Show More Ads
+  async function showMoreAds2() {
+    page++;
+    preloader.show();
+    await services.getAdsByCategory(category, limit, page).then(res => {
+      itemsFromCategory = res.data.ads.docs;
+      
+      if (itemsFromCategory.length === 0) {
+        loadMoreBtn.remove();
+      } else {
+        allCategoryViewCreate(itemsFromCategory);
+      }
+      
+    });
+    
+      
+    services.ref.mainTable.style.display = 'none';
+>>>>>>> create_ad
     preloader.hide();
+  }
+
 }
 
 =======
@@ -151,6 +246,8 @@ const itemTrade = services.getAdsByCategory(8).then(res => {
 
 
 >>>>>>> userAccountFix
+
+
 
 // function transportCategory(categoryArr, domElement) {
 //   const categoryLayout = itemHBS(categoryArr);
@@ -190,8 +287,11 @@ const itemTrade = services.getAdsByCategory(8).then(res => {
 //   pastimeCategory(res.data.ads.docs, services.ref.pastimeCategory);
 // });
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 6bc09222e93c3c69656f6eaf56b9c6b111bd9b07
 >>>>>>> userAccountFix
 
 
+=======
+>>>>>>> create_ad
