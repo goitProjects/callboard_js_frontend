@@ -17,7 +17,7 @@
 
 .auth-modal-overlay-login, .auth-modal-overlay-register {
   background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   position: fixed;

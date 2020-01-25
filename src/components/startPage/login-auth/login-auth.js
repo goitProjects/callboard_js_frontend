@@ -23,9 +23,8 @@ services.ref.body.addEventListener('click', closeModal);
 services.ref.body.addEventListener('click', closeModal);
 document.addEventListener('DOMContentLoaded', stayLoggedIn);
 function showLoginModal(e) {
-  if(e.target.classList == "registration-enter"||e.target.classList == "registration-button"){
-  refs.overlayLogin.classList.remove('hide');
-  refs.overlayLogin.classList.add('show');}
+  if(e.target.classList == "registration-enter"){
+  refs.overlayLogin.style.display="flex"}
 }
 
 async function login(e) {
@@ -62,15 +61,16 @@ async function login(e) {
 }}
 
 function showRegisterModal(e){
-  if(
-    e.target.classList === "registration-button"||
-   e.target.classList === "btn-registration"
-   ){
-  refs.overlayRegister.classList.remove('hide');
-  refs.overlayRegister.classList.add('show');
-  refs.overlayLogin.classList.add('hide');
-  refs.overlayLogin.classList.remove('show');
-}}
+  if(e.target.classList=="registration-button" ){
+    console.log("reg-btn")
+    refs.overlayLogin.style.display="none"
+  refs.overlayRegister.style.display="flex";}
+    if(e.target.classList =='btn-registration'){
+      refs.overlayLogin.style.display="none"
+      refs.overlayRegister.style.display="flex"
+      console.log("open log regbtnclick");
+    }
+}
 
 async function register(e) {
   e.preventDefault();
@@ -105,7 +105,8 @@ async function register(e) {
 
 function registerFromModal(e) {
   e.preventDefault();
-  if (e.target.classList ='btn-registration') {
+  if (e.target.classList ==='btn-registration') {
+    refs.overlayLogin.style.display="none";
     showRegisterModal();
   }
 }
@@ -123,15 +124,9 @@ function logoutFromAcc() {
 
 function closeModal(e) {
   if (
-    e.target.classList=='close-icon'
-  ) {
-    refs.authModalRegister.reset();
-    refs.authModalLogin.reset();
-
-    refs.overlayRegister.classList.add('hide');
-    refs.overlayRegister.classList.remove('show');
-    refs.overlayLogin.classList.add('hide');
-    refs.overlayLogin.classList.remove('show');
+    e.target.classList=='close-icon') {
+    refs.overlayLogin.style.display="none";
+    refs.overlayRegister.style.display="none";
     PNotify.closeAll();
 }
 }

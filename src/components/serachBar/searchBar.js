@@ -67,15 +67,15 @@ export default {
   async getSearchResult(e) {
     // Делаем проверку, есть ли активный чекбокс. Если нет - ищем по всем
     // объявлениям. Если есть - определяем id категории и ищем по ней
-
-    const searchBarInput = document.getElementById("search_input");
-
+    console.log(e.target.classList);
     e.preventDefault();
+    if(e.target.classList == "search-bar__form"){
     // searchBar.refsearch.btn.disabled = true;
-    searchBar.refsearch.list.innerHTML = "";
+    showPreloader.show();
     const radioButtons = document.getElementsByName("checkCategory");
     let flag = false;
     let idCatogory = null;
+    let count = [];
 
     for (let i = 0; i < radioButtons.length; i++) {
       if (radioButtons[i].checked) {
@@ -85,29 +85,31 @@ export default {
         flag = true;
       }
     }
-
     // Реализация поиска по ключевому слову среди всех объявлений
-    const searchByAllAds = async () => {
+   const searchByAllAds = async () => {
       const allAds = await services.getAdsLimit(10, 1);
       const adsArray = allAds.data.ads.docs;
       searchBar.refsearch.mainTable.style.display = "none";
       adsArray.filter(el => {
         const titleName = el.title.toLowerCase();
-        const inputValue = searchBarInput.value;
+        const inputValue = searchBar.refsearch.input.value.toLowerCase();
         if (titleName.includes(inputValue)) {
-          // const liAdd = itemHBS(el);
-          // searchBar.refsearch.list.insertAdjacentHTML("beforeend", liAdd)
-          const newLi = document.createElement("li");
-          newLi.className = "search_list-item";
-          newLi.dataset.id = el._id;
-          searchBar.refsearch.list.appendChild(newLi);
-          newLi.insertAdjacentHTML("beforeend", el.title);
+          searchBar.refsearch.list.insertAdjacentHTML(
+            "beforeend",
+            createSearchElement(el)
+          );
+          // const newLi = document.createElement("li");
+          // newLi.className = "search_list-item";
+          // newLi.dataset.id = el._id;
+          // searchBar.refsearch.list.appendChild(newLi);
+          // newLi.insertAdjacentHTML("beforeend", el.title);
+          // count.push(el);
         }
       });
-      // searchBar.refsearch.btn.disabled = false;
-  
+      showPreloader.hide();
+      searchBar.refsearch.btn.disabled = false;
     };
-
+    }
     function createSearchElement(el) {
       return SearchHBS(el);
     }

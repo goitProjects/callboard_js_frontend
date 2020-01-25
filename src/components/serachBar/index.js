@@ -7,8 +7,7 @@ export default searchBar;
 
 searchBar.renderSearchBarForm();
 searchBar.getBoardCategories();
-
-const searchBarForm = document.getElementById('search_bar');
+const searchBarForm = document.querySelector("body");
 searchBarForm.addEventListener("submit", searchBar.getSearchResult);
 
 searchBar.refsearch.clear.addEventListener(

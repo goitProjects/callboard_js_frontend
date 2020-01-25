@@ -4,8 +4,22 @@ import './modal-styles.css';
 import PNotify from 'pnotify/dist/es/PNotify';
 import '../../../node_modules/pnotify/dist/PNotifyBrightTheme.css';
 
+const btnAddPromoItem =document.querySelector(".navigation-promo");
+const token = (localStorage.getItem('token')||[]);
+if(token.length<1){
+  document.querySelector("header").addEventListener("click",needLogin);
+  function needLogin(e){
+    if(e.target.classList=="navigation-promo"){
+PNotify.error({
+      title: 'Oops!',
+      text: 'You need to go to your personal account to add an advertisement',})
+    setTimeout(PNotify.closeAll(), 100);
+ }
+  }
+}else{
 //Getting category names for selector in modal window (o4eNb ToPmo3it)
 let categories = [];
+btnAddPromoItem.style.disabled ="false";
 const getCategories = async () => {
   const response = await services.getAllAds();
   const categories = response.categories;
@@ -17,8 +31,7 @@ getCategories()
 
 //Post Ad to server
 async function postAd(name, photos = [], desc, cat = 1, price, phone) {
-  const token = localStorage.getItem('token')
-
+  
   const getinfodate = {
     images: photos,
     title: name,
@@ -31,7 +44,7 @@ await services.postAddNewAd(getinfodate,{headers: {Authorization: token}}).then(
 };
 
 //Main function
-export const createNewAd = () => {
+ const createNewAd = () => {
   const body = document.querySelector('body');
 
   //Add modal window to DOM from handlebars template
@@ -50,7 +63,8 @@ export const createNewAd = () => {
     };
     const input = {
       name: document.querySelector('.modal-create-ad__input-name'),
-      photo: document.querySelector('.modal-create-ad__input-upload-photos'),
+      // photo: document.querySelector('.modal-create-ad__input-upload-photos'),
+      photo: document.querySelector('input[type=file]'),
       description: document.querySelector(
         '.modal-create-ad__input-description'
       ),
@@ -78,32 +92,37 @@ export const createNewAd = () => {
       }
     };
 
-    // function toDataURL(src, callback) {
-    //   let xhttp = new XMLHttpRequest();
-    
-    //   xhttp.onload = function() {
-    //     let fileReader = new FileReader();
-    //     fileReader.onloadend = function() {
-    //       callback(fileReader.result);
-    //     };
-    //     fileReader.readAsDataURL(xhttp.response);
-    //   };
-    //   xhttp.responseType = 'blob';
-    //   xhttp.open('GET', src, true);
-    //   xhttp.send();
-    // }
-    
-    // function addImage() {
-    //   return toDataURL(input.photo, function(dataURL) {
-    //     //console.log([dataURL]);
-    //     services.getImage([dataURL])
-    //     return dataURL;
-    //   });
-    // }
+
+function toDataURL(src, callback) {
+  let xhttp = new XMLHttpRequest();
+
+  xhttp.onload = function() {
+    let fileReader = new FileReader();
+    fileReader.onloadend = function() {
+      callback(fileReader.result);
+    };
+    fileReader.readAsDataURL(xhttp.response);
+  };
+  xhttp.responseType = "blob";
+  xhttp.open("GET", src, true);
+  xhttp.send();
+}
+
+function addImage() {
+  toDataURL(input.photo.files, function(dataURL) {
+    return dataURL;
+   
+  });
+}
+
+
+
 
     //Verificating the form and sending to server
-    const verifyAndPostAd = () => {
-      //addImage();
+    const verifyAndPostAd = (e) => {
+
+        //  addImage();
+
 
       switch (true) {
         case input.name.value == '':
@@ -149,5 +168,5 @@ export const createNewAd = () => {
 };
 
 services.ref.btnAddPromo.addEventListener('click', createNewAd);
-
-
+}
+  
