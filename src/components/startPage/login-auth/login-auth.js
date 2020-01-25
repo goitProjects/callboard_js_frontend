@@ -62,13 +62,12 @@ async function login(e) {
 
 function showRegisterModal(e){
   if(e.target.classList=="registration-button" ){
-    console.log("reg-btn")
+
     refs.overlayLogin.style.display="none"
   refs.overlayRegister.style.display="flex";}
     if(e.target.classList =='btn-registration'){
       refs.overlayLogin.style.display="none"
       refs.overlayRegister.style.display="flex"
-      console.log("open log regbtnclick");
     }
 }
 
@@ -151,7 +150,7 @@ function changeUIforLoggedUser() {
 }
 
 function stayLoggedIn() {
-  const servicesFromLS = JSON.parse(localStorage.getItem('loginInfo'))
+  const servicesFromLS = JSON.parse(localStorage.getItem('token'))
   if(servicesFromLS !== null) {
     refs.registerBlock.style.display = 'none';
     refs.logoutBlock.style.display = 'block';

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Document</title>
 </head>
+
 <body>
   <header class="header">
     <nav class="navigation">
@@ -173,6 +175,7 @@
               <!-- END Кнопки "Фильтр" и "Очистить" -->
 
             </div>
+            <ul class="scroll-pagination"></ul>
           </div>
 
 
@@ -186,32 +189,69 @@
         <ul id="search_list" class="search_list-item">    </ul>
        
         <div class="category-favorite_list">
-        <div class="products-collection-popular">
-          <h2 class="popular-title">Популярное</h2>
-          <button class="button-popularAll">Смотреть все</button>
-          <p class="popular-description">
-            Товары домашнего обихода, видео, аудио, наушники, камеры,
-            аксессуары и многое другое.
-          </p>
-          <ul class="products-collection-popular-list products-list-item"></ul>
-        </div>
-        <div class="products-collection-computer">
-          <h2 class="popular-title">Компьютеры и аксессуары</h2>
-          <button class="button-category-view" id="4">Смотреть все</button>
-          <p class="popular-description"></p>
-          <ul class="products-collection-computer-list products-list-item"></ul>
-        </div>
-        <div class="products-collection-pastime">
-          <h2 class="popular-title">Отдых и спорт</h2>
-          <button class="button-category-view" id="6">Смотреть все</button>
-          <p class="popular-description"></p>
-          <ul class="products-collection-pastime-list products-list-item"></ul>
-        </div>
-        <div class="products-collection-exchange">
-          <h2 class="popular-title">Обмен</h2>
-          <button class="button-category-view" id="8">Смотреть все</button>
-          <p class="popular-description"></p>
-          <ul class="products-collection-exchange-list products-list-item"></ul>
+          <div class="products-collection-popular">
+            <div class="scrolling">
+              <div class="scrolling_window">
+                <h2 class="popular-title">Популярное</h2>
+                <button class="button-popularAll">Смотреть все</button>
+                <p class="popular-description">
+                  Товары домашнего обихода, видео, аудио, наушники, камеры,
+                  аксессуары и многое другое.
+                </p>
+                <div class="scrolling_main-box">
+                  <ul class="products-collection-popular-list products-list-it scroll-box"></ul>
+                </div>
+                <ul class="scrolling_pagination"></ul>
+              </div>
+              <button class="prv-scroll"></button>
+              <button class="nxt-scroll"></button>
+            </div>
+          </div>
+          <div class="products-collection-computer">
+            <div class="scrolling">
+              <div class="scrolling_window">
+                <h2 class="popular-title">Компьютеры и аксессуары</h2>
+                <button class="button-category-view" id="4">Смотреть все</button>
+                <p class="popular-description"></p>
+                <div class="scrolling_main-box">
+                  <ul class="products-collection-computer-list products-list-it scroll-box"></ul>
+                </div>
+                <ul class="scrolling_pagination"></ul>
+              </div>
+              <button class="prv-scroll"></button>
+              <button class="nxt-scroll"></button>
+            </div>
+          </div>
+          <div class="products-collection-pastime">
+            <div class="scrolling">
+              <div class="scrolling_window">
+                <h2 class="popular-title">Отдых и спорт</h2>
+                <button class="button-category-view" id="6">Смотреть все</button>
+                <p class="popular-description"></p>
+                <div class="scrolling_main-box">
+                  <ul class="products-collection-pastime-list products-list-it scroll-box"></ul>
+                </div>
+                <ul class="scrolling_pagination"></ul>
+              </div>
+              <button class="prv-scroll"></button>
+              <button class="nxt-scroll"></button>
+            </div>
+          </div>
+          <div class="products-collection-exchange">
+            <div class="scrolling">
+              <div class="scrolling_window">
+                <h2 class="popular-title">Обмен</h2>
+                <button class="button-category-view" id="8">Смотреть все</button>
+                <p class="popular-description"></p>
+                <div class="scrolling_main-box">
+                  <ul class="products-collection-exchange-list products-list-it scroll-box"></ul>
+                </div>
+                <ul class="scrolling_pagination"></ul>
+              </div>
+              <button class="prv-scroll"></button>
+              <button class="nxt-scroll"></button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -229,8 +269,9 @@
           <p class="footer-reserved">All Rights Reserved</p>
         </li>
         <li class="block-footer__item">
-          <p class="footer-developed">Developed with
-            <svg class="heart-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <p class="footer-developed">
+            Developed with
+            <svg class="heart-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox = "0 0 32 32">
               <title>favorite-icon-hover</title>
               <path
                 d="M16 30.72l-2.24-2.24c-8.32-7.36-13.76-12.32-13.76-18.4 0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.080 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.080-5.44 11.040-13.76 18.4l-2.24 2.24z">
@@ -274,22 +315,43 @@
       </div>
     </form>
   </div>
+      <!-- MODAL LOGIN WINDOW -->
+
+      <!-- MODAL REGISTRATION WINDOW -->
+      <div class="auth-modal-overlay-register hide">
+        <form class="auth-modal-register">
+          <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
+          <p class="auth-text">
+            Войдите в приложение используя <span>e-mail и пароль:</span>
+          </p>
+          <div class="inputs-container">
+            <input type="text" name="name" placeholder="Имя" />
+            <input type="email" name="email" placeholder="E-mail" />
+            <input type="password" name="password" placeholder="Пароль" />
+          </div>
+          <div class="auth-btns">
+            <button type="submit" class="btn-confirm">Регистрация</button>
+          </div>
+        </form>
+      </div>
+    </form>
+  </div>
   
 
-  <!-- ShowTeam Modal -->
-  <div class="team__box" id="show-team__box">
-    <div class="team__box-overlay">
-      <div class="team__content-box">
-        <img class="team__image" src="../components/showteam/images/IMG_7123.JPG" alt="Our team" />
-        <button class="team__box-close-btn"></button>
-        <p class="team__description">
-          Это были наши лучшие дни вместе... <br />
-          Мы были счастливы и учились как могли... <br />
-        </p>
+    <!-- ShowTeam Modal -->
+    <div class="team__box" id="show-team__box">
+      <div class="team__box-overlay">
+        <div class="team__content-box">
+          <img class="team__image" src="../components/showteam/images/IMG_7123.JPG" alt="Our team" />
+          <button class="team__box-close-btn"></button>
+          <p class="team__description">
+            Это были наши лучшие дни вместе... <br />
+            Мы были счастливы и учились как могли... <br />
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- ShowTeam Modal -->
+    <!-- ShowTeam Modal -->
 
       <div class="preloader js-preloader is-hidden" id="spinner">
         <span class="load"></span>
@@ -313,7 +375,7 @@
   <!-- Верстка для демонстрации работы метода конвертаций фото в Base64(если не нужно-удалить) -->
 
 
-</div>      <!--  CLOSE SECTION MODAL WINDOW--->
+  </div> <!--  CLOSE SECTION MODAL WINDOW--->
 </body>
 
 </html>

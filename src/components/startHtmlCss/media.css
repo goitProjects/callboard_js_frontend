@@ -1,6 +1,7 @@
 @media (min-width: 768px) {
   .container {
     width: 688px;
+    padding-bottom: 20px;
   }
 
   .navigation__registration {
@@ -164,6 +165,7 @@
     background-color: transparent;
     cursor: pointer;
   }
+
   .navigation-filter__filter:hover,
   .navigation-filter__clear:hover {
     color: #ff6b08;
@@ -272,9 +274,9 @@
     display: none;
   }
 
-  .navigation-form {
+  /* .navigation-form {
     /* margin-left: 60px; */
-  }
+  
 
   .navigation-filter__filter,
   .icon-svg-filter {

@@ -1,7 +1,9 @@
 import services from "../../services";
 import itemHBS from "./item.hbs";
 import preloader from "./../preloader/js/preloader";
+import OpenAndSearcItemHbs from "./openItemcategory.hbs";
 function popularCategory(categoryArr, domElement) {
+  
   const categoryLayout = itemHBS(categoryArr);
   domElement.insertAdjacentHTML("beforeend", categoryLayout);
 }
@@ -25,25 +27,25 @@ const defaultInfo = {
   defaultBtnClear: document.querySelector(".btn-refresh")
 };
 
-// const itemPopular = services.getAdsLimit(4, 1).then(res => {
-//   defaultInfo.popularInfo = res.data.ads.docs;
-//   popularCategory(defaultInfo.popularInfo, services.ref.popularItem);
-// });
-// const itemComputer = services.getAdsByCategory(4, 4, 1).then(res => {
-//   defaultInfo.computerInfo = res.data.ads.docs;
-//   compCategory(res.data.ads.docs, services.ref.computerCategory);
-// });
-// const itemWorks = services.getAdsByCategory(3, 4, 1).then(res => {
-//   defaultInfo.workInfo = res.data.ads.docs;
-//   worksCategory(res.data.ads.docs, services.ref.pastimeCategory);
-// });
-// const itemTrade = services.getAdsByCategory(8, 4, 1).then(res => {
-//   defaultInfo.tradeInfo = res.data.ads.docs;
-//   tradeCategory(res.data.ads.docs, services.ref.exchangeCategory);
-// });
 const defaultInfoBord = document.querySelector(".category-favorite_list");
 
 services.ref.body.addEventListener("click", loadDefaultPage);
+const itemPopular = services.getAdsLimit(10,1).then(res => {
+  defaultInfo.popularInfo=res.data.ads.docs;
+  popularCategory(defaultInfo.popularInfo, services.ref.popularItem);
+});
+const itemComputer = services.getAdsByCategory(4,10).then(res => {
+  defaultInfo.computerInfo=res.data.ads.docs;
+  compCategory(res.data.ads.docs, services.ref.computerCategory);
+});
+const itemWorks = services.getAdsByCategory(3,10).then(res => {
+  defaultInfo.workInfo=res.data.ads.docs;
+  worksCategory(res.data.ads.docs, services.ref.pastimeCategory);
+});
+const itemTrade = services.getAdsByCategory(8,10).then(res => {
+  defaultInfo.tradeInfo=res.data.ads.docs;
+  tradeCategory(res.data.ads.docs, services.ref.exchangeCategory);
+});
 
 function loadDefaultPage(e) {
   if (e.target.id == "logo-btn"||e.target.id == "btn_refresh-desktop") {
@@ -60,7 +62,7 @@ document
 services.ref.mainTable.addEventListener("click", handlClickPopupal2);
 
 function allCategoryViewCreate(element) {
-  const categoryLayout = itemHBS(element);
+  const categoryLayout = OpenAndSearcItemHbs(element);
   services.ref.allCategoryView.insertAdjacentHTML("beforeend", categoryLayout);
 }
 //create More popular list
