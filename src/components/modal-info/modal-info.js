@@ -33,7 +33,7 @@ return console.log(1)}else{console.log(2);
   overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
   overlay.style.zIndex = "999";
 
-  await services.getUserAds(.dataset.id).then(res => {
+  await services.getUserAds(e.target.dataset.id).then(res => {
     show(res.data.goal);
     
 
