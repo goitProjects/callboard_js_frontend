@@ -150,7 +150,7 @@ function changeUIforLoggedUser() {
 }
 
 function stayLoggedIn() {
-  const servicesFromLS = JSON.parse(localStorage.getItem('token'))
+  const servicesFromLS = localStorage.getItem('token');
   if(servicesFromLS !== null) {
     refs.registerBlock.style.display = 'none';
     refs.logoutBlock.style.display = 'block';
