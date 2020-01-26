@@ -61,6 +61,7 @@ function loadDefaultPage(e) {
     document.querySelector(".products-button").style.display = "none";
     const deActivateRadioBtn = document.querySelectorAll(".category__list-item-radio");
     deActivateRadioBtn.forEach(el => (el.checked = false));
+    document.querySelector(".search-bar__input").value="";
   }
 }
 document.querySelector(".button-popularAll").addEventListener("click", handlClickPopupal);
