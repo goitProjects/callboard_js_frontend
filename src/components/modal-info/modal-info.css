@@ -254,7 +254,7 @@ button#modal-info__favorite:focus {
     width: 24px;
     height: 24px;
     background-color: #fff;
-    background-image: url("../../icons/close/close-24px.svg");
+    background-image: url("../../public/SVG-sprite/close-24px.svg");
     background-repeat: no-repeat;
   }
 
