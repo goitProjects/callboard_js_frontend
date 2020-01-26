@@ -91,7 +91,7 @@ async function handlClickPopupal(e) {
       preloader.show();
       await services.getAdsLimit(limit, page).then(res => {
         favoritCategory = res.data.ads.docs;
-        if (favoritCategory.length === 0) {
+        if (favoritCategory.length> 1) {
           document.querySelector(".products-button").style.display = "none";
         } else {
           allCategoryViewCreate(favoritCategory);
