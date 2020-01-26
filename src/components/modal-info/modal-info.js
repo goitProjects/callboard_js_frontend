@@ -9,7 +9,7 @@ const mainTable = document.querySelector(".modal-info__modal");
 const overlay = document.querySelector(".modal-info__overlay");
 const ul = document.querySelector(".products");
 const section = document.querySelector("section.products");
-let fav = document.querySelector(".fav");
+// let fav = document.querySelector(".fav");
 let fav2 = document.querySelector(".fav2");
 const list = document.querySelector("ul#search_list");
 let favoriteBtn = document.querySelector(".favorites-top");
@@ -29,6 +29,7 @@ async function handleClick(e) {
   const liItem = document.querySelector(".Card_cardItem");
 
   let svgHeart = document.querySelector(".heart");
+
   let img=document.querySelector('.Card_img');
   // console.log("target:", e.target, "current:", e.currentTarget);
   if (
@@ -57,13 +58,14 @@ async function handleClick(e) {
         let button = document.querySelector(".modal-info__buy-button");
 
         let link = document.querySelector(".modal-info__link");
+        let fav = document.querySelector(".fav");
 
         // BUTTON FOR SHOWING NUMBER
         button.addEventListener("click", e => {
           // e.preventDefault();
           e.target.style.color = "#ff6b08";
           e.target.style.fontSize = "18px";
-          link.href = "tel:${res.data.goal.phone}";
+          link.href = `tel:${res.data.goal.phone}`;
           e.target.innerText = res.data.goal.phone;
           button.style.backgroundColor = "#fff";
           button.style.border = "2px solid #ff6b08";
@@ -90,7 +92,7 @@ async function handleClick(e) {
           //         fav.style.width = "16px";
           //         fav.style.visibility = "visible";
           // console.log('FUUUUUUUUUUUUUUUU!!!!!!!!!!!!!')
-          services
+           services
             .getFavorites({
               headers: {
                 Authorization:
@@ -139,7 +141,7 @@ async function handleClick(e) {
                 // PNOTIFY
                 PNotify_1.notice("Product already added to your favorites!");
               } else {
-                const addToFavorite = e => {
+                 const addToFavorite = e => {
                   icon.removeEventListener("click", addToFavorite);
                   // favoriteBtn.removeEventListener("click", addToFavorite);
 
