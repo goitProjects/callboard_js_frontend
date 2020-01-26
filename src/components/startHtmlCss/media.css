@@ -152,11 +152,6 @@
   .navigation-filter__list{
     display: none;
   }
-  /* section=======products */
-  /* .products-collection-popular-list{
-    display: flex;
-    justify-content: space-between;
-  } */
 
  /* FOOTER============================= */
  .block-footer{
@@ -183,8 +178,9 @@
  }
 }
 /* @MEDIA =======================================================*/
-@media (min-width: 1024px){
+@media (min-width: 1224px){
   .container{
+ 
     width: 1200px;
   }
   .tablet-blockLogo{

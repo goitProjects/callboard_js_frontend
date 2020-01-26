@@ -11,18 +11,14 @@ body {
   width: 100vw;
   height: 100vh;
 }
-body {
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: scroll !important;
-}
 
 .show-modal .modal-info__modal {
   transform: scale(1);
   position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(40%, 31.5%);
+  top: 20%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
 }
 
 .modal-info__overlay {
@@ -35,6 +31,11 @@ body {
   transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
 }
 .modal-info__modal {
+  position: absolute;
+  /* top: 50%;
+  left: 50%;
+  transform: translateY(50%);
+  transform: translateX(-50%); */
   width: 320px;
   height: 500px;
   background-color: #fff;
@@ -75,6 +76,19 @@ button.modal-info__left-mobile-arrow {
   visibility: hidden;
 }
 
+.fav2{
+  fill: red;
+  background-repeat: no-repeat;
+  border: none;
+  display: inline-block;
+  position: absolute;
+  bottom: 70%;
+  left: 55%;
+  background-color: none;
+  cursor: pointer;
+  /* visibility: hidden; */
+}
+
 button.modal-info__left-mobile-arrow:focus {
   outline: none;
 }
@@ -103,6 +117,11 @@ img.modal-info__image-item {
   height: 230px;
   transform: translate(11%, 16%);
 }
+
+/* .stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+} */
 
 button.modal-info__buy-button {
   background-color: rgb(255, 107, 8);

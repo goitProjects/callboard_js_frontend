@@ -158,9 +158,9 @@ export default {
     }
   },
   
-  async addToFavorites(id){
+  async addToFavorites(id, {}, opt){
     try {
-      const data = await axios.put(`/api/user/favorite/${id}`, { headers: { Authorization: this.token } });
+      const data = await axios.put(`/api/v1/user/favorite/${id}`,  {}, opt);
       return data;
     } catch (e) {
       console.log(e);
@@ -168,9 +168,9 @@ export default {
     }
   },
 
-  async getFavorites(){
+  async getFavorites(opt){
     try {
-      const data = await axios.get(`/api/user/favorites`, { headers: { Authorization: this.token } });
+      const data = await axios.get(`/api/v1/user/favorites`, opt);
       return data;
     } catch (e) {
       console.log(e);
@@ -178,9 +178,9 @@ export default {
     }
   },
 
-  async deleteFavorites(){
+  async deleteFavorites(id, opt){
     try {
-      const data = await axios.delete(`/api/user/favorite/${id}`, { headers: { Authorization: this.token } });
+      const data = await axios.delete(`/api/v1/user/favorite/${id}`, opt);
       return data;
     } catch (e) {
       console.log(e);
@@ -204,6 +204,9 @@ export default {
     computerCategory: document.querySelector(".products-collection-computer-list"),
     pastimeCategory: document.querySelector(".products-collection-pastime-list"),
     exchangeCategory: document.querySelector(".products-collection-exchange-list"),
+    mainTable: document.querySelector(".category-favorite_list"),
+    allCategoryView : document.querySelector(".search_list-item"),
+    buttonPopularAll: document.querySelector(".button-popularAll"),
     // transportCategory: document.querySelector(".products-collection-transport-list"),
     // businessCategory: document.querySelector(".products-collection-business-list"),
     // workCategory: document.querySelector(".products-collection-work-list"),

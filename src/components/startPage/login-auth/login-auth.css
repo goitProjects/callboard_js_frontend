@@ -10,10 +10,10 @@
   src: url('../../../font/Montserrat/Montserrat-Bold.ttf');
 }
 
-* {
+/* * {
   margin: 0;
   padding: 0;
-}
+} */
 
 .auth-modal-overlay-login, .auth-modal-overlay-register {
   background-color: rgba(0, 0, 0, 0.3);
@@ -169,12 +169,9 @@ input[type="text"] {
 }
 
 .hide {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+display: none;
 }
 .show {
-  opacity: 1;
-  visibility: visible;
+display: block;
   pointer-events: initial;
 }
