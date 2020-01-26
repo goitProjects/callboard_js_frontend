@@ -4,6 +4,8 @@ import './modal-styles.css';
 import PNotify from 'pnotify/dist/es/PNotify';
 import '../../../node_modules/pnotify/dist/PNotifyBrightTheme.css';
 
+
+
 const btnAddPromoItem =document.querySelector(".navigation-promo");
 const token = (localStorage.getItem('token')||[]);
 if(token.length<1){
@@ -13,45 +15,65 @@ if(token.length<1){
 PNotify.error({
       title: 'Oops!',
       text: 'You need to go to your personal account to add an advertisement',})
-    setTimeout(PNotify.closeAll(), 100);
  }
+ setTimeout(closePhotyfy,1000);
+ function closePhotyfy(){
+ PNotify.closeAll()}
   }
 }else{
 //Getting category names for selector in modal window (o4eNb ToPmo3it)
-let categories = [];
-btnAddPromoItem.style.disabled ="false";
-const getCategories = async () => {
+async function getCategories() {
   const response = await services.getAllAds();
   const categories = response.categories;
+  console.log(categories);
   return categories;
-};
-getCategories()
-  .then(cat => categories = cat.map(name => name));
+}
+
+//Add modal window to DOM from handlebars template
+let markup = '';
+function createModal(cat) {
+  markup = modalTemplate(cat);
+}
+
+//Creating Base64 from input image
+let photos = [];
+function addImage(e) {
+  toDataURL(e.target).then(result => {
+    photos.push(result);
+  });
+}
+
+function toDataURL(inputElem) {
+  return new Promise(resolve => {
+    const reader = new FileReader();
+
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsDataURL(inputElem.files[0]);
+  });
+}
+
+//Posting Ad to server
+async function postAd(getInputData) {
+  const token = localStorage.getItem('token');
 
 
-//Post Ad to server
-async function postAd(name, photos = [], desc, cat = 1, price, phone) {
-  
-  const getinfodate = {
-    images: photos,
-    title: name,
-    category: cat,
-    price: price,
-    phone: phone,
-    description: desc
-  };
-await services.postAddNewAd(getinfodate,{headers: {Authorization: token}}).then(console.log);
-};
+  console.log(getInputData);
+  await services
+    .postAddNewAd(getInputData, {
+      headers: {
+        Authorization: token
+      }
+    })
+    .then(console.log);
+}
 
 //Main function
- const createNewAd = () => {
+ const createNewAd = async () => {
   const body = document.querySelector('body');
 
-  //Add modal window to DOM from handlebars template
-  const createModal = async () => {
-    const markup = await modalTemplate(categories);
-    body.insertAdjacentHTML('afterbegin', markup);
-  }
+  //console.log(categories);
+
+  body.insertAdjacentHTML('afterbegin', markup);
 
   //Add listeners in modal after creating window
   const addModalListeners = () => {
@@ -63,8 +85,7 @@ await services.postAddNewAd(getinfodate,{headers: {Authorization: token}}).then(
     };
     const input = {
       name: document.querySelector('.modal-create-ad__input-name'),
-      // photo: document.querySelector('.modal-create-ad__input-upload-photos'),
-      photo: document.querySelector('input[type=file]'),
+      photo: document.querySelector('.modal-create-ad__input-upload-photos'),
       description: document.querySelector(
         '.modal-create-ad__input-description'
       ),
@@ -73,7 +94,7 @@ await services.postAddNewAd(getinfodate,{headers: {Authorization: token}}).then(
       phone: document.querySelector('.modal-create-ad__input-phone')
     };
 
-    //Closing modal 
+    //Closing modal
     const closeModal = () => {
       modal.window.remove();
       modal.submit.removeEventListener('click', postAd);
@@ -92,38 +113,7 @@ await services.postAddNewAd(getinfodate,{headers: {Authorization: token}}).then(
       }
     };
 
-
-function toDataURL(src, callback) {
-  let xhttp = new XMLHttpRequest();
-
-  xhttp.onload = function() {
-    let fileReader = new FileReader();
-    fileReader.onloadend = function() {
-      callback(fileReader.result);
-    };
-    fileReader.readAsDataURL(xhttp.response);
-  };
-  xhttp.responseType = "blob";
-  xhttp.open("GET", src, true);
-  xhttp.send();
-}
-
-function addImage() {
-  toDataURL(input.photo.files, function(dataURL) {
-    return dataURL;
-   
-  });
-}
-
-
-
-
-    //Verificating the form and sending to server
-    const verifyAndPostAd = (e) => {
-
-        //  addImage();
-
-
+    const verifyAndPostAd = () => {
       switch (true) {
         case input.name.value == '':
           PNotify.error({
@@ -154,19 +144,26 @@ function addImage() {
           break;
 
         default:
-          postAd(input.name.value, [], input.description.value, 1, input.price.value, input.phone.value);
+          const dataFromInputs = {
+            images: photos,
+            title: input.name.value,
+            category: parseInt(input.category.value, 10), //convert to num
+            price: parseInt(input.price.value, 10),
+            phone: input.phone.value,
+            description: input.description.value
+          };
+          postAd(dataFromInputs);
           break;
       }
     };
-
+    if(document.querySelector(".modal-create-ad")){
+    input.photo.addEventListener('change', addImage);
     modal.submit.addEventListener('click', verifyAndPostAd);
     modal.close.addEventListener('click', closeModal);
     modal.overlay.addEventListener('click', closeOnOverlay);
-    document.addEventListener('keydown', closeOnEcs);
-  }
-  createModal().then(addModalListeners);
+    document.addEventListener('keydown', closeOnEcs);}
+  };
+  addModalListeners();
 };
-
-services.ref.btnAddPromo.addEventListener('click', createNewAd);
-}
-  
+getCategories().then(createModal);
+services.ref.btnAddPromo.addEventListener('click', createNewAd)}
