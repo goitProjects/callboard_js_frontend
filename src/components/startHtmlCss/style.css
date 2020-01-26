@@ -333,7 +333,7 @@ html {
   top: 0;
   left: 0;
   height: 100px;
-  width: 100vw;
+  width: 100%;
   margin: 0 auto;
   font-family: "Montserrat-SemiBold";
   font-size: 18px;

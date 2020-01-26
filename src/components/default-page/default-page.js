@@ -135,7 +135,7 @@ async function handlClickPopupal2(e) {
       preloader.show();
       await services.getAdsByCategory(category, limit, page).then(res => {
         itemsFromCategory = res.data.ads.docs;
-        if (itemsFromCategory.length === 0) {
+        if (itemsFromCategory.length <1) {
           document.querySelector(".products-button").style.display = "none";
         } else {
           allCategoryViewCreate(itemsFromCategory);
