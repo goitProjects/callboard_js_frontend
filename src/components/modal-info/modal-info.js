@@ -30,12 +30,12 @@ async function handleClick(e) {
 
   let svgHeart = document.querySelector(".heart");
   let img=document.querySelector('.Card_img');
-  console.log("target:", e.target, "current:", e.currentTarget);
+  // console.log("target:", e.target, "current:", e.currentTarget);
   if (
     !e.target.closest(".Card_cardItem") ||
-    e.currentTarget.className === "Card_cardItem" ||
-    e.currentTarget.className === "favorites-top" ||
-    e.target.closest(".heart")
+    e.currentTarget.className == "Card_cardItem" ||
+    e.currentTarget.className == "favorites-top" ||
+    e.target.closest(".heart") || e.currentTarget.className == ".Card_img"
   ) {
     return;
   } else {
@@ -80,7 +80,7 @@ async function handleClick(e) {
         // BUTTON FOR ADDING TO FAVORITES
         let icon = document.querySelector("#modal-info__favorite");
 
-        console.log(favoriteBtn);
+        // console.log(favoriteBtn);
         // icon.addEventListener("click", e => {
         //services.getFavorites({headers: {Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"}}).then(console.log))
 
@@ -129,7 +129,7 @@ async function handleClick(e) {
                       icon.style.visibility = "visible";
                       fav.style.visibility = "hidden";
 
-                      console.log("yeeep", res.data.user.favorites);
+                      // console.log("yeeep", res.data.user.favorites);
                     });
                   PNotify_1.info("Deleted from favorites!");
                 };
@@ -162,11 +162,11 @@ async function handleClick(e) {
                       fav.style.height = "16px";
                       fav.style.width = "16px";
 
-                      console.log("yeeep", res.data.user.favorites);
+                      // console.log("yeeep", res.data.user.favorites);
                     });
                   PNotify_1.success("Added to favorites!");
 
-                  console.log("add");
+                  // console.log("add");
                 };
                 icon.addEventListener("click", addToFavorite);
                 // favoriteBtn.addEventListener("click", addToFavorite);
@@ -176,7 +176,7 @@ async function handleClick(e) {
           icon.classList.remove("js-fav");
           fav.style.visibility = "hidden";
 
-          console.log("err");
+          // console.log("err");
         }
 
         // services

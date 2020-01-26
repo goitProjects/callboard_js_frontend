@@ -1,6 +1,6 @@
 
 import "./components/startHtmlCss";
-import "./components/modalCreateAd";
+import "./components/modalCreateAd/modalCreateAd";
 import "./components/default-page/default-page";
 import "./components/preloader/js";
 import "./components/modal-info/modal-info";

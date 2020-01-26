@@ -205,7 +205,7 @@ p.modal-info__about {
 }
 
 button#modal-info__favorite {
-  background-image: url("../../public/SVG-sprite/favorite-icon.svg");
+  background-image: url("../../icons/close/close-24px.svg");
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;

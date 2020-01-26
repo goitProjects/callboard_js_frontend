@@ -62,7 +62,6 @@ async function login(e) {
 
 function showRegisterModal(e){
   if(e.target.classList=="registration-button" ){
-
     refs.overlayLogin.style.display="none"
   refs.overlayRegister.style.display="flex";}
     if(e.target.classList =='btn-registration'){
@@ -150,12 +149,11 @@ function changeUIforLoggedUser() {
 }
 
 function stayLoggedIn() {
-  const servicesFromLS = JSON.parse(localStorage.getItem('token'))
+  const servicesFromLS = localStorage.getItem('token');
   if(servicesFromLS !== null) {
     refs.registerBlock.style.display = 'none';
     refs.logoutBlock.style.display = 'block';
-    refs.loggedUser.textContent = servicesFromLS.userData.name;
-
+    refs.loggedUser.textContent = "NAME";
     services.userData = servicesFromLS.userData;
     services.token = servicesFromLS.token;
     services.ads = servicesFromLS.ads;
