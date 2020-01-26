@@ -3,6 +3,7 @@ import "./components/startHtmlCss";
 import "./components/modalCreateAd";
 import "./components/default-page/default-page";
 import "./components/preloader/js";
+import "./components/modal-info/modal-info";
 import "./components/showteam/js";
 import "./components/startPage/cardItem/card";
 import "./components/startPage/carousel/scroll.js"

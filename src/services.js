@@ -162,6 +162,36 @@ export default {
       throw e;
     }
   },
+  
+  async addToFavorites(id, {}, opt){
+    try {
+      const data = await axios.put(`/api/v1/user/favorite/${id}`,  {}, opt);
+      return data;
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  },
+
+  async getFavorites(opt){
+    try {
+      const data = await axios.get(`/api/v1/user/favorites`, opt);
+      return data;
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  },
+
+  async deleteFavorites(id, opt){
+    try {
+      const data = await axios.delete(`/api/v1/user/favorite/${id}`, opt);
+      return data;
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  },
 
   ref:{
     body: document.querySelector("body"),
@@ -199,5 +229,3 @@ export default {
 
   // }
 };
-
-
