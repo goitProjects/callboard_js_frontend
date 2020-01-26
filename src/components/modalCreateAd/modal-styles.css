@@ -90,7 +90,7 @@ button.modal-create-ad__btn-close {
 	width: 30px;
 	height: 30px;
 	background-color: #fff;
-	background-image: url("../../public/SVG- sprite/close-24px.svg");
+	background-image: url("../../public/SVG-sprite/close-24px.svg");
 	background-repeat: no-repeat;
 	cursor: pointer;
 }
