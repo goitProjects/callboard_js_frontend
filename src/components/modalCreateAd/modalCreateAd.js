@@ -5,40 +5,58 @@ import PNotify from 'pnotify/dist/es/PNotify';
 import '../../../node_modules/pnotify/dist/PNotifyBrightTheme.css';
 
 //Getting category names for selector in modal window (o4eNb ToPmo3it)
-let categories = [];
-const getCategories = async () => {
+async function getCategories() {
   const response = await services.getAllAds();
   const categories = response.categories;
+  console.log(categories);
   return categories;
-};
-getCategories()
-  .then(cat => categories = cat.map(name => name));
+}
+
+//Add modal window to DOM from handlebars template
+let markup = '';
+function createModal(cat) {
+  markup = modalTemplate(cat);
+}
+
+//Creating Base64 from input image
+let photos = [];
+function addImage(e) {
+  toDataURL(e.target).then(result => {
+    photos.push(result);
+  });
+}
+
+function toDataURL(inputElem) {
+  return new Promise(resolve => {
+    const reader = new FileReader();
+
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsDataURL(inputElem.files[0]);
+  });
+}
+
+//Posting Ad to server
+async function postAd(getInputData) {
+  const token = localStorage.getItem('token');
 
 
-//Post Ad to server
-async function postAd(name, photos = [], desc, cat = 1, price, phone) {
-  const token = localStorage.getItem('token')
-
-  const getinfodate = {
-    images: photos,
-    title: name,
-    category: cat,
-    price: price,
-    phone: phone,
-    description: desc
-  };
-await services.postAddNewAd(getinfodate,{headers: {Authorization: token}}).then(console.log);
-};
+  console.log(getInputData);
+  await services
+    .postAddNewAd(getInputData, {
+      headers: {
+        Authorization: token
+      }
+    })
+    .then(console.log);
+}
 
 //Main function
-export const createNewAd = () => {
+export const createNewAd = async () => {
   const body = document.querySelector('body');
 
-  //Add modal window to DOM from handlebars template
-  const createModal = async () => {
-    const markup = await modalTemplate(categories);
-    body.insertAdjacentHTML('afterbegin', markup);
-  }
+  //console.log(categories);
+
+  body.insertAdjacentHTML('afterbegin', markup);
 
   //Add listeners in modal after creating window
   const addModalListeners = () => {
@@ -59,7 +77,7 @@ export const createNewAd = () => {
       phone: document.querySelector('.modal-create-ad__input-phone')
     };
 
-    //Closing modal 
+    //Closing modal
     const closeModal = () => {
       modal.window.remove();
       modal.submit.removeEventListener('click', postAd);
@@ -78,33 +96,7 @@ export const createNewAd = () => {
       }
     };
 
-    // function toDataURL(src, callback) {
-    //   let xhttp = new XMLHttpRequest();
-    
-    //   xhttp.onload = function() {
-    //     let fileReader = new FileReader();
-    //     fileReader.onloadend = function() {
-    //       callback(fileReader.result);
-    //     };
-    //     fileReader.readAsDataURL(xhttp.response);
-    //   };
-    //   xhttp.responseType = 'blob';
-    //   xhttp.open('GET', src, true);
-    //   xhttp.send();
-    // }
-    
-    // function addImage() {
-    //   return toDataURL(input.photo, function(dataURL) {
-    //     //console.log([dataURL]);
-    //     services.getImage([dataURL])
-    //     return dataURL;
-    //   });
-    // }
-
-    //Verificating the form and sending to server
     const verifyAndPostAd = () => {
-      //addImage();
-
       switch (true) {
         case input.name.value == '':
           PNotify.error({
@@ -135,19 +127,25 @@ export const createNewAd = () => {
           break;
 
         default:
-          postAd(input.name.value, [], input.description.value, 1, input.price.value, input.phone.value);
+          const dataFromInputs = {
+            images: photos,
+            title: input.name.value,
+            category: parseInt(input.category.value, 10), //convert to num
+            price: parseInt(input.price.value, 10),
+            phone: input.phone.value,
+            description: input.description.value
+          };
+          postAd(dataFromInputs);
           break;
       }
     };
-
+    input.photo.addEventListener('change', addImage);
     modal.submit.addEventListener('click', verifyAndPostAd);
     modal.close.addEventListener('click', closeModal);
     modal.overlay.addEventListener('click', closeOnOverlay);
     document.addEventListener('keydown', closeOnEcs);
-  }
-  createModal().then(addModalListeners);
+  };
+  addModalListeners();
 };
-
+getCategories().then(createModal);
 services.ref.btnAddPromo.addEventListener('click', createNewAd);
-
-
