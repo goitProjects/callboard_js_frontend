@@ -35,6 +35,7 @@
 }
 .Card_cardItem:hover {
   background-color: #dcdde0;
+  cursor: pointer;
 }
 .favorites-top {
   position: absolute;

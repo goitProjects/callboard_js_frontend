@@ -5,13 +5,8 @@ import PNotify_1 from "pnotify/dist/es/PNotify";
 
 const mainTable = document.querySelector(".modal-info__modal");
 const overlay = document.querySelector(".modal-info__overlay");
-const ul = document.querySelector(".products");
-const section = document.querySelector("section.products");
-let fav2 = document.querySelector(".fav2");
-const list = document.querySelector("ul#search_list");
-let favoriteBtn = document.querySelector(".favorites-top");
-
-ul.addEventListener("click", handleClick, true);
+const section = document.querySelector(".products");
+section.addEventListener("click", handleClick, true);
 overlay.addEventListener("click", handleOverlay);
 document.addEventListener("keydown", handleKeyPress);
 
@@ -33,12 +28,12 @@ async function handleClick(e) {
     !e.target.closest(".Card_cardItem") ||
     e.currentTarget.className == "Card_cardItem" ||
     e.currentTarget.className == "favorites-top" ||
-    e.target.closest(".heart") ||
+    e.target.closest(".fav2") ||  e.target.closest('.fav3')||
     e.currentTarget.className == ".Card_img"
   ) {
     return;
   } else {
-    ul.removeEventListener("click", handleClick, true);
+    section.removeEventListener("click", handleClick, true);
     mainTable.innerHTML = "";
     document.querySelector("body").style.overflow = "hidden";
     overlay.classList.add("show-modal");
@@ -88,6 +83,21 @@ async function handleClick(e) {
       });
   }
 }
+
+// favBtn.addEventListener('click', onFav);
+// document.body.addEventListener("click", onFav);
+// async function onFav(e) {
+//   const fav2 = document.querySelector(".fav2");
+//   const fav3 = document.querySelector(".fav3");
+//   let iconBtn = document.querySelector(".favorites-top");
+
+//   if (tmp) {
+//     getFav();
+//   } else {
+//     iconBtn.classList.add('fav3')
+//     fav2.style.visibility = "hidden";
+//   }
+// }
 
 // FUNCTION FOR ASYNC FETCHING AND EXECUTING
 async function getFavoritesList(e) {
@@ -172,14 +182,118 @@ async function addToFavorite(e) {
   PNotify_1.success("Added to favorites!");
 }
 
+
+
+
+
+
+
+// async function getFav(e) {
+//   let fav2 = document.querySelector(".fav2");
+//   let fav3 = document.querySelector(".fav3");
+//   const liItem = document.querySelector(".Card_cardItem");
+//   let iconBtn = document.querySelector(".favorites-top");
+
+//   await services
+//     .getFavorites({
+//       headers: {
+//         Authorization:
+//           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
+//       }
+//     })
+//     .then(res => {
+//       if (
+//         res.data.user.favorites.map(el => el._id).includes(liItem.dataset.id)
+//       ) {
+//         iconBtn.style.visibility='hidden';
+//         iconBtn.style.stroke='red'
+//         fav2.style.height = "20px";
+//         fav2.style.fill='red';
+//         fav2.style.width = "18px";
+//         fav2.style.visibility = "visible";
+       
+
+//         PNotify_1.notice("Product already added to your favorites!");
+//         fav2.addEventListener("click", deleteFav);
+//       } else {
+//         iconBtn.addEventListener("click", addFav);
+//       }
+//     });
+// }
+
+
+
+// async function deleteFav(e) {
+//   let fav2 = document.querySelector(".fav2");
+//   let fav3 = document.querySelector(".fav3");
+
+//   const liItem = document.querySelector(".Card_cardItem");
+//   let iconBtn = document.querySelector(".favorites-top");
+//   fav2.removeEventListener("click", deleteFav);
+
+//   await services
+//     .deleteFavorites(liItem.dataset.id, {
+//       headers: {
+//         Authorization:
+//           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
+//       }
+//     })
+//     .then(res => {
+//       iconBtn.classList.add('fav3');
+//       fav2.style.visibility = "hidden";
+//       fav2.style.fill='white';
+//       fav3.visibility='visible';
+      
+//     });
+//   PNotify_1.info("Deleted from favorites!");
+// }
+
+
+// async function addFav(e) {
+//   let fav2 = document.querySelector(".fav2");
+//   let fav3 = document.querySelector(".fav3");
+//   const liItem = document.querySelector(".Card_cardItem");
+//   let iconBtn = document.querySelector("#modal-info__favorite");
+
+//   iconBtn.removeEventListener("click", addFav);
+
+//   fav2.style.visibility = "hidden";
+//   iconBtn.classList.add('fav3');
+//   fav3.style.visibility='visible'
+//   fav3.style.fill='blue'
+
+//   await services
+//     .addToFavorites(
+//       liItem.dataset.id,
+//       {},
+//       {
+//         headers: {
+//           Authorization:
+//             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
+//         }
+//       }
+//     )
+//     .then(res => {
+//       fav3.style.visibility = "hidden";
+//       fav2.style.visibility = "visible";
+//       fav2.style.height = "16px";
+//       fav2.style.width = "16px";
+//     });
+//   PNotify_1.success("Added to favorites!");
+// }
+
+
+
+
+
+
 // FUNCTION FOR CLOSING MODAL
 function closeModal(e) {
   overlay.classList.remove("show-modal");
   PNotify_1.closeAll();
   overlay.style = "none";
-  section.style = "none";
   document.querySelector("body").style.overflow = "auto";
-  ul.addEventListener("click", handleClick, true);
+  section.addEventListener("click", handleClick, true);
 }
 
 // FUNCTION FOR CLOSING MODAL BY PRESSING 'ESCAPE'
