@@ -280,6 +280,7 @@ button#modal-info__favorite:focus {
   .modal-info__modal-img {
     left: 4%;
     bottom: 16%;
+    margin: 0;
   }
 
   button.modal-info__buy-button {
@@ -314,7 +315,7 @@ button#modal-info__favorite:focus {
   p.modal-info__about {
     position: absolute;
     left: 47%;
-    bottom: 14%;
+    bottom: 16%;
     padding-right: 20px;
   }
 }
@@ -335,22 +336,25 @@ button#modal-info__favorite:focus {
   }
 
   .modal-info__modal-img {
-    bottom: 4%;
+    bottom: 19%;
     left: 8%;
-    margin-bottom: 142px;
+    /* margin-bottom: 142px; */
   }
 
   span.modal-info__name {
-    position: absolute;
-    top: 12%;
-    right: 42%;
+    margin: 0;
+    position: relative;
+    bottom: -20%;
+    left: 48%;
   }
 
   span.modal-info__price {
-    margin-left: 0;
-    position: absolute;
-    top: 16%;
-    right: 37%;
+    /* margin-left: 0; */
+    position: relative;
+    margin: 0;
+    margin-top: 30px;
+    padding: 0;
+    left: 51.5%;
   }
 
   button.modal-info__left-mobile-arrow {
@@ -383,6 +387,7 @@ button#modal-info__favorite:focus {
     padding-right: 60px;
     left: 46%;
     top: 82%;
+    margin-top: 10px;
   }
 
   .fav {

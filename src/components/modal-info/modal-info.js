@@ -28,12 +28,13 @@ async function handleClick(e) {
 
   let svgHeart = document.querySelector(".heart");
 
-  let img=document.querySelector('.Card_img');
+  let img = document.querySelector(".Card_img");
   if (
     !e.target.closest(".Card_cardItem") ||
     e.currentTarget.className == "Card_cardItem" ||
     e.currentTarget.className == "favorites-top" ||
-    e.target.closest(".heart") || e.currentTarget.className == ".Card_img"
+    e.target.closest(".heart") ||
+    e.currentTarget.className == ".Card_img"
   ) {
     return;
   } else {
@@ -61,7 +62,7 @@ async function handleClick(e) {
         button.addEventListener("click", e => {
           e.target.style.color = "#ff6b08";
           e.target.style.fontSize = "18px";
-          link.href = `tel:${res.data.goal.phone}`;
+          link.href = "tel:${res.data.goal.phone}";
           e.target.innerText = res.data.goal.phone;
           button.style.backgroundColor = "#fff";
           button.style.border = "2px solid #ff6b08";
@@ -79,50 +80,43 @@ async function handleClick(e) {
         let icon = document.querySelector("#modal-info__favorite");
 
         if (tmp) {
-          getFavoritesList() 
+          getFavoritesList();
         } else {
           icon.classList.remove("js-fav");
           fav.style.visibility = "hidden";
         }
-
-        
       });
   }
 }
 
 // FUNCTION FOR ASYNC FETCHING AND EXECUTING
-async function getFavoritesList(e){
+async function getFavoritesList(e) {
   let fav = document.querySelector(".fav");
   const liItem = document.querySelector(".Card_cardItem");
   let icon = document.querySelector("#modal-info__favorite");
 
   await services
-  .getFavorites({
-    headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
-    }
-  })
-  .then(res => {
-    if (
-      res.data.user.favorites
-        .map(el => el._id)
-        .includes(liItem.dataset.id)
-    ) {
-      icon.classList.add("js-fav");
-      fav.style.height = "16px";
-      fav.style.width = "16px";
-      fav.style.visibility = "visible";
+    .getFavorites({
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
+      }
+    })
+    .then(res => {
+      if (
+        res.data.user.favorites.map(el => el._id).includes(liItem.dataset.id)
+      ) {
+        icon.classList.add("js-fav");
+        fav.style.height = "16px";
+        fav.style.width = "16px";
+        fav.style.visibility = "visible";
 
-     
-      PNotify_1.notice("Product already added to your favorites!");
-      fav.addEventListener("click", deletelFavoritIcon);
-}
-else{
-  icon.addEventListener("click", addToFavorite);
-}
-
-  })
+        PNotify_1.notice("Product already added to your favorites!");
+        fav.addEventListener("click", deletelFavoritIcon);
+      } else {
+        icon.addEventListener("click", addToFavorite);
+      }
+    });
 }
 
 // FUNCTION FOR ASYNC FETCHING AND REMOVING FAVORITES
@@ -132,7 +126,7 @@ async function deletelFavoritIcon(e) {
   let icon = document.querySelector("#modal-info__favorite");
   fav.removeEventListener("click", deletelFavoritIcon);
 
- await services
+  await services
     .deleteFavorites(liItem.dataset.id, {
       headers: {
         Authorization:
@@ -143,10 +137,9 @@ async function deletelFavoritIcon(e) {
       icon.classList.remove("js-fav");
       icon.style.visibility = "visible";
       fav.style.visibility = "hidden";
-
     });
   PNotify_1.info("Deleted from favorites!");
-};
+}
 
 // FUNCTION FOR ASYNC FETCHING AND ADDING TO FAVORITES
 async function addToFavorite(e) {
@@ -158,7 +151,7 @@ async function addToFavorite(e) {
 
   fav.style.visibility = "hidden";
   icon.style.visibility = "visible";
- 
+
   await services
     .addToFavorites(
       liItem.dataset.id,
@@ -177,10 +170,7 @@ async function addToFavorite(e) {
       fav.style.width = "16px";
     });
   PNotify_1.success("Added to favorites!");
-};
-
-
-
+}
 
 // FUNCTION FOR CLOSING MODAL
 function closeModal(e) {
