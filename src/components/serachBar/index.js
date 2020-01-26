@@ -1,5 +1,5 @@
 // import { getBoardCategories } from "./searchBar";
-import "./styles.css";
+import "./SearchBarStyles.css";
 import searchBar from "./searchBar";
 import services from "../../services";
 
@@ -10,12 +10,6 @@ searchBar.getBoardCategories();
 const searchBarForm = document.querySelector("body");
 searchBarForm.addEventListener("submit", searchBar.getSearchResult);
 
-searchBar.refsearch.clear.addEventListener(
-  "click",
-  searchBar.clearSearchResult
-);
+searchBar.refsearch.clear.addEventListener("click",searchBar.clearSearchResult);
 
-searchBar.refsearch.clearDesktop.addEventListener(
-  "click",
-  searchBar.clearSearchResult
-);
+searchBar.refsearch.clearDesktop.addEventListener("click",searchBar.clearSearchResult);
