@@ -35,7 +35,7 @@ async function handleClick(e) {
     !e.target.closest(".Card_cardItem") ||
     e.currentTarget.className === "Card_cardItem" ||
     e.currentTarget.className === "favorites-top" ||
-    e.target.closest(".heart") ||  e.target.closest(".Card_img")
+    e.target.closest(".heart")
   ) {
     return;
   } else {
