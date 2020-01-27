@@ -15,7 +15,8 @@
   padding: 0;
 } */
 
-.auth-modal-overlay-login, .auth-modal-overlay-register {
+.auth-modal-overlay-login,
+.auth-modal-overlay-register {
   background-color: rgba(0, 0, 0, 0.3);
   display: none;
   justify-content: center;
@@ -29,7 +30,8 @@
   transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
 }
 
-.auth-modal-login, .auth-modal-register {
+.auth-modal-login,
+.auth-modal-register {
   background: #ffffff;
   box-shadow: 12.5px 21.651px 55px 0px rgba(29, 29, 27, 0.3);
   margin: auto;
@@ -78,6 +80,7 @@
   align-items: center;
   margin: 20px auto;
 }
+
 .auth-google-btn:hover {
   cursor: pointer;
 }
@@ -86,8 +89,8 @@
   text-align: center;
 }
 
-input[name="email"], 
-input[name="password"], 
+input[name="email"],
+input[name="password"],
 input[type="text"] {
   width: 260px;
   height: 57px;
@@ -105,7 +108,8 @@ input[type="text"] {
   align-items: center;
 }
 
-.btn-login, .btn-confirm {
+.btn-login,
+.btn-confirm {
   width: 113px;
   height: 51px;
   border: 1px solid #ced2d1;
@@ -115,6 +119,7 @@ input[type="text"] {
   letter-spacing: 0.3px;
   text-transform: uppercase;
 }
+
 .btn-registration {
   border: none;
   border-bottom: 1 solid #ff6b08;
@@ -124,15 +129,17 @@ input[type="text"] {
   font-size: 9px;
   letter-spacing: 0.3px;
   margin-top: 10px;
-  padding:4px;
+  padding: 4px;
 }
 
-.btn-login:hover, .btn-confirm:hover {
+.btn-login:hover,
+.btn-confirm:hover {
   background-color: #ff6b08;
   color: #ffffff;
   cursor: pointer;
   border: none;
 }
+
 .btn-registration:hover {
   /* border: 1px solid #ff6b08 ; */
   color: #ffffff;
@@ -141,43 +148,56 @@ input[type="text"] {
 }
 
 @media (min-width: 768px) {
-  .auth-modal-login, .auth-modal-register {
+
+  .auth-modal-login,
+  .auth-modal-register {
     width: 530px;
     padding: 50px 54px;
     font-family: 'Montserrat500', sans-serif;
     font-size: 13px;
   }
+
   .auth-text span {
     display: inline-block;
   }
+
   .auth-text {
     margin-bottom: 35px;
   }
+
   .auth-google-btn {
     margin: 0 0 42px 0;
   }
-  input[name="email"], input[name="password"], input[type="text"] {
+
+  input[name="email"],
+  input[name="password"],
+  input[type="text"] {
     width: 96%;
     font-family: 'Montserrat500', sans-serif;
     font-size: 13px;
   }
+
   input[name="password"] {
     margin-bottom: 36px;
   }
-  .btn-login, .btn-confirm {
+
+  .btn-login,
+  .btn-confirm {
     width: 202px;
     height: 60px;
     font-size: 12px;
   }
+
   .btn-registration {
     font-size: 10px;
   }
 }
 
 .hide {
-display: none;
+  display: none;
 }
+
 .show {
-display: block;
+  display: block;
   pointer-events: initial;
 }
