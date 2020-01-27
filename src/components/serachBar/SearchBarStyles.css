@@ -7,6 +7,8 @@
 .search_list-item{
     display: flex;
     flex-wrap: wrap;
+    flex-direction:column;
+    align-items: center;
 }
 .search-bar__form {
     display: flex;
@@ -163,6 +165,9 @@ input[type="radio"].visually-hidden {
         width: auto;
         padding: 0;
         margin-top: 30px;
+    }
+    .search_list-item{
+        flex-direction:row;
     }
 
     .search-bar__input {
