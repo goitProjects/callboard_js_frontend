@@ -4,7 +4,17 @@ import './modal-styles.css';
 import PNotify from 'pnotify/dist/es/PNotify';
 import '../../../node_modules/pnotify/dist/PNotifyBrightTheme.css';
 
-
+// START - Делаем проверку вьюпорта, чтобы отрисовать кнопку добавления новго объявления
+const domDivForBtnNewAddDesktop = document.querySelector(".addnewad_desktop");
+const domDivForBtnNewAddMobile = document.querySelector(".addnewad_mobile");
+if (window.innerWidth < 1200) {
+  domDivForBtnNewAddDesktop.style = "display: none";
+  domDivForBtnNewAddMobile.style = "display: block";
+} else {
+  domDivForBtnNewAddDesktop.style = "display: block";
+  domDivForBtnNewAddMobile.style = "display: none";
+}
+// END - Делаем проверку вьюпорта, чтобы отрисовать кнопку добавления новго объявления
 
 //const btnAddPromoItem = document.querySelector('.navigation-promo');
 const token = localStorage.getItem('token') || [];

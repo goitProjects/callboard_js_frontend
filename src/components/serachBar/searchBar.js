@@ -31,6 +31,7 @@ export default {
 </form> `;
     if (window.innerWidth < 1200) {
       searchBar.refsearch.searchBarMobile.innerHTML = insideSearchBarHTMLcode;
+      
     } else {
       searchBar.refsearch.searchBarDesktop.innerHTML = insideSearchBarHTMLcode;
     }

@@ -15,7 +15,7 @@ body {
 .show-modal .modal-info__modal {
   transform: scale(1);
   position: absolute;
-  top: 20%;
+  top: 0;
   left: 50%;
   transform: translateY(-50%);
   transform: translateX(-50%);
@@ -31,13 +31,8 @@ body {
   transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
 }
 .modal-info__modal {
-  position: absolute;
-  /* top: 50%;
-  left: 50%;
-  transform: translateY(50%);
-  transform: translateX(-50%); */
   width: 320px;
-  height: 500px;
+  height: 100vh;
   background-color: #fff;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
@@ -46,9 +41,9 @@ body {
 }
 
 button.modal-info__left-mobile-arrow {
-  margin-top: 34px;
+  margin-top: 15px;
   margin-left: 20px;
-  margin-bottom: 23px;
+  margin-bottom: 10px;
   display: block;
   width: 18px;
   height: 18px;
@@ -69,24 +64,40 @@ button.modal-info__left-mobile-arrow {
   border: none;
   display: inline-block;
   position: absolute;
-  bottom: 26.5%;
-  left: 63%;
+  bottom: 11%;
+  left: 40%;
   background-color: none;
   cursor: pointer;
   visibility: hidden;
 }
 
-.fav2{
+.fav2 {
   fill: red;
+  width: 20px;
+  height: 18px;
+  background-repeat: no-repeat;
+  border: none;
+  display: inline-block;
+  background-color: none;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.fav3 {
+  fill: white;
+  stroke: #000;
+  width: 20px;
+  height: 18px;
   background-repeat: no-repeat;
   border: none;
   display: inline-block;
   position: absolute;
-  bottom: 70%;
-  left: 55%;
-  background-color: none;
+  top: 10%;
+  left: 81%;
+  border: none;
+  background: transparent;
   cursor: pointer;
-  /* visibility: hidden; */
+  visibility: visible;
 }
 
 button.modal-info__left-mobile-arrow:focus {
@@ -98,7 +109,8 @@ span.modal-info__name {
   color: #000;
   font-family: inherit;
   font-weight: bold;
-  padding-left: 23px;
+  padding-left: 40px;
+  top: 20%;
 }
 
 span.modal-info__price {
@@ -106,35 +118,30 @@ span.modal-info__price {
   font-family: inherit;
   font-weight: bold;
   display: block;
-  margin-top: 53px;
-  padding-left: 23px;
-  margin-bottom: 32px;
+  margin-top: 10px;
+  padding-left: 40px;
+  margin-bottom: 20px;
 }
 
 img.modal-info__image-item {
   position: absolute;
-  width: 230px;
-  height: 230px;
-  transform: translate(11%, 16%);
+  width: 180px;
+  height: 180px;
+  transform: translate(15.5%, 17%);
 }
-
-/* .stop-scrolling {
-  height: 100%;
-  overflow: hidden;
-} */
 
 button.modal-info__buy-button {
   background-color: rgb(255, 107, 8);
-  width: 280px;
-  height: 60px;
+  width: 235px;
+  height: 50px;
   border: none;
-  margin-left: 6%;
-  margin-bottom: 18px;
+  margin-left: 12.5%;
+  margin-bottom: 7px;
   transition: all 0.3s;
 }
 
 button.modal-info__buy-button:focus,
-button.modal-info__buy-button:hover{
+button.modal-info__buy-button:hover {
   cursor: pointer;
 }
 
@@ -185,8 +192,8 @@ span.modal-info__favorites {
   font-size: 12px;
   font-weight: light;
   display: inline-block;
-  margin-left: 6%;
-  margin-bottom: 40px;
+  margin-left: 12.5%;
+  margin-bottom: 10px;
 }
 
 span.modal-info__description {
@@ -194,26 +201,27 @@ span.modal-info__description {
   color: #878686;
   font-size: 12px;
   font-weight: light;
-  margin-left: 6%;
+  margin-left: 12.5%;
+  margin-bottom: 2px;
 }
 
 p.modal-info__about {
   font-weight: normal;
   font-size: 13px;
-  margin-left: 6%;
+  margin-left: 12.5%;
   padding-right: 20px;
 }
 
 button#modal-info__favorite {
-  background-image: url("../../icons/close/close-24px.svg");
+  background-image: url("../../icons/heart/heart.svg");
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
   border: none;
   display: inline-block;
   position: absolute;
-  bottom: 12.2%;
-  left: 34%;
+  bottom: 11%;
+  left: 40%;
   background-color: #fff;
 
   cursor: pointer;
@@ -226,11 +234,11 @@ button#modal-info__favorite:focus {
 .modal-info__modal-img {
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
-  width: 280px;
-  height: 305px;
+  width: 235px;
+  height: 240px;
   position: relative;
-  left: 6%;
-  margin-bottom: 142px;
+  left: 12.5%;
+  margin-bottom: 20px;
 }
 
 /* MEDIA */
@@ -239,6 +247,10 @@ button#modal-info__favorite:focus {
   .modal-info__wrapper {
     width: 650px;
     height: 430px;
+  }
+
+  .show-modal .modal-info__modal {
+    top: 4%;
   }
 
   .modal-info__modal {
@@ -254,61 +266,80 @@ button#modal-info__favorite:focus {
     width: 24px;
     height: 24px;
     background-color: #fff;
-    background-image: url("../../icons/close/close-24px.svg");
+    background-image: url("../../public/SVG-sprite/close-24px.svg");
+    background-size: contain;
     background-repeat: no-repeat;
   }
 
   span.modal-info__name {
-    margin-left: 50%;
+    margin: 0;
+    margin-left: 46%;
   }
 
   span.modal-info__price {
-    margin-left: 50%;
+    margin: 0;
+    margin-left: 46%;
+    margin-top: 35px;
   }
 
+  img.modal-info__image-item {
+    width: 230px;
+    height: 230px;
+    transform: translate(11%, 17%);
+  }
   .modal-info__modal-img {
-    left: 4%;
-    bottom: 124px;
+    left: 4.5%;
+    bottom: 19%;
+    margin: 0;
+    width: 280px;
+    height: 305px;
   }
 
   button.modal-info__buy-button {
     position: absolute;
-    left: 47%;
-    top: 32%;
+    left: 40%;
+    top: 28%;
     margin-top: 90px;
+      width: 280px;
+  height: 60px;
   }
 
   span.modal-info__favorites {
     position: absolute;
-    left: 47%;
-    bottom: 17%;
+    left: 40%;
+    bottom: 30%;
   }
 
   button#modal-info__favorite {
     left: 66%;
-    bottom: 25%;
+    bottom: 32%;
   }
 
   .fav {
-    bottom: 25%;
+    bottom: 32%;
     left: 66%;
   }
 
   span.modal-info__description {
     position: absolute;
-    left: 47%;
-    bottom: 17%;
+    left: 40%;
+    bottom: 23%;
   }
 
   p.modal-info__about {
     position: absolute;
-    left: 47%;
-    bottom: 4%;
+    left: 40%;
+    bottom: 16%;
     padding-right: 20px;
   }
 }
 
 @media (min-width: 1036px) {
+
+  .show-modal .modal-info__modal {
+    top: 12%;
+  }
+
   .modal-info__wrapper {
     width: 780px;
     height: 450px;
@@ -324,22 +355,23 @@ button#modal-info__favorite:focus {
   }
 
   .modal-info__modal-img {
-    bottom: 4%;
-    left: 8%;
-    margin-bottom: 142px;
+    bottom: 19%;
+    left: 9%;
   }
 
   span.modal-info__name {
-    position: absolute;
-    top: 12%;
-    right: 42%;
+    margin: 0;
+    position: relative;
+    bottom: -20%;
+    left: 46%;
   }
 
   span.modal-info__price {
-    margin-left: 0;
-    position: absolute;
-    top: 16%;
-    right: 37%;
+    position: relative;
+    margin: 0;
+    margin-top: 30px;
+    padding: 0;
+    left: 51.5%;
   }
 
   button.modal-info__left-mobile-arrow {
@@ -349,12 +381,12 @@ button#modal-info__favorite:focus {
   }
 
   button.modal-info__buy-button {
-    left: 46%;
+    left: 39.5%;
     top: 32%;
   }
 
   span.modal-info__favorites {
-    left: 46%;
+    left: 39.5%;
     top: 70%;
   }
 
@@ -364,18 +396,19 @@ button#modal-info__favorite:focus {
     top: 70%;
   }
   span.modal-info__description {
-    left: 46%;
+    left: 39.5%;
     top: 79%;
   }
 
   p.modal-info__about {
     padding-right: 60px;
-    left: 46%;
+    left: 39.5%;
     top: 82%;
+    margin-top: 10px;
   }
 
   .fav {
-    bottom: 26.5%;
+    bottom: 26.7%;
     left: 63%;
   }
 }

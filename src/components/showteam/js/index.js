@@ -1,11 +1,9 @@
-import "../css/styles.css";
+import "../css/showTeam.css";
 
 const showTeamBtn = document.querySelector(".info-students");
-const showTeamBox = document.getElementById("show-team__box");
+const showTeamBox = document.querySelector(".team__box");
 const teamBoxOverlay = document.querySelector(".team__box-overlay");
 const closeTeamBoxBtn = document.querySelector(".team__box-close-btn");
-
-
 
 function handleShowTeam(e) {
   e.preventDefault();

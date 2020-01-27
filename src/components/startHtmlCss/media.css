@@ -1,7 +1,7 @@
 @media (min-width: 768px) {
   .container {
     width: 688px;
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
   }
 
   .navigation__registration {
@@ -23,6 +23,7 @@
 
   .header-container {
     align-items: center;
+    margin: 0 auto;
   }
 
   .tab-leck-block {
@@ -57,16 +58,16 @@
   }
 
   .logged-user {
-    min-width: 100px;
+    /* min-width: 100px;
     padding: 0 10px;
     border: none;
     border-radius: 25px;
-    margin-right: 5px;
+    margin-right: 5px; */
 
   }
 
   .exit {
-    margin-right: 30px;
+    /* margin-right: 30px;
     font-family: "Montserrat-Regular";
     font-size: 12px;
     letter-spacing: 0.2px;
@@ -74,11 +75,11 @@
     background-color: transparent;
     height: 20px;
     border: none;
-    cursor: pointer;
+    cursor: pointer; */
   }
 
   .exit:hover {
-    color: #ff6b08;
+    /* color: #ff6b08; */
   }
 
   /* Registration===================================== */
@@ -264,6 +265,10 @@
     display: block;
   }
 
+  .navigation-promo {
+    margin: 0;
+  }
+
   .laptop-block-LogoForm {
     display: flex;
     align-items: center;
@@ -272,6 +277,12 @@
 
   .tablet-navigationForm {
     display: none;
+  }
+
+  .wrapper-registrationLogoutPromo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   /* .navigation-form {
@@ -311,4 +322,6 @@
     align-items: center;
 
   }
+
+
 }
