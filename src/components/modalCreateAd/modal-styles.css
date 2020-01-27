@@ -90,7 +90,7 @@ button.modal-create-ad__btn-close {
 	width: 30px;
 	height: 30px;
 	background-color: #fff;
-	background-image: url("../../public/SVG- sprite/close-24px.svg");
+	background-image: url("../../public/SVG-sprite/close-24px.svg");
 	background-repeat: no-repeat;
 	cursor: pointer;
 }
@@ -98,6 +98,25 @@ button.modal-create-ad__btn-close {
 	font-family: "Montserrat-Bold";
 	font-size: 18px;
 }
+.modal-create-ad__submit{
+padding: 16px 0;
+width: 80px;
+font-family: "Montserrat-Bold";
+font-size: 14px;
+letter-spacing: 0.28px;
+color: #ffffff;
+background-color: #ff6b08;
+border: none;
+border-radius: 30px;
+cursor: pointer;
+background-color: #ff6b08;}
+
+.modal-create-ad__submit:hover {
+  background-color: #fff;
+  color: #ff6b08;
+}
+
+
 .modal-create-ad__overlay {
 	display: block;
   z-index: 50;
@@ -117,7 +136,7 @@ button.modal-create-ad__btn-close {
   .modal-create-ad__window {
     width: 600px;
     max-width: 100%;
-    height: 400px;
+    height: 640px;
     max-height: 100%;
     position: fixed;
     z-index: 100;

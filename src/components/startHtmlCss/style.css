@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @font-face {
   font-family: Montserrat-Black;
   src: url("./font/Montserrat-Black.ttf");
@@ -67,85 +66,12 @@
   font-family: Montserrat-ThinItalic;
   src: url("./font/Montserrat-ThinItalic.ttf");
 }
-=======
-
- @font-face {
-  font-family: Montserrat-Black;
-  src: url("./font/Montserrat-Black.ttf"); 
- }
- @font-face {
-  font-family:Montserrat-BlackItalic;
-  src: url("./font/Montserrat-BlackItalic.ttf"); 
- }
- @font-face {
-  font-family: Montserrat-Bold;
-  src: url("./font/Montserrat-Bold.ttf"); 
- }
- @font-face {
-  font-family: Montserrat-BoldItalic;
-  src: url("./font/Montserrat-BoldItalic.ttf"); 
- }
- @font-face {
-  font-family: Montserrat-ExtraBold;
-  src: url("./font/Montserrat-ExtraBold.ttf"); 
- }
- @font-face {
-  font-family: Montserrat-ExtraBoldItalic;
-  src: url("./font/Montserrat-ExtraBoldItalic.ttf"); 
- }
- @font-face {
-  font-family: Montserrat-ExtraLight;
-  src: url("./font/Montserrat-ExtraLight.ttf"); 
- }
- @font-face {
-  font-family: Montserrat-ExtraLightItalic;
-  src: url("./font/Montserrat-ExtraLightItalic.ttf"); 
- }
- @font-face {
-  font-family: Montserrat-Italic;
-  src: url("./font/Montserrat-Italic.ttf"); 
- }
- @font-face {
-  font-family: Montserrat-Light;
-  src: url("./font/Montserrat-Light.ttf"); 
- }
- @font-face {
-  font-family: Montserrat-LightItalic;
-  src: url("./font/Montserrat-LightItalic.ttf"); 
- }
- @font-face {
-  font-family: Montserrat-Medium;
-  src: url("./font/Montserrat-Medium.ttf"); 
- }
- @font-face {
-  font-family: Montserrat-MediumItalic;
-  src: url("./font/Montserrat-MediumItalic.ttf"); 
- }
- @font-face {
-  font-family: Montserrat-Regular;
-  src: url("./font/Montserrat-Regular.ttf"); 
- }@font-face {
-  font-family: Montserrat-SemiBold;
-  src: url("./font/Montserrat-SemiBold.ttf"); 
- }@font-face {
-  font-family: Montserrat-SemiBoldItalic;
-  src: url("./font/Montserrat-SemiBoldItalic.ttf"); 
- }@font-face {
-  font-family: Montserrat-Thin;
-  src: url("./font/Montserrat-Thin.ttf"); 
- }@font-face {
-  font-family:Montserrat-ThinItalic;
-  src: url("./font/Montserrat-ThinItalic.ttf"); 
- }
-
->>>>>>> userAccountFix
 html {
   box-sizing: border-box;
 }
 *,
 *::after,
 *::before {
-<<<<<<< HEAD
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -181,6 +107,14 @@ html {
   cursor: pointer;
   text-decoration: none;
 }
+.button-category-view{
+  border: none;
+  border-bottom: 1px solid #ff6b08;
+  background-color: transparent;
+  color: #ff6b08;
+  cursor: pointer;
+  text-decoration: none;
+}
 
 .tab-leck-block {
   display: none;
@@ -209,42 +143,10 @@ html {
   /* position: absolute; */
   /* top: 10px;
   left: 13px; */
-=======
-  box-sizing: inherit;
-  padding: 0;
-  margin: 0;
-}
-.container{
-  margin:0 auto;
-  padding:0 20px;
-}
-.tab-leck-block{
-  display:none;
-}
-.header{
-  padding-top: 18px;
-  padding-bottom: 14px;
-  background-color: #1e2939;
-}
-
-.mob-header{
-  display: flex;
-  justify-content: space-between;
-}
-.block-logo{
-  display: flex;
-  position: relative;
-}
-.logo{
-  position: absolute;
-  top: 10px;
-  left: 13px;
->>>>>>> userAccountFix
   text-decoration: none;
   text-transform: uppercase;
   color: rgb(255, 255, 255);
   font-family: "Montserrat-Bold";
-<<<<<<< HEAD
   z-index: 5;
 }
 .circle {
@@ -256,57 +158,31 @@ html {
 
 /* section-----FOOTER===================== */
 .footer {
-=======
-}
-.circle{
-  border-radius: 50%;
-  width:36px;
-  height: 36px;
-  background-color: #ff6b08;
-}
-/* section-----FOOTER===================== */
-.footer{
->>>>>>> userAccountFix
+  position: relative;
   padding-top: 36px;
   padding-bottom: 38px;
   background-color: #1e2939;
 }
-<<<<<<< HEAD
 .block-footer {
-=======
-.block-footer{
->>>>>>> userAccountFix
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-<<<<<<< HEAD
   color: rgba(255, 255, 255, 0.2);
 }
 
 .block-footer__item {
-=======
-  color: rgba(255, 255, 255,0.2);
-}
-
-.block-footer__item{
->>>>>>> userAccountFix
   display: flex;
   justify-content: center;
   align-items: center;
 }
-<<<<<<< HEAD
 
 .block-footer__item>p {
-=======
-.block-footer__item>p{
->>>>>>> userAccountFix
   font-family: "Montserrat-Regular";
   font-size: 12px;
   letter-spacing: 0.36px;
   line-height: 23px;
-<<<<<<< HEAD
   color: rgba(255, 255, 255, 0.2);
 }
 .footer-developed {
@@ -423,47 +299,50 @@ html {
   border: none;
   padding: 0;
   margin: 0;
-  background-image: url(../serachBar/img/board-logo-small.png);
+  background-image: url(../serachBar/img/brd-logotype.png);
   background-repeat: no-repeat;
   background-position: center center;
   width: 100px;
   height: 50px;
+  cursor: pointer;
+  margin-top: 2px;
 }
-=======
-  color: rgba(255, 255, 255,0.2);
-}
-.footer-developed{
-  display: flex;
-  align-items: center;
-}
-.info-students{
-  color: rgba(255, 255, 255,0.2);
-}
-.block-footer__item:nth-child(1){
-  margin-bottom: 10px;
-}
-.footer-reserved{
-  color: rgba(255, 255, 255,0.2);
-  border:none;
-}
-.footer-copirate{
-  padding-right: 10px;
-  margin-right: 10px;
-  color: rgba(255, 255, 255,0.2);
-  border-right:1px solid rgba(255, 255, 255,0.2);
-}
-.copirate-svg{
+
+.user_login-bar-mobile {
   display: block;
-  margin-right: 5px;
-  width: 18px;
-  height:18px;
-  fill: rgba(255, 255, 255,0.2);
 }
-.heart-svg{
-  display: block;
-  margin: 0 5px;
-  width: 16px;
-  height:16px;
-  fill: #ff6b08;
+
+.user_login-bar-desktop {
+  display: none;
 }
->>>>>>> userAccountFix
+
+.navigation__registration {
+  text-align: center;
+}
+
+.products-button{
+  padding-top: 100px;
+
+  padding-top: 26px;
+  padding-bottom: 26px;
+  background-color:transparent;
+  display: none;
+}
+.products-button__load{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 100%;
+  margin: 0 auto;
+  font-family: "Montserrat-SemiBold";
+  font-size: 18px;
+  color: #ffffff;
+  background-color: #121d2e;
+  border: none;
+  cursor: pointer;
+}
+.category-favorite_list{
+  padding-top: 20px;
+  padding-bottom: 40px;
+}

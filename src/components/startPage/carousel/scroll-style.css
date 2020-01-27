@@ -1,0 +1,142 @@
+.scrolling {
+    position: relative;
+    padding: 30px 0 56px;
+}
+
+.scrolling_main-box {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    height: 320px;
+}
+
+.scroll-box {
+    display: flex;
+    transition: transform .5s;
+    will-change: transform;
+    z-index: 1;
+    height: 100%;
+    list-style: none;
+}
+
+.scroll-box_item {
+    overflow: hidden;
+    flex: 0 0 100%;
+}
+
+.scrolling_pagination {
+    display: flex;
+    justify-content: center;
+    bottom: 36px;
+}
+
+.dots:not(:last-child) {
+    margin-right: 8px;
+}
+
+.dots {
+    background-color: #ccc;
+    border-radius: 50%;
+    list-style: none;
+    width: 8px;
+    height: 8px;
+}
+
+.prv-scroll,
+.nxt-scroll {
+    background-color: #f4f4f4;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    top: 76px;
+    width: 135px;
+    height: 67%;
+    opacity: 0;
+    box-shadow: 2.5px 4.33px 10px 0px #1d1d1b1c;
+    border-style: none;
+}
+
+.nxt-scroll {
+    right: 0px;
+}
+
+
+.prv-scroll:hover,
+.nxt-scroll:hover {
+    background-color: rgb(233, 97, 5);
+
+
+}
+
+.prv-scroll::after,
+.nxt-scroll::after {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    fill: #030303;
+    width: 16px;
+    height: 16px;
+    content: "";
+}
+
+.nxt-scroll::after,
+.prv-scroll::after {
+    background-image: url(../carousel/svg/keyboard-left-button.svg);
+    top: 21px;
+    right: 8px;
+}
+
+.nxt-scroll::after {
+    background-image: url(../carousel/svg/keyboard-right-button.svg);
+}
+
+
+@media (min-width: 768px) {
+
+    .scrolling_window {
+        overflow: hidden;
+    }
+
+    .scrolling_main-box {
+        width: 50%;
+        overflow: visible;
+    }
+
+    .scroll-box_item {  
+        flex: 0 0 94%;
+        margin: 0 10px;
+    }
+
+    .scroll-pagination {
+        display: none;
+    }
+
+    .prv-scroll,
+    .nxt-scroll {
+        top: 204px;
+        width: 32px;
+        height: 60px;
+        opacity: 1;
+
+    }
+
+    .prv-scroll {
+        left: -14px;
+    }
+
+    .nxt-scroll {
+        right: -14px;
+    }
+}
+
+@media (min-width: 1280px) {
+
+    .scrolling_main-box {
+        width: 25%;
+    }
+
+    .scroll-box_item {
+        flex: 0 0 93.2%;
+    }
+}
