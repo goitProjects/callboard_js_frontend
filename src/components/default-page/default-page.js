@@ -2,6 +2,9 @@ import services from "../../services";
 import itemHBS from "./item.hbs";
 import preloader from "./../preloader/js/preloader";
 import OpenAndSearcItemHbs from "./openItemcategory.hbs";
+import "./return-to-top.js";
+import "./return-toTop.css";
+
 function popularCategory(categoryArr, domElement) {
   
   const categoryLayout = itemHBS(categoryArr);
@@ -27,9 +30,12 @@ const defaultInfo = {
   defaultBtnClear: document.querySelector(".btn-refresh")
 };
 
+//          CREATE DEFAULT PAGE
 const defaultInfoBord = document.querySelector(".category-favorite_list");
 
 services.ref.body.addEventListener("click", loadDefaultPage);
+
+
 const itemPopular = services.getAdsLimit(10,1).then(res => {
   defaultInfo.popularInfo=res.data.ads.docs;
   popularCategory(defaultInfo.popularInfo, services.ref.popularItem);
@@ -46,19 +52,21 @@ const itemTrade = services.getAdsByCategory(8,10).then(res => {
   defaultInfo.tradeInfo=res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.exchangeCategory);
 });
+////////////// CLOSE CREATE PAGE
 
 function loadDefaultPage(e) {
-  if (e.target.id == "logo-btn"||e.target.id == "btn_refresh-desktop") {
+  if (e.target.id == "logo-btn" ||e.target.id == "btn_refresh-desktop"|| e.target.id=="btn_refresh") {
     defaultInfoBord.style.display = "block";
     services.ref.allCategoryView.innerHTML = "";
     document.querySelector(".products-button").style.display = "none";
+    document.querySelector("#menu__toggle").checked = false;
+    const deActivateRadioBtn = document.querySelectorAll(".category__list-item-radio");
+    deActivateRadioBtn.forEach(el => (el.checked = false));
+    document.querySelector(".search-bar__input").value="";
   }
 }
 
-document
-  .querySelector(".button-popularAll")
-  .addEventListener("click", handlClickPopupal);
-
+document.querySelector(".button-popularAll").addEventListener("click", handlClickPopupal);
 services.ref.mainTable.addEventListener("click", handlClickPopupal2);
 
 function allCategoryViewCreate(element) {
@@ -72,7 +80,6 @@ async function handlClickPopupal(e) {
     let favoritCategory = [];
     let page = 1;
     const limit = 8;
-
     //Creating Load More Button
     let loadMoreBtn = document.querySelector(".products-button__load");
     document.querySelector(".products-button").style.display = "block";
@@ -84,21 +91,18 @@ async function handlClickPopupal(e) {
     });
     services.ref.mainTable.style.display = "none";
     preloader.hide();
-
     async function showMoreAds() {
       e.preventDefault();
       page++;
       preloader.show();
       await services.getAdsLimit(limit, page).then(res => {
-        favoritCategory = res.data.ads.docs;
-        if (favoritCategory.length === 0) {
+         favoritCategory = res.data.ads.docs;
+          if (favoritCategory.length<1) {
           document.querySelector(".products-button").style.display = "none";
         } else {
           allCategoryViewCreate(favoritCategory);
         }
       });
-      //console.log(favoritCategory);
-
       services.ref.mainTable.style.display = "none";
       preloader.hide();
     }
@@ -116,7 +120,7 @@ async function handlClickPopupal2(e) {
     const category = e.target.id;
 
     //Creating Load More Button
-    let loadMoreBtn = document.querySelector(".products-button__load");
+    const loadMoreBtn = document.querySelector(".products-button__load");
     document.querySelector(".products-button").style.display = "block";
 
     preloader.show();
@@ -146,40 +150,4 @@ async function handlClickPopupal2(e) {
     }
   }
 }
-// function transportCategory(categoryArr, domElement) {
-//   const categoryLayout = itemHBS(categoryArr);
-//   domElement.insertAdjacentHTML("beforeend", categoryLayout);
-// }
-// function BisCategory(categoryArr, domElement) {
-//   const categoryLayout = itemHBS(categoryArr);
-//   domElement.insertAdjacentHTML("beforeend", categoryLayout);
-// }
-// function FreeCategory(categoryArr, domElement) {
-//   const categoryLayout = itemHBS(categoryArr);
-//   domElement.insertAdjacentHTML("beforeend", categoryLayout);
-// }
 
-// function realEstateCategory(categoryArr, domElement) {
-//   const categoryLayout = itemHBS(categoryArr);
-//   domElement.insertAdjacentHTML("beforeend", categoryLayout);
-// }
-// function pastimeCategory(categoryArr, domElement) {
-//   const categoryLayout = itemHBS(categoryArr);
-//   domElement.insertAdjacentHTML("beforeend", categoryLayout);
-// }
-// const itemTransport = services.getAdsByCategory(2).then(res => {
-//   transportCategory(res.data.ads.docs, services.ref.transportCategory);
-// });
-// const itembisness = services.getAdsByCategory(5).then(res => {
-//   BisCategory(res.data.ads.docs, services.ref.businessCategory);
-// });
-// const itemFree = services.getAdsByCategory(7).then(res => {
-//   FreeCategory(res.data.ads.docs, services.ref.freeCategory);
-// });
-// const itemrealestate = services.getAdsByCategory(1).then(res => {
-//   realEstateCategory(res.data.ads.docs, services.ref.realEstateCategory);
-// });
-
-// const itemPasTime = services.getAdsByCategory(6).then(res => {
-//   pastimeCategory(res.data.ads.docs, services.ref.pastimeCategory);
-// });

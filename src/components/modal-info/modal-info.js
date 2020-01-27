@@ -3,6 +3,7 @@ import template from "./modal-info.hbs";
 import "./modal-info.css";
 import PNotify_1 from "pnotify/dist/es/PNotify";
 
+
 const mainTable = document.querySelector(".modal-info__modal");
 const overlay = document.querySelector(".modal-info__overlay");
 const section = document.querySelector(".products");

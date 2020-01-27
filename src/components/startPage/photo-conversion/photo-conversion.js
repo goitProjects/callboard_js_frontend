@@ -1,3 +1,5 @@
+import "./styles.css";
+
 const inp = document.querySelector("#inputFileToLoad");
 const btn = document.querySelector("button");
 
@@ -19,7 +21,7 @@ function toDataURL(src, callback) {
 function addImage(e) {
   console.log(e.target.value);
   toDataURL(e.target.value, function(dataURL) {
-    console.log([dataURL]);
+    // console.log([dataURL]);
   });
 }
 btn.addEventListener("click", addImage);
