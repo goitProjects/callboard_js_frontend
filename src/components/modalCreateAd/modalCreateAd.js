@@ -4,6 +4,8 @@ import './modal-styles.css';
 import PNotify from 'pnotify/dist/es/PNotify';
 import '../../../node_modules/pnotify/dist/PNotifyBrightTheme.css';
 
+
+
 //const btnAddPromoItem = document.querySelector('.navigation-promo');
 const token = localStorage.getItem('token') || [];
 if (token.length < 1) {
