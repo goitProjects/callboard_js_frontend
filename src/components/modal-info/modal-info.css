@@ -127,16 +127,12 @@ img.modal-info__image-item {
   position: absolute;
   width: 180px;
   height: 180px;
-  /* width: 230px;
-  height: 230px; */
   transform: translate(15.5%, 17%);
 }
 
 button.modal-info__buy-button {
   background-color: rgb(255, 107, 8);
   width: 235px;
-  /* width: 280px; */
-  /* height: 60px; */
   height: 50px;
   border: none;
   margin-left: 12.5%;
@@ -240,8 +236,6 @@ button#modal-info__favorite:focus {
   box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
   width: 235px;
   height: 240px;
-  /* width: 280px;
-  height: 305px; */
   position: relative;
   left: 12.5%;
   margin-bottom: 20px;
@@ -256,7 +250,7 @@ button#modal-info__favorite:focus {
   }
 
   .show-modal .modal-info__modal {
-    top: 15%;
+    top: 4%;
   }
 
   .modal-info__modal {
@@ -341,6 +335,11 @@ button#modal-info__favorite:focus {
 }
 
 @media (min-width: 1036px) {
+
+  .show-modal .modal-info__modal {
+    top: 12%;
+  }
+
   .modal-info__wrapper {
     width: 780px;
     height: 450px;

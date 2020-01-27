@@ -17,9 +17,11 @@ PNotify.error({
  }
   }
 }else{
+
 //Getting category names for selector in modal window (o4eNb ToPmo3it)
 let categories = [];
 btnAddPromoItem.style.disabled ="false";
+
 const getCategories = async () => {
   const response = await services.getAllAds();
   const categories = response.categories;
@@ -48,6 +50,7 @@ await services.postAddNewAd(getinfodate,{headers: {Authorization: token}}).then(
   const body = document.querySelector('body');
 
   //Add modal window to DOM from handlebars template
+  document.querySelector("body").style.overflow = "hidden";
   const createModal = async () => {
     const markup = await modalTemplate(categories);
     body.insertAdjacentHTML('afterbegin', markup);
@@ -75,14 +78,18 @@ await services.postAddNewAd(getinfodate,{headers: {Authorization: token}}).then(
 
     //Closing modal 
     const closeModal = () => {
+    
       modal.window.remove();
+      
       modal.submit.removeEventListener('click', postAd);
       modal.close.removeEventListener('click', closeModal);
       modal.overlay.removeEventListener('click', closeOnOverlay);
       document.removeEventListener('keydown', closeOnEcs);
+      document.querySelector("body").style.overflow = "auto";
     };
 
     const closeOnOverlay = () => {
+      
       closeModal();
     };
 
