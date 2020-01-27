@@ -25,7 +25,6 @@ PNotify.error({
 async function getCategories() {
   const response = await services.getAllAds();
   const categories = response.categories;
-  console.log(categories);
   return categories;
 }
 

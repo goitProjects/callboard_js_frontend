@@ -162,8 +162,6 @@ async function handlClickPopupal2(e) {
 
 
 
-
-
 // function transportCategory(categoryArr, domElement) {
 //   const categoryLayout = itemHBS(categoryArr);
 //   domElement.insertAdjacentHTML("beforeend", categoryLayout);

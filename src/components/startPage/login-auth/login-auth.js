@@ -30,13 +30,16 @@ function showLoginModal(e) {
 async function login(e) {
   if(e.target.classList == "registration-enter"){
   e.preventDefault();
-  if (e.target.classList.contains('btn-login')) {
+  showRegisterModal();
+}
+  else if (e.target.classList.contains('btn-login')) {
     try {
       const user = {
         email: e.currentTarget.elements.email.value,
         password: e.currentTarget.elements.password.value
       };
       const dataLogin = await services.postLoginUser(user);
+      console.log(dataLogin)
       services.userData = dataLogin.data.userData;
       services.token = dataLogin.data.token;
       services.ads = dataLogin.data.ads;
@@ -45,6 +48,7 @@ async function login(e) {
       services.categories = dataLogin.data.categories;
       //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
       localStorage.setItem('token', services.token);
+      localStorage.setItem('name', services.userData.name);
       changeUIforLoggedUser();
     } catch (e) {
       PNotify.error({
@@ -58,7 +62,7 @@ async function login(e) {
       });
     }
   }
-}}
+}
 
 function showRegisterModal(e){
   if(e.target.classList=="registration-button" ){
@@ -88,7 +92,7 @@ async function register(e) {
 
       services.categories = dataRegister.data.categories;
       //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
-
+      localStorage.setItem('loginName', dataRegister.data.userData)
       localStorage.setItem('token', dataRegister.data.token);
       changeUIforLoggedUser();
     } catch (e) {
