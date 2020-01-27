@@ -3,11 +3,10 @@ import searchBar from ".";
 import SearchHBS from "./search.hbs";
 import showPreloader from "../preloader/js/preloader";
 
-
 export default {
   refsearch: {
     form: document.getElementById("search_bar"),
-    // input: document.getElementById("search_input"),
+    input: document.getElementById("search_input"),
     inputDesktop: document.getElementById("search_input-desktop"),
     btn: document.getElementById("search_button-search"),
     list: document.getElementById("search_list"),
@@ -32,6 +31,7 @@ export default {
 </form> `;
     if (window.innerWidth < 1200) {
       searchBar.refsearch.searchBarMobile.innerHTML = insideSearchBarHTMLcode;
+      
     } else {
       searchBar.refsearch.searchBarDesktop.innerHTML = insideSearchBarHTMLcode;
     }
@@ -40,7 +40,7 @@ export default {
   async getBoardCategories() {
     // Получаем от сервера все категории и отрисовываем их на главной странице
     const allCategories = await services.getAllAds();
-    searchBar.refsearch.ListCategorySearch= allCategories
+    searchBar.refsearch.ListCategorySearch = allCategories;
     searchBar.refsearch.catList.innerHTML = "";
     searchBar.refsearch.catListDesktop.innerHTML = "";
     allCategories.categories.map(el => {
@@ -67,76 +67,71 @@ export default {
   async getSearchResult(e) {
     // Делаем проверку, есть ли активный чекбокс. Если нет - ищем по всем
     // объявлениям. Если есть - определяем id категории и ищем по ней
-    console.log(e.target.classList);
     e.preventDefault();
-    if(e.target.classList == "search-bar__form"){
-    // searchBar.refsearch.btn.disabled = true;
     showPreloader.show();
-    const radioButtons = document.getElementsByName("checkCategory");
-    let flag = false;
-    let idCatogory = null;
-    let count = [];
-
-    for (let i = 0; i < radioButtons.length; i++) {
-      if (radioButtons[i].checked) {
-        idCatogory = i;
-        flag = false;
-      } else {
-        flag = true;
+    if (e.target.classList == "search-bar__form") {
+      const radioButtons = document.querySelectorAll(
+        ".category__list-item-radio"
+      );
+      let flag = true;
+      let idCatogory = null;
+      let count = [];
+      for (let i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) {
+          idCatogory = radioButtons[i].id;
+          flag = false;
+        }
       }
-    }
-    // Реализация поиска по ключевому слову среди всех объявлений
-   const searchByAllAds = async () => {
-      const allAds = await services.getAdsLimit(10, 1);
-      const adsArray = allAds.data.ads.docs;
-      searchBar.refsearch.mainTable.style.display = "none";
-      adsArray.filter(el => {
-        const titleName = el.title.toLowerCase();
-        const inputValue = searchBar.refsearch.input.value.toLowerCase();
-        if (titleName.includes(inputValue)) {
-          searchBar.refsearch.list.insertAdjacentHTML(
-            "beforeend",
-            createSearchElement(el)
-          );
-          // const newLi = document.createElement("li");
-          // newLi.className = "search_list-item";
-          // newLi.dataset.id = el._id;
-          // searchBar.refsearch.list.appendChild(newLi);
-          // newLi.insertAdjacentHTML("beforeend", el.title);
-          // count.push(el);
-        }
-      });
-      showPreloader.hide();
-      searchBar.refsearch.btn.disabled = false;
-    };
-    }
-    function createSearchElement(el) {
-      return SearchHBS(el);
-    }
-    // реализация поиска по ключевому слову в выбранной категории
-    const searchByCategories = async () => {
-      const allAds = await services.getAdsByCategory(idCatogory, 150);
-      const allTitles = allAds.data.ads.docs;
-      allTitles.map(el => {
-        const titleName = el.title.toLowerCase();
+      // Реализация поиска по ключевому слову среди всех объявлений
+      async function searchByAllAds() {
+        const allAds = await services.getAdsLimit(120, 1);
+        const adsArray = allAds.data.ads.docs;
         searchBar.refsearch.mainTable.style.display = "none";
-        if (titleName.includes(inputValue) && checkedCategory === el.category) {
-          const newLi = document.createElement("li");
-          newLi.className = "search_list-item";
-          newLi.dataset.id = el._id;
-          refsearch.list.appendChild(newLi);
-          newLi.insertAdjacentHTML("beforeend", el.title);
-        }
-      });
-      // searchBar.refsearch.btn.disabled = false;
-    };
+        const inputValue = document
+          .querySelector("#search_input")
+          .value.toLowerCase();
+        adsArray.filter(el => {
+          const titleName = el.title.toLowerCase();
+          if (titleName.includes(inputValue)) {
+            searchBar.refsearch.list.insertAdjacentHTML(
+              "beforeend",
+              createSearchElement(el)
+            );
+          }
+        });
+        showPreloader.hide();
+      }
 
-    if (flag) {
-      // начинаем поиск по всем категориям
-      searchByAllAds();
-    } else if (flag) {
-      // начинаем поиск по выбранной категории
-      searchByCategories();
+      function createSearchElement(el) {
+        return SearchHBS(el);
+      }
+      // реализация поиска по ключевому слову в выбранной категории
+      const searchByCategories = async () => {
+        const allAds = await services.getAdsByCategory(idCatogory, 100);
+        const allTitles = allAds.data.ads.docs;
+        const inputValue = document
+          .querySelector("#search_input")
+          .value.toLowerCase();
+        allTitles.map(el => {
+          searchBar.refsearch.mainTable.style.display = "none";
+          const titleName = el.title.toLowerCase();
+          if (titleName.includes(inputValue)) {
+            searchBar.refsearch.list.insertAdjacentHTML(
+              "beforeend",
+              createSearchElement(el)
+            );
+          }
+        });
+        // searchBar.refsearch.btn.disabled = false;
+        showPreloader.hide();
+      };
+      if (flag) {
+        // начинаем поиск по всем категориям
+        searchByAllAds();
+      } else {
+        // начинаем поиск по выбранной категории
+        searchByCategories();
+      }
     }
   },
 
@@ -146,7 +141,7 @@ export default {
     const deActivateRadioBtn = document.getElementsByName("checkCategory");
     deActivateRadioBtn.forEach(el => (el.checked = false));
     const searchBarInput = document.getElementById("search_input");
-    searchBarInput.value = ""
+    searchBarInput.value = "";
     searchBar.refsearch.list.innerHTML = "";
   }
 };
