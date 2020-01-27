@@ -2,11 +2,16 @@ import axios from "axios";
 axios.defaults.baseURL = "https://dashads.goit.co.ua";
 
 export default {
+  image: [],
+  getImage(img){
+   return this.image = img
+  },
   userData: null,
-  token: localStorage.getItem('token'),
+  token: null,
   ads: null,
   favorites: null,
   isAuth: false,
+  categories: null,
   
   async getAllAds() {
     // Получить все объявления
@@ -62,12 +67,12 @@ export default {
     }
   },
 
-  async getAdsByCategory(categoryId, limit) {
+  async getAdsByCategory(categoryId, limit, page) {
     // Получить объявления выбранной категории
     // services.getAdsByCategory(2).then(console.log)
 
     try {
-      const data = await axios.get(`/api/v1/ads//all?category=${categoryId}&limit=${limit}`);
+      const data = await axios.get(`/api/v1/ads/all?category=${categoryId}&limit=${limit}&page=${page}`);
       return data;
     } catch (e) {
       console.log(e);
@@ -157,8 +162,39 @@ export default {
       throw e;
     }
   },
+  
+  async addToFavorites(id, {}, opt){
+    try {
+      const data = await axios.put(`/api/v1/user/favorite/${id}`,  {}, opt);
+      return data;
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  },
+
+  async getFavorites(opt){
+    try {
+      const data = await axios.get(`/api/v1/user/favorites`, opt);
+      return data;
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  },
+
+  async deleteFavorites(id, opt){
+    try {
+      const data = await axios.delete(`/api/v1/user/favorite/${id}`, opt);
+      return data;
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  },
 
   ref:{
+    body: document.querySelector("body"),
     btntabletFilter: document.querySelector(".tablet-filter"),
     btnSearch: document.querySelector(".tablet-filter"),
     buttonReg: document.querySelector(".registration-button"),
@@ -177,6 +213,8 @@ export default {
     mainTable: document.querySelector(".category-favorite_list"),
     allCategoryView : document.querySelector(".search_list-item"),
     buttonPopularAll: document.querySelector(".button-popularAll"),
+    buttonCategoryView: document.querySelectorAll(".button-category-view"),
+    buttonMoreOpen: document.querySelector(".products-button__load"),
     // transportCategory: document.querySelector(".products-collection-transport-list"),
     // businessCategory: document.querySelector(".products-collection-business-list"),
     // workCategory: document.querySelector(".products-collection-work-list"),
@@ -191,5 +229,3 @@ export default {
 
   // }
 };
-
-

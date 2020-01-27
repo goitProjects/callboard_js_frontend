@@ -1,0 +1,48 @@
+
+.return-to-top{
+    position: fixed;
+    z-index: 5;
+    bottom: 15px;
+    right: 25px;
+    border: 2px solid #ff6b08;
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+    right: 2px;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s ease;
+    -ms-transition: all 0.1s ease;
+    -o-transition: all 0.1s ease;
+    transition: all 0.1s ease;
+}
+.return-to-top span {
+    display: block;
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    position: relative;
+    left: -1px;
+    top: -1px;
+    background-color: #ff6b08;;
+    border-radius: 35px;
+    background-repeat: no-repeat;
+    transform: rotate(90deg);
+    background-size: 14px;
+    background-position: center;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    -ms-transition: all 0.1s ease;
+    -o-transition: all 0.1s ease;
+    transition: all 0.1s ease;
+}
+.return-to-top span svg{
+    fill: white;
+    position: relative;
+    top: 12.5px;
+    left: -2px;
+}

@@ -1,5 +1,14 @@
-.team__box-overlay {
+.team__box {
+  display: none;
   position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+}
+
+.team__box-overlay {
+  position: relative;
   width: 100vw;
   height: 100vh;
   background-color: rgba(30, 41, 57, 0.5);
@@ -20,23 +29,21 @@
 }
 
 .team__content-box {
-  top: 48%;
-  transform: translateY(-50%);
-  display: flex;
-  width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 1100px;
   height: auto;
+  display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
   background-color: rgb(255, 255, 255);
   padding: 10px;
+
 }
-/* 
-.is-open {
-  display: flex;
-  opacity: 1;
-  pointer-events: initial;
-} */
 
 .team__image {
   display: block;
@@ -45,9 +52,8 @@
 }
 
 .team__box-close-btn {
-  display: block;
-  /* position: absolute; */
-  top: 10;
+  position: absolute;
+  top: 10px;
   right: 10px;
   background-color: transparent;
   border: none;
@@ -60,9 +66,17 @@
 }
 
 .team__description {
-  padding: 30px 10px;
+  padding: 10px 40px;
   font-size: 16px;
   font-family: "Montserrat";
   color: rgb(0, 0, 0);
   line-height: 1.2;
+
+}
+.info-students{
+  margin-left: 10px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ff6b08;
+  cursor: pointer;
 }
