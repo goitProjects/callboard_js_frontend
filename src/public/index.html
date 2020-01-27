@@ -143,74 +143,73 @@
               <path
                 d="M16 30.72l-2.24-2.24c-8.32-7.36-13.76-12.32-13.76-18.4 0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.080 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.080-5.44 11.040-13.76 18.4l-2.24 2.24z">
               </path>
-            </svg> by <a href="" class="info-students"> GoIT Students</a></p>
+            </svg><button class="info-students" type="button">by GoIT Students</button></p>
         </li>
       </ul>
-        <!-- MODAL LOGIN WINDOW -->
-  <div class="auth-modal-overlay-login hide">
-    <form class="auth-modal-login">
-      <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
-      <p class="auth-text">
-        Войдите в приложение используя <span>e-mail и пароль:</span>
-     </p>
-      <div class="inputs-container">
-        <input type="email" name="email" placeholder="E-mail" />
-        <input type="password" name="password" placeholder="Пароль" />
-      </div>
-      <div class="auth-btns">
-        <button type="submit" class="btn-login">Войти</button>
-        <a href="#" class="btn-registration">Нет аккаунта? Регистрация тут</a>
-      </div>
-    </form>
-  </div>
-  <!-- MODAL LOGIN WINDOW -->
 
-  <!-- MODAL REGISTRATION WINDOW -->
-  <div class="auth-modal-overlay-register hide">
-    <form class="auth-modal-register">
-      <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
-      <p class="auth-text">
-         Войдите в приложение используя <span>e-mail и пароль:</span>
-      </p>
-      <div class="inputs-container">
-        <input type="text" name="name" placeholder="Имя" />
-        <input type="email" name="email" placeholder="E-mail" />
-        <input type="password" name="password" placeholder="Пароль" />
+      <!-- MODAL LOGIN WINDOW -->
+      <div class="auth-modal-overlay-login hide">
+        <form class="auth-modal-login">
+          <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
+          <p class="auth-text">
+            Войдите в приложение используя <span>e-mail и пароль:</span>
+        </p>
+          <div class="inputs-container">
+            <input type="email" name="email" placeholder="E-mail" />
+            <input type="password" name="password" placeholder="Пароль" />
+          </div>
+          <div class="auth-btns">
+            <button type="submit" class="btn-login">Войти</button>
+            <a href="#" class="btn-registration">Нет аккаунта? Регистрация тут</a>
+          </div>
+        </form>
       </div>
-      <div class="auth-btns">
-        <button type="submit" class="btn-confirm">Регистрация</button>
+      <!-- MODAL LOGIN WINDOW -->
+
+      <!-- MODAL REGISTRATION WINDOW -->
+      <div class="auth-modal-overlay-register hide">
+        <form class="auth-modal-register">
+          <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
+          <p class="auth-text">
+            Войдите в приложение используя <span>e-mail и пароль:</span>
+          </p>
+          <div class="inputs-container">
+            <input type="text" name="name" placeholder="Имя" />
+            <input type="email" name="email" placeholder="E-mail" />
+            <input type="password" name="password" placeholder="Пароль" />
+          </div>
+          <div class="auth-btns">
+            <button type="submit" class="btn-confirm">Регистрация</button>
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
+      <!-- MODAL REGISTRATION WINDOW -->
+
+      <!-- Preloader -->
       <div class="preloader js-preloader is-hidden" id="spinner">
         <span class="load"></span>
       </div>
+      <!-- Preloader -->
+
+      <!-- ShowTeam Modal -->
+      <div class="team__box team-hide" id="show-team__box">
+        <div class="team__box-overlay">
+          <div class="team__content-box">
+            <img class="team__image" src="../components/showteam/images/IMG_7123.JPG" alt="Our team" />
+            <button type="submit" class="team__box-close-btn"></button>
+            <p class="team__description">
+              Это были наши лучшие дни вместе... <br />
+              Мы были счастливы и учились как могли... <br />
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- ShowTeam Modal -->
+
     </div>
   </footer>
+
 <div class="containet-modal-window" style="display: none;">   <!-- SECTION MODAL WINDOW-->
-  <!-- Preloader -->
-
-  <!-- Preloader -->
-
-
-  <!-- MODAL REGISTRATION WINDOW -->
-
-
-
-  <!-- ShowTeam Modal -->
-  <div class="team__box" id="show-team__box">
-    <div class="team__box-overlay">
-      <div class="team__content-box">
-        <img class="team__image" src="../components/showteam/images/IMG_7123.JPG" alt="Our team" />
-        <button class="team__box-close-btn"></button>
-        <p class="team__description">
-          Это были наши лучшие дни вместе... <br />
-          Мы были счастливы и учились как могли... <br />
-        </p>
-      </div>
-    </div>
-  </div>
-  <!-- ShowTeam Modal -->
 
   <!-- Верстка для демонстрации работы метода конвертаций фото в Base64(если не нужно-удалить) -->
   <input id="inputFileToLoad" type="file" />
@@ -222,5 +221,4 @@
 
 </div>      <!--  CLOSE SECTION MODAL WINDOW--->
 </body>
-
 </html>

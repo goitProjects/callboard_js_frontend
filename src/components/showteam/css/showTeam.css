@@ -1,27 +1,29 @@
-.team__box {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 200ms linear;
-}
-
 .team__box-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(30, 41, 57, 0.5);
+  z-index: 1;
+  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+}
+
+/* .team__box {
+  display: none;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: opacity 200ms linear;
+} */
+.team-hide {
+  display: none;
 }
 
 .team__content-box {
-  position: relative;
-  top: 47.7%;
+  top: 48%;
   transform: translateY(-50%);
   display: flex;
-  width: 1000px;
+  width: 90%;
   height: auto;
   justify-content: space-between;
   margin: 0 auto;
@@ -29,12 +31,12 @@
   background-color: rgb(255, 255, 255);
   padding: 10px;
 }
-
+/* 
 .is-open {
   display: flex;
   opacity: 1;
   pointer-events: initial;
-}
+} */
 
 .team__image {
   display: block;
@@ -44,7 +46,7 @@
 
 .team__box-close-btn {
   display: block;
-  position: absolute;
+  /* position: absolute; */
   top: 10;
   right: 10px;
   background-color: transparent;

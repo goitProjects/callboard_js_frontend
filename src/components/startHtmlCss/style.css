@@ -81,7 +81,10 @@ html {
   padding: 0;
   margin: 0;
 }
-.container{
+body{
+position: relative; 
+}
+.container {
   margin: 0 auto;
   padding: 0 20px;
   margin-bottom: 20px;
@@ -148,9 +151,16 @@ html {
   display: flex;
   align-items: center;
 }
+
 .info-students {
+  font: inherit;
+  border: none;
+  outline: none;
   color: rgba(255, 255, 255, 0.2);
+  background-color: transparent;
+  cursor: pointer;
 }
+
 .block-footer__item:nth-child(1) {
   margin-bottom: 10px;
 }
