@@ -22,12 +22,20 @@ services.ref.logout.addEventListener('click', logoutFromAcc);
 services.ref.body.addEventListener('click', closeModal);
 services.ref.body.addEventListener('click', closeModal);
 document.addEventListener('DOMContentLoaded', stayLoggedIn);
+document.addEventListener("keydown", closeModalByEscape);
+refs.overlayLogin.addEventListener('click', closeModalOutside)
+refs.overlayRegister.addEventListener('click', closeModalOutside)
+
+
 function showLoginModal(e) {
+ 
   if(e.target.classList == "registration-enter"){
+    document.querySelector("body").style.overflow = "hidden";
   refs.overlayLogin.style.display="flex"}
 }
 
 async function login(e) {
+
   if(e.target.classList == "registration-enter"){
   e.preventDefault();
   if (e.target.classList.contains('btn-login')) {
@@ -36,6 +44,7 @@ async function login(e) {
         email: e.currentTarget.elements.email.value,
         password: e.currentTarget.elements.password.value
       };
+      
       const dataLogin = await services.postLoginUser(user);
       services.userData = dataLogin.data.userData;
       services.token = dataLogin.data.token;
@@ -45,6 +54,7 @@ async function login(e) {
       services.categories = dataLogin.data.categories;
       //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
       localStorage.setItem('token', services.token);
+     
       changeUIforLoggedUser();
     } catch (e) {
       PNotify.error({
@@ -61,10 +71,15 @@ async function login(e) {
 }}
 
 function showRegisterModal(e){
+
   if(e.target.classList=="registration-button" ){
+    document.querySelector("body").style.overflow = "hidden";
     refs.overlayLogin.style.display="none"
-  refs.overlayRegister.style.display="flex";}
+  refs.overlayRegister.style.display="flex";
+ 
+}
     if(e.target.classList =='btn-registration'){
+      
       refs.overlayLogin.style.display="none"
       refs.overlayRegister.style.display="flex"
     }
@@ -126,8 +141,28 @@ function closeModal(e) {
     refs.overlayLogin.style.display="none";
     refs.overlayRegister.style.display="none";
     PNotify.closeAll();
+    document.querySelector("body").style.overflow = "auto";
 }
+
 }
+
+function closeModalByEscape(e){
+  if(e.code === "Escape"){
+    refs.overlayLogin.style.display="none";
+    refs.overlayRegister.style.display="none";
+    document.querySelector("body").style.overflow = "auto";
+  }
+}
+
+function closeModalOutside(e){
+  if (e.target !== e.currentTarget) {
+    return;
+  }
+  refs.overlayLogin.style.display="none";
+    refs.overlayRegister.style.display="none";
+    document.querySelector("body").style.overflow = "auto";
+}
+
 function changeUIforLoggedUser() {
   // change UI for logged user
   refs.registerBlock.style.display = 'none';
