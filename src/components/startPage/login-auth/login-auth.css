@@ -15,8 +15,11 @@
   padding: 0;
 } */
 
-.auth-modal-overlay-login,
-.auth-modal-overlay-register {
+button{
+  outline: none;
+}
+
+.auth-modal-overlay-login, .auth-modal-overlay-register {
   background-color: rgba(0, 0, 0, 0.3);
   display: none;
   justify-content: center;

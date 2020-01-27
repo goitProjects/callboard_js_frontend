@@ -84,18 +84,16 @@ async function handleClick(e) {
   }
 }
 
+
 // favBtn.addEventListener('click', onFav);
 // document.body.addEventListener("click", onFav);
 // async function onFav(e) {
-//   const fav2 = document.querySelector(".fav2");
-//   const fav3 = document.querySelector(".fav3");
 //   let iconBtn = document.querySelector(".favorites-top");
 
 //   if (tmp) {
-//     getFav();
+//      getFav();
 //   } else {
-//     iconBtn.classList.add('fav3')
-//     fav2.style.visibility = "hidden";
+//     iconBtn.classList.add('fav3');
 //   }
 // }
 
@@ -189,10 +187,9 @@ async function addToFavorite(e) {
 
 
 // async function getFav(e) {
-//   let fav2 = document.querySelector(".fav2");
-//   let fav3 = document.querySelector(".fav3");
 //   const liItem = document.querySelector(".Card_cardItem");
 //   let iconBtn = document.querySelector(".favorites-top");
+//   let red=iconBtn.querySelector('.fav2');
 
 //   await services
 //     .getFavorites({
@@ -205,18 +202,20 @@ async function addToFavorite(e) {
 //       if (
 //         res.data.user.favorites.map(el => el._id).includes(liItem.dataset.id)
 //       ) {
-//         iconBtn.style.visibility='hidden';
-//         iconBtn.style.stroke='red'
-//         fav2.style.height = "20px";
-//         fav2.style.fill='red';
-//         fav2.style.width = "18px";
-//         fav2.style.visibility = "visible";
-       
-
+//         iconBtn.style.visibility='hidden'
+//         red.style.visibility='visible';
+//         red.style.fill='red'
+//         red.style.stroke='red'
+        
+//         // iconBtn.style.fill='red';
 //         PNotify_1.notice("Product already added to your favorites!");
-//         fav2.addEventListener("click", deleteFav);
+//         red.addEventListener("click", deleteFav);
 //       } else {
 //         iconBtn.addEventListener("click", addFav);
+//         red.style.visibility='hidden';
+//         red.style.stroke='white'
+//         iconBtn.classList.add('fav3')
+//         iconBtn.style.visibility='visible'
 //       }
 //     });
 // }
@@ -224,12 +223,13 @@ async function addToFavorite(e) {
 
 
 // async function deleteFav(e) {
-//   let fav2 = document.querySelector(".fav2");
-//   let fav3 = document.querySelector(".fav3");
 
 //   const liItem = document.querySelector(".Card_cardItem");
 //   let iconBtn = document.querySelector(".favorites-top");
-//   fav2.removeEventListener("click", deleteFav);
+//   let red=iconBtn.querySelector('.fav2');
+
+//   red.removeEventListener("click", deleteFav);
+//   red.style.fill='white'
 
 //   await services
 //     .deleteFavorites(liItem.dataset.id, {
@@ -239,10 +239,12 @@ async function addToFavorite(e) {
 //       }
 //     })
 //     .then(res => {
-//       iconBtn.classList.add('fav3');
-//       fav2.style.visibility = "hidden";
-//       fav2.style.fill='white';
-//       fav3.visibility='visible';
+    
+//       iconBtn.style.visibility='visible';
+//       iconBtn.style.fill='white';
+//       iconBtn.style.stroke='black';
+//       red.style.visibility='hidden';
+      
       
 //     });
 //   PNotify_1.info("Deleted from favorites!");
@@ -250,17 +252,15 @@ async function addToFavorite(e) {
 
 
 // async function addFav(e) {
-//   let fav2 = document.querySelector(".fav2");
-//   let fav3 = document.querySelector(".fav3");
 //   const liItem = document.querySelector(".Card_cardItem");
 //   let iconBtn = document.querySelector("#modal-info__favorite");
+//   let red=iconBtn.querySelector('.fav2');
 
 //   iconBtn.removeEventListener("click", addFav);
 
-//   fav2.style.visibility = "hidden";
-//   iconBtn.classList.add('fav3');
-//   fav3.style.visibility='visible'
-//   fav3.style.fill='blue'
+
+//   red.style.visibility='hidden';
+//   iconBtn.style.visibility='visible'
 
 //   await services
 //     .addToFavorites(
@@ -274,10 +274,8 @@ async function addToFavorite(e) {
 //       }
 //     )
 //     .then(res => {
-//       fav3.style.visibility = "hidden";
-//       fav2.style.visibility = "visible";
-//       fav2.style.height = "16px";
-//       fav2.style.width = "16px";
+//       iconBtn.style.visibility='hidden';
+//       red.style.visibility='visible';
 //     });
 //   PNotify_1.success("Added to favorites!");
 // }

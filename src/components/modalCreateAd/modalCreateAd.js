@@ -104,21 +104,24 @@ if (token.length < 1) {
         phone: document.querySelector(".modal-create-ad__input-phone")
       };
 
-      //Closing modal
       const closeModal = () => {
+    
         modal.window.remove();
-        modal.submit.removeEventListener("click", postAd);
-        modal.close.removeEventListener("click", closeModal);
-        modal.overlay.removeEventListener("click", closeOnOverlay);
-        document.removeEventListener("keydown", closeOnEcs);
+        
+        modal.submit.removeEventListener('click', postAd);
+        modal.close.removeEventListener('click', closeModal);
+        modal.overlay.removeEventListener('click', closeOnOverlay);
+        document.removeEventListener('keydown', closeOnEcs);
+        document.querySelector("body").style.overflow = "auto";
       };
-
+  
       const closeOnOverlay = () => {
+        
         closeModal();
       };
-
+  
       const closeOnEcs = () => {
-        if (event.code == "Escape") {
+        if (event.code == 'Escape') {
           closeModal();
         }
       };

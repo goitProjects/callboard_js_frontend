@@ -63,6 +63,7 @@ async function login(e) {
         email: e.currentTarget.elements.email.value,
         password: e.currentTarget.elements.password.value
       };
+      
       const dataLogin = await services.postLoginUser(user);
       services.userData = dataLogin.data.userData;
       services.token = dataLogin.data.token;
@@ -154,7 +155,26 @@ function closeModal(e) {
     refs.overlayLogin.style.display = "none";
     refs.overlayRegister.style.display = "none";
     PNotify.closeAll();
+    document.querySelector("body").style.overflow = "auto";
+}
+
+}
+
+function closeModalByEscape(e){
+  if(e.code === "Escape"){
+    refs.overlayLogin.style.display="none";
+    refs.overlayRegister.style.display="none";
+    document.querySelector("body").style.overflow = "auto";
   }
+}
+
+function closeModalOutside(e){
+  if (e.target !== e.currentTarget) {
+    return;
+  }
+  refs.overlayLogin.style.display="none";
+    refs.overlayRegister.style.display="none";
+    document.querySelector("body").style.overflow = "auto";
 }
 
 function changeUIforLoggedUser() {
