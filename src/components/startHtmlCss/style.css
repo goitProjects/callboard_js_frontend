@@ -281,6 +281,10 @@ html {
   border: none;
   cursor: pointer;
 }
+.ui-pnotify-title,
+.ui-pnotify-text {
+  font-family: sans-serif;
+}
 
 .exit:hover,
 .exit:focus {
@@ -348,19 +352,15 @@ html {
 }
 
 .products-button{
-  width: 100vw;
-  left: -12%;
+  width: 100%;
   padding-top: 90px;
-  padding-bottom: 26px;
+  /* padding-bottom: 26px; */
   background-color:transparent;
   display: none;
 }
 .products-button__load{
-  position: absolute;
-  top: 60px;
-  left: 0;
-  height: 100px;
   width: 100%;
+  height: 100px;
   margin: 0 auto;
   font-family: "Montserrat-SemiBold";
   font-size: 18px;

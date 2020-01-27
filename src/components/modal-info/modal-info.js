@@ -3,6 +3,7 @@ import template from "./modal-info.hbs";
 import "./modal-info.css";
 import PNotify_1 from "pnotify/dist/es/PNotify";
 
+
 const mainTable = document.querySelector(".modal-info__modal");
 const overlay = document.querySelector(".modal-info__overlay");
 const section = document.querySelector(".products");
@@ -11,10 +12,10 @@ overlay.addEventListener("click", handleOverlay);
 document.addEventListener("keydown", handleKeyPress);
 
 let svg;
-localStorage.setItem(
-  "token",
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
-);
+// localStorage.setItem(
+//   "token",
+//   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
+// );
 const tmp = localStorage.getItem("token");
 
 // FETCHING DATA AND RENDERING

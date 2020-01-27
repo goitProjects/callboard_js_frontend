@@ -50,14 +50,17 @@ document.addEventListener("DOMContentLoaded", stayLoggedIn);
 function showLoginModal(e) {
   if (e.target.classList == "registration-enter") {
     refs.overlayLogin.style.display = "flex";
+    document.querySelector("#menu__toggle").checked = false;
   }
 }
 
 async function login(e) {
   if (e.target.classList == "registration-enter") {
     e.preventDefault();
+  
     showRegisterModal();
   } else if (e.target.classList.contains("btn-login")) {
+    document.querySelector("#menu__toggle").checked = false;
     try {
       const user = {
         email: e.currentTarget.elements.email.value,
@@ -71,7 +74,7 @@ async function login(e) {
       services.favorites = dataLogin.data.favorites;
       services.isAuth = true;
       services.categories = dataLogin.data.categories;
-      //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
+
       localStorage.setItem("token", services.token);
       localStorage.setItem("name", services.userData.name);
       changeUIforLoggedUser();
@@ -93,10 +96,12 @@ function showRegisterModal(e) {
   if (e.target.classList == "registration-button") {
     refs.overlayLogin.style.display = "none";
     refs.overlayRegister.style.display = "flex";
+    document.querySelector("#menu__toggle").checked = false;
   }
   if (e.target.classList == "btn-registration") {
     refs.overlayLogin.style.display = "none";
     refs.overlayRegister.style.display = "flex";
+    document.querySelector("#menu__toggle").checked = false;
   }
 }
 
@@ -115,9 +120,8 @@ async function register(e) {
       services.ads = dataRegister.data.ads;
       services.favorites = dataRegister.data.favorites;
       services.isAuth = true;
-
+      document.querySelector("#menu__toggle").checked = false;
       services.categories = dataRegister.data.categories;
-      //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
       localStorage.setItem("loginName", dataRegister.data.userData);
       localStorage.setItem("token", dataRegister.data.token);
       changeUIforLoggedUser();
@@ -142,7 +146,6 @@ function registerFromModal(e) {
 // logout fn works, even though if throws errors
 function logoutFromAcc() {
   services.postLogoutUser();
-  localStorage.setItem("loginInfo", null);
   refs.authModalRegister.reset();
   refs.authModalLogin.reset();
   services.isAuth = false;

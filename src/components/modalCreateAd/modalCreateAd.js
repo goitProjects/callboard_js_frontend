@@ -27,11 +27,10 @@ if (token.length < 1) {
         text: 'You need to go to your personal account to add an advertisement'
       });
     }
-    setTimeout(closePhotyfy, 1000);
-    function closePhotyfy() {
-      PNotify.closeAll();
-    }
-  }
+    setTimeout(closePhotyfy,1000);
+    function closePhotyfy(){
+    PNotify.closeAll()}
+     }
 } else {
   //Getting category names for selector in modal window (o4eNb ToPmo3it)
   async function getCategories() {
@@ -64,7 +63,7 @@ if (token.length < 1) {
   }
 
   //Main function
-  const createNewAd = async () => {
+  const createNewAd = async (e) => {
     const body = document.querySelector('body');
 
     //console.log(categories);
@@ -174,12 +173,13 @@ if (token.length < 1) {
             break;
         }
       };
-
+     
+      if (document.querySelector(".modal-create-ad")){
       input.photo.addEventListener('change', addImage);
       modal.submit.addEventListener('click', verifyAndPostAd);
       modal.close.addEventListener('click', closeModal);
       modal.overlay.addEventListener('click', closeOnOverlay);
-      document.addEventListener('keydown', closeOnEcs);
+      document.addEventListener('keydown', closeOnEcs);}
     };
     addModalListeners();
   };
