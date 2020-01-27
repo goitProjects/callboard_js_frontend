@@ -193,7 +193,12 @@ html {
 }
 
 .info-students {
+  font: inherit;
+  border: none;
+  outline: none;
   color: rgba(255, 255, 255, 0.2);
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .block-footer__item:nth-child(1) {
