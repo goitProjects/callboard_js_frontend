@@ -1,156 +1,165 @@
-import services from '../../services.js';
-import itemHBS from './item.hbs';
-import preloader from './../preloader/js/preloader';
+import services from "../../services";
+import itemHBS from "./item.hbs";
+import preloader from "./../preloader/js/preloader";
+import OpenAndSearcItemHbs from "./openItemcategory.hbs";
+import "./return-to-top.js";
+import "./return-toTop.css";
+
 function popularCategory(categoryArr, domElement) {
+  
   const categoryLayout = itemHBS(categoryArr);
-  domElement.insertAdjacentHTML('beforeend', categoryLayout);
+  domElement.insertAdjacentHTML("beforeend", categoryLayout);
 }
 function compCategory(categoryArr, domElement) {
   const categoryLayout = itemHBS(categoryArr);
-  domElement.insertAdjacentHTML('beforeend', categoryLayout);
+  domElement.insertAdjacentHTML("beforeend", categoryLayout);
 }
 function worksCategory(categoryArr, domElement) {
   const categoryLayout = itemHBS(categoryArr);
-  domElement.insertAdjacentHTML('beforeend', categoryLayout);
+  domElement.insertAdjacentHTML("beforeend", categoryLayout);
 }
 function tradeCategory(categoryArr, domElement) {
   const categoryLayout = itemHBS(categoryArr);
-  domElement.insertAdjacentHTML('beforeend', categoryLayout);
+  domElement.insertAdjacentHTML("beforeend", categoryLayout);
 }
 const defaultInfo = {
   popularInfo: null,
   computerInfo: null,
   workInfo: null,
   tradeInfo: null,
-  defaultBtnClear: document.querySelector('.btn-refresh'),
-  defaultLogoLoader: document.querySelectorAll('.logo')
+  defaultBtnClear: document.querySelector(".btn-refresh")
 };
 
-const itemPopular = services.getAdsLimit(4, 1).then(res => {
-  defaultInfo.popularInfo = res.data.ads.docs;
+//          CREATE DEFAULT PAGE
+const defaultInfoBord = document.querySelector(".category-favorite_list");
+
+services.ref.body.addEventListener("click", loadDefaultPage);
+
+
+const itemPopular = services.getAdsLimit(10,1).then(res => {
+  defaultInfo.popularInfo=res.data.ads.docs;
   popularCategory(defaultInfo.popularInfo, services.ref.popularItem);
 });
-const itemComputer = services.getAdsByCategory(4, 4, 1).then(res => {
-  defaultInfo.computerInfo = res.data.ads.docs;
+const itemComputer = services.getAdsByCategory(4,10).then(res => {
+  defaultInfo.computerInfo=res.data.ads.docs;
   compCategory(res.data.ads.docs, services.ref.computerCategory);
 });
-const itemWorks = services.getAdsByCategory(3, 4, 1).then(res => {
-  defaultInfo.workInfo = res.data.ads.docs;
+const itemWorks = services.getAdsByCategory(3,10).then(res => {
+  defaultInfo.workInfo=res.data.ads.docs;
   worksCategory(res.data.ads.docs, services.ref.pastimeCategory);
 });
-const itemTrade = services.getAdsByCategory(8, 4, 1).then(res => {
-  defaultInfo.tradeInfo = res.data.ads.docs;
+const itemTrade = services.getAdsByCategory(8,10).then(res => {
+  defaultInfo.tradeInfo=res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.exchangeCategory);
 });
-const defaultInfoBord = document.querySelector('.category-favorite_list');
-
-document
-  .getElementById('btn_refresh')
-  .addEventListener('click', loadDefaultPage);
-// document.getElementById('btn-logo').addEventListener('click', loadDefaultPage);
+////////////// CLOSE CREATE PAGE
 
 function loadDefaultPage(e) {
-  defaultInfoBord.style.display = 'block';
+  if (e.target.id == "logo-btn" ||e.target.id == "btn_refresh-desktop") {
+    defaultInfoBord.style.display = "block";
+    services.ref.allCategoryView.innerHTML = "";
+    document.querySelector(".products-button").style.display = "none";
+    const deActivateRadioBtn = document.querySelectorAll(".category__list-item-radio");
+    deActivateRadioBtn.forEach(el => (el.checked = false));
+    document.querySelector(".search-bar__input").value="";
+  }
 }
+document.querySelector(".button-popularAll").addEventListener("click", handlClickPopupal);
+services.ref.mainTable.addEventListener("click", handlClickPopupal2);
 
-document
-  .querySelector('.button-popularAll')
-  .addEventListener('click', handlClickPopupal2);
 function allCategoryViewCreate(element) {
-  const categoryLayout = itemHBS(element);
-  services.ref.allCategoryView.insertAdjacentHTML('beforeend', categoryLayout);
+  const categoryLayout = OpenAndSearcItemHbs(element);
+  services.ref.allCategoryView.insertAdjacentHTML("beforeend", categoryLayout);
 }
 //create More popular list
 async function handlClickPopupal(e) {
-  let favoritCategory = [];
-  let page = 1;
-  const limit = 8;
-
-  //Creating Load More Button
-  const loadMoreBtn = document.createElement('button');
-  loadMoreBtn.setAttribute('class', 'default-page__load-more-btn');
-  loadMoreBtn.innerHTML = 'Load More';
-  const pageList = document.getElementById('search_list');
-  pageList.after(loadMoreBtn);
-
-  preloader.show();
-  await services.getAdsLimit(limit, page).then(res => {
-    favoritCategory = res.data.ads.docs;
-
-    loadMoreBtn.addEventListener('click', showMoreAds);
-    allCategoryViewCreate(favoritCategory);
-  });
-  services.ref.mainTable.style.display = 'none';
-  preloader.hide();
-
-  async function showMoreAds() {
-    page++;
+  e.preventDefault();
+  if (e.target.className === "button-popularAll") {
+    let favoritCategory = [];
+    let page = 1;
+    const limit = 8;
+    //Creating Load More Button
+    let loadMoreBtn = document.querySelector(".products-button__load");
+    document.querySelector(".products-button").style.display = "block";
     preloader.show();
     await services.getAdsLimit(limit, page).then(res => {
       favoritCategory = res.data.ads.docs;
-      
-      if (favoritCategory.length === 0) {
-        loadMoreBtn.remove();
-      } else {
-        allCategoryViewCreate(favoritCategory);
-      }
-      
+      loadMoreBtn.addEventListener("click", showMoreAds);
+      allCategoryViewCreate(favoritCategory);
     });
-    //console.log(favoritCategory);
-      
-    services.ref.mainTable.style.display = 'none';
+    services.ref.mainTable.style.display = "none";
     preloader.hide();
+    async function showMoreAds() {
+      e.preventDefault();
+      page++;
+      preloader.show();
+      await services.getAdsLimit(limit, page).then(res => {
+        favoritCategory = res.data.ads.docs;
+        if (favoritCategory.length<1) {
+          document.querySelector(".products-button").style.display = "none";
+        } else {
+          allCategoryViewCreate(favoritCategory);
+        }
+      });
+      services.ref.mainTable.style.display = "none";
+      preloader.hide();
+    }
   }
 }
 // close popular fun
 
 //Add More for all categories
 async function handlClickPopupal2(e) {
-  let itemsFromCategory = [];
-  let page = 1;
-  const limit = 8;
-  const category = 1;
+  e.preventDefault();
+  if (e.target.className === "button-category-view") {
+    let itemsFromCategory = [];
+    let page = 1;
+    const limit = 8;
+    const category = e.target.id;
 
-  //Creating Load More Button
-  const loadMoreBtn = document.createElement('button');
-  loadMoreBtn.setAttribute('class', 'default-page__load-more-btn');
-  loadMoreBtn.innerHTML = 'Load More';
-  const pageList = document.getElementById('search_list');
-  pageList.after(loadMoreBtn);
+    //Creating Load More Button
+    const loadMoreBtn = document.querySelector(".products-button__load");
+    document.querySelector(".products-button").style.display = "block";
 
-  preloader.show();
-
-  await services.getAdsByCategory(category, limit, page).then(res => {
-    itemsFromCategory = res.data.ads.docs;
-
-    loadMoreBtn.addEventListener('click', showMoreAds2);
-    allCategoryViewCreate(itemsFromCategory);
-  });
-
-  services.ref.mainTable.style.display = 'none';
-  preloader.hide();
-
-  //Show More Ads
-  async function showMoreAds2() {
-    page++;
     preloader.show();
+
     await services.getAdsByCategory(category, limit, page).then(res => {
       itemsFromCategory = res.data.ads.docs;
-      
-      if (itemsFromCategory.length === 0) {
-        loadMoreBtn.remove();
-      } else {
-        allCategoryViewCreate(itemsFromCategory);
-      }
-      
+      loadMoreBtn.addEventListener("click", showMoreAds2);
+      allCategoryViewCreate(itemsFromCategory);
     });
-    
-      
-    services.ref.mainTable.style.display = 'none';
+    services.ref.mainTable.style.display = "none";
     preloader.hide();
+    //Show More Ads
+    async function showMoreAds2(e) {
+      e.preventDefault();
+      page++;
+      preloader.show();
+      await services.getAdsByCategory(category, limit, page).then(res => {
+        itemsFromCategory = res.data.ads.docs;
+        if (itemsFromCategory.length <1) {
+          document.querySelector(".products-button").style.display = "none";
+        } else {
+          allCategoryViewCreate(itemsFromCategory);
+        }
+      });
+      services.ref.mainTable.style.display = "none";
+      preloader.hide();
+    }
   }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

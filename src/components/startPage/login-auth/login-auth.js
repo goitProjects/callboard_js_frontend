@@ -13,21 +13,22 @@ const refs = {
   loggedUser: document.querySelector('.logged-user')
 };
 
-services.ref.buttonLogin.addEventListener('click', showLoginModal);
+services.ref.body.addEventListener('click', showLoginModal);
 refs.authModalLogin.addEventListener('click', login);
-services.ref.buttonReg.addEventListener('click', showRegisterModal);
+services.ref.body.addEventListener('click', showRegisterModal);
 refs.authModalRegister.addEventListener('click', register);
 refs.authModalLogin.addEventListener('click', registerFromModal);
 services.ref.logout.addEventListener('click', logoutFromAcc);
-refs.overlayLogin.addEventListener('click', closeModal);
-refs.overlayRegister.addEventListener('click', closeModal);
+services.ref.body.addEventListener('click', closeModal);
+services.ref.body.addEventListener('click', closeModal);
 document.addEventListener('DOMContentLoaded', stayLoggedIn);
-function showLoginModal() {
-  refs.overlayLogin.classList.remove('hide');
-  refs.overlayLogin.classList.add('show');
+function showLoginModal(e) {
+  if(e.target.classList == "registration-enter"){
+  refs.overlayLogin.style.display="flex"}
 }
 
 async function login(e) {
+  if(e.target.classList == "registration-enter"){
   e.preventDefault();
   if (e.target.classList.contains('btn-login')) {
     try {
@@ -57,14 +58,16 @@ async function login(e) {
       });
     }
   }
-}
+}}
 
-function showRegisterModal() {
-  refs.overlayRegister.classList.remove('hide');
-  refs.overlayRegister.classList.add('show');
-
-  refs.overlayLogin.classList.add('hide');
-  refs.overlayLogin.classList.remove('show');
+function showRegisterModal(e){
+  if(e.target.classList=="registration-button" ){
+    refs.overlayLogin.style.display="none"
+  refs.overlayRegister.style.display="flex";}
+    if(e.target.classList =='btn-registration'){
+      refs.overlayLogin.style.display="none"
+      refs.overlayRegister.style.display="flex"
+    }
 }
 
 async function register(e) {
@@ -99,7 +102,9 @@ async function register(e) {
 }
 
 function registerFromModal(e) {
-  if (e.target.classList.contains('btn-registration')) {
+  e.preventDefault();
+  if (e.target.classList ==='btn-registration') {
+    refs.overlayLogin.style.display="none";
     showRegisterModal();
   }
 }
@@ -117,16 +122,9 @@ function logoutFromAcc() {
 
 function closeModal(e) {
   if (
-    e.target.classList.contains('close-icon') ||
-    e.target === e.currentTarget
-  ) {
-    refs.authModalRegister.reset();
-    refs.authModalLogin.reset();
-
-    refs.overlayRegister.classList.add('hide');
-    refs.overlayRegister.classList.remove('show');
-    refs.overlayLogin.classList.add('hide');
-    refs.overlayLogin.classList.remove('show');
+    e.target.classList=='close-icon') {
+    refs.overlayLogin.style.display="none";
+    refs.overlayRegister.style.display="none";
     PNotify.closeAll();
 }
 }
@@ -151,12 +149,11 @@ function changeUIforLoggedUser() {
 }
 
 function stayLoggedIn() {
-  const servicesFromLS = JSON.parse(localStorage.getItem('loginInfo'))
+  const servicesFromLS = localStorage.getItem('token');
   if(servicesFromLS !== null) {
     refs.registerBlock.style.display = 'none';
     refs.logoutBlock.style.display = 'block';
-    refs.loggedUser.textContent = servicesFromLS.userData.name;
-
+    refs.loggedUser.textContent = "NAME";
     services.userData = servicesFromLS.userData;
     services.token = servicesFromLS.token;
     services.ads = servicesFromLS.ads;

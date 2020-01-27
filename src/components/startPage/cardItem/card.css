@@ -43,9 +43,17 @@
   border: none;
   background: transparent;
 }
+
+.favorites-top:focus{
+outline: none;
+}
 .heart {
   fill: white;
   width: 14px;
+}
+
+.heart:focus{
+  outline: none;
 }
 .favorites-buttom {
   position: absolute;
