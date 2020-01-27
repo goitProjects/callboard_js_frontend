@@ -55,15 +55,17 @@ const itemTrade = services.getAdsByCategory(8,10).then(res => {
 ////////////// CLOSE CREATE PAGE
 
 function loadDefaultPage(e) {
-  if (e.target.id == "logo-btn" ||e.target.id == "btn_refresh-desktop") {
+  if (e.target.id == "logo-btn" ||e.target.id == "btn_refresh-desktop"|| e.target.id=="btn_refresh") {
     defaultInfoBord.style.display = "block";
     services.ref.allCategoryView.innerHTML = "";
     document.querySelector(".products-button").style.display = "none";
+    document.querySelector("#menu__toggle").checked = false;
     const deActivateRadioBtn = document.querySelectorAll(".category__list-item-radio");
     deActivateRadioBtn.forEach(el => (el.checked = false));
     document.querySelector(".search-bar__input").value="";
   }
 }
+
 document.querySelector(".button-popularAll").addEventListener("click", handlClickPopupal);
 services.ref.mainTable.addEventListener("click", handlClickPopupal2);
 

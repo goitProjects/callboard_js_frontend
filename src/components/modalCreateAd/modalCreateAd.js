@@ -31,7 +31,7 @@ if (token.length < 1) {
     function closePhotyfy(){
     PNotify.closeAll()}
      }
-} else {
+}  
   //Getting category names for selector in modal window (o4eNb ToPmo3it)
   async function getCategories() {
     const response = await services.getAllAds();
@@ -64,6 +64,21 @@ if (token.length < 1) {
 
   //Main function
   const createNewAd = async (e) => {
+    const token = localStorage.getItem('token') || [];
+if (token.length < 1) {
+  document.querySelector('header').addEventListener('click', needLogin);
+  function needLogin(e) {
+    if (e.target.classList == 'navigation-promo') {
+      PNotify.error({
+        title: 'Oops!',
+        text: 'You need to go to your personal account to add an advertisement'
+      });
+    }
+    setTimeout(closePhotyfy,1000);
+    function closePhotyfy(){
+    PNotify.closeAll()}
+     }
+}  else{
     const body = document.querySelector('body');
 
     //console.log(categories);
@@ -173,7 +188,7 @@ if (token.length < 1) {
             break;
         }
       };
-     
+    
       if (document.querySelector(".modal-create-ad")){
       input.photo.addEventListener('change', addImage);
       modal.submit.addEventListener('click', verifyAndPostAd);
@@ -182,7 +197,9 @@ if (token.length < 1) {
       document.addEventListener('keydown', closeOnEcs);}
     };
     addModalListeners();
+  
   };
+}
   getCategories().then(createModal);
   services.ref.btnAddPromo.addEventListener('click', createNewAd);
-}
+  

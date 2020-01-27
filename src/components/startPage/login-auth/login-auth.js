@@ -125,6 +125,7 @@ async function register(e) {
       localStorage.setItem("loginName", dataRegister.data.userData);
       localStorage.setItem("token", dataRegister.data.token);
       changeUIforLoggedUser();
+      refs.overlayLogin.style.display = "none";
     } catch (e) {
       PNotify.error({
         title: "Oops!",
@@ -149,6 +150,7 @@ function logoutFromAcc() {
   refs.authModalRegister.reset();
   refs.authModalLogin.reset();
   services.isAuth = false;
+  localStorage.clear();
   refs.registerBlock.style.display = "block";
   refs.logoutBlock.style.display = "none";
 }
@@ -188,10 +190,9 @@ function changeUIforLoggedUser() {
   refs.loggedUser.textContent = services.userData.name;
 
   // hide login/register window
-  refs.overlayLogin.classList.add("hide");
-  refs.overlayLogin.classList.remove("show");
-  refs.overlayRegister.classList.add("hide");
-  refs.overlayRegister.classList.remove("show");
+  refs.overlayLogin.style.display = "none";
+  refs.overlayRegister.style.display = "none";
+
 
   setTimeout(
     PNotify.success({
