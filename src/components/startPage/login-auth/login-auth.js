@@ -24,8 +24,6 @@ if (window.innerWidth < 1200) {
 }
 // END - Делаем проверку вьюпорта, чтобы отрисовать кнопки входа/регистрации/выхода/ЛК
 
-
-
 const refs = {
   overlayLogin: document.querySelector(".auth-modal-overlay-login"),
   overlayRegister: document.querySelector(".auth-modal-overlay-register"),
@@ -34,7 +32,7 @@ const refs = {
   registerBlock: document.querySelector(".navigation__registration"),
   logoutBlock: document.querySelector(".navigation__logout"),
   loggedUser: document.querySelector(".logged-user"),
-  logout: document.querySelector('.exit')
+  logout: document.querySelector(".exit")
 };
 
 services.ref.body.addEventListener("click", showLoginModal);
@@ -66,7 +64,7 @@ async function login(e) {
         email: e.currentTarget.elements.email.value,
         password: e.currentTarget.elements.password.value
       };
-      
+
       const dataLogin = await services.postLoginUser(user);
       services.userData = dataLogin.data.userData;
       services.token = dataLogin.data.token;
@@ -161,25 +159,24 @@ function closeModal(e) {
     refs.overlayRegister.style.display = "none";
     PNotify.closeAll();
     document.querySelector("body").style.overflow = "auto";
+  }
 }
 
-}
-
-function closeModalByEscape(e){
-  if(e.code === "Escape"){
-    refs.overlayLogin.style.display="none";
-    refs.overlayRegister.style.display="none";
+function closeModalByEscape(e) {
+  if (e.code === "Escape") {
+    refs.overlayLogin.style.display = "none";
+    refs.overlayRegister.style.display = "none";
     document.querySelector("body").style.overflow = "auto";
   }
 }
 
-function closeModalOutside(e){
+function closeModalOutside(e) {
   if (e.target !== e.currentTarget) {
     return;
   }
-  refs.overlayLogin.style.display="none";
-    refs.overlayRegister.style.display="none";
-    document.querySelector("body").style.overflow = "auto";
+  refs.overlayLogin.style.display = "none";
+  refs.overlayRegister.style.display = "none";
+  document.querySelector("body").style.overflow = "auto";
 }
 
 function changeUIforLoggedUser() {
@@ -187,7 +184,13 @@ function changeUIforLoggedUser() {
   refs.registerBlock.style.display = "none";
   refs.logoutBlock.style.display = "block";
 
-  refs.loggedUser.textContent = services.userData.name;
+  // refs.loggedUser.textContent = services.userData.name;
+
+  const servicesFromLS = localStorage.getItem("token");
+  const servicesFromLSName = localStorage.getItem("name");
+
+  const firstLetter = servicesFromLSName[0];
+  refs.loggedUser.textContent = firstLetter;
 
   // hide login/register window
   refs.overlayLogin.style.display = "none";

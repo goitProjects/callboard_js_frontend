@@ -12,10 +12,10 @@ overlay.addEventListener("click", handleOverlay);
 document.addEventListener("keydown", handleKeyPress);
 
 let svg;
-// localStorage.setItem(
-//   "token",
-//   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
-// );
+localStorage.setItem(
+  "token",
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
+);
 const tmp = localStorage.getItem("token");
 
 // FETCHING DATA AND RENDERING
@@ -29,7 +29,8 @@ async function handleClick(e) {
     !e.target.closest(".Card_cardItem") ||
     e.currentTarget.className == "Card_cardItem" ||
     e.currentTarget.className == "favorites-top" ||
-    e.target.closest(".fav2") ||  e.target.closest('.fav3')||
+    e.target.closest(".fav2") ||
+    e.target.closest(".fav3") ||
     e.currentTarget.className == ".Card_img"
   ) {
     return;
@@ -84,7 +85,6 @@ async function handleClick(e) {
       });
   }
 }
-
 
 // favBtn.addEventListener('click', onFav);
 // document.body.addEventListener("click", onFav);
@@ -181,12 +181,6 @@ async function addToFavorite(e) {
   PNotify_1.success("Added to favorites!");
 }
 
-
-
-
-
-
-
 // async function getFav(e) {
 //   const liItem = document.querySelector(".Card_cardItem");
 //   let iconBtn = document.querySelector(".favorites-top");
@@ -207,7 +201,7 @@ async function addToFavorite(e) {
 //         red.style.visibility='visible';
 //         red.style.fill='red'
 //         red.style.stroke='red'
-        
+
 //         // iconBtn.style.fill='red';
 //         PNotify_1.notice("Product already added to your favorites!");
 //         red.addEventListener("click", deleteFav);
@@ -220,8 +214,6 @@ async function addToFavorite(e) {
 //       }
 //     });
 // }
-
-
 
 // async function deleteFav(e) {
 
@@ -240,17 +232,15 @@ async function addToFavorite(e) {
 //       }
 //     })
 //     .then(res => {
-    
+
 //       iconBtn.style.visibility='visible';
 //       iconBtn.style.fill='white';
 //       iconBtn.style.stroke='black';
 //       red.style.visibility='hidden';
-      
-      
+
 //     });
 //   PNotify_1.info("Deleted from favorites!");
 // }
-
 
 // async function addFav(e) {
 //   const liItem = document.querySelector(".Card_cardItem");
@@ -258,7 +248,6 @@ async function addToFavorite(e) {
 //   let red=iconBtn.querySelector('.fav2');
 
 //   iconBtn.removeEventListener("click", addFav);
-
 
 //   red.style.visibility='hidden';
 //   iconBtn.style.visibility='visible'
@@ -280,11 +269,6 @@ async function addToFavorite(e) {
 //     });
 //   PNotify_1.success("Added to favorites!");
 // }
-
-
-
-
-
 
 // FUNCTION FOR CLOSING MODAL
 function closeModal(e) {

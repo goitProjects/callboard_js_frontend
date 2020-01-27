@@ -244,27 +244,36 @@ html {
   width: 150px;
   border: 1px solid #ff6b08;
   border-radius: 30px;
-  background-color: #fff;
+  /* background-color: #fff; */
+  position: relative;
 }
 
 .logged-user {
+  position: absolute;
+  left: -2%;
+  top: 50%;
+  transform: translateY(-50%);
   color: white;
   font-weight: 700;
   text-transform: uppercase;
-  height: 30px;
-  width: 30px;
+  height: 50px;
+  width: 50px;
   border: 1px solid #ff6b08;
   text-align: center;
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 30px;
+  line-height: 50px;
   border-radius: 50%;
-  background-color: #ff6b08;
+  background-color: #1e2939;
   transition: transform .8s ease-in-out; 
+  cursor: pointer;
 }
 
 .logged-user:hover,
 .logged-user:focus {
-  transform: rotate(360deg);
+  /* color: #1e2939; */
+  color: #fff;
+  background-color: #ff6b08;
+
 }
 
 
@@ -280,6 +289,7 @@ html {
   line-height: 30px;
   border: none;
   cursor: pointer;
+  margin-right: 35px;
 }
 .ui-pnotify-title,
 .ui-pnotify-text {
@@ -288,7 +298,7 @@ html {
 
 .exit:hover,
 .exit:focus {
-  color: #1e2939;
+  color: #fff;
 }
 
 /* Registration===================================== */
