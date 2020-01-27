@@ -1,0 +1,93 @@
+
+  
+  .userAccount__overlay {
+    display: none;
+    width: 100vw;
+    min-height: 100vh;
+    z-index: 12;
+    top: 0;
+    left: 0;
+    background: rgba(133, 128, 128, 0.5);
+    padding: 3rem;
+    position: absolute;
+    transition: transform 200ms ease-in-out;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .userAccount__modal {
+    /* position: fixed; */
+    background: #ffffff;
+    box-shadow: 12.5px 21.651px 55px 0px rgba(29, 29, 27, 0.3);
+    padding: 42px 18px;
+    font-family: 'Montserrat600', sans-serif;
+    font-size: 10px;
+    line-height: 17px;
+    letter-spacing: 0.3px;
+    max-height: 100vh;
+    transition: transform 200ms ease-in-out;
+    overflow: auto;
+  }
+  
+  .userAccount__favorite-section-title,
+  .userAccount__ads-section-title {
+    text-align: center;
+    margin: 1.5rem 0;
+  }
+  
+  .userAccount__favorite-list,
+  .userAccount__ads-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    list-style: none;
+  }
+  
+  .userAccount__favorite-list-item,
+  .userAccount__ads-list-item {
+    width: 500px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .userAccount__img {
+    display: block;
+    width: 180px;
+    height: auto;
+  }
+  
+  .userAccount__info {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .userAccount__price {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .userAccount__delete-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+
+.userAccount-close-Modal {
+    position: relative;
+    top: 0;
+    left:91%;
+    border: none;
+    margin-bottom: 23px;
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    background-image: url("../../public/SVG-sprite/close-24px.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }

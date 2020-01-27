@@ -182,6 +182,15 @@ export default {
       throw e;
     }
   },
+  async getAdsUser(opt){
+    try {
+      const data = await axios.get(`/api/v1/ads`, opt);
+      return data;
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  },
 
   async deleteFavorites(id, opt){
     try {

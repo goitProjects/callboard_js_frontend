@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  <!-- HEADER START -->
   <header class="header">
     <nav class="navigation">
       <div class="container header-container">
@@ -173,18 +174,18 @@
                 <button class="btn-refresh " id="btn_refresh-desktop">Очистить</button>
               </div>
               <!-- END Кнопки "Фильтр" и "Очистить" -->
-
             </div>
             <button id="return-to-top" class="return-to-top"> <span><svg xmlns="http://www.w3.org/2000/svg" width="24"
               height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/>
               <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg> </span></button>
           </div>
-
-
         </div>
       </div>
     </nav>
   </header>
+    <!-- HEADER END-->
+
+    <!-- MAIN START -->
   <main>
     <section class="products">
       <div class="container mainTable">
@@ -255,82 +256,64 @@
             </div>
           </div>
         </div>
-
-   
           <!-- MODAL-INFO -->
-           
     <div class="modal-info__overlay">
-      
         <div class="modal-info__modal"></div>
   </div>
       </div>
     </section>
   </main>
+    <!-- MAIN END -->
+
+<!-- FOOTER START -->
   <footer class="footer">
-    <div class="container">
+    <div class="container footer-container">
       <div class="products-button">
-        <button class="products-button__load">Загрузить еще</button>
+          <button class="products-button__load">Загрузить еще</button>
       </div>
       <ul class="block-footer">
-        <li class="block-footer__item">
-          <p class="footer-copirate"> &copy; 2020</p>
-          <p class="footer-reserved">All Rights Reserved</p>
-        </li>
-        <li class="block-footer__item">
-          <p class="footer-developed">
-            Developed with
-            <svg class="heart-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox = "0 0 32 32">
-              <title>favorite-icon-hover</title>
-              <path
-                d="M16 30.72l-2.24-2.24c-8.32-7.36-13.76-12.32-13.76-18.4 0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.080 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.080-5.44 11.040-13.76 18.4l-2.24 2.24z">
-              </path>
-            </svg> by <button class="info-students"> GoIT Students</button></p>
-        </li>
+          <li class="block-footer__item">
+            <p class="footer-copirate"> &copy; 2020</p>
+            <p class="footer-reserved">All Rights Reserved</p>
+          </li>
+          <li class="block-footer__item">
+            <p class="footer-developed">
+              Developed with
+              <svg class="heart-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox = "0 0 32 32">
+                <title>favorite-icon-hover</title>
+                <path
+                  d="M16 30.72l-2.24-2.24c-8.32-7.36-13.76-12.32-13.76-18.4 0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.080 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.080-5.44 11.040-13.76 18.4l-2.24 2.24z">
+                </path>
+              </svg> by <button class="info-students"> GoIT Students</button></p>
+          </li>
       </ul>
-        <!-- MODAL LOGIN WINDOW -->
-  <div class="auth-modal-overlay-login">
-    <form class="auth-modal-login">
-      <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
-      <p class="auth-text">
-        Войдите в приложение используя <span>e-mail и пароль:</span>
-     </p>
-      <div class="inputs-container">
-        <input type="email" name="email" placeholder="E-mail" />
-        <input type="password" name="password" placeholder="Пароль" />
-      </div>
-      <div class="auth-btns">
-        <button type="submit" class="btn-login">Войти</button>
-        <button class="btn-registration">Нет аккаунта? Регистрация тут</button>
-      </div>
-    </form>
-  </div>
-  <!-- MODAL LOGIN WINDOW -->
 
-  <!-- MODAL REGISTRATION WINDOW -->
-  <div class="auth-modal-overlay-register">
-    <form class="auth-modal-register">
-      <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
-      <p class="auth-text">
-         Войдите в приложение используя <span>e-mail и пароль:</span>
-      </p>
-      <div class="inputs-container">
-        <input type="text" name="name" placeholder="Имя" />
-        <input type="email" name="email" placeholder="E-mail" />
-        <input type="password" name="password" placeholder="Пароль" />
-      </div>
-      <div class="auth-btns">
-        <button type="submit" class="btn-confirm">Регистрация</button>
-      </div>
-    </form>
-  </div>
+
       <!-- MODAL LOGIN WINDOW -->
-
-      <!-- MODAL REGISTRATION WINDOW -->
-      <div class="auth-modal-overlay-register hide">
-        <form class="auth-modal-register">
+      <div class="auth-modal-overlay-login">
+        <form class="auth-modal-login">
           <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
           <p class="auth-text">
             Войдите в приложение используя <span>e-mail и пароль:</span>
+          </p>
+          <div class="inputs-container">
+            <input type="email" name="email" placeholder="E-mail" />
+            <input type="password" name="password" placeholder="Пароль" />
+          </div>
+          <div class="auth-btns">
+            <button type="submit" class="btn-login">Войти</button>
+            <button class="btn-registration">Нет аккаунта? Регистрация тут</button>
+          </div>
+        </form>
+      </div>
+      <!-- MODAL LOGIN WINDOW -->
+
+      <!-- MODAL REGISTRATION WINDOW -->
+      <div class="auth-modal-overlay-register">
+        <form class="auth-modal-register">
+          <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
+          <p class="auth-text">
+              Войдите в приложение используя <span>e-mail и пароль:</span>
           </p>
           <div class="inputs-container">
             <input type="text" name="name" placeholder="Имя" />
@@ -342,32 +325,51 @@
           </div>
         </form>
       </div>
-  </div>
-  
+      <!-- MODAL REGISTRATION WINDOW -->
 
-    <!-- ShowTeam Modal -->
-    <div class="team__box" id="show-team__box">
-      <div class="team__box-overlay">
-        <div class="team__content-box">
-          <img class="team__image" src="../components/showteam/images/IMG_7123.JPG" alt="Our team" />
-          <button class="team__box-close-btn"></button>
-          <p class="team__description">
-            Это были наши лучшие дни вместе... <br />
-            Мы были счастливы и учились как могли... <br />
-          </p>
+      <!-- ShowTeam Modal -->
+      <div class="team__box" id="show-team__box">
+        <div class="team__box-overlay">
+          <div class="team__content-box">
+            <button class="team__box-close-btn"></button>
+            <img class="team__image" src="../components/showteam/images/IMG_7123.JPG" alt="Our team" />
+            <p class="team__description">
+              Это были наши лучшие дни вместе... <br />
+              Мы были счастливы и учились как могли... <br />
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- ShowTeam Modal -->
+      <!-- ShowTeam Modal -->
 
+      <!-- PRELOADER -->
       <div class="preloader js-preloader is-hidden" id="spinner">
         <span class="load"></span>
       </div>
+      <!-- PRELOADER -->
 
+    </div>
+          <!-- MODAL USER ACCOUNT -->
+          <div class="userAccount__overlay">
+            <div class="userAccount__modal">
+              <button class="userAccount-close-Modal"></button>
+                <h2 class="userAccount__favorite-section-title">Избранные объявления</h2>
+                <ul class="userAccount__favorite-list">
+                </ul>
+                <h2 class="userAccount__ads-section-title">Мои объявления</h2>
+                <ul class="userAccount__ads-list">
+                </ul>
+            </div>
+          </div>
+          <!-- MODAL USER ACCOUNT  -->
+    
   </footer>
-<div class="containet-modal-window" style="display: none;">   <!-- SECTION MODAL WINDOW-->
- 
-  </div> <!--  CLOSE SECTION MODAL WINDOW--->
+<!-- FOOTER END -->
+
+<!-- SECTION MODAL WINDOW -->
+  <div class="containet-modal-window" style="display: none;"></div>
+<!-- CLOSE SECTION MODAL WINDOW -->
+
 </body>
 
 </html>

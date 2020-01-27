@@ -1,0 +1,11 @@
+{{#each this}}
+<li class="userAccount__ads-list-item" data-ads-id={{this._id}}>
+    <img class="userAccount__img" src={{images}} alt=`name-of ${{title}}` />
+    <div class="userAccount__info">
+        <h3 class="userAccount__title">{{title}}</h3>
+        <p class="userAccount__desctiption">{{description}}</p>
+    </div>
+    <span class="userAccount__price">{{price}}</span>
+    <button class="userAccount__delete-button">Удалить мое объявление</button>
+</li>
+{{/each}}

@@ -11,5 +11,6 @@ import '../src/components/startPage/login-auth/login-auth';
 import '../src/components/startPage/login-auth/login-auth.css';
 import "./components/startPage/photo-conversion/photo-conversion";
 import "./components/serachBar/";
+import "./components/userAccount/userAccount";
 
 
