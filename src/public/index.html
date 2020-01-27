@@ -22,16 +22,21 @@
             </label>
             <!-- start content inside menu -->
             <ul class="menu__box">
+              <!-- add new ad -->
+              <div class="wrapper-registrationLogoutPromo addnewad_mobile">
+                <button class="navigation-promo">Создать объявление</button>
+              </div>
+
               <!-- strat login/registration buttons -->
-              <div class="user_login-bar user_login-bar-mobile">
-                <div class="navigation__registration">
+              <div class="user_login-bar user_login-bar-mobile" id="user_login-bar-mobile">
+                <!-- <div class="navigation__registration">
                   <button class="registration-button">Регистрация </button>
                   <button class="registration-enter">Войти </button>
                 </div>
                 <div class="navigation__logout">
                   <div class="logged-user"></div>
                   <button class="exit"> Выйти</button>
-                </div>
+                </div> -->
               </div>
               <!-- end login/registration buttons -->
               <!-- start search bar -->
@@ -101,19 +106,19 @@
                 <!-- END Строка поиска / кнопка поиска -->
               </div>
             </div>
-              <!-- strat login/registration buttons -->
-              <div class="user_login-bar user_login-bar-desktop">
-                <div class="navigation__registration">
-                  <button class="registration-button">Регистрация </button>
-                  <button class="registration-enter">Войти </button>
-                </div>
-                <div class="navigation__logout">
-                  <div class="logged-user"></div>
-                  <button class="exit"> Выйти</button>
-                </div>
+            <!-- strat login/registration buttons -->
+            <div class="user_login-bar user_login-bar-desktop" id="user_login-bar-desktop">
+              <!-- <div class="navigation__registration">
+                <button class="registration-button">Регистрация </button>
+                <button class="registration-enter">Войти </button>
               </div>
-              <!-- end login/registration buttons -->
-            <div class="wrapper-registrationLogoutPromo">
+              <div class="navigation__logout">
+                <div class="logged-user"></div>
+                <button class="exit"> Выйти</button>
+              </div> -->
+            </div>
+            <!-- end login/registration buttons -->
+            <div class="wrapper-registrationLogoutPromo  addnewad_desktop">
               <button class="navigation-promo">Создать объявление</button>
             </div>
           </div>
@@ -176,8 +181,9 @@
 
             </div>
             <button id="return-to-top" class="return-to-top"> <span><svg xmlns="http://www.w3.org/2000/svg" width="24"
-              height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/>
-              <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg> </span></button>
+                  height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" /></svg> </span></button>
           </div>
 
 
@@ -188,8 +194,8 @@
   <main>
     <section class="products">
       <div class="container mainTable">
-        <ul id="search_list" class="search_list-item">    </ul>
-       
+        <ul id="search_list" class="search_list-item"> </ul>
+
         <div class="category-favorite_list">
           <div class="products-collection-popular">
             <div class="scrolling">
@@ -256,24 +262,19 @@
           </div>
         </div>
 
-   
-          <!-- MODAL-INFO -->
-           
-    <div class="modal-info__overlay">
-      
-        <div class="modal-info__modal"></div>
-            <svg hidden
-            class="fav js-fav"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 32 32"
-          >
+
+        <!-- MODAL-INFO -->
+
+        <div class="modal-info__overlay">
+
+          <div class="modal-info__modal"></div>
+          <svg hidden class="fav js-fav" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <title>favorite-icon-hover</title>
             <path
-              d="M16 30.72l-2.24-2.24c-8.32-7.36-13.76-12.32-13.76-18.4 0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.080 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.080-5.44 11.040-13.76 18.4l-2.24 2.24z"
-            ></path>
+              d="M16 30.72l-2.24-2.24c-8.32-7.36-13.76-12.32-13.76-18.4 0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.080 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.080-5.44 11.040-13.76 18.4l-2.24 2.24z">
+            </path>
           </svg>
-  </div>
+        </div>
       </div>
     </section>
   </main>
@@ -292,7 +293,7 @@
         <li class="block-footer__item">
           <p class="footer-developed">
             Developed with
-            <svg class="heart-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox = "0 0 32 32">
+            <svg class="heart-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32">
               <title>favorite-icon-hover</title>
               <path
                 d="M16 30.72l-2.24-2.24c-8.32-7.36-13.76-12.32-13.76-18.4 0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.080 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.080-5.44 11.040-13.76 18.4l-2.24 2.24z">
@@ -300,42 +301,42 @@
             </svg> by <button class="info-students"> GoIT Students</button></p>
         </li>
       </ul>
-        <!-- MODAL LOGIN WINDOW -->
-  <div class="auth-modal-overlay-login">
-    <form class="auth-modal-login">
-      <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
-      <p class="auth-text">
-        Войдите в приложение используя <span>e-mail и пароль:</span>
-     </p>
-      <div class="inputs-container">
-        <input type="email" name="email" placeholder="E-mail" />
-        <input type="password" name="password" placeholder="Пароль" />
+      <!-- MODAL LOGIN WINDOW -->
+      <div class="auth-modal-overlay-login">
+        <form class="auth-modal-login">
+          <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
+          <p class="auth-text">
+            Войдите в приложение используя <span>e-mail и пароль:</span>
+          </p>
+          <div class="inputs-container">
+            <input type="email" name="email" placeholder="E-mail" />
+            <input type="password" name="password" placeholder="Пароль" />
+          </div>
+          <div class="auth-btns">
+            <button type="submit" class="btn-login">Войти</button>
+            <button class="btn-registration">Нет аккаунта? Регистрация тут</button>
+          </div>
+        </form>
       </div>
-      <div class="auth-btns">
-        <button type="submit" class="btn-login">Войти</button>
-        <button class="btn-registration">Нет аккаунта? Регистрация тут</button>
-      </div>
-    </form>
-  </div>
-  <!-- MODAL LOGIN WINDOW -->
+      <!-- MODAL LOGIN WINDOW -->
 
-  <!-- MODAL REGISTRATION WINDOW -->
-  <div class="auth-modal-overlay-register">
-    <form class="auth-modal-register">
-      <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
-      <p class="auth-text">
-         Войдите в приложение используя <span>e-mail и пароль:</span>
-      </p>
-      <div class="inputs-container">
-        <input type="text" name="name" placeholder="Имя" />
-        <input type="email" name="email" placeholder="E-mail" />
-        <input type="password" name="password" placeholder="Пароль" />
+      <!-- MODAL REGISTRATION WINDOW -->
+      <div class="auth-modal-overlay-register">
+        <form class="auth-modal-register">
+          <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
+          <p class="auth-text">
+            Войдите в приложение используя <span>e-mail и пароль:</span>
+          </p>
+          <div class="inputs-container">
+            <input type="text" name="name" placeholder="Имя" />
+            <input type="email" name="email" placeholder="E-mail" />
+            <input type="password" name="password" placeholder="Пароль" />
+          </div>
+          <div class="auth-btns">
+            <button type="submit" class="btn-confirm">Регистрация</button>
+          </div>
+        </form>
       </div>
-      <div class="auth-btns">
-        <button type="submit" class="btn-confirm">Регистрация</button>
-      </div>
-    </form>
-  </div>
       <!-- MODAL LOGIN WINDOW -->
 
       <!-- MODAL REGISTRATION WINDOW -->
@@ -355,9 +356,9 @@
           </div>
         </form>
       </div>
-    </form>
-  </div>
-  
+      </form>
+    </div>
+
 
     <!-- ShowTeam Modal -->
     <div class="team__box" id="show-team__box">
@@ -374,13 +375,14 @@
     </div>
     <!-- ShowTeam Modal -->
 
-      <div class="preloader js-preloader is-hidden" id="spinner">
-        <span class="load"></span>
-      </div>
+    <div class="preloader js-preloader is-hidden" id="spinner">
+      <span class="load"></span>
+    </div>
     </div>
   </footer>
-<div class="containet-modal-window" style="display: none;">   <!-- SECTION MODAL WINDOW-->
- 
+  <div class="containet-modal-window" style="display: none;">
+    <!-- SECTION MODAL WINDOW-->
+
   </div> <!--  CLOSE SECTION MODAL WINDOW--->
 </body>
 

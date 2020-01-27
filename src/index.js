@@ -1,4 +1,3 @@
-
 import "./components/startHtmlCss";
 import "./components/modalCreateAd";
 import "./components/default-page/default-page";

@@ -3,6 +3,29 @@ import "./login-auth.css";
 import "../../../../node_modules/pnotify/dist/PNotifyBrightTheme.css";
 import PNotify from "../../../../node_modules/pnotify/dist/es/PNotify.js";
 
+// START - Делаем проверку вьюпорта, чтобы отрисовать кнопки входа/регистрации/выхода/ЛК
+const domLoginBlockForMob = document.getElementById("user_login-bar-mobile");
+const domLoginBlockForDesk = document.getElementById("user_login-bar-desktop");
+const authContent = `
+<div class="navigation__registration">
+<button class="registration-button">Регистрация </button>
+<button class="registration-enter">Войти </button>
+</div>
+<div class="navigation__logout">
+<div class="logged-user"></div>
+<button class="exit"> Выйти</button>
+</div> `;
+if (window.innerWidth < 1200) {
+  domLoginBlockForDesk.innerHTML = "";
+  domLoginBlockForMob.innerHTML = authContent;
+} else {
+  domLoginBlockForMob.innerHTML = "";
+  domLoginBlockForDesk.innerHTML = authContent;
+}
+// END - Делаем проверку вьюпорта, чтобы отрисовать кнопки входа/регистрации/выхода/ЛК
+
+
+
 const refs = {
   overlayLogin: document.querySelector(".auth-modal-overlay-login"),
   overlayRegister: document.querySelector(".auth-modal-overlay-register"),
@@ -10,7 +33,8 @@ const refs = {
   authModalRegister: document.querySelector(".auth-modal-register"),
   registerBlock: document.querySelector(".navigation__registration"),
   logoutBlock: document.querySelector(".navigation__logout"),
-  loggedUser: document.querySelector(".logged-user")
+  loggedUser: document.querySelector(".logged-user"),
+  logout: document.querySelector('.exit')
 };
 
 services.ref.body.addEventListener("click", showLoginModal);
@@ -18,10 +42,11 @@ refs.authModalLogin.addEventListener("click", login);
 services.ref.body.addEventListener("click", showRegisterModal);
 refs.authModalRegister.addEventListener("click", register);
 refs.authModalLogin.addEventListener("click", registerFromModal);
-services.ref.logout.addEventListener("click", logoutFromAcc);
+refs.logout.addEventListener("click", logoutFromAcc);
 services.ref.body.addEventListener("click", closeModal);
 services.ref.body.addEventListener("click", closeModal);
 document.addEventListener("DOMContentLoaded", stayLoggedIn);
+
 
 function showLoginModal(e) {
   if (e.target.classList == "registration-enter") {
@@ -30,48 +55,16 @@ function showLoginModal(e) {
 }
 
 async function login(e) {
-<<<<<<< HEAD
-  // console.log(e)
-  // if (e.target.classList == "registration-enter") {
-    
-  //   e.preventDefault();
-    if (e.target.classList.contains("btn-login")) {
-      try {
-        const user = {
-          email: e.currentTarget.elements.email.value,
-          password: e.currentTarget.elements.password.value
-        };
-        const dataLogin = await services.postLoginUser(user);
-        services.userData = dataLogin.data.userData;
-        services.token = dataLogin.data.token;
-        services.ads = dataLogin.data.ads;
-        services.favorites = dataLogin.data.favorites;
-        services.isAuth = true;
-        services.categories = dataLogin.data.categories;
-        //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
-        localStorage.setItem("token", services.token);
-        changeUIforLoggedUser();
-      } catch (e) {
-        PNotify.error({
-          title: "Oops!",
-          text: "Email or password is incorrect.",
-          modules: {
-            Desktop: {
-              desktop: true
-            }
-=======
-  if(e.target.classList == "registration-enter"){
-  e.preventDefault();
-  showRegisterModal();
-}
-  else if (e.target.classList.contains('btn-login')) {
+  if (e.target.classList == "registration-enter") {
+    e.preventDefault();
+    showRegisterModal();
+  } else if (e.target.classList.contains("btn-login")) {
     try {
       const user = {
         email: e.currentTarget.elements.email.value,
         password: e.currentTarget.elements.password.value
       };
       const dataLogin = await services.postLoginUser(user);
-      console.log(dataLogin)
       services.userData = dataLogin.data.userData;
       services.token = dataLogin.data.token;
       services.ads = dataLogin.data.ads;
@@ -79,24 +72,22 @@ async function login(e) {
       services.isAuth = true;
       services.categories = dataLogin.data.categories;
       //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
-      localStorage.setItem('token', services.token);
-      localStorage.setItem('name', services.userData.name);
+      localStorage.setItem("token", services.token);
+      localStorage.setItem("name", services.userData.name);
       changeUIforLoggedUser();
     } catch (e) {
       PNotify.error({
-        title: 'Oops!',
-        text: 'Email or password is incorrect.',
+        title: "Oops!",
+        text: "Email or password is incorrect.",
         modules: {
           Desktop: {
             desktop: true
->>>>>>> default-page
           }
-        });
-      }
+        }
+      });
     }
   }
-<<<<<<< HEAD
-// }
+}
 
 function showRegisterModal(e) {
   if (e.target.classList == "registration-button") {
@@ -107,18 +98,6 @@ function showRegisterModal(e) {
     refs.overlayLogin.style.display = "none";
     refs.overlayRegister.style.display = "flex";
   }
-=======
-}
-
-function showRegisterModal(e){
-  if(e.target.classList=="registration-button" ){
-    refs.overlayLogin.style.display="none"
-  refs.overlayRegister.style.display="flex";}
-    if(e.target.classList =='btn-registration'){
-      refs.overlayLogin.style.display="none"
-      refs.overlayRegister.style.display="flex"
-    }
->>>>>>> default-page
 }
 
 async function register(e) {
@@ -139,13 +118,8 @@ async function register(e) {
 
       services.categories = dataRegister.data.categories;
       //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
-<<<<<<< HEAD
-
+      localStorage.setItem("loginName", dataRegister.data.userData);
       localStorage.setItem("token", dataRegister.data.token);
-=======
-      localStorage.setItem('loginName', dataRegister.data.userData)
-      localStorage.setItem('token', dataRegister.data.token);
->>>>>>> default-page
       changeUIforLoggedUser();
     } catch (e) {
       PNotify.error({
@@ -184,12 +158,10 @@ function closeModal(e) {
   }
 }
 
-
 function changeUIforLoggedUser() {
   // change UI for logged user
   refs.registerBlock.style.display = "none";
   refs.logoutBlock.style.display = "block";
-  
 
   refs.loggedUser.textContent = services.userData.name;
 
@@ -210,10 +182,12 @@ function changeUIforLoggedUser() {
 
 function stayLoggedIn() {
   const servicesFromLS = localStorage.getItem("token");
+  const servicesFromLSName = localStorage.getItem("name");
   if (servicesFromLS !== null) {
     refs.registerBlock.style.display = "none";
-    refs.logoutBlock.style.display = "block";
-    refs.loggedUser.textContent = "NAME";
+    refs.logoutBlock.style.display = "flex";
+    const firstLetter = servicesFromLSName[0];
+    refs.loggedUser.textContent = firstLetter;
     services.userData = servicesFromLS.userData;
     services.token = servicesFromLS.token;
     services.ads = servicesFromLS.ads;
