@@ -18,7 +18,6 @@ document.addEventListener("click",handleCLickOpenModalAcc)
 function handleCLickOpenModalAcc(e){
   if(e.target.classList == "logged-user")
   {
-
     document.querySelector("body").style.overflow= "hidden";
     document.querySelector("#menu__toggle").checked = false;
     document.querySelector(".userAccount__overlay").style.display= "block";
@@ -29,9 +28,7 @@ function handleCLickOpenModalAcc(e){
       services.getAdsUser({headers: {Authorization:tokenUserAcc}}).then(res => {
        const DataAds=res.data.ads;
        document.querySelector(".userAccount__ads-list").insertAdjacentHTML("beforeend", addsHbs(DataAds))})
-       console.log(5)
   }
-
 if(e.target.classList == "userAccount-close-Modal"){
      document.querySelector("body").style.overflow="auto";
     document.querySelector("#menu__toggle").checked = false;

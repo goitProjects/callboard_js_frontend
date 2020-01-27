@@ -348,16 +348,16 @@ html {
 }
 
 .products-button{
-  padding-top: 100px;
-
-  padding-top: 26px;
+  width: 100vw;
+  left: -12%;
+  padding-top: 90px;
   padding-bottom: 26px;
   background-color:transparent;
   display: none;
 }
 .products-button__load{
   position: absolute;
-  top: 0;
+  top: 60px;
   left: 0;
   height: 100px;
   width: 100%;
@@ -368,13 +368,11 @@ html {
   background-color: #121d2e;
   border: none;
   cursor: pointer;
+
 }
 .category-favorite_list{
   padding-top: 20px;
   padding-bottom: 40px;
-}
-
-.wrapper-registrationLogoutPromo {
 }
 
 .navigation-promo {
