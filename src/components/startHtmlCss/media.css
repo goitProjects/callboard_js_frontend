@@ -1,7 +1,7 @@
 @media (min-width: 768px) {
   .container {
     width: 688px;
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
   }
 
   .navigation__registration {
@@ -23,6 +23,7 @@
 
   .header-container {
     align-items: center;
+    margin: 0 auto;
   }
 
   .tab-leck-block {
@@ -264,6 +265,10 @@
     display: block;
   }
 
+  .navigation-promo {
+    margin: 0;
+  }
+
   .laptop-block-LogoForm {
     display: flex;
     align-items: center;
@@ -272,6 +277,12 @@
 
   .tablet-navigationForm {
     display: none;
+  }
+
+  .wrapper-registrationLogoutPromo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   /* .navigation-form {
@@ -311,4 +322,6 @@
     align-items: center;
 
   }
+
+
 }

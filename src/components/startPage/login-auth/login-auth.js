@@ -3,6 +3,29 @@ import "./login-auth.css";
 import "../../../../node_modules/pnotify/dist/PNotifyBrightTheme.css";
 import PNotify from "../../../../node_modules/pnotify/dist/es/PNotify.js";
 
+// START - Делаем проверку вьюпорта, чтобы отрисовать кнопки входа/регистрации/выхода/ЛК
+const domLoginBlockForMob = document.getElementById("user_login-bar-mobile");
+const domLoginBlockForDesk = document.getElementById("user_login-bar-desktop");
+const authContent = `
+<div class="navigation__registration">
+<button class="registration-button">Регистрация </button>
+<button class="registration-enter">Войти </button>
+</div>
+<div class="navigation__logout">
+<div class="logged-user"></div>
+<button class="exit"> Выйти</button>
+</div> `;
+if (window.innerWidth < 1200) {
+  domLoginBlockForDesk.innerHTML = "";
+  domLoginBlockForMob.innerHTML = authContent;
+} else {
+  domLoginBlockForMob.innerHTML = "";
+  domLoginBlockForDesk.innerHTML = authContent;
+}
+// END - Делаем проверку вьюпорта, чтобы отрисовать кнопки входа/регистрации/выхода/ЛК
+
+
+
 const refs = {
   overlayLogin: document.querySelector(".auth-modal-overlay-login"),
   overlayRegister: document.querySelector(".auth-modal-overlay-register"),
@@ -10,7 +33,8 @@ const refs = {
   authModalRegister: document.querySelector(".auth-modal-register"),
   registerBlock: document.querySelector(".navigation__registration"),
   logoutBlock: document.querySelector(".navigation__logout"),
-  loggedUser: document.querySelector(".logged-user")
+  loggedUser: document.querySelector(".logged-user"),
+  logout: document.querySelector('.exit')
 };
 
 services.ref.body.addEventListener("click", showLoginModal);
@@ -18,7 +42,7 @@ refs.authModalLogin.addEventListener("click", login);
 services.ref.body.addEventListener("click", showRegisterModal);
 refs.authModalRegister.addEventListener("click", register);
 refs.authModalLogin.addEventListener("click", registerFromModal);
-services.ref.logout.addEventListener("click", logoutFromAcc);
+refs.logout.addEventListener("click", logoutFromAcc);
 services.ref.body.addEventListener("click", closeModal);
 services.ref.body.addEventListener("click", closeModal);
 document.addEventListener("DOMContentLoaded", stayLoggedIn);

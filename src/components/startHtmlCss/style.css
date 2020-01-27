@@ -82,7 +82,7 @@ html {
 .header-container {
   display: flex;
   flex-direction: row-reverse;
-  justify-content: flex-start;
+  justify-content: center;
   align-content: center;
 }
 .popular-wrapper {
@@ -147,7 +147,7 @@ html {
   text-transform: uppercase;
   color: rgb(255, 255, 255);
   font-family: "Montserrat-Bold";
-  z-index: 5;
+  /* z-index: 5; */
 }
 .circle {
   border-radius: 50%;
@@ -367,4 +367,29 @@ html {
 .category-favorite_list{
   padding-top: 20px;
   padding-bottom: 40px;
+}
+
+.wrapper-registrationLogoutPromo {
+}
+
+.navigation-promo {
+  display: block;
+  padding: 16px 0;
+  width: 200px;
+  font-family: "Montserrat-Bold";
+  font-size: 14px;
+  letter-spacing: 0.28px;
+  color: #ffffff;
+  background-color: #ff6b08;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  background-color: #ff6b08;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.navigation-promo:hover {
+  background-color: #fff;
+  color: #ff6b08;
 }
