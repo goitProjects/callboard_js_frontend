@@ -16,7 +16,15 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+<<<<<<< HEAD
 .team__box-modal {
+=======
+.team__content-box {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  /* flex-wrap: wrap; */
+>>>>>>> dev
   position: absolute;
   top: 50%;
   left: 50%;
@@ -97,7 +105,11 @@
     height: 520px;
   }
   .team__image {
+<<<<<<< HEAD
     width: 480px;
     margin: 0 auto;
+=======
+    max-width: 600px;
+>>>>>>> dev
   }
 }

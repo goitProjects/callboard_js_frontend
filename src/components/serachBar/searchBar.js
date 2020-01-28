@@ -2,6 +2,7 @@ import services from "../../services";
 import searchBar from ".";
 import SearchHBS from "./search.hbs";
 import showPreloader from "../preloader/js/preloader";
+import PNotify from 'pnotify/dist/es/PNotify';
 
 export default {
   refsearch: {
@@ -64,11 +65,23 @@ export default {
     });
   },
 
-  async getSearchResult(e) {
+  async getSearchResult(e) {  
     // Делаем проверку, есть ли активный чекбокс. Если нет - ищем по всем
     // объявлениям. Если есть - определяем id категории и ищем по ней
     e.preventDefault();
+
+    if(document.querySelector("#search_input").value<1){ 
+      PNotify.error({
+      title: 'Oops!',
+      text: 'You need enter your search title'})
+      setTimeout(closePhotyfy,1000);
+      function closePhotyfy(){
+      PNotify.closeAll()}
+       }
+      else
+      {
     showPreloader.show();
+    document.querySelector("#menu__toggle").checked = false;
     if (e.target.classList == "search-bar__form") {
       const radioButtons = document.querySelectorAll(
         ".category__list-item-radio"
@@ -132,11 +145,11 @@ export default {
         // начинаем поиск по выбранной категории
         searchByCategories();
       }
-    }
+    }}
   },
 
   // Очищаем результаты поиска и деактивируем чекбоксы
-  async clearSearchResult(e) {
+  async clearSearchResult(e){
     e.preventDefault();
     const deActivateRadioBtn = document.getElementsByName("checkCategory");
     deActivateRadioBtn.forEach(el => (el.checked = false));
@@ -144,5 +157,6 @@ export default {
     searchBarInput.value = "";
     searchBar.refsearch.list.innerHTML = "";
   }
-};
+}
+
 // refsearch.checkboxCategory = searchBar.getBoardCategories()

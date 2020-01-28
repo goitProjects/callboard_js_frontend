@@ -55,15 +55,17 @@ const itemTrade = services.getAdsByCategory(8,10).then(res => {
 ////////////// CLOSE CREATE PAGE
 
 function loadDefaultPage(e) {
-  if (e.target.id == "logo-btn" ||e.target.id == "btn_refresh-desktop") {
+  if (e.target.id == "logo-btn" ||e.target.id == "btn_refresh-desktop"|| e.target.id=="btn_refresh") {
     defaultInfoBord.style.display = "block";
     services.ref.allCategoryView.innerHTML = "";
     document.querySelector(".products-button").style.display = "none";
+    document.querySelector("#menu__toggle").checked = false;
     const deActivateRadioBtn = document.querySelectorAll(".category__list-item-radio");
     deActivateRadioBtn.forEach(el => (el.checked = false));
     document.querySelector(".search-bar__input").value="";
   }
 }
+
 document.querySelector(".button-popularAll").addEventListener("click", handlClickPopupal);
 services.ref.mainTable.addEventListener("click", handlClickPopupal2);
 
@@ -94,8 +96,8 @@ async function handlClickPopupal(e) {
       page++;
       preloader.show();
       await services.getAdsLimit(limit, page).then(res => {
-        favoritCategory = res.data.ads.docs;
-        if (favoritCategory.length<1) {
+         favoritCategory = res.data.ads.docs;
+          if (favoritCategory.length<1) {
           document.querySelector(".products-button").style.display = "none";
         } else {
           allCategoryViewCreate(favoritCategory);
@@ -149,53 +151,3 @@ async function handlClickPopupal2(e) {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function transportCategory(categoryArr, domElement) {
-//   const categoryLayout = itemHBS(categoryArr);
-//   domElement.insertAdjacentHTML("beforeend", categoryLayout);
-// }
-// function BisCategory(categoryArr, domElement) {
-//   const categoryLayout = itemHBS(categoryArr);
-//   domElement.insertAdjacentHTML("beforeend", categoryLayout);
-// }
-// function FreeCategory(categoryArr, domElement) {
-//   const categoryLayout = itemHBS(categoryArr);
-//   domElement.insertAdjacentHTML("beforeend", categoryLayout);
-// }
-
-// function realEstateCategory(categoryArr, domElement) {
-//   const categoryLayout = itemHBS(categoryArr);
-//   domElement.insertAdjacentHTML("beforeend", categoryLayout);
-// }
-// function pastimeCategory(categoryArr, domElement) {
-//   const categoryLayout = itemHBS(categoryArr);
-//   domElement.insertAdjacentHTML("beforeend", categoryLayout);
-// }
-// const itemTransport = services.getAdsByCategory(2).then(res => {
-//   transportCategory(res.data.ads.docs, services.ref.transportCategory);
-// });
-// const itembisness = services.getAdsByCategory(5).then(res => {
-//   BisCategory(res.data.ads.docs, services.ref.businessCategory);
-// });
-// const itemFree = services.getAdsByCategory(7).then(res => {
-//   FreeCategory(res.data.ads.docs, services.ref.freeCategory);
-// });
-// const itemrealestate = services.getAdsByCategory(1).then(res => {
-//   realEstateCategory(res.data.ads.docs, services.ref.realEstateCategory);
-// });
-
-// const itemPasTime = services.getAdsByCategory(6).then(res => {
-//   pastimeCategory(res.data.ads.docs, services.ref.pastimeCategory);
-// });

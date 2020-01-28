@@ -241,27 +241,41 @@ html {
   width: 150px;
   border: 1px solid #ff6b08;
   border-radius: 30px;
-  background-color: #fff;
+  /* background-color: #fff; */
+  position: relative;
 }
 
 .logged-user {
+  position: absolute;
+  left: -2%;
+  top: 50%;
+  transform: translateY(-50%);
   color: white;
   font-weight: 700;
   text-transform: uppercase;
-  height: 30px;
-  width: 30px;
+  height: 50px;
+  width: 50px;
   border: 1px solid #ff6b08;
   text-align: center;
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 30px;
+  line-height: 50px;
   border-radius: 50%;
+<<<<<<< HEAD
   background-color: #ff6b08;
   transition: transform 0.8s ease-in-out;
+=======
+  background-color: #1e2939;
+  transition: transform .8s ease-in-out; 
+  cursor: pointer;
+>>>>>>> dev
 }
 
 .logged-user:hover,
 .logged-user:focus {
-  transform: rotate(360deg);
+  /* color: #1e2939; */
+  color: #fff;
+  background-color: #ff6b08;
+
 }
 
 .exit {
@@ -276,11 +290,16 @@ html {
   line-height: 30px;
   border: none;
   cursor: pointer;
+  margin-right: 35px;
+}
+.ui-pnotify-title,
+.ui-pnotify-text {
+  font-family: sans-serif;
 }
 
 .exit:hover,
 .exit:focus {
-  color: #1e2939;
+  color: #fff;
 }
 
 /* Registration===================================== */
@@ -343,6 +362,7 @@ html {
   text-align: center;
 }
 
+<<<<<<< HEAD
 .products-button {
   padding-top: 100px;
 
@@ -356,7 +376,18 @@ html {
   top: 0;
   left: 0;
   height: 100px;
+=======
+.products-button{
   width: 100%;
+  padding-top: 90px;
+  /* padding-bottom: 26px; */
+  background-color:transparent;
+  display: none;
+}
+.products-button__load{
+>>>>>>> dev
+  width: 100%;
+  height: 100px;
   margin: 0 auto;
   font-family: "Montserrat-SemiBold";
   font-size: 18px;
@@ -364,13 +395,11 @@ html {
   background-color: #121d2e;
   border: none;
   cursor: pointer;
+
 }
 .category-favorite_list {
   padding-top: 20px;
   padding-bottom: 40px;
-}
-
-.wrapper-registrationLogoutPromo {
 }
 
 .navigation-promo {

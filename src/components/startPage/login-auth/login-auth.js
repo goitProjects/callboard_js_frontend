@@ -24,8 +24,6 @@ if (window.innerWidth < 1200) {
 }
 // END - Делаем проверку вьюпорта, чтобы отрисовать кнопки входа/регистрации/выхода/ЛК
 
-
-
 const refs = {
   overlayLogin: document.querySelector(".auth-modal-overlay-login"),
   overlayRegister: document.querySelector(".auth-modal-overlay-register"),
@@ -34,7 +32,7 @@ const refs = {
   registerBlock: document.querySelector(".navigation__registration"),
   logoutBlock: document.querySelector(".navigation__logout"),
   loggedUser: document.querySelector(".logged-user"),
-  logout: document.querySelector('.exit')
+  logout: document.querySelector(".exit")
 };
 
 services.ref.body.addEventListener("click", showLoginModal);
@@ -50,20 +48,23 @@ document.addEventListener("DOMContentLoaded", stayLoggedIn);
 function showLoginModal(e) {
   if (e.target.classList == "registration-enter") {
     refs.overlayLogin.style.display = "flex";
+    document.querySelector("#menu__toggle").checked = false;
   }
 }
 
 async function login(e) {
   if (e.target.classList == "registration-enter") {
     e.preventDefault();
+  
     showRegisterModal();
   } else if (e.target.classList.contains("btn-login")) {
+    document.querySelector("#menu__toggle").checked = false;
     try {
       const user = {
         email: e.currentTarget.elements.email.value,
         password: e.currentTarget.elements.password.value
       };
-      
+
       const dataLogin = await services.postLoginUser(user);
       services.userData = dataLogin.data.userData;
       services.token = dataLogin.data.token;
@@ -71,7 +72,7 @@ async function login(e) {
       services.favorites = dataLogin.data.favorites;
       services.isAuth = true;
       services.categories = dataLogin.data.categories;
-      //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
+
       localStorage.setItem("token", services.token);
       localStorage.setItem("name", services.userData.name);
       changeUIforLoggedUser();
@@ -93,10 +94,12 @@ function showRegisterModal(e) {
   if (e.target.classList == "registration-button") {
     refs.overlayLogin.style.display = "none";
     refs.overlayRegister.style.display = "flex";
+    document.querySelector("#menu__toggle").checked = false;
   }
   if (e.target.classList == "btn-registration") {
     refs.overlayLogin.style.display = "none";
     refs.overlayRegister.style.display = "flex";
+    document.querySelector("#menu__toggle").checked = false;
   }
 }
 
@@ -115,12 +118,12 @@ async function register(e) {
       services.ads = dataRegister.data.ads;
       services.favorites = dataRegister.data.favorites;
       services.isAuth = true;
-
+      document.querySelector("#menu__toggle").checked = false;
       services.categories = dataRegister.data.categories;
-      //localStorage.setItem('loginInfo', JSON.stringify({userData: services.userData, token:services.token, isAuth: true}));
       localStorage.setItem("loginName", dataRegister.data.userData);
       localStorage.setItem("token", dataRegister.data.token);
       changeUIforLoggedUser();
+      refs.overlayLogin.style.display = "none";
     } catch (e) {
       PNotify.error({
         title: "Oops!",
@@ -142,10 +145,10 @@ function registerFromModal(e) {
 // logout fn works, even though if throws errors
 function logoutFromAcc() {
   services.postLogoutUser();
-  localStorage.setItem("loginInfo", null);
   refs.authModalRegister.reset();
   refs.authModalLogin.reset();
   services.isAuth = false;
+  localStorage.clear();
   refs.registerBlock.style.display = "block";
   refs.logoutBlock.style.display = "none";
 }
@@ -156,25 +159,24 @@ function closeModal(e) {
     refs.overlayRegister.style.display = "none";
     PNotify.closeAll();
     document.querySelector("body").style.overflow = "auto";
+  }
 }
 
-}
-
-function closeModalByEscape(e){
-  if(e.code === "Escape"){
-    refs.overlayLogin.style.display="none";
-    refs.overlayRegister.style.display="none";
+function closeModalByEscape(e) {
+  if (e.code === "Escape") {
+    refs.overlayLogin.style.display = "none";
+    refs.overlayRegister.style.display = "none";
     document.querySelector("body").style.overflow = "auto";
   }
 }
 
-function closeModalOutside(e){
+function closeModalOutside(e) {
   if (e.target !== e.currentTarget) {
     return;
   }
-  refs.overlayLogin.style.display="none";
-    refs.overlayRegister.style.display="none";
-    document.querySelector("body").style.overflow = "auto";
+  refs.overlayLogin.style.display = "none";
+  refs.overlayRegister.style.display = "none";
+  document.querySelector("body").style.overflow = "auto";
 }
 
 function changeUIforLoggedUser() {
@@ -182,13 +184,18 @@ function changeUIforLoggedUser() {
   refs.registerBlock.style.display = "none";
   refs.logoutBlock.style.display = "block";
 
-  refs.loggedUser.textContent = services.userData.name;
+  // refs.loggedUser.textContent = services.userData.name;
+
+  const servicesFromLS = localStorage.getItem("token");
+  const servicesFromLSName = localStorage.getItem("name");
+
+  const firstLetter = servicesFromLSName[0];
+  refs.loggedUser.textContent = firstLetter;
 
   // hide login/register window
-  refs.overlayLogin.classList.add("hide");
-  refs.overlayLogin.classList.remove("show");
-  refs.overlayRegister.classList.add("hide");
-  refs.overlayRegister.classList.remove("show");
+  refs.overlayLogin.style.display = "none";
+  refs.overlayRegister.style.display = "none";
+
 
   setTimeout(
     PNotify.success({
