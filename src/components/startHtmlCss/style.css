@@ -78,6 +78,7 @@ html {
 }
 .container {
   margin: 0 auto;
+  padding: 0 20px;
 }
 .header-container {
   display: flex;
@@ -89,17 +90,16 @@ html {
   margin-top: 58px;
   background-color: #ffffff;
 }
-​
-.popular-title {
-  font-family: 'Montserrat-Medium'; 
+​ .popular-title {
+  font-family: "Montserrat-Medium";
   color: #000000;
 }
 .popular-description {
-    font-family: 'Montserrat-Regular'; 
-    color: #a8a8a8;
+  font-family: "Montserrat-Regular";
+  color: #a8a8a8;
 }
 
-.button-popularAll{
+.button-popularAll {
   border: none;
   border-bottom: 1px solid #ff6b08;
   background-color: transparent;
@@ -107,7 +107,7 @@ html {
   cursor: pointer;
   text-decoration: none;
 }
-.button-category-view{
+.button-category-view {
   border: none;
   border-bottom: 1px solid #ff6b08;
   background-color: transparent;
@@ -127,8 +127,6 @@ html {
   margin-bottom: 20px;
 }
 
-
-
 .mob-header {
   display: flex;
   justify-content: center;
@@ -137,7 +135,6 @@ html {
 /* .block-logo {
   /* display: flex;
   position: relative; */
-
 
 .logo {
   /* position: absolute; */
@@ -162,7 +159,7 @@ html {
   padding-bottom: 38px;
   background-color: #1e2939;
 }
-.footer-container{
+.footer-container {
   position: relative;
 }
 .block-footer {
@@ -180,7 +177,7 @@ html {
   align-items: center;
 }
 
-.block-footer__item>p {
+.block-footer__item > p {
   font-family: "Montserrat-Regular";
   font-size: 12px;
   letter-spacing: 0.36px;
@@ -275,7 +272,6 @@ html {
   background-color: #ff6b08;
 
 }
-
 
 .exit {
   display: block;
@@ -380,7 +376,7 @@ html {
   cursor: pointer;
 
 }
-.category-favorite_list{
+.category-favorite_list {
   padding-top: 20px;
   padding-bottom: 40px;
 }
@@ -406,6 +402,7 @@ html {
   background-color: #fff;
   color: #ff6b08;
 }
+<<<<<<< HEAD
 /* RANDOM STYLE LI  */
 .random-item-list{
   position: absolute;
@@ -433,3 +430,5 @@ html {
 .mainTable{
   padding-top: 730px;
 }
+=======
+>>>>>>> search_bar
