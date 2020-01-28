@@ -31,9 +31,6 @@ async function handleClick(e) {
   if (
     !e.target.closest(".Card_cardItem") ||
     e.currentTarget.className == "Card_cardItem" ||
-    e.currentTarget.className == "favorites-top" ||
-    e.target.closest(".fav2") ||
-    e.target.closest(".fav3") ||
     e.currentTarget.className == ".Card_img"
   ) {
     return;
@@ -108,9 +105,13 @@ function handleAddingIfNotLoggedIn(){
       Mobile: {
         swipeDismiss: true,
         styling: true
-      }
+      },
+      Desktop: {
+        desktop: false,
+        fallback: true,
     }
-  })
+  }
+})
 })
 }
 
@@ -141,49 +142,20 @@ async function getFavoritesList(e) {
             Mobile: {
               swipeDismiss: true,
               styling: true
-            }
+            },
+            Desktop: {
+              desktop: false,
+              fallback: true,
+          }
           }
         });
-        // fav.removeEventListener("click", addToFavorite);
       } 
       else {
-        // icon.removeEventListener("click", addToFavorite);
 
         icon.addEventListener("click", addToFavorite);
-        // fav.addEventListener("click", deleteFavorite);
       }
     });
 }
-
-// FUNCTION FOR ASYNC FETCHING AND REMOVING FAVORITES
-// async function deleteFavorite(e) {
-//   let fav = document.querySelector(".fav");
-//   const liItem = document.querySelector(".Card_cardItem");
-//   let icon = document.querySelector("#modal-info__favorite");
-  // fav.removeEventListener("click", deleteFavorite);
-
-  // await services
-  //   .deleteFavorites(liItem.dataset.id, {
-  //     headers: {
-  //       Authorization: tmp
-  //     }
-  //   })
-  //   .then(res => {
-//       icon.classList.remove("js-fav");
-//       icon.style.visibility = "visible";
-//       fav.style.visibility = "hidden";
-//     // });
-//   PNotify_1.info({
-//     text: "Deleted from favorites!",
-//     modules: {
-//       Mobile: {
-//         swipeDismiss: true,
-//         styling: true,
-//         width: "50px"
-//       }
-//     }
-//   });
-// }
 
 // FUNCTION FOR ASYNC FETCHING AND ADDING TO FAVORITES
 async function addToFavorite(e) {
@@ -218,7 +190,11 @@ async function addToFavorite(e) {
         swipeDismiss: true,
         styling: true,
         width: "50px"
-      }
+      },
+      Desktop: {
+        desktop: false,
+        fallback: true,
+    }
     }
   });
 

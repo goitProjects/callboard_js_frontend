@@ -63,41 +63,11 @@ button.modal-info__left-mobile-arrow {
   background-repeat: no-repeat;
   border: none;
   display: inline-block;
-  position: absolute;
-  bottom: 11%;
-  left: 40%;
+  position: relative;
+  left: -6.5%;
   background-color: none;
   cursor: pointer;
   visibility: hidden;
-}
-
-.fav2 {
-  fill: red;
-  width: 20px;
-  height: 18px;
-  background-repeat: no-repeat;
-  border: none;
-  display: inline-block;
-  background-color: none;
-  cursor: pointer;
-  visibility: hidden;
-}
-
-.fav3 {
-  fill: white;
-  stroke: #000;
-  width: 20px;
-  height: 18px;
-  background-repeat: no-repeat;
-  border: none;
-  display: inline-block;
-  position: absolute;
-  top: 10%;
-  left: 81%;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  visibility: visible;
 }
 
 button.modal-info__left-mobile-arrow:focus {
@@ -138,6 +108,7 @@ button.modal-info__buy-button {
   margin-left: 12.5%;
   margin-bottom: 7px;
   transition: all 0.3s;
+  border-radius: 30px;
 }
 
 button.modal-info__buy-button:focus,
@@ -219,9 +190,6 @@ button#modal-info__favorite {
   background-repeat: no-repeat;
   border: none;
   display: inline-block;
-  position: absolute;
-  bottom: 11%;
-  left: 40%;
   background-color: #fff;
 
   cursor: pointer;
@@ -312,11 +280,13 @@ button#modal-info__favorite:focus {
   }
 
   button#modal-info__favorite {
+    position: absolute;
     left: 66%;
     bottom: 32%;
   }
 
   .fav {
+    position: absolute;
     bottom: 32%;
     left: 66%;
   }
