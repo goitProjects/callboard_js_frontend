@@ -126,7 +126,6 @@ async function getFavoritesList(e) {
       }
     })
     .then(res => {
-      console.log(res.data.user.favorites, openLiItem)
       if (
         res.data.user.favorites.map(el => el._id).includes(openLiItem)
 
