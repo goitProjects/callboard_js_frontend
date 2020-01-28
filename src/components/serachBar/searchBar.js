@@ -97,7 +97,7 @@ export default {
       }
       // Реализация поиска по ключевому слову среди всех объявлений
       async function searchByAllAds() {
-        const allAds = await services.getAdsLimit(10, 1);
+        const allAds = await services.getAdsLimit(120, 1);
         const adsArray = allAds.data.ads.docs;
         const filterArr = [];
         searchBar.refsearch.mainTable.style.display = "none";
