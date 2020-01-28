@@ -1,0 +1,130 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+a {
+	display: block;
+	text-decoration: none;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* input[name="title"], 
+input[name="desc"], 
+input[name="price"], 
+input[name="phone"] {
+  width: 260px;
+  height: 57px;
+  border: 1px solid #ced2d1;
+  color: #bbbbbb;
+  padding-left: 17px;
+  margin-bottom: 20px;
+  font-family: 'Montserrat600', sans-serif;
+  font-size: 10px;
+} */
+label,
+input[type="file"] {
+	width: 100%;
+}
+input[type="text"], 
+
+input[name="desc"],
+input[name="price"],
+input[name="phone"], 
+textarea,
+select {
+	width: 100%;
+	height: 50px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.modal-create-ad {
+	font-family: "Montserrat-Regular";
+	position: relative;
+}
+
+.modal-create-ad__window {
+  display: block;
+	width: 100%;
+	max-width: 100%;
+	height: 100%;
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  box-shadow: 0px 8px 24px 0px rgba(29, 29, 27, 0.1);
+}
+.modal-create-ad__content {
+
+  width: 100%;
+  height: 100%;
+  padding: 40px 20px;
+  /* разрешим скролить */
+  overflow: auto;
+}
+button.modal-create-ad__btn-close {
+	/* margin-top: 34px;
+	margin-left: 91%;
+	margin-bottom: 23px; */
+	position: absolute;
+	top: 20px;
+	right:15px;
+	border: 0;
+	padding: 0;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background-color: #fff;
+	background-image: url("../../public/SVG- sprite/close-24px.svg");
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+.modal-create-ad__content h4{
+	font-family: "Montserrat-Bold";
+	font-size: 18px;
+}
+.modal-create-ad__overlay {
+	display: block;
+  z-index: 50;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  opacity: 0.302;
+}
+/* .closed {
+  display: none;
+} */
+
+@media (min-width: 768px) {
+  .modal-create-ad__window {
+    width: 600px;
+    max-width: 100%;
+    height: 400px;
+    max-height: 100%;
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+  }
+}
+
+@media (min-width: 1280px) {
+}

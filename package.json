@@ -14,7 +14,7 @@
     "url": "link to yours github"
   },
   "keywords": [],
-  "author": "Maksim",
+  "author": "Baryshninkov_Serhii",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/a-sapon"
@@ -51,6 +51,8 @@
     "babel-polyfill": "^6.26.0",
     "core-js": "^3.3.4",
     "handlebars": "^4.5.3",
+    "jquery": "^3.4.1",
+    "masonry-layout": "^4.2.2",
     "page-preloader": "^1.2.44",
     "pnotify": "^4.0.0"
   }
