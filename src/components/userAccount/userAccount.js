@@ -16,6 +16,7 @@ window.addEventListener("click", modalCloseByWindowClick);
 function modalCloseByWindowClick(event) {
   if (event.target == refs.userAccount__overlay) {
     refs.userAccount__overlay.style.display = "none";
+    document.querySelector("body").style.overflow = "auto";
   }
 }
 

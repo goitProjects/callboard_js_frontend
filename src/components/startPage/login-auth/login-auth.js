@@ -212,6 +212,7 @@ function changeUIforLoggedUser() {
   // hide login/register window
   refs.overlayLogin.style.display = "none";
   refs.overlayRegister.style.display = "none";
+  document.querySelector("body").style.overflow = "auto";
 
 
 
