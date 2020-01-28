@@ -1,0 +1,11 @@
+{{#each this}}
+    <li class="random-item-list_item">
+        {{#if images}}
+  <img class="random-item-image" src="{{images}}" alt="" />
+  {{else}}
+<img class="random-item-image" src="https://www.makersmakingchange.com/wp-content/uploads/2019/08/Default-no-image-02-500x350.jpg" alt="" />
+  {{/if}}
+   <p class="random-item-description">{{this.description}}</p>
+    <span class="random-item-price">{{this.price}} грн.</span>
+    </li>
+{{/each}}

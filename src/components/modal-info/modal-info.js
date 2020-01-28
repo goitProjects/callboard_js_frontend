@@ -2,7 +2,7 @@ import services from "../../services.js";
 import template from "./modal-info.hbs";
 import "./modal-info.css";
 import PNotify_1 from "pnotify/dist/es/PNotify";
-
+import PNotifyMobile from "pnotify/dist/es/PNotifyMobile";
 
 const mainTable = document.querySelector(".modal-info__modal");
 const overlay = document.querySelector(".modal-info__overlay");
@@ -12,19 +12,21 @@ overlay.addEventListener("click", handleOverlay);
 document.addEventListener("keydown", handleKeyPress);
 
 let svg;
-localStorage.setItem(
-  "token",
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
-);
-const tmp = localStorage.getItem("token");
+// localStorage.setItem(
+//   "token",
+//   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
+// );
+let tmp = localStorage.getItem("token") ||[];
 
 // FETCHING DATA AND RENDERING
 async function handleClick(e) {
+  
   const liItem = document.querySelector(".Card_cardItem");
 
   let svgHeart = document.querySelector(".heart");
 
   let img = document.querySelector(".Card_img");
+
   if (
     !e.target.closest(".Card_cardItem") ||
     e.currentTarget.className == "Card_cardItem" ||
@@ -35,10 +37,12 @@ async function handleClick(e) {
   ) {
     return;
   } else {
-    section.removeEventListener("click", handleClick, true);
-    mainTable.innerHTML = "";
     document.querySelector("body").style.overflow = "hidden";
+    section.removeEventListener("click", handleClick, true);
+
+    mainTable.innerHTML = "";
     overlay.classList.add("show-modal");
+
     overlay.style.opacity = "1";
     overlay.style.display = "block";
     overlay.style.position = "fixed";
@@ -54,13 +58,18 @@ async function handleClick(e) {
 
         let link = document.querySelector(".modal-info__link");
         let fav = document.querySelector(".fav");
-
+        let span = button.querySelector("span");
         // BUTTON FOR SHOWING NUMBER
+
         button.addEventListener("click", e => {
+          e.stopImmediatePropagation();
           e.target.style.color = "#ff6b08";
           e.target.style.fontSize = "18px";
           link.href = "tel:${res.data.goal.phone}";
-          e.target.innerText = res.data.goal.phone;
+          span.innerText = "";
+          link.textContent = res.data.goal.phone;
+          link.style.color = "#ff6b08";
+
           button.style.backgroundColor = "#fff";
           button.style.border = "2px solid #ff6b08";
         });
@@ -75,10 +84,13 @@ async function handleClick(e) {
 
         // BUTTON FOR ADDING TO FAVORITES
         let icon = document.querySelector("#modal-info__favorite");
-
-        if (tmp) {
+         tmp = localStorage.getItem("token") ||[];
+        if (tmp.length>1) {
           getFavoritesList();
-        } else {
+        } 
+        else {
+          handleAddingIfNotLoggedIn();
+          PNotify_1.closeAll();
           icon.classList.remove("js-fav");
           fav.style.visibility = "hidden";
         }
@@ -86,17 +98,20 @@ async function handleClick(e) {
   }
 }
 
-// favBtn.addEventListener('click', onFav);
-// document.body.addEventListener("click", onFav);
-// async function onFav(e) {
-//   let iconBtn = document.querySelector(".favorites-top");
-
-//   if (tmp) {
-//      getFav();
-//   } else {
-//     iconBtn.classList.add('fav3');
-//   }
-// }
+function handleAddingIfNotLoggedIn(){
+  let icon = document.querySelector("#modal-info__favorite");
+  icon.addEventListener('click',  e =>{
+    PNotify_1.error({
+    text: "You need to go to your personal account to add to favorites!",
+    modules: {
+      Mobile: {
+        swipeDismiss: true,
+        styling: true
+      }
+    }
+  })
+})
+}
 
 // FUNCTION FOR ASYNC FETCHING AND EXECUTING
 async function getFavoritesList(e) {
@@ -107,8 +122,7 @@ async function getFavoritesList(e) {
   await services
     .getFavorites({
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
+        Authorization: tmp
       }
     })
     .then(res => {
@@ -120,35 +134,55 @@ async function getFavoritesList(e) {
         fav.style.width = "16px";
         fav.style.visibility = "visible";
 
-        PNotify_1.notice("Product already added to your favorites!");
-        fav.addEventListener("click", deletelFavoritIcon);
-      } else {
+        PNotify_1.notice({
+          text: "Product already added to your favorites!",
+          modules: {
+            Mobile: {
+              swipeDismiss: true,
+              styling: true
+            }
+          }
+        });
+
+        // fav.addEventListener("click", deleteFavorite);
         icon.addEventListener("click", addToFavorite);
+      } 
+      else {
+        icon.addEventListener("click", addToFavorite);
+        // fav.addEventListener("click", deleteFavorite);
       }
     });
 }
 
 // FUNCTION FOR ASYNC FETCHING AND REMOVING FAVORITES
-async function deletelFavoritIcon(e) {
-  let fav = document.querySelector(".fav");
-  const liItem = document.querySelector(".Card_cardItem");
-  let icon = document.querySelector("#modal-info__favorite");
-  fav.removeEventListener("click", deletelFavoritIcon);
+// async function deleteFavorite(e) {
+//   let fav = document.querySelector(".fav");
+//   const liItem = document.querySelector(".Card_cardItem");
+//   let icon = document.querySelector("#modal-info__favorite");
+  // fav.removeEventListener("click", deleteFavorite);
 
-  await services
-    .deleteFavorites(liItem.dataset.id, {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
-      }
-    })
-    .then(res => {
-      icon.classList.remove("js-fav");
-      icon.style.visibility = "visible";
-      fav.style.visibility = "hidden";
-    });
-  PNotify_1.info("Deleted from favorites!");
-}
+  // await services
+  //   .deleteFavorites(liItem.dataset.id, {
+  //     headers: {
+  //       Authorization: tmp
+  //     }
+  //   })
+  //   .then(res => {
+//       icon.classList.remove("js-fav");
+//       icon.style.visibility = "visible";
+//       fav.style.visibility = "hidden";
+//     // });
+//   PNotify_1.info({
+//     text: "Deleted from favorites!",
+//     modules: {
+//       Mobile: {
+//         swipeDismiss: true,
+//         styling: true,
+//         width: "50px"
+//       }
+//     }
+//   });
+// }
 
 // FUNCTION FOR ASYNC FETCHING AND ADDING TO FAVORITES
 async function addToFavorite(e) {
@@ -156,7 +190,7 @@ async function addToFavorite(e) {
   const liItem = document.querySelector(".Card_cardItem");
   let icon = document.querySelector("#modal-info__favorite");
 
-  icon.removeEventListener("click", addToFavorite);
+  // icon.removeEventListener("click", addToFavorite);
 
   fav.style.visibility = "hidden";
   icon.style.visibility = "visible";
@@ -167,8 +201,7 @@ async function addToFavorite(e) {
       {},
       {
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
+          Authorization: tmp
         }
       }
     )
@@ -178,104 +211,25 @@ async function addToFavorite(e) {
       fav.style.height = "16px";
       fav.style.width = "16px";
     });
-  PNotify_1.success("Added to favorites!");
+  PNotify_1.success({
+    text: "Added to favorites!",
+    modules: {
+      Mobile: {
+        swipeDismiss: true,
+        styling: true,
+        width: "50px"
+      }
+    }
+  });
+
 }
-
-// async function getFav(e) {
-//   const liItem = document.querySelector(".Card_cardItem");
-//   let iconBtn = document.querySelector(".favorites-top");
-//   let red=iconBtn.querySelector('.fav2');
-
-//   await services
-//     .getFavorites({
-//       headers: {
-//         Authorization:
-//           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
-//       }
-//     })
-//     .then(res => {
-//       if (
-//         res.data.user.favorites.map(el => el._id).includes(liItem.dataset.id)
-//       ) {
-//         iconBtn.style.visibility='hidden'
-//         red.style.visibility='visible';
-//         red.style.fill='red'
-//         red.style.stroke='red'
-
-//         // iconBtn.style.fill='red';
-//         PNotify_1.notice("Product already added to your favorites!");
-//         red.addEventListener("click", deleteFav);
-//       } else {
-//         iconBtn.addEventListener("click", addFav);
-//         red.style.visibility='hidden';
-//         red.style.stroke='white'
-//         iconBtn.classList.add('fav3')
-//         iconBtn.style.visibility='visible'
-//       }
-//     });
-// }
-
-// async function deleteFav(e) {
-
-//   const liItem = document.querySelector(".Card_cardItem");
-//   let iconBtn = document.querySelector(".favorites-top");
-//   let red=iconBtn.querySelector('.fav2');
-
-//   red.removeEventListener("click", deleteFav);
-//   red.style.fill='white'
-
-//   await services
-//     .deleteFavorites(liItem.dataset.id, {
-//       headers: {
-//         Authorization:
-//           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
-//       }
-//     })
-//     .then(res => {
-
-//       iconBtn.style.visibility='visible';
-//       iconBtn.style.fill='white';
-//       iconBtn.style.stroke='black';
-//       red.style.visibility='hidden';
-
-//     });
-//   PNotify_1.info("Deleted from favorites!");
-// }
-
-// async function addFav(e) {
-//   const liItem = document.querySelector(".Card_cardItem");
-//   let iconBtn = document.querySelector("#modal-info__favorite");
-//   let red=iconBtn.querySelector('.fav2');
-
-//   iconBtn.removeEventListener("click", addFav);
-
-//   red.style.visibility='hidden';
-//   iconBtn.style.visibility='visible'
-
-//   await services
-//     .addToFavorites(
-//       liItem.dataset.id,
-//       {},
-//       {
-//         headers: {
-//           Authorization:
-//             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
-//         }
-//       }
-//     )
-//     .then(res => {
-//       iconBtn.style.visibility='hidden';
-//       red.style.visibility='visible';
-//     });
-//   PNotify_1.success("Added to favorites!");
-// }
 
 // FUNCTION FOR CLOSING MODAL
 function closeModal(e) {
   overlay.classList.remove("show-modal");
   PNotify_1.closeAll();
   overlay.style = "none";
-  document.querySelector("body").style.overflow = "auto";
+  document.querySelector("body").style.overflow = "auto"; 
   section.addEventListener("click", handleClick, true);
 }
 

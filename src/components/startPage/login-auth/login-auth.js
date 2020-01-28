@@ -2,6 +2,7 @@ import services from "../../../services";
 import "./login-auth.css";
 import "../../../../node_modules/pnotify/dist/PNotifyBrightTheme.css";
 import PNotify from "../../../../node_modules/pnotify/dist/es/PNotify.js";
+import PNotifyMobile from 'pnotify/dist/es/PNotifyMobile';
 
 // START - Делаем проверку вьюпорта, чтобы отрисовать кнопки входа/регистрации/выхода/ЛК
 const domLoginBlockForMob = document.getElementById("user_login-bar-mobile");
@@ -44,9 +45,14 @@ refs.logout.addEventListener("click", logoutFromAcc);
 services.ref.body.addEventListener("click", closeModal);
 services.ref.body.addEventListener("click", closeModal);
 document.addEventListener("DOMContentLoaded", stayLoggedIn);
+window.addEventListener('keydown', closeModalByEscape);
+refs.overlayLogin.addEventListener('click', closeModalOutside);
+refs.overlayRegister.addEventListener('click', closeModalOutside);
+
 
 function showLoginModal(e) {
   if (e.target.classList == "registration-enter") {
+        document.querySelector("body").style.overflow = "hidden";
     refs.overlayLogin.style.display = "flex";
     document.querySelector("#menu__toggle").checked = false;
   }
@@ -57,6 +63,7 @@ async function login(e) {
     e.preventDefault();
   
     showRegisterModal();
+
   } else if (e.target.classList.contains("btn-login")) {
     document.querySelector("#menu__toggle").checked = false;
     try {
@@ -80,18 +87,20 @@ async function login(e) {
       PNotify.error({
         title: "Oops!",
         text: "Email or password is incorrect.",
+        delay: 1500,
         modules: {
-          Desktop: {
-            desktop: true
+          Mobile: {
+            swipeDismiss: true,
+            styling: true
           }
-        }
-      });
+      }});
     }
   }
 }
 
 function showRegisterModal(e) {
   if (e.target.classList == "registration-button") {
+    document.querySelector("body").style.overflow = "hidden";
     refs.overlayLogin.style.display = "none";
     refs.overlayRegister.style.display = "flex";
     document.querySelector("#menu__toggle").checked = false;
@@ -114,21 +123,27 @@ async function register(e) {
       };
       const dataRegister = await services.postRegisterNewUser(user);
       services.userData = dataRegister.data.userData;
+      services.name = dataRegister.data.userData.name;
       services.token = dataRegister.data.token;
       services.ads = dataRegister.data.ads;
       services.favorites = dataRegister.data.favorites;
       services.isAuth = true;
       document.querySelector("#menu__toggle").checked = false;
-      services.categories = dataRegister.data.categories;
-      localStorage.setItem("loginName", dataRegister.data.userData);
+      // services.categories = dataRegister.data.categories;
+      localStorage.setItem("name", dataRegister.data.userData.name);
       localStorage.setItem("token", dataRegister.data.token);
       changeUIforLoggedUser();
-      refs.overlayLogin.style.display = "none";
     } catch (e) {
       PNotify.error({
         title: "Oops!",
         text: "Email or password is incorrect.",
-        modules: { Desktop: { desktop: true } }
+        delay: 1500,
+        modules: {
+          Mobile: {
+            swipeDismiss: true,
+            styling: true
+          }
+ }
       });
     }
   }
@@ -144,7 +159,7 @@ function registerFromModal(e) {
 
 // logout fn works, even though if throws errors
 function logoutFromAcc() {
-  services.postLogoutUser();
+  // services.postLogoutUser();
   refs.authModalRegister.reset();
   refs.authModalLogin.reset();
   services.isAuth = false;
@@ -167,6 +182,7 @@ function closeModalByEscape(e) {
     refs.overlayLogin.style.display = "none";
     refs.overlayRegister.style.display = "none";
     document.querySelector("body").style.overflow = "auto";
+
   }
 }
 
@@ -183,6 +199,8 @@ function changeUIforLoggedUser() {
   // change UI for logged user
   refs.registerBlock.style.display = "none";
   refs.logoutBlock.style.display = "block";
+  refs.overlayLogin.style.display = "none";
+  refs.overlayRegister.style.display = "none";
 
   // refs.loggedUser.textContent = services.userData.name;
 
@@ -195,15 +213,21 @@ function changeUIforLoggedUser() {
   // hide login/register window
   refs.overlayLogin.style.display = "none";
   refs.overlayRegister.style.display = "none";
+  document.querySelector("body").style.overflow = "auto";
 
 
-  setTimeout(
+
     PNotify.success({
       title: "Success!",
-      text: "You are logged in."
-    }),
-    1000
-  );
+      text: "You are logged in.",
+      delay: 1500,
+      modules: {
+        Mobile: {
+          swipeDismiss: true,
+          styling: true
+        }
+
+    }});
 }
 
 function stayLoggedIn() {

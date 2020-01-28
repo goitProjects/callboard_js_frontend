@@ -4,6 +4,7 @@ import preloader from "./../preloader/js/preloader";
 import OpenAndSearcItemHbs from "./openItemcategory.hbs";
 import "./return-to-top.js";
 import "./return-toTop.css";
+import  randomItemHBS from "./random-item.hbs";
 
 function popularCategory(categoryArr, domElement) {
   
@@ -27,7 +28,7 @@ const defaultInfo = {
   computerInfo: null,
   workInfo: null,
   tradeInfo: null,
-  defaultBtnClear: document.querySelector(".btn-refresh")
+  defaultBtnClear: document.querySelector(".btn-refresh"),
 };
 
 //          CREATE DEFAULT PAGE
@@ -55,7 +56,7 @@ const itemTrade = services.getAdsByCategory(8,10).then(res => {
 ////////////// CLOSE CREATE PAGE
 
 function loadDefaultPage(e) {
-  if (e.target.id == "logo-btn" ||e.target.id == "btn_refresh-desktop"|| e.target.id=="btn_refresh") {
+  if (e.target.id == "logo-btn" ||e.target.id == "btn_refresh-desktop"|| e.target.id=="btn_refresh"|| e.target.id=="searchBackToMain") {
     defaultInfoBord.style.display = "block";
     services.ref.allCategoryView.innerHTML = "";
     document.querySelector(".products-button").style.display = "none";
@@ -151,3 +152,17 @@ async function handlClickPopupal2(e) {
   }
 }
 
+
+
+
+
+
+
+// function randomItemCategory(categoryArr, domElement) {
+//   const categoryLayout = randomItemHBS(categoryArr);
+//   domElement.insertAdjacentHTML("beforeend", categoryLayout);
+// }
+// const randomListView = document.querySelector(".random-item-list");
+// const random = services.getAdsLimit(6,18).then(res=>{
+//   randomItemCategory(res.data.ads.docs, randomListView);
+// });

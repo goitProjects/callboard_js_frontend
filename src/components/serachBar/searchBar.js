@@ -99,6 +99,7 @@ export default {
       async function searchByAllAds() {
         const allAds = await services.getAdsLimit(120, 1);
         const adsArray = allAds.data.ads.docs;
+        const filterArr = [];
         searchBar.refsearch.mainTable.style.display = "none";
         const inputValue = document
           .querySelector("#search_input")
@@ -106,12 +107,17 @@ export default {
         adsArray.filter(el => {
           const titleName = el.title.toLowerCase();
           if (titleName.includes(inputValue)) {
-            searchBar.refsearch.list.insertAdjacentHTML(
-              "beforeend",
-              createSearchElement(el)
-            );
+           filterArr.push(el);
           }
         });
+        if(filterArr.length>0){
+           searchBar.refsearch.list.insertAdjacentHTML(
+            "beforeend",
+            createSearchElement(filterArr)
+          );}else{
+            searchBar.refsearch.list.innerHTML=`<p class="searchNotFound">По вашему запросу ничего не найдено!</p>
+            <button class="button-popularAll btnRefreshSearch" id="searchBackToMain">Вернутся на главную страницу.</button>`
+          }
         showPreloader.hide();
       }
 
@@ -122,6 +128,7 @@ export default {
       const searchByCategories = async () => {
         const allAds = await services.getAdsByCategory(idCatogory, 100);
         const allTitles = allAds.data.ads.docs;
+        const filterArr = [];
         const inputValue = document
           .querySelector("#search_input")
           .value.toLowerCase();
@@ -129,12 +136,18 @@ export default {
           searchBar.refsearch.mainTable.style.display = "none";
           const titleName = el.title.toLowerCase();
           if (titleName.includes(inputValue)) {
-            searchBar.refsearch.list.insertAdjacentHTML(
-              "beforeend",
-              createSearchElement(el)
-            );
+            filterArr.push(el);
+           
           }
         });
+        if(filterArr.length>0){
+          searchBar.refsearch.list.insertAdjacentHTML(
+           "beforeend",
+           createSearchElement(filterArr)
+         );}else{
+           searchBar.refsearch.list.innerHTML=`<p class="searchNotFound">По вашему запросу ничего не найдено!</p>
+           <button class="button-popularAll btnRefreshSearch" id="searchBackToMain">Вернутся на главную страницу.</button>`
+         };
         // searchBar.refsearch.btn.disabled = false;
         showPreloader.hide();
       };

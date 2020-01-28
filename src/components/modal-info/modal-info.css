@@ -300,8 +300,8 @@ button#modal-info__favorite:focus {
     left: 40%;
     top: 28%;
     margin-top: 90px;
-      width: 280px;
-  height: 60px;
+    width: 280px;
+    height: 60px;
   }
 
   span.modal-info__favorites {
@@ -335,7 +335,6 @@ button#modal-info__favorite:focus {
 }
 
 @media (min-width: 1036px) {
-
   .show-modal .modal-info__modal {
     top: 12%;
   }

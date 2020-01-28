@@ -12,6 +12,7 @@ export default {
   favorites: null,
   isAuth: false,
   categories: null,
+  name: null,
   
   async getAllAds() {
     // Получить все объявления

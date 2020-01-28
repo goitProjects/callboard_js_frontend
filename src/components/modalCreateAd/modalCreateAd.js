@@ -3,6 +3,7 @@ import modalTemplate from './modal-template.hbs';
 import './modal-styles.css';
 import PNotify from 'pnotify/dist/es/PNotify';
 import '../../../node_modules/pnotify/dist/PNotifyBrightTheme.css';
+import PNotifyMobile from 'pnotify/dist/es/PNotifyMobile';
 
 // START - Делаем проверку вьюпорта, чтобы отрисовать кнопку добавления новго объявления
 const domDivForBtnNewAddDesktop = document.querySelector(".addnewad_desktop");
@@ -87,6 +88,7 @@ if (token.length < 1) {
 
     //Add listeners in modal after creating window
     const addModalListeners = () => {
+      document.querySelector("body").style.overflow = "hidden";
       const modal = {
         window: document.querySelector('.modal-create-ad'),
         overlay: document.querySelector('.modal-create-ad__overlay'),
@@ -111,6 +113,7 @@ if (token.length < 1) {
         modal.close.removeEventListener('click', closeModal);
         modal.overlay.removeEventListener('click', closeOnOverlay);
         document.removeEventListener('keydown', closeOnEcs);
+        document.querySelector("body").style.overflow = "auto";
       };
 
       const closeOnOverlay = () => {
