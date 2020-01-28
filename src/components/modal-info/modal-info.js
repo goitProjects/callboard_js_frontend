@@ -124,11 +124,12 @@ async function getFavoritesList(e) {
           }
         });
 
-      
-
         fav.addEventListener("click", deletelFavoritIcon);
-      } else {
         icon.addEventListener("click", addToFavorite);
+      } 
+      else {
+        icon.addEventListener("click", addToFavorite);
+        fav.addEventListener("click", deletelFavoritIcon);
       }
     });
 }
@@ -138,7 +139,7 @@ async function deletelFavoritIcon(e) {
   let fav = document.querySelector(".fav");
   const liItem = document.querySelector(".Card_cardItem");
   let icon = document.querySelector("#modal-info__favorite");
-  fav.removeEventListener("click", deletelFavoritIcon);
+  // fav.removeEventListener("click", deletelFavoritIcon);
 
   await services
     .deleteFavorites(liItem.dataset.id, {
@@ -170,7 +171,7 @@ async function addToFavorite(e) {
   const liItem = document.querySelector(".Card_cardItem");
   let icon = document.querySelector("#modal-info__favorite");
 
-  icon.removeEventListener("click", addToFavorite);
+  // icon.removeEventListener("click", addToFavorite);
 
   fav.style.visibility = "hidden";
   icon.style.visibility = "visible";
