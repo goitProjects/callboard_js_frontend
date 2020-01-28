@@ -2,7 +2,7 @@ import services from "../../services.js";
 import template from "./modal-info.hbs";
 import "./modal-info.css";
 import PNotify_1 from "pnotify/dist/es/PNotify";
-import PNotifyMobile from 'pnotify/dist/es/PNotifyMobile';
+import PNotifyMobile from "pnotify/dist/es/PNotifyMobile";
 
 const mainTable = document.querySelector(".modal-info__modal");
 const overlay = document.querySelector(".modal-info__overlay");
@@ -101,8 +101,7 @@ async function getFavoritesList(e) {
   await services
     .getFavorites({
       headers: {
-        Authorization:
-        tmp
+        Authorization: tmp
       }
     })
     .then(res => {
@@ -116,36 +115,34 @@ async function getFavoritesList(e) {
 
         PNotify_1.notice({
           text: "Product already added to your favorites!",
-          modules:{
-          Mobile: {
-            swipeDismiss: true,
-            styling: true
-          }
+          modules: {
+            Mobile: {
+              swipeDismiss: true,
+              styling: true
+            }
           }
         });
 
-        fav.addEventListener("click", deletelFavoritIcon);
+        fav.addEventListener("click", deleteFavorite);
         icon.addEventListener("click", addToFavorite);
-      } 
-      else {
+      } else {
         icon.addEventListener("click", addToFavorite);
-        fav.addEventListener("click", deletelFavoritIcon);
+        fav.addEventListener("click", deleteFavorite);
       }
     });
 }
 
 // FUNCTION FOR ASYNC FETCHING AND REMOVING FAVORITES
-async function deletelFavoritIcon(e) {
+async function deleteFavorite(e) {
   let fav = document.querySelector(".fav");
   const liItem = document.querySelector(".Card_cardItem");
   let icon = document.querySelector("#modal-info__favorite");
-  // fav.removeEventListener("click", deletelFavoritIcon);
+  // fav.removeEventListener("click", deleteFavorite);
 
   await services
     .deleteFavorites(liItem.dataset.id, {
       headers: {
-        Authorization:
-        tmp
+        Authorization: tmp
       }
     })
     .then(res => {
@@ -155,13 +152,13 @@ async function deletelFavoritIcon(e) {
     });
   PNotify_1.info({
     text: "Deleted from favorites!",
-    modules:{
-          Mobile: {
-            swipeDismiss: true,
-            styling: true,
-            width: '50px'
-          }
-        }
+    modules: {
+      Mobile: {
+        swipeDismiss: true,
+        styling: true,
+        width: "50px"
+      }
+    }
   });
 }
 
@@ -182,8 +179,7 @@ async function addToFavorite(e) {
       {},
       {
         headers: {
-          Authorization:
-          tmp
+          Authorization: tmp
         }
       }
     )
@@ -195,13 +191,13 @@ async function addToFavorite(e) {
     });
   PNotify_1.success({
     text: "Added to favorites!",
-    modules:{
-    Mobile: {
-      swipeDismiss: true,
-      styling: true,
-      width: '50px'
+    modules: {
+      Mobile: {
+        swipeDismiss: true,
+        styling: true,
+        width: "50px"
+      }
     }
-  }
   });
 }
 
