@@ -16,15 +16,17 @@ let svg;
 //   "token",
 //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
 // );
-const tmp = localStorage.getItem("token");
+let tmp = localStorage.getItem("token") ||[];
 
 // FETCHING DATA AND RENDERING
 async function handleClick(e) {
+  
   const liItem = document.querySelector(".Card_cardItem");
 
   let svgHeart = document.querySelector(".heart");
 
   let img = document.querySelector(".Card_img");
+
   if (
     !e.target.closest(".Card_cardItem") ||
     e.currentTarget.className == "Card_cardItem" ||
@@ -35,11 +37,12 @@ async function handleClick(e) {
   ) {
     return;
   } else {
+    document.querySelector("body").style.overflow = "hidden";
     section.removeEventListener("click", handleClick, true);
 
     mainTable.innerHTML = "";
-    document.querySelector("body").style.overflow = "hidden";
     overlay.classList.add("show-modal");
+
     overlay.style.opacity = "1";
     overlay.style.display = "block";
     overlay.style.position = "fixed";
@@ -81,15 +84,33 @@ async function handleClick(e) {
 
         // BUTTON FOR ADDING TO FAVORITES
         let icon = document.querySelector("#modal-info__favorite");
-
-        if (tmp) {
+         tmp = localStorage.getItem("token") ||[];
+        if (tmp.length>1) {
           getFavoritesList();
-        } else {
+        } 
+        else {
+          handleAddingIfNotLoggedIn();
+          PNotify_1.closeAll();
           icon.classList.remove("js-fav");
           fav.style.visibility = "hidden";
         }
       });
   }
+}
+
+function handleAddingIfNotLoggedIn(){
+  let icon = document.querySelector("#modal-info__favorite");
+  icon.addEventListener('click',  e =>{
+    PNotify_1.error({
+    text: "You need to go to your personal account to add to favorites!",
+    modules: {
+      Mobile: {
+        swipeDismiss: true,
+        styling: true
+      }
+    }
+  })
+})
 }
 
 // FUNCTION FOR ASYNC FETCHING AND EXECUTING
@@ -123,44 +144,45 @@ async function getFavoritesList(e) {
           }
         });
 
-        fav.addEventListener("click", deleteFavorite);
+        // fav.addEventListener("click", deleteFavorite);
         icon.addEventListener("click", addToFavorite);
-      } else {
+      } 
+      else {
         icon.addEventListener("click", addToFavorite);
-        fav.addEventListener("click", deleteFavorite);
+        // fav.addEventListener("click", deleteFavorite);
       }
     });
 }
 
 // FUNCTION FOR ASYNC FETCHING AND REMOVING FAVORITES
-async function deleteFavorite(e) {
-  let fav = document.querySelector(".fav");
-  const liItem = document.querySelector(".Card_cardItem");
-  let icon = document.querySelector("#modal-info__favorite");
+// async function deleteFavorite(e) {
+//   let fav = document.querySelector(".fav");
+//   const liItem = document.querySelector(".Card_cardItem");
+//   let icon = document.querySelector("#modal-info__favorite");
   // fav.removeEventListener("click", deleteFavorite);
 
-  await services
-    .deleteFavorites(liItem.dataset.id, {
-      headers: {
-        Authorization: tmp
-      }
-    })
-    .then(res => {
-      icon.classList.remove("js-fav");
-      icon.style.visibility = "visible";
-      fav.style.visibility = "hidden";
-    });
-  PNotify_1.info({
-    text: "Deleted from favorites!",
-    modules: {
-      Mobile: {
-        swipeDismiss: true,
-        styling: true,
-        width: "50px"
-      }
-    }
-  });
-}
+  // await services
+  //   .deleteFavorites(liItem.dataset.id, {
+  //     headers: {
+  //       Authorization: tmp
+  //     }
+  //   })
+  //   .then(res => {
+//       icon.classList.remove("js-fav");
+//       icon.style.visibility = "visible";
+//       fav.style.visibility = "hidden";
+//     // });
+//   PNotify_1.info({
+//     text: "Deleted from favorites!",
+//     modules: {
+//       Mobile: {
+//         swipeDismiss: true,
+//         styling: true,
+//         width: "50px"
+//       }
+//     }
+//   });
+// }
 
 // FUNCTION FOR ASYNC FETCHING AND ADDING TO FAVORITES
 async function addToFavorite(e) {
@@ -199,6 +221,7 @@ async function addToFavorite(e) {
       }
     }
   });
+
 }
 
 // FUNCTION FOR CLOSING MODAL
@@ -206,7 +229,7 @@ function closeModal(e) {
   overlay.classList.remove("show-modal");
   PNotify_1.closeAll();
   overlay.style = "none";
-  document.querySelector("body").style.overflow = "auto";
+  document.querySelector("body").style.overflow = "auto"; 
   section.addEventListener("click", handleClick, true);
 }
 

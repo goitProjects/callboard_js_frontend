@@ -11,7 +11,11 @@ export const scroll = async () => {
         scrollBoxAll: document.querySelectorAll('.scroll-box'),
         scrollPagAll: document.querySelectorAll('.scrolling_pagination'),
         nxtBtnAll: document.querySelectorAll('.nxt-scroll'),
-        prvBtnAll: document.querySelectorAll('.prv-scroll')
+        prvBtnAll: document.querySelectorAll('.prv-scroll'),
+
+        desctop: window.screen.width >= 1200,
+        tablet: window.screen.width >= 768,
+        mobile: window.screen.width < 768
     }
 
     // ЗАДАНО ДЕЙСТВУЮЩИЙ ИНДЕКС!!!
@@ -53,19 +57,19 @@ export const scroll = async () => {
 
             //функция плюсует индекс с которым мы работаем
             function incrementIdx() {
-                if (window.screen.width >= 1200) {
+                if (refs.desctop) {
                     if (idxArr[i] >= i_refs.currentScrollBox.children.length - 4) {
                         currentIdx = 0;
                     } else {
                         currentIdx += 1;
                     }
-                } else if (window.screen.width >= 768) {
+                } else if (refs.tablet) {
                     if (idxArr[i] >= i_refs.currentScrollBox.children.length - 2) {
                         currentIdx = 0;
                     } else {
                         currentIdx += 1;
                     }
-                } else if (window.screen.width < 768) {
+                } else if (refs.mobile) {
                     if (idxArr[i] === i_refs.currentScrollBox.children.length - 1) {
                         currentIdx = 0
                     } else {
@@ -79,25 +83,24 @@ export const scroll = async () => {
                 idxArr[i] = currentIdx;
 
                 getCurrentSlide();
-                // getScrollHoverPagination();
             };
 
             //функция минусует индекс с которым мы работаем
             function decrementIdx() {
 
-                if (window.screen.width >= 1200) {
+                if (refs.desctop) {
                     if (idxArr[i] === 0) {
                         currentIdx = i_refs.currentScrollBox.children.length - 4;
                     } else {
                         currentIdx -= 1;
                     }
-                } else if (window.screen.width >= 768) {
+                } else if (refs.tablet) {
                     if (idxArr[i] === 0) {
                         currentIdx = i_refs.currentScrollBox.children.length - 2;
                     } else {
                         currentIdx -= 1;
                     }
-                } else if (window.screen.width < 768) {
+                } else if (refs.mobile) {
                     if (idxArr[i] === 0) {
                         currentIdx = i_refs.currentScrollBox.children.length - 1;
                     } else {
@@ -111,7 +114,6 @@ export const scroll = async () => {
                 idxArr[i] = currentIdx;
 
                 getCurrentSlide();
-                // getScrollHoverPagination();
             };
 
             //функция смещающая слайд
@@ -124,18 +126,12 @@ export const scroll = async () => {
     }
 
 
+    // РЕДАКТИРОВАНИЕ ЛИСТА ОТНОСИТЕЛЬНО ШИРИНЫ ДИСПЛЕЯ
 
-    // АДАПТИВ ЛИСТА ДЛЯ МОБИЛЬНОЙ ПЛАТФОРМЫ !!!
+    setTimeout(getEditedList, 7000);
 
-    // проверка разрешениия и запуск адаптива для мобильной версии 
-    if (window.screen.width < 768) {
-
-        setTimeout(getMobileAdaptive, 7000);
-
-    }
-
-    // функция создающая каждому списку адаптивный лист для  мобильной версии
-    async function getMobileAdaptive() {
+    // функция создающая каждому списку адаптивный лист
+    async function getEditedList() {
 
         for (let i = 0; i < refs.scrollBoxAll.length; i++) {
 
@@ -146,11 +142,46 @@ export const scroll = async () => {
                 currentPrvBtn: refs.prvBtnAll[i]
             }
 
-            await getMobileList();
+            // РЕДАКТОР ВИДИМОСТИ КНОПОК ЛИСТА
+
+            // функция добавляет кнопки если есть необходимость
+            async function getBtn() {
+                
+                    const mobileState = i_refs.currentScrollBox.children.length > 1;
+                    const tabletState = i_refs.currentScrollBox.children.length > 2;
+                    const desctopState = i_refs.currentScrollBox.children.length > 4;
+
+                if (refs.desctop) {
+
+                    if (desctopState) {
+                        i_refs.currentNextBtn.style.display = 'inline-block';
+                        i_refs.currentPrvBtn.style.display = 'inline-block';
+                        return
+                    }
+
+                } else if (refs.tablet) {
+
+                    if (tabletState) {
+                        i_refs.currentNextBtn.style.display = 'inline-block';
+                        i_refs.currentPrvBtn.style.display = 'inline-block';
+                        return
+                    }
+
+                } else
+
+                if (mobileState) {
+                    i_refs.currentNextBtn.style.display = 'inline-block';
+                    i_refs.currentPrvBtn.style.display = 'inline-block';
+                    return
+                }
+                
+            }
+
+            // АДАПТИВ ЛИСТА ДЛЯ МОБИЛЬНОЙ ПЛАТФОРМЫ !!!
 
             // функция редактирующая количество элементов листа мобильной версии
             async function getMobileList() {
-                if (window.screen.width < 768) {
+                if (refs.mobile) {
                     if (i_refs.currentScrollBox.children.length > 4) {
                         const endElem = i_refs.currentScrollBox.children[i_refs.currentScrollBox.children.length - 1]; //последний элемент массива 
                         endElem.remove(); //удаляем последний
@@ -161,9 +192,8 @@ export const scroll = async () => {
                 }
             }
 
-            // СОЗДАНИЕ ПАГИНАЦИИ!!!
 
-            await createDotsPagination()
+            // СОЗДАНИЕ ПАГИНАЦИИ!!!
 
             // функция создающая каждому списку лист-пагинейшн
             async function createDotsPagination() {
@@ -177,12 +207,21 @@ export const scroll = async () => {
                     }
                 }
 
-                i_refs.currentScrollPag.insertAdjacentHTML("beforeend", (dots.reduce((acc, el) => acc += el, ''))); //добавляем доты
+                i_refs.currentScrollPag.insertAdjacentHTML("beforeend", (dots.reduce((acc, el) => acc += el, ''))); //добавляем дотсы
 
                 const allDotsList = document.querySelectorAll('.scrolling_pagination');
-                const hoverDots = allDotsList[i].children[0]; //лист прорисованых дотсов
-                hoverDots.style.backgroundColor = 'orange'; //присвоение дефолтного цвета доту пагинации
+                const hoverDots = allDotsList[i].children[0]; //каждый дотс с нулевым индексом
+                hoverDots.style.backgroundColor = 'orange'; //присвоение дефолтного цвета первому доту пагинации
             }
+
+
+            // проверка разрешениия и запуск адаптива для мобильной версии 
+            if (refs.mobile) {
+                await getMobileList();
+                await createDotsPagination();
+            }
+
+            await getBtn();
         }
     }
 

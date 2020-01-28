@@ -44,6 +44,7 @@
 
 .prv-scroll,
 .nxt-scroll {
+    display: none;
     background-color: #f4f4f4;
     cursor: pointer;
     overflow: hidden;
@@ -64,8 +65,6 @@
 .prv-scroll:hover,
 .nxt-scroll:hover {
     background-color: rgb(233, 97, 5);
-
-
 }
 
 .prv-scroll::after,

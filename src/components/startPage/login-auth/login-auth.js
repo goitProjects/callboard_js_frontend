@@ -110,7 +110,6 @@ function showRegisterModal(e) {
     refs.overlayRegister.style.display = "flex";
     document.querySelector("#menu__toggle").checked = false;
   }
-  document.querySelector("body").style.overflow = "auto";
 }
 
 async function register(e) {
@@ -214,6 +213,7 @@ function changeUIforLoggedUser() {
   // hide login/register window
   refs.overlayLogin.style.display = "none";
   refs.overlayRegister.style.display = "none";
+  document.querySelector("body").style.overflow = "auto";
 
 
 
