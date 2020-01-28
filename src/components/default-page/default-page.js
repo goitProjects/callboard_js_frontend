@@ -4,6 +4,7 @@ import preloader from "./../preloader/js/preloader";
 import OpenAndSearcItemHbs from "./openItemcategory.hbs";
 import "./return-to-top.js";
 import "./return-toTop.css";
+import  randomItemHBS from "./random-item.hbs";
 
 function popularCategory(categoryArr, domElement) {
   
@@ -27,7 +28,7 @@ const defaultInfo = {
   computerInfo: null,
   workInfo: null,
   tradeInfo: null,
-  defaultBtnClear: document.querySelector(".btn-refresh")
+  defaultBtnClear: document.querySelector(".btn-refresh"),
 };
 
 //          CREATE DEFAULT PAGE
@@ -151,3 +152,11 @@ async function handlClickPopupal2(e) {
   }
 }
 
+function randomItemCategory(categoryArr, domElement) {
+  const categoryLayout = randomItemHBS(categoryArr);
+  domElement.insertAdjacentHTML("beforeend", categoryLayout);
+}
+const randomListView = document.querySelector(".random-item-list");
+const random = services.getAdsLimit(6,18).then(res=>{
+  randomItemCategory(res.data.ads.docs, randomListView);
+});
