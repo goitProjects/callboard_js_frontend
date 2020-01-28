@@ -3,7 +3,6 @@ import "./components/default-page/default-page";
 import "./components/preloader/js";
 import "./components/showteam/js";
 import "./components/startPage/cardItem/card";
-import "./components/startPage/top-box/top-box.js";
 import "./components/startPage/carousel/scroll.js"
 import "../src/components/startPage/userAccount/userAccount.js";
 import '../src/components/startPage/login-auth/login-auth';
