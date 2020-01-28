@@ -11,6 +11,8 @@ section.addEventListener("click", handleClick, true);
 overlay.addEventListener("click", handleOverlay);
 document.addEventListener("keydown", handleKeyPress);
 
+
+let openLiItem;
 let svg;
 // localStorage.setItem(
 //   "token",
@@ -26,7 +28,6 @@ async function handleClick(e) {
   let svgHeart = document.querySelector(".heart");
 
   let img = document.querySelector(".Card_img");
-
   if (
     !e.target.closest(".Card_cardItem") ||
     e.currentTarget.className == "Card_cardItem" ||
@@ -48,7 +49,7 @@ async function handleClick(e) {
     overlay.style.position = "fixed";
     overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
     overlay.style.zIndex = "999";
-
+    openLiItem = e.target.closest(".Card_cardItem").dataset.id;
     await services
       .getUserAds(e.target.closest(".Card_cardItem").dataset.id)
       .then(res => {
@@ -116,7 +117,6 @@ function handleAddingIfNotLoggedIn(){
 // FUNCTION FOR ASYNC FETCHING AND EXECUTING
 async function getFavoritesList(e) {
   let fav = document.querySelector(".fav");
-  const liItem = document.querySelector(".Card_cardItem");
   let icon = document.querySelector("#modal-info__favorite");
 
   await services
@@ -126,8 +126,10 @@ async function getFavoritesList(e) {
       }
     })
     .then(res => {
+      console.log(res.data.user.favorites, openLiItem)
       if (
-        res.data.user.favorites.map(el => el._id).includes(liItem.dataset.id)
+        res.data.user.favorites.map(el => el._id).includes(openLiItem)
+
       ) {
         icon.classList.add("js-fav");
         fav.style.height = "16px";
@@ -187,7 +189,6 @@ async function getFavoritesList(e) {
 // FUNCTION FOR ASYNC FETCHING AND ADDING TO FAVORITES
 async function addToFavorite(e) {
   let fav = document.querySelector(".fav");
-  const liItem = document.querySelector(".Card_cardItem");
   let icon = document.querySelector("#modal-info__favorite");
 
   icon.removeEventListener("click", addToFavorite);
@@ -197,7 +198,7 @@ async function addToFavorite(e) {
 
   await services
     .addToFavorites(
-      liItem.dataset.id,
+      openLiItem,
       {},
       {
         headers: {
