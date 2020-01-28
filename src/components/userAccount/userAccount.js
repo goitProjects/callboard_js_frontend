@@ -2,6 +2,8 @@ import favHbs from "./userAccount_fav.hbs";
 import addsHbs from "./userAccount_add.hbs";
 import "./userAccount.css";
 import services from "./../../services";
+import PNotify_1 from "pnotify/dist/es/PNotify";
+import PNotifyMobile from "pnotify/dist/es/PNotifyMobile";
 
 let allFavAds = [];
 let allMyAds = [];
@@ -103,10 +105,24 @@ function deleteFavAd(e) {
     if (itemID === el._id) {
       const idxOfElement = allFavAds.indexOf(el);
       allFavAds.splice(idxOfElement, 1);
+      PNotify_1.success({
+        text: "Deleted from favorites!",
+        modules: {
+          Mobile: {
+            swipeDismiss: true,
+            styling: true
+          },
+          Desktop: {
+            desktop: false,
+            fallback: true,
+        }
+      }
+    });
       parentLi.remove();
       services.deleteFavorites(`${itemID}`, { headers: { Authorization: tokenUserAcc } })
     }
   });
+
 }
 }
 
@@ -120,9 +136,23 @@ function deleteMyAd(e) {
     if (itemID === el._id) {
       const idxOfElement = allMyAds.indexOf(el);
       allMyAds.splice(idxOfElement, 1);
+      PNotify_1.success({
+        text: "Deleted from ads!",
+        modules: {
+          Mobile: {
+            swipeDismiss: true,
+            styling: true
+          },
+          Desktop: {
+            desktop: false,
+            fallback: true,
+        }
+      }
+    });
       parentLi.remove();
       services.deleteAdById(`${itemID}`, { headers: { Authorization: tokenUserAcc } })
     }
-  });
+  })
+
 }
 }
