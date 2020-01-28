@@ -2,7 +2,6 @@ import services from "../../services.js";
 import template from "./modal-info.hbs";
 import "./modal-info.css";
 import PNotify_1 from "pnotify/dist/es/PNotify";
-import PNotifyMobile from 'pnotify/dist/es/PNotifyMobile';
 
 const mainTable = document.querySelector(".modal-info__modal");
 const overlay = document.querySelector(".modal-info__overlay");
@@ -12,10 +11,10 @@ overlay.addEventListener("click", handleOverlay);
 document.addEventListener("keydown", handleKeyPress);
 
 let svg;
-// localStorage.setItem(
-//   "token",
-//   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
-// );
+localStorage.setItem(
+  "token",
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
+);
 const tmp = localStorage.getItem("token");
 
 // FETCHING DATA AND RENDERING
@@ -102,7 +101,7 @@ async function getFavoritesList(e) {
     .getFavorites({
       headers: {
         Authorization:
-        tmp
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
       }
     })
     .then(res => {
@@ -114,18 +113,7 @@ async function getFavoritesList(e) {
         fav.style.width = "16px";
         fav.style.visibility = "visible";
 
-        PNotify_1.notice({
-          text: "Product already added to your favorites!",
-          modules:{
-          Mobile: {
-            swipeDismiss: true,
-            styling: true
-          }
-          }
-        });
-
-      
-
+        PNotify_1.notice("Product already added to your favorites!");
         fav.addEventListener("click", deletelFavoritIcon);
       } else {
         icon.addEventListener("click", addToFavorite);
@@ -144,7 +132,7 @@ async function deletelFavoritIcon(e) {
     .deleteFavorites(liItem.dataset.id, {
       headers: {
         Authorization:
-        tmp
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
       }
     })
     .then(res => {
@@ -152,16 +140,7 @@ async function deletelFavoritIcon(e) {
       icon.style.visibility = "visible";
       fav.style.visibility = "hidden";
     });
-  PNotify_1.info({
-    text: "Deleted from favorites!",
-    modules:{
-          Mobile: {
-            swipeDismiss: true,
-            styling: true,
-            width: '50px'
-          }
-        }
-  });
+  PNotify_1.info("Deleted from favorites!");
 }
 
 // FUNCTION FOR ASYNC FETCHING AND ADDING TO FAVORITES
@@ -182,7 +161,7 @@ async function addToFavorite(e) {
       {
         headers: {
           Authorization:
-          tmp
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
         }
       }
     )
@@ -192,16 +171,7 @@ async function addToFavorite(e) {
       fav.style.height = "16px";
       fav.style.width = "16px";
     });
-  PNotify_1.success({
-    text: "Added to favorites!",
-    modules:{
-    Mobile: {
-      swipeDismiss: true,
-      styling: true,
-      width: '50px'
-    }
-  }
-  });
+  PNotify_1.success("Added to favorites!");
 }
 
 // FUNCTION FOR CLOSING MODAL
