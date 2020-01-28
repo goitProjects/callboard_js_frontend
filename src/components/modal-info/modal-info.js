@@ -143,11 +143,11 @@ async function getFavoritesList(e) {
             }
           }
         });
-
-        // fav.addEventListener("click", deleteFavorite);
-        icon.addEventListener("click", addToFavorite);
+        // fav.removeEventListener("click", addToFavorite);
       } 
       else {
+        // icon.removeEventListener("click", addToFavorite);
+
         icon.addEventListener("click", addToFavorite);
         // fav.addEventListener("click", deleteFavorite);
       }
@@ -190,7 +190,7 @@ async function addToFavorite(e) {
   const liItem = document.querySelector(".Card_cardItem");
   let icon = document.querySelector("#modal-info__favorite");
 
-  // icon.removeEventListener("click", addToFavorite);
+  icon.removeEventListener("click", addToFavorite);
 
   fav.style.visibility = "hidden";
   icon.style.visibility = "visible";
