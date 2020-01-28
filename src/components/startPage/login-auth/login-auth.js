@@ -50,7 +50,6 @@ refs.overlayLogin.addEventListener('click', closeModalOutside);
 refs.overlayRegister.addEventListener('click', closeModalOutside);
 
 
-
 function showLoginModal(e) {
   if (e.target.classList == "registration-enter") {
         document.querySelector("body").style.overflow = "hidden";
@@ -64,6 +63,7 @@ async function login(e) {
     e.preventDefault();
   
     showRegisterModal();
+
   } else if (e.target.classList.contains("btn-login")) {
     document.querySelector("#menu__toggle").checked = false;
     try {
@@ -182,6 +182,7 @@ function closeModalByEscape(e) {
     refs.overlayLogin.style.display = "none";
     refs.overlayRegister.style.display = "none";
     document.querySelector("body").style.overflow = "auto";
+
   }
 }
 
