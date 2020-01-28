@@ -36,7 +36,8 @@
 }
 
 .userAccount__favorite-list,
-.userAccount__ads-list {
+.userAccount__ads-list,
+.userAccount__list {
   width: 100%;
   overflow: scroll;
   display: flex;
@@ -49,7 +50,7 @@
 }
 
 
-.userAccount__favorite-list li::after {
+.userAccount__list li::after {
   content: "";
   display: block;
   position: absolute;
@@ -63,7 +64,8 @@
 }
 
 .userAccount__favorite-list-item,
-.userAccount__ads-list-item {
+.userAccount__ads-list-item,
+.userAccount__list-item {
   width: 100%;
   position: relative;
   display: flex;
@@ -87,7 +89,7 @@
 .userAccount__favorite-list-item:focus .userAccount__delete-button,
 .userAccount__ads-list-item:hover .userAccount__delete-button,
 .userAccount__ads-list-item:focus .userAccount__delete-button {
-  display: block;
+  /* display: block; */
 }
 
 .userAccount__img {
@@ -113,7 +115,7 @@
 }
 
 .userAccount__delete-button {
-  display: none;
+  /* display: none; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -152,6 +154,19 @@
   transform: rotate(90deg);
 }
 
+.useracc__del-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  color: #ff6b08;
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
 
   .userAccount__overlay {
@@ -159,12 +174,14 @@
   }
 
   .userAccount__favorite-list,
-  .userAccount__ads-list {
+  .userAccount__ads-list,
+  .userAccount__list {
     padding: 40px 40px;
   }
 
   .userAccount__favorite-list-item,
-  .userAccount__ads-list-item {
+  .userAccount__ads-list-item,
+  .userAccount__list-item {
     /* width: 80%; */
   }
 
@@ -220,7 +237,8 @@
   }
 
   .userAccount__favorite-list,
-  .userAccount__ads-list {
+  .userAccount__ads-list,
+  userAccount__list {
     width: 100%;
     overflow: scroll;
     display: flex;
@@ -233,7 +251,8 @@
   }
 
   .userAccount__favorite-list-item,
-  .userAccount__ads-list-item {
+  .userAccount__ads-list-item,
+  .userAccount__list-item {
     width: 600px;
     position: relative;
     display: flex;
@@ -257,7 +276,7 @@
   .userAccount__favorite-list-item:focus .userAccount__delete-button,
   .userAccount__ads-list-item:hover .userAccount__delete-button,
   .userAccount__ads-list-item:focus .userAccount__delete-button {
-    display: block;
+    /* display: block; */
   }
 
   .userAccount__img {
@@ -276,7 +295,7 @@
 
   .userAccount__price {
     position: absolute;
-    top: 10px;
+    bottom: 10px;
     right: 10px;
   }
 

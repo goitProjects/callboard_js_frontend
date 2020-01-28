@@ -3,6 +3,9 @@ import addsHbs from "./userAccount_add.hbs";
 import "./userAccount.css";
 import services from "./../../services";
 
+let allFavAds = [];
+let allMyAds = [];
+
 const refs = {
   userAccount__overlay: document.querySelector(".userAccount__overlay"),
   showUserAccountButton: document.querySelector(".js-show-user-account")
@@ -24,23 +27,57 @@ function handleCLickOpenModalAcc(e) {
     document.querySelector("body").style.overflow = "hidden";
     document.querySelector("#menu__toggle").checked = false;
     document.querySelector(".userAccount__overlay").style.display = "block";
+
+    // ------------------------------------- Мои избранные объявления
     services
       .getFavorites({ headers: { Authorization: tokenUserAcc } })
       .then(res => {
-        const Datafav = res.data.user.favorites;
-        document
-          .querySelector(".userAccount__favorite-list")
-          .insertAdjacentHTML("beforeend", favHbs(Datafav));
+        allFavAds = res.data.user.favorites;
+
+        allFavAds.map(el => {
+          const listFav = document.querySelector(".userAccount__favorite-list");
+          const itemFav = document.createElement("li");
+          itemFav.className = "userAccount__favorite-list-item";
+          itemFav.dataset.id = el._id;
+          listFav.appendChild(itemFav);
+          itemFav.innerHTML = favHbs(el);
+
+          const addDelBtn = document.createElement("button");
+          addDelBtn.className = "useracc__del-btn";
+          addDelBtn.innerHTML = "&times;";
+          addDelBtn.dataset.id = el._id;
+          itemFav.appendChild(addDelBtn);
+          addDelBtn.addEventListener("click", deleteFavAd);
+        });
       });
-    services
+
+
+    // ------------------------------------- Мои объявления
+
+      services
       .getAdsUser({ headers: { Authorization: tokenUserAcc } })
       .then(res => {
-        const DataAds = res.data.ads;
-        document
-          .querySelector(".userAccount__ads-list")
-          .insertAdjacentHTML("beforeend", addsHbs(DataAds));
+        allMyAds = res.data.ads;
+
+        allMyAds.map(el => {
+          const listMyAds = document.querySelector(".userAccount__ads-list");
+          const itemMyAds = document.createElement("li");
+          itemMyAds.className = "userAccount__ads-list-item";
+          itemMyAds.dataset.id = el._id;
+          listMyAds.appendChild(itemMyAds);
+          itemMyAds.innerHTML = favHbs(el);
+
+          const addDelBtn = document.createElement("button");
+          addDelBtn.className = "useracc__del-btn";
+          addDelBtn.innerHTML = "&times;";
+          addDelBtn.dataset.id = el._id;
+            itemMyAds.appendChild(addDelBtn);
+          addDelBtn.addEventListener("click", deleteMyAd);
+        });
       });
-    console.log(5);
+
+
+
   }
 
   if (e.target.classList == "userAccount-close-Modal") {
@@ -50,3 +87,36 @@ function handleCLickOpenModalAcc(e) {
     document.querySelector(".userAccount__ads-list").innerHTML = "";
   }
 }
+
+function deleteFavAd(e) {
+  if (e.target.nodeName !== "BUTTON") return;
+  const button = e.target;
+  const parentLi = button.closest("li.userAccount__favorite-list-item");
+  const itemID = parentLi.dataset.id;
+
+  allFavAds.map(el => {
+    if (itemID === el._id) {
+      const idxOfElement = allFavAds.indexOf(el);
+      allFavAds.splice(idxOfElement, 1);
+      parentLi.remove();
+      services.deleteFavorites(`${itemID}`, { headers: { Authorization: tokenUserAcc } })
+    }
+  });
+}
+
+function deleteMyAd(e) {
+  if (e.target.nodeName !== "BUTTON") return;
+  const button = e.target;
+  const parentLi = button.closest("li.userAccount__ads-list-item");
+  const itemID = parentLi.dataset.id;
+
+  allMyAds.map(el => {
+    if (itemID === el._id) {
+      const idxOfElement = allMyAds.indexOf(el);
+      allMyAds.splice(idxOfElement, 1);
+      parentLi.remove();
+      services.deleteAdById(`${itemID}`, { headers: { Authorization: tokenUserAcc } })
+    }
+  });
+}
+
