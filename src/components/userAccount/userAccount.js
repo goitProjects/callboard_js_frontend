@@ -41,7 +41,7 @@ function handleCLickOpenModalAcc(e) {
           .querySelector(".userAccount__ads-list")
           .insertAdjacentHTML("beforeend", addsHbs(DataAds));
       });
-    console.log(5);
+
   }
 
   if (e.target.classList == "userAccount-close-Modal") {

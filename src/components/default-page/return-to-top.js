@@ -5,7 +5,7 @@
 var toTop = document.querySelector("#return-to-top")
   
   toTop.addEventListener("click", function(){
-  scrollToTop(1000);
+  scrollToTop(100);
 });
 function scrollToTop(scrollDuration) {
     var scrollStep = -window.scrollY / (scrollDuration / 15),

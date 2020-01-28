@@ -152,6 +152,12 @@ async function handlClickPopupal2(e) {
   }
 }
 
+
+
+
+
+
+
 // function randomItemCategory(categoryArr, domElement) {
 //   const categoryLayout = randomItemHBS(categoryArr);
 //   domElement.insertAdjacentHTML("beforeend", categoryLayout);
