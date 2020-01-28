@@ -2,6 +2,7 @@ import services from "../../services.js";
 import template from "./modal-info.hbs";
 import "./modal-info.css";
 import PNotify_1 from "pnotify/dist/es/PNotify";
+import PNotifyMobile from 'pnotify/dist/es/PNotifyMobile';
 
 const mainTable = document.querySelector(".modal-info__modal");
 const overlay = document.querySelector(".modal-info__overlay");
@@ -11,10 +12,10 @@ overlay.addEventListener("click", handleOverlay);
 document.addEventListener("keydown", handleKeyPress);
 
 let svg;
-localStorage.setItem(
-  "token",
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
-);
+// localStorage.setItem(
+//   "token",
+//   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
+// );
 const tmp = localStorage.getItem("token");
 
 // FETCHING DATA AND RENDERING
@@ -115,12 +116,16 @@ async function getFavoritesList(e) {
 
         PNotify_1.notice({
           text: "Product already added to your favorites!",
+          modules:{
           Mobile: {
             swipeDismiss: true,
             styling: true,
             width: '50px'
           }
+          }
         });
+
+      
 
         fav.addEventListener("click", deletelFavoritIcon);
       } else {
@@ -150,11 +155,13 @@ async function deletelFavoritIcon(e) {
     });
   PNotify_1.info({
     text: "Deleted from favorites!",
+    modules:{
           Mobile: {
             swipeDismiss: true,
             styling: true,
             width: '50px'
           }
+        }
   });
 }
 
@@ -188,11 +195,13 @@ async function addToFavorite(e) {
     });
   PNotify_1.success({
     text: "Added to favorites!",
+    modules:{
     Mobile: {
       swipeDismiss: true,
       styling: true,
       width: '50px'
     }
+  }
   });
 }
 

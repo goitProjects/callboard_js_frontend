@@ -3,6 +3,7 @@ import modalTemplate from './modal-template.hbs';
 import './modal-styles.css';
 import PNotify from 'pnotify/dist/es/PNotify';
 import '../../../node_modules/pnotify/dist/PNotifyBrightTheme.css';
+import PNotifyMobile from 'pnotify/dist/es/PNotifyMobile';
 
 // START - Делаем проверку вьюпорта, чтобы отрисовать кнопку добавления новго объявления
 const domDivForBtnNewAddDesktop = document.querySelector(".addnewad_desktop");

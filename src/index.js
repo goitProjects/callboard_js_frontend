@@ -32,4 +32,3 @@ import "./components/serachBar/";
 import "./components/showteam/js";
 import "./components/userAccount/userAccount";
 
-
