@@ -102,7 +102,7 @@ async function getFavoritesList(e) {
     .getFavorites({
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
+        tmp
       }
     })
     .then(res => {
@@ -119,8 +119,7 @@ async function getFavoritesList(e) {
           modules:{
           Mobile: {
             swipeDismiss: true,
-            styling: true,
-            width: '50px'
+            styling: true
           }
           }
         });
@@ -145,7 +144,7 @@ async function deletelFavoritIcon(e) {
     .deleteFavorites(liItem.dataset.id, {
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
+        tmp
       }
     })
     .then(res => {
@@ -183,7 +182,7 @@ async function addToFavorite(e) {
       {
         headers: {
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMjU4NjY3MDZjODI3MzdmYzI3ZjY0ZSIsImlhdCI6MTU3OTc5NDU3NX0.UFCcUUw7UEESSQVnLAc9io5hsu1tQXFA6dY0peYafD8"
+          tmp
         }
       }
     )
