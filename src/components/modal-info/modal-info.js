@@ -11,6 +11,8 @@ section.addEventListener("click", handleClick, true);
 overlay.addEventListener("click", handleOverlay);
 document.addEventListener("keydown", handleKeyPress);
 
+
+let openLiItem;
 let svg;
 // localStorage.setItem(
 //   "token",
@@ -26,13 +28,9 @@ async function handleClick(e) {
   let svgHeart = document.querySelector(".heart");
 
   let img = document.querySelector(".Card_img");
-
   if (
     !e.target.closest(".Card_cardItem") ||
     e.currentTarget.className == "Card_cardItem" ||
-    e.currentTarget.className == "favorites-top" ||
-    e.target.closest(".fav2") ||
-    e.target.closest(".fav3") ||
     e.currentTarget.className == ".Card_img"
   ) {
     return;
@@ -48,7 +46,7 @@ async function handleClick(e) {
     overlay.style.position = "fixed";
     overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
     overlay.style.zIndex = "999";
-
+    openLiItem = e.target.closest(".Card_cardItem").dataset.id;
     await services
       .getUserAds(e.target.closest(".Card_cardItem").dataset.id)
       .then(res => {
@@ -67,7 +65,7 @@ async function handleClick(e) {
           e.target.style.fontSize = "18px";
           link.href = "tel:${res.data.goal.phone}";
           span.innerText = "";
-          link.textContent = res.data.goal.phone;
+          link.textContent = `${res.data.goal.phone}`;
           link.style.color = "#ff6b08";
 
           button.style.backgroundColor = "#fff";
@@ -107,16 +105,19 @@ function handleAddingIfNotLoggedIn(){
       Mobile: {
         swipeDismiss: true,
         styling: true
-      }
+      },
+      Desktop: {
+        desktop: false,
+        fallback: true,
     }
-  })
+  }
+})
 })
 }
 
 // FUNCTION FOR ASYNC FETCHING AND EXECUTING
 async function getFavoritesList(e) {
   let fav = document.querySelector(".fav");
-  const liItem = document.querySelector(".Card_cardItem");
   let icon = document.querySelector("#modal-info__favorite");
 
   await services
@@ -127,7 +128,8 @@ async function getFavoritesList(e) {
     })
     .then(res => {
       if (
-        res.data.user.favorites.map(el => el._id).includes(liItem.dataset.id)
+        res.data.user.favorites.map(el => el._id).includes(openLiItem)
+
       ) {
         icon.classList.add("js-fav");
         fav.style.height = "16px";
@@ -140,64 +142,34 @@ async function getFavoritesList(e) {
             Mobile: {
               swipeDismiss: true,
               styling: true
-            }
+            },
+            Desktop: {
+              desktop: false,
+              fallback: true,
+          }
           }
         });
-
-        // fav.addEventListener("click", deleteFavorite);
-        icon.addEventListener("click", addToFavorite);
       } 
       else {
+
         icon.addEventListener("click", addToFavorite);
-        // fav.addEventListener("click", deleteFavorite);
       }
     });
 }
 
-// FUNCTION FOR ASYNC FETCHING AND REMOVING FAVORITES
-// async function deleteFavorite(e) {
-//   let fav = document.querySelector(".fav");
-//   const liItem = document.querySelector(".Card_cardItem");
-//   let icon = document.querySelector("#modal-info__favorite");
-  // fav.removeEventListener("click", deleteFavorite);
-
-  // await services
-  //   .deleteFavorites(liItem.dataset.id, {
-  //     headers: {
-  //       Authorization: tmp
-  //     }
-  //   })
-  //   .then(res => {
-//       icon.classList.remove("js-fav");
-//       icon.style.visibility = "visible";
-//       fav.style.visibility = "hidden";
-//     // });
-//   PNotify_1.info({
-//     text: "Deleted from favorites!",
-//     modules: {
-//       Mobile: {
-//         swipeDismiss: true,
-//         styling: true,
-//         width: "50px"
-//       }
-//     }
-//   });
-// }
-
 // FUNCTION FOR ASYNC FETCHING AND ADDING TO FAVORITES
 async function addToFavorite(e) {
   let fav = document.querySelector(".fav");
-  const liItem = document.querySelector(".Card_cardItem");
   let icon = document.querySelector("#modal-info__favorite");
 
-  // icon.removeEventListener("click", addToFavorite);
+  icon.removeEventListener("click", addToFavorite);
 
   fav.style.visibility = "hidden";
   icon.style.visibility = "visible";
 
   await services
     .addToFavorites(
-      liItem.dataset.id,
+      openLiItem,
       {},
       {
         headers: {
@@ -218,7 +190,11 @@ async function addToFavorite(e) {
         swipeDismiss: true,
         styling: true,
         width: "50px"
-      }
+      },
+      Desktop: {
+        desktop: false,
+        fallback: true,
+    }
     }
   });
 

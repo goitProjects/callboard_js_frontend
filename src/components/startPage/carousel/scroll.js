@@ -211,7 +211,9 @@ export const scroll = async () => {
 
                 const allDotsList = document.querySelectorAll('.scrolling_pagination');
                 const hoverDots = allDotsList[i].children[0]; //каждый дотс с нулевым индексом
+                if(hoverDots !== undefined){
                 hoverDots.style.backgroundColor = 'orange'; //присвоение дефолтного цвета первому доту пагинации
+            }
             }
 
 

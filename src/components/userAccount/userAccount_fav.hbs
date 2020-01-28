@@ -1,5 +1,5 @@
-{{!-- {{#each this}} --}}
-{{!-- <li class="userAccount__favorite-list-item" data-id={{this._id}}> --}}
+{{#each this}}
+<li class="userAccount__favorite-list-item" data-id={{_id}}>
    {{#if images}}
   <img class="userAccount__img" src="{{images}}" alt="" />
   {{else}}
@@ -10,6 +10,6 @@
     <p class="userAccount__desctiption">{{description}}</p>
   </div>
   <span class="userAccount__price">Стоимость: {{price}} грн. </span>
-  {{!-- <button class="userAccount__delete-button" id="{{this._id}}">Удалить</button> --}}
-{{!-- </li> --}}
-{{!-- {{/each}} --}}
+  <button class="useracc__del-btn" data-id="{{_id}}">Удалить</button>
+</li>
+{{/each}}

@@ -23,7 +23,7 @@
   font-size: 10px;
   line-height: 17px;
   letter-spacing: 0.3px;
-  max-height: 80vh;
+  max-height: 100vh;
   border-radius: 40px;
   transition: transform 200ms ease-in-out;
   overflow: auto;
