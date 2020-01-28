@@ -2,7 +2,11 @@
 <span class="modal-info__name">{{title}}</span>
 <span class="modal-info__price">{{price}} грн</span>
 <div class="modal-info__modal-img">
-  <img class="modal-info__image-item" src="{{images}}" alt="" width="230px" height="250px">
+  {{#if images}}
+  <img class="modal-info__image-item" src="{{images}}">
+   {{else}}
+<img class="modal-info__image-item" src="https://www.makersmakingchange.com/wp-content/uploads/2019/08/Default-no-image-02-500x350.jpg"  alt="" width="230px" height="250px" />
+  {{/if}}
 </div>
 
 <button class="modal-info__buy-button"><a class="modal-info__link" href=""></a><span>Связаться с

@@ -74,7 +74,7 @@ outline: none;
 @media (min-width: 768px){ 
   .Card_cardItem {
     height: 306px;
-    width: 336px;
+    width: 306px;
   }
 }
 .Card_img {

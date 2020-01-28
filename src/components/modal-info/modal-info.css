@@ -283,8 +283,8 @@ button#modal-info__favorite:focus {
   }
 
   img.modal-info__image-item {
-    width: 230px;
-    height: 230px;
+    min-width: 230px;
+
     transform: translate(11%, 17%);
   }
   .modal-info__modal-img {
@@ -302,6 +302,7 @@ button#modal-info__favorite:focus {
     margin-top: 90px;
     width: 280px;
     height: 60px;
+    border-radius: 30px;
   }
 
   span.modal-info__favorites {

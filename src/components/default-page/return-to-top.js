@@ -20,10 +20,10 @@ function scrollToTop(scrollDuration) {
 
 window.addEventListener("scroll", scrollWindow)
 function scrollWindow(){
-    if(pageYOffset >1000){
+    if(pageYOffset >800){
         toTop.style.display="block";
     }
-    if(pageYOffset <1000){
+    if(pageYOffset <800){
         toTop.style.display="none";
     }
 }

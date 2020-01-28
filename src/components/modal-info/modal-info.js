@@ -68,7 +68,7 @@ async function handleClick(e) {
           e.target.style.fontSize = "18px";
           link.href = "tel:${res.data.goal.phone}";
           span.innerText = "";
-          link.textContent = res.data.goal.phone;
+          link.textContent = `${res.data.goal.phone}`;
           link.style.color = "#ff6b08";
 
           button.style.backgroundColor = "#fff";
