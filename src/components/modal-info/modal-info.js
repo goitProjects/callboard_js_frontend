@@ -65,7 +65,7 @@ async function handleClick(e) {
           e.target.style.fontSize = "18px";
           link.href = "tel:${res.data.goal.phone}";
           span.innerText = "";
-          link.textContent = res.data.goal.phone;
+          link.textContent = `${res.data.goal.phone}`;
           link.style.color = "#ff6b08";
 
           button.style.backgroundColor = "#fff";
@@ -105,9 +105,13 @@ function handleAddingIfNotLoggedIn(){
       Mobile: {
         swipeDismiss: true,
         styling: true
-      }
+      },
+      Desktop: {
+        desktop: false,
+        fallback: true,
     }
-  })
+  }
+})
 })
 }
 
@@ -138,7 +142,11 @@ async function getFavoritesList(e) {
             Mobile: {
               swipeDismiss: true,
               styling: true
-            }
+            },
+            Desktop: {
+              desktop: false,
+              fallback: true,
+          }
           }
         });
       } 
@@ -148,36 +156,6 @@ async function getFavoritesList(e) {
       }
     });
 }
-
-// FUNCTION FOR ASYNC FETCHING AND REMOVING FAVORITES
-// async function deleteFavorite(e) {
-//   let fav = document.querySelector(".fav");
-//   const liItem = document.querySelector(".Card_cardItem");
-//   let icon = document.querySelector("#modal-info__favorite");
-  // fav.removeEventListener("click", deleteFavorite);
-
-  // await services
-  //   .deleteFavorites(liItem.dataset.id, {
-  //     headers: {
-  //       Authorization: tmp
-  //     }
-  //   })
-  //   .then(res => {
-//       icon.classList.remove("js-fav");
-//       icon.style.visibility = "visible";
-//       fav.style.visibility = "hidden";
-//     // });
-//   PNotify_1.info({
-//     text: "Deleted from favorites!",
-//     modules: {
-//       Mobile: {
-//         swipeDismiss: true,
-//         styling: true,
-//         width: "50px"
-//       }
-//     }
-//   });
-// }
 
 // FUNCTION FOR ASYNC FETCHING AND ADDING TO FAVORITES
 async function addToFavorite(e) {
@@ -212,7 +190,11 @@ async function addToFavorite(e) {
         swipeDismiss: true,
         styling: true,
         width: "50px"
-      }
+      },
+      Desktop: {
+        desktop: false,
+        fallback: true,
+    }
     }
   });
 

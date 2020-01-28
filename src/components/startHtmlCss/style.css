@@ -418,10 +418,28 @@ html {
 .searchNotFound{
   font-size: 20px;
   color: #ff6b08;
-  border-bottom:1px solid  #ff6b08 ;
+  border-bottom: 1px solid  #ff6b08 ;
 }
+
 .btnRefreshSearch{
-  margin-bottom: 400px;
+  display: block;
+  font-family: "Montserrat-Regular";
+  font-size: 16px;
+  line-height: 30px;
+  color: #ff6b08;
+  background-color: transparent;
+  width: auto;
+  height: 30px;
+  margin: 0 auto;
+  padding: 0 10px;
+  border: 1px solid #ff6b08;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.btnRefreshSearch:hover,
+.btnRefreshSearch:focus{
+  background-color: #1e2939;
 }
 
 

@@ -63,9 +63,8 @@ button.modal-info__left-mobile-arrow {
   background-repeat: no-repeat;
   border: none;
   display: inline-block;
-  position: absolute;
-  bottom: 11%;
-  left: 40%;
+  position: relative;
+  left: -6.5%;
   background-color: none;
   cursor: pointer;
   visibility: hidden;
@@ -191,9 +190,6 @@ button#modal-info__favorite {
   background-repeat: no-repeat;
   border: none;
   display: inline-block;
-  position: absolute;
-  bottom: 11%;
-  left: 40%;
   background-color: #fff;
 
   cursor: pointer;
@@ -283,11 +279,13 @@ button#modal-info__favorite:focus {
   }
 
   button#modal-info__favorite {
+    position: absolute;
     left: 66%;
     bottom: 32%;
   }
 
   .fav {
+    position: absolute;
     bottom: 32%;
     left: 66%;
   }

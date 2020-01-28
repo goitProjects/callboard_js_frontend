@@ -11,7 +11,8 @@ const refs = {
   showUserAccountButton: document.querySelector(".js-show-user-account")
 };
 
-const tokenUserAcc = localStorage.getItem("token");
+let tokenUserAcc ;
+
 
 document.addEventListener("click", handleCLickOpenModalAcc);
 window.addEventListener("click", modalCloseByWindowClick);
@@ -24,6 +25,8 @@ function modalCloseByWindowClick(event) {
 }
 
 function handleCLickOpenModalAcc(e) {
+  tokenUserAcc=localStorage.getItem("token")||[];
+  if(tokenUserAcc<1){return}
   if (e.target.classList == "logged-user") {
     document.querySelector("body").style.overflow = "hidden";
     document.querySelector("#menu__toggle").checked = false;
@@ -34,7 +37,6 @@ function handleCLickOpenModalAcc(e) {
       .getFavorites({ headers: { Authorization: tokenUserAcc } })
       .then(res => {
         allFavAds = res.data.user.favorites;
-        console.log(allFavAds)
         const listFav = document.querySelector(".userAccount__favorite-list");
         const itemFav = document.createElement("li");
         // const addDelBtn = document.createElement("button");
@@ -62,25 +64,25 @@ function handleCLickOpenModalAcc(e) {
       .then(res => {
         allMyAds = res.data.ads;
         const listMyAds = document.querySelector(".userAccount__ads-list");
-        const itemMyAds = document.createElement("li");
-        itemMyAds.innerHTML="";
-        allMyAds.map(el => {
-          itemMyAds.className = "userAccount__ads-list-item";
-          itemMyAds.dataset.id = el._id;
-          listMyAds.appendChild(itemMyAds);
-          itemMyAds.innerHTML = favHbs(el);
-          const addDelBtn = document.createElement("button");
-          addDelBtn.className = "useracc__del-btn";
-          addDelBtn.innerHTML = "&times;";
-          addDelBtn.dataset.id = el._id;
-            itemMyAds.appendChild(addDelBtn);
-          addDelBtn.addEventListener("click", deleteMyAd);
+        // const itemMyAds = document.createElement("li");
+        listMyAds.innerHTML="";
+        // allMyAds.map(el => {
+          // itemMyAds.className = "userAccount__ads-list-item";
+          // itemMyAds.dataset.id = el._id;
+          // listMyAds.appendChild(itemMyAds);
+          listMyAds.innerHTML = addsHbs(allMyAds);
+          // const addDelBtn = document.createElement("button");
+          // addDelBtn.className = "useracc__del-btn";
+          // addDelBtn.innerHTML = "&times;";
+          // addDelBtn.dataset.id = el._id;
+            // itemMyAds.appendChild(addDelBtn);
+          document.querySelector("body").addEventListener("click", deleteMyAd);
         });
-      });
-
-
-
-  }
+      }
+    
+    
+    
+  
 
   if (e.target.classList == "userAccount-close-Modal") {
     document.querySelector("body").style.overflow = "auto";
@@ -90,8 +92,9 @@ function handleCLickOpenModalAcc(e) {
   }
 }
 
+
 function deleteFavAd(e) {
-  if (e.target.classList=="useracc__del-btn") ;
+  if (e.target.classList=="useracc__del-btn"){ ;
   const button = e.target;
   const parentLi = button.closest("li.userAccount__favorite-list-item");
   const itemID = e.target.dataset.id;
@@ -105,12 +108,13 @@ function deleteFavAd(e) {
     }
   });
 }
+}
 
 function deleteMyAd(e) {
-  if (e.target.nodeName !== "BUTTON") return;
+  if (e.target.classList=="useracc__del-btn") {
   const button = e.target;
   const parentLi = button.closest("li.userAccount__ads-list-item");
-  const itemID = parentLi.dataset.id;
+  const itemID = e.target.dataset.id;
 
   allMyAds.map(el => {
     if (itemID === el._id) {
@@ -121,4 +125,4 @@ function deleteMyAd(e) {
     }
   });
 }
-
+}
