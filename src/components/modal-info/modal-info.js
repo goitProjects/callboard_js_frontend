@@ -31,9 +31,6 @@ async function handleClick(e) {
   if (
     !e.target.closest(".Card_cardItem") ||
     e.currentTarget.className == "Card_cardItem" ||
-    e.currentTarget.className == "favorites-top" ||
-    e.target.closest(".fav2") ||
-    e.target.closest(".fav3") ||
     e.currentTarget.className == ".Card_img"
   ) {
     return;
@@ -126,7 +123,6 @@ async function getFavoritesList(e) {
       }
     })
     .then(res => {
-      console.log(res.data.user.favorites, openLiItem)
       if (
         res.data.user.favorites.map(el => el._id).includes(openLiItem)
 
@@ -145,13 +141,10 @@ async function getFavoritesList(e) {
             }
           }
         });
-        // fav.removeEventListener("click", addToFavorite);
       } 
       else {
-        // icon.removeEventListener("click", addToFavorite);
 
         icon.addEventListener("click", addToFavorite);
-        // fav.addEventListener("click", deleteFavorite);
       }
     });
 }
