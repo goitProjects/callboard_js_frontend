@@ -260,14 +260,9 @@ html {
   font-size: 30px;
   line-height: 50px;
   border-radius: 50%;
-<<<<<<< HEAD
-  background-color: #ff6b08;
-  transition: transform 0.8s ease-in-out;
-=======
   background-color: #1e2939;
   transition: transform .8s ease-in-out; 
   cursor: pointer;
->>>>>>> dev
 }
 
 .logged-user:hover,
@@ -362,21 +357,6 @@ html {
   text-align: center;
 }
 
-<<<<<<< HEAD
-.products-button {
-  padding-top: 100px;
-
-  padding-top: 26px;
-  padding-bottom: 26px;
-  background-color: transparent;
-  display: none;
-}
-.products-button__load {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100px;
-=======
 .products-button{
   width: 100%;
   padding-top: 90px;
@@ -385,7 +365,6 @@ html {
   display: none;
 }
 .products-button__load{
->>>>>>> dev
   width: 100%;
   height: 100px;
   margin: 0 auto;
