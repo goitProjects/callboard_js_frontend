@@ -113,15 +113,7 @@ async function getFavoritesList(e) {
         fav.style.width = "16px";
         fav.style.visibility = "visible";
 
-        PNotify_1.notice({
-          text: "Product already added to your favorites!",
-          Mobile: {
-            swipeDismiss: true,
-            styling: true,
-            width: '50px'
-          }
-        });
-
+        PNotify_1.notice("Product already added to your favorites!");
         fav.addEventListener("click", deletelFavoritIcon);
       } else {
         icon.addEventListener("click", addToFavorite);
@@ -148,14 +140,7 @@ async function deletelFavoritIcon(e) {
       icon.style.visibility = "visible";
       fav.style.visibility = "hidden";
     });
-  PNotify_1.info({
-    text: "Deleted from favorites!",
-          Mobile: {
-            swipeDismiss: true,
-            styling: true,
-            width: '50px'
-          }
-  });
+  PNotify_1.info("Deleted from favorites!");
 }
 
 // FUNCTION FOR ASYNC FETCHING AND ADDING TO FAVORITES
@@ -186,14 +171,7 @@ async function addToFavorite(e) {
       fav.style.height = "16px";
       fav.style.width = "16px";
     });
-  PNotify_1.success({
-    text: "Added to favorites!",
-    Mobile: {
-      swipeDismiss: true,
-      styling: true,
-      width: '50px'
-    }
-  });
+  PNotify_1.success("Added to favorites!");
 }
 
 // FUNCTION FOR CLOSING MODAL

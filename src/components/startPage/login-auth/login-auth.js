@@ -44,9 +44,15 @@ refs.logout.addEventListener("click", logoutFromAcc);
 services.ref.body.addEventListener("click", closeModal);
 services.ref.body.addEventListener("click", closeModal);
 document.addEventListener("DOMContentLoaded", stayLoggedIn);
+window.addEventListener('keydown', closeModalByEscape);
+refs.overlayLogin.addEventListener('click', closeModalOutside);
+refs.overlayRegister.addEventListener('click', closeModalOutside);
+
+
 
 function showLoginModal(e) {
   if (e.target.classList == "registration-enter") {
+        document.querySelector("body").style.overflow = "hidden";
     refs.overlayLogin.style.display = "flex";
     document.querySelector("#menu__toggle").checked = false;
   }
@@ -92,6 +98,7 @@ async function login(e) {
 
 function showRegisterModal(e) {
   if (e.target.classList == "registration-button") {
+    document.querySelector("body").style.overflow = "hidden";
     refs.overlayLogin.style.display = "none";
     refs.overlayRegister.style.display = "flex";
     document.querySelector("#menu__toggle").checked = false;
