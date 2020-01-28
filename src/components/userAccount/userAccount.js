@@ -34,16 +34,15 @@ function handleCLickOpenModalAcc(e) {
       .getFavorites({ headers: { Authorization: tokenUserAcc } })
       .then(res => {
         allFavAds = res.data.user.favorites;
-
+        const listFav = document.querySelector(".userAccount__favorite-list");
+        const itemFav = document.createElement("li");
+        const addDelBtn = document.createElement("button");
+        listFav.innerHTML="";
         allFavAds.map(el => {
-          const listFav = document.querySelector(".userAccount__favorite-list");
-          const itemFav = document.createElement("li");
           itemFav.className = "userAccount__favorite-list-item";
           itemFav.dataset.id = el._id;
           listFav.appendChild(itemFav);
           itemFav.innerHTML = favHbs(el);
-
-          const addDelBtn = document.createElement("button");
           addDelBtn.className = "useracc__del-btn";
           addDelBtn.innerHTML = "&times;";
           addDelBtn.dataset.id = el._id;
@@ -59,15 +58,14 @@ function handleCLickOpenModalAcc(e) {
       .getAdsUser({ headers: { Authorization: tokenUserAcc } })
       .then(res => {
         allMyAds = res.data.ads;
-
+        const listMyAds = document.querySelector(".userAccount__ads-list");
+        const itemMyAds = document.createElement("li");
+        itemMyAds.innerHTML="";
         allMyAds.map(el => {
-          const listMyAds = document.querySelector(".userAccount__ads-list");
-          const itemMyAds = document.createElement("li");
           itemMyAds.className = "userAccount__ads-list-item";
           itemMyAds.dataset.id = el._id;
           listMyAds.appendChild(itemMyAds);
           itemMyAds.innerHTML = favHbs(el);
-
           const addDelBtn = document.createElement("button");
           addDelBtn.className = "useracc__del-btn";
           addDelBtn.innerHTML = "&times;";
