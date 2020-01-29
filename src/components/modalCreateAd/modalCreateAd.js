@@ -17,9 +17,9 @@ if (window.innerWidth < 1200) {
 }
 // END - Делаем проверку вьюпорта, чтобы отрисовать кнопку добавления новго объявления
 
-//const btnAddPromoItem = document.querySelector('.navigation-promo');
-const token = localStorage.getItem('token') || [];
-if (token.length < 1) {
+
+const tokenLoad = localStorage.getItem('token') || [];
+if (tokenLoad.length < 1) {
   document.querySelector('header').addEventListener('click', needLogin);
   function needLogin(e) {
     if (e.target.classList == 'navigation-promo') {
@@ -32,7 +32,7 @@ if (token.length < 1) {
     function closePhotyfy(){
     PNotify.closeAll()}
      }
-}  
+}else{
   //Getting category names for selector in modal window (o4eNb ToPmo3it)
   async function getCategories() {
     const response = await services.getAllAds();
@@ -65,21 +65,7 @@ if (token.length < 1) {
 
   //Main function
   const createNewAd = async (e) => {
-    const token = localStorage.getItem('token') || [];
-if (token.length < 1) {
-  document.querySelector('header').addEventListener('click', needLogin);
-  function needLogin(e) {
-    if (e.target.classList == 'navigation-promo') {
-      PNotify.error({
-        title: 'Oops!',
-        text: 'You need to go to your personal account to add an advertisement'
-      });
-    }
-    setTimeout(closePhotyfy,1000);
-    function closePhotyfy(){
-    PNotify.closeAll()}
-     }
-}  else{
+    if(e.target.classList== "navigation-promo"){
     const body = document.querySelector('body');
 
     //console.log(categories);
@@ -129,7 +115,6 @@ if (token.length < 1) {
       //Posting Ad to server
       async function postAd(getInputData) {
         const token = localStorage.getItem('token');
-
         console.log(getInputData);
         await services
           .postAddNewAd(getInputData, {
@@ -202,7 +187,6 @@ if (token.length < 1) {
     addModalListeners();
   
   };
-}
   getCategories().then(createModal);
-  services.ref.btnAddPromo.addEventListener('click', createNewAd);
-  
+}
+document.querySelector("body").addEventListener('click', createNewAd);}
