@@ -32,3 +32,15 @@ import "./components/serachBar/";
 import "./components/showteam/js";
 import "./components/userAccount/userAccount";
 
+
+
+
+//         "_id": 3,
+//         "category": "Робота"
+
+//         "_id": 2,            Транспорт
+
+//         "_id": 4,
+
+
+

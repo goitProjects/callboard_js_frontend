@@ -41,18 +41,40 @@ const itemPopular = services.getAdsLimit(10,1).then(res => {
   defaultInfo.popularInfo=res.data.ads.docs;
   popularCategory(defaultInfo.popularInfo, services.ref.popularItem);
 });
-const itemComputer = services.getAdsByCategory(4,6).then(res => {
+const itemComputer = services.getAdsByCategory(4,10).then(res => {
   defaultInfo.computerInfo=res.data.ads.docs;
   compCategory(res.data.ads.docs, services.ref.computerCategory);
 });
-const itemWorks = services.getAdsByCategory(3,9).then(res => {
+const itemPasTime = services.getAdsByCategory(6,10).then(res => {
   defaultInfo.workInfo=res.data.ads.docs;
   worksCategory(res.data.ads.docs, services.ref.pastimeCategory);
 });
-const itemTrade = services.getAdsByCategory(8,6).then(res => {
+const itemTrade = services.getAdsByCategory(8,10).then(res => {
   defaultInfo.tradeInfo=res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.exchangeCategory);
 });
+const ItemTransport = services.getAdsByCategory(2,10).then(res => {
+  defaultInfo.tradeInfo=res.data.ads.docs;
+  tradeCategory(res.data.ads.docs, services.ref.transportCategory);
+});
+const Itembisness = services.getAdsByCategory(5,10).then(res => {
+  defaultInfo.tradeInfo=res.data.ads.docs;
+  tradeCategory(res.data.ads.docs, services.ref.businessCategory);
+});
+const ItemWOrk = services.getAdsByCategory(3,10).then(res => {
+  defaultInfo.tradeInfo=res.data.ads.docs;
+  tradeCategory(res.data.ads.docs, services.ref.workCategory);
+});
+const Itemrealestate = services.getAdsByCategory(1,10).then(res => {
+  defaultInfo.tradeInfo=res.data.ads.docs;
+  tradeCategory(res.data.ads.docs, services.ref.realEstateCategory);
+});
+const ItemFree = services.getAdsByCategory(7,10).then(res => {
+  defaultInfo.tradeInfo=res.data.ads.docs;
+  tradeCategory(res.data.ads.docs, services.ref.freeCategory);
+});
+
+
 ////////////// CLOSE CREATE PAGE
 
 function loadDefaultPage(e) {
@@ -158,11 +180,3 @@ async function handlClickPopupal2(e) {
 
 
 
-// function randomItemCategory(categoryArr, domElement) {
-//   const categoryLayout = randomItemHBS(categoryArr);
-//   domElement.insertAdjacentHTML("beforeend", categoryLayout);
-// }
-// const randomListView = document.querySelector(".random-item-list");
-// const random = services.getAdsLimit(6,18).then(res=>{
-//   randomItemCategory(res.data.ads.docs, randomListView);
-// });
