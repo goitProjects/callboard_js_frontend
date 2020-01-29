@@ -93,11 +93,18 @@ span.modal-info__price {
   margin-bottom: 20px;
 }
 
+img {
+  display: block;
+  max-width: auto;
+  max-height: 100%;
+}
+
 img.modal-info__image-item {
   position: absolute;
   width: 180px;
   height: 180px;
   transform: translate(15.5%, 17%);
+  background-size: contain;
 }
 
 button.modal-info__buy-button {
@@ -252,15 +259,19 @@ button#modal-info__favorite:focus {
 
   img.modal-info__image-item {
     min-width: 230px;
-
-    transform: translate(11%, 17%);
+    height: auto;
+    transform: translate(10%, 14%);
+    background-size: contain;
+    padding-bottom: 60px;
   }
   .modal-info__modal-img {
     left: 4.5%;
     bottom: 19%;
     margin: 0;
     width: 280px;
-    height: 305px;
+    height: 300px;
+   overflow: hidden;
+  
   }
 
   button.modal-info__buy-button {
@@ -321,12 +332,19 @@ button#modal-info__favorite:focus {
   }
 
   img.modal-info__image-item {
-    bottom: 25%;
+    padding-bottom: 0;
+    min-width: 100%;
+    height: auto;
+    bottom: 14.5%;
+    left: -11%;
+    padding: 30px;
   }
 
   .modal-info__modal-img {
-    bottom: 19%;
-    left: 9%;
+    bottom: 24%;
+    left: 6%;
+    width: 320px;
+    height: 350px;
   }
 
   span.modal-info__name {

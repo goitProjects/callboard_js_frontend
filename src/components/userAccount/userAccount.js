@@ -65,6 +65,8 @@ function handleCLickOpenModalAcc(e) {
       .getAdsUser({ headers: { Authorization: tokenUserAcc } })
       .then(res => {
         allMyAds = res.data.ads;
+        console.log(res.data.ads)
+        if(res.data.ads.length>0){
         const listMyAds = document.querySelector(".userAccount__ads-list");
         // const itemMyAds = document.createElement("li");
         listMyAds.innerHTML="";
@@ -79,6 +81,23 @@ function handleCLickOpenModalAcc(e) {
           // addDelBtn.dataset.id = el._id;
             // itemMyAds.appendChild(addDelBtn);
           document.querySelector("body").addEventListener("click", deleteMyAd);
+        }
+        else{
+          PNotify_1.notice({
+            text: "You don't have any ads added! Just add it!",
+            modules: {
+              Mobile: {
+                swipeDismiss: true,
+                styling: true,
+                width: "50px"
+              },
+              Desktop: {
+                desktop: false,
+                fallback: true,
+            }
+            }
+          });
+        }
         });
       }
     
