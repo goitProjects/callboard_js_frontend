@@ -39,20 +39,43 @@ services.ref.body.addEventListener("click", loadDefaultPage);
 
 const itemPopular = services.getAdsLimit(10,1).then(res => {
   defaultInfo.popularInfo=res.data.ads.docs;
+
   popularCategory(defaultInfo.popularInfo, services.ref.popularItem);
 });
-const itemComputer = services.getAdsByCategory(4,6).then(res => {
+const itemComputer = services.getAdsByCategory(4,10).then(res => {
   defaultInfo.computerInfo=res.data.ads.docs;
   compCategory(res.data.ads.docs, services.ref.computerCategory);
 });
-const itemWorks = services.getAdsByCategory(3,9).then(res => {
+const itemPasTime = services.getAdsByCategory(6,10).then(res => {
   defaultInfo.workInfo=res.data.ads.docs;
   worksCategory(res.data.ads.docs, services.ref.pastimeCategory);
 });
-const itemTrade = services.getAdsByCategory(8,6).then(res => {
+const itemTrade = services.getAdsByCategory(8,10).then(res => {
   defaultInfo.tradeInfo=res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.exchangeCategory);
 });
+const ItemTransport = services.getAdsByCategory(2,10).then(res => {
+  defaultInfo.tradeInfo=res.data.ads.docs;
+  tradeCategory(res.data.ads.docs, services.ref.transportCategory);
+});
+const Itembisness = services.getAdsByCategory(5,10).then(res => {
+  defaultInfo.tradeInfo=res.data.ads.docs;
+  tradeCategory(res.data.ads.docs, services.ref.businessCategory);
+});
+const ItemWOrk = services.getAdsByCategory(3,10).then(res => {
+  defaultInfo.tradeInfo=res.data.ads.docs;
+  tradeCategory(res.data.ads.docs, services.ref.workCategory);
+});
+const Itemrealestate = services.getAdsByCategory(1,10).then(res => {
+  defaultInfo.tradeInfo=res.data.ads.docs;
+  tradeCategory(res.data.ads.docs, services.ref.realEstateCategory);
+});
+const ItemFree = services.getAdsByCategory(7,10).then(res => {
+  defaultInfo.tradeInfo=res.data.ads.docs;
+  tradeCategory(res.data.ads.docs, services.ref.freeCategory);
+});
+
+
 ////////////// CLOSE CREATE PAGE
 
 function loadDefaultPage(e) {
@@ -61,16 +84,16 @@ function loadDefaultPage(e) {
     services.ref.allCategoryView.innerHTML = "";
     document.querySelector(".products-button").style.display = "none";
     document.querySelector("#menu__toggle").checked = false;
-    const deActivateRadioBtn = document.querySelectorAll(".category__list-item-radio");
-    deActivateRadioBtn.forEach(el => (el.checked = false));
     document.querySelector(".search-bar__input").value="";
   }
 }
 
 document.querySelector(".button-popularAll").addEventListener("click", handlClickPopupal);
-services.ref.mainTable.addEventListener("click", handlClickPopupal2);
+document.querySelector(".category__list").addEventListener("click", handlClickPopupal2);
+document.querySelector(".menu__box").addEventListener("click", handlClickPopupal2);
+document.querySelector(".button-category-view").addEventListener("click", handlClickPopupal2);
 
-function allCategoryViewCreate(element) {
+function allCategoryViewCreate(element){
   const categoryLayout = OpenAndSearcItemHbs(element);
   services.ref.allCategoryView.insertAdjacentHTML("beforeend", categoryLayout);
 }
@@ -78,6 +101,7 @@ function allCategoryViewCreate(element) {
 async function handlClickPopupal(e) {
   e.preventDefault();
   if (e.target.className === "button-popularAll") {
+     services.ref.allCategoryView.innerHTML = "";
     let favoritCategory = [];
     let page = 1;
     const limit = 8;
@@ -114,8 +138,12 @@ async function handlClickPopupal(e) {
 //Add More for all categories
 async function handlClickPopupal2(e) {
   e.preventDefault();
-  if (e.target.className === "button-category-view") {
-    let itemsFromCategory = [];
+  document.querySelector("#menu__toggle").checked = false;
+  if (
+    e.target.classList == "button-category-view"||
+    e.target.classList == "category__list-item-label") {
+ services.ref.allCategoryView.innerHTML = "";
+  let itemsFromCategory = [];
     let page = 1;
     const limit = 8;
     const category = e.target.id;
@@ -151,18 +179,3 @@ async function handlClickPopupal2(e) {
     }
   }
 }
-
-
-
-
-
-
-
-// function randomItemCategory(categoryArr, domElement) {
-//   const categoryLayout = randomItemHBS(categoryArr);
-//   domElement.insertAdjacentHTML("beforeend", categoryLayout);
-// }
-// const randomListView = document.querySelector(".random-item-list");
-// const random = services.getAdsLimit(6,18).then(res=>{
-//   randomItemCategory(res.data.ads.docs, randomListView);
-// });

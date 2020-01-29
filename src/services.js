@@ -225,11 +225,11 @@ export default {
     buttonPopularAll: document.querySelector(".button-popularAll"),
     buttonCategoryView: document.querySelectorAll(".button-category-view"),
     buttonMoreOpen: document.querySelector(".products-button__load"),
-    // transportCategory: document.querySelector(".products-collection-transport-list"),
-    // businessCategory: document.querySelector(".products-collection-business-list"),
-    // workCategory: document.querySelector(".products-collection-work-list"),
-    // realEstateCategory: document.querySelector(".products-collection-realestate-list"),
-    // freeCategory: document.querySelector(".products-collection-giveFree-list"),
+    transportCategory: document.querySelector(".products-collection-transport-list"),
+    businessCategory: document.querySelector(".products-collection-business-list"),
+    workCategory: document.querySelector(".products-collection-work-list"),
+    realEstateCategory: document.querySelector(".products-collection-realestate-list"),
+    freeCategory: document.querySelector(".products-collection-giveFree-list"),
 
   }
   // addCategory(){
