@@ -1,0 +1,26 @@
+.popular-wrapper {
+  margin-top: 58px;
+  background-color: #ffffff;
+}
+
+.popular-title {
+  font-family: "Montserrat-Medium";
+  color: #000000;
+  font-size: 18px;
+}
+
+.popular-description {
+  font-family: "Montserrat-Regular";
+  color: #a8a8a8;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.button-category-view,.button-popularAll {
+  color: #ff6b08;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: "Montserrat-Regular";
+  font-size: 12px;
+
+}

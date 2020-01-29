@@ -1,0 +1,106 @@
+.info-students {
+  margin-left: 10px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ff6b08;
+  cursor: pointer;
+}
+
+.team__box {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.team__box-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 420px;
+  border-radius: 18px;
+  background-color: #ffffff;
+  box-shadow: 0px 8px 24px rgba(29, 29, 27, 0.3);
+  padding-top: 32px;
+}
+
+.team__box-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: block;
+  background-color: transparent;
+  border: none;
+  background-image: url("../images/icon_close.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: all 800ms ease-in-out;
+}
+
+.team__box-close-btn:hover {
+  transform: rotate(360deg);
+}
+
+.team__image {
+  display: block;
+  width: 260px;
+  margin: 0 auto 32px;
+}
+
+.team__sign {
+  font-size: 26px;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin: 0 auto;
+  text-align: center;
+  color: rgb(30, 41, 57);
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3), 0 0 12px #fff, 0 0 8px #6982a5,
+    0 0 12px #6982a5;
+  transform: rotate(-10deg);
+}
+
+.team__sign-number {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 2px rgba(30, 41, 57, 0.5);
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .team__box-modal {
+    width: 580px;
+    height: 480px;
+  }
+  .team__image {
+    width: 400px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .team__box-modal {
+    display: flex;
+    flex-wrap: wrap;
+    width: 640px;
+    height: 520px;
+  }
+  .team__image {
+    width: 420px;
+  }
+}

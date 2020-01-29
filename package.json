@@ -14,10 +14,10 @@
     "url": "link to yours github"
   },
   "keywords": [],
-  "author": "Maksim",
+  "author": "Baryshninkov_Serhii",
   "license": "MIT",
   "bugs": {
-    "url": "link to yours github"
+    "url": "https://github.com/a-sapon"
   },
   "homepage": "link to yours github",
   "devDependencies": {
@@ -47,10 +47,13 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.19.1",
     "babel-polyfill": "^6.26.0",
+    "cordova-plugin-file": "^6.0.2",
     "core-js": "^3.3.4",
     "handlebars": "^4.5.3",
+    "jquery": "^3.4.1",
+    "masonry-layout": "^4.2.2",
     "page-preloader": "^1.2.44",
     "pnotify": "^4.0.0"
   }

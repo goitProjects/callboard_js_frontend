@@ -1,3 +1,7 @@
-import { fetcher } from "./startPage";
+// import { fetcher } from "./startPage";
 
-export default fetcher;
+
+// export default fetcher;
+
+
+

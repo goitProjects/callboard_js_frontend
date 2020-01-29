@@ -1,0 +1,95 @@
+.Card_cardItem {
+  position: relative;
+  height: 306px;
+  width: 282px;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+}
+.Card_img {
+  padding-top: 38px;
+  max-height: 180px;
+  max-width: 236px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 28px;
+}
+.Card_description {
+  text-align: center;
+  font-size: 12px;
+  color: #000000;
+  font-family: "Montserrat-Regular";
+  font-style: normal;
+  font-weight: 300;
+  margin-bottom: 12px;
+  padding-right: 20px;
+  padding-left: 20px;
+  height: 27px;
+  overflow: hidden;
+}
+.Card_price {
+  display: block;
+  margin: o auto;
+  text-align: center;
+  font-size: 14px;
+  color: #e96105;
+  font-family: "Montserrat-Medium";
+  font-style: normal;
+  font-weight: 700;
+  padding-bottom: 26px;
+}
+.Card_cardItem:hover {
+  background-color: #dcdde0;
+  cursor: pointer;
+}
+.favorites-top {
+  position: absolute;
+  top: 10%;
+  left: 81%;
+  border: none;
+  background: transparent;
+}
+
+.favorites-top:focus{
+outline: none;
+}
+.heart {
+  fill: white;
+  width: 14px;
+}
+
+.heart:focus{
+  outline: none;
+}
+.favorites-buttom {
+  position: absolute;
+  bottom: 10%;
+  left: 79%;
+  border: none; 
+  background: transparent;
+}
+.fullscreen {
+  fill: white;
+  width: 20px;
+}
+.products-list-item{
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (min-width: 768px){ 
+  .Card_cardItem {
+    height: 306px;
+    width: 306px;
+  }
+}
+.Card_img {
+  padding-top: 38px;
+  max-height: 180px;
+  max-width: 280px;
+}
+@media (min-width: 1280px) {
+  .Card_cardItem {
+    height: 306px;
+    width: 260px;
+    margin: 10px;
+  }
+}

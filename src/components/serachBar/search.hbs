@@ -1,0 +1,11 @@
+{{#each this}}
+<li class="Card_cardItem" data-id="{{_id}}">
+  {{#if images}}
+  <img class="Card_img" src="{{images}}" alt="" />
+  {{else}}
+<img class="Card_img" src="https://www.makersmakingchange.com/wp-content/uploads/2019/08/Default-no-image-02-500x350.jpg" alt="" />
+  {{/if}}
+  <p class="Card_description">{{description}}</p>
+  <span class="Card_price">{{price}} грн.</span>
+</li>  
+{{/each}}

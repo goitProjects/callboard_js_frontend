@@ -1,0 +1,338 @@
+.userAccount__overlay {
+  display: none;
+  width: 100vw;
+  min-height: 100vh;
+  z-index: 12;
+  top: 0;
+  left: 0;
+  background: rgba(133, 128, 128, 0.5);
+  padding: 20px 10px;
+  position: absolute;
+  transition: transform 200ms ease-in-out;
+  justify-content: center;
+  align-items: center;
+}
+
+.userAccount__modal {
+  /* position: fixed; */
+  position: relative;
+  background: #ffffff;
+  box-shadow: 12.5px 21.651px 55px 0px rgba(29, 29, 27, 0.3);
+  padding: 42px 18px;
+  font-family: 'Montserrat600', sans-serif;
+  font-size: 10px;
+  line-height: 17px;
+  letter-spacing: 0.3px;
+  max-height: 100vh;
+  border-radius: 40px;
+  transition: transform 200ms ease-in-out;
+  overflow: auto;
+}
+
+.userAccount__favorite-section-title,
+.userAccount__ads-section-title {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.userAccount__favorite-list,
+.userAccount__ads-list,
+.userAccount__list {
+  width: 100%;
+  overflow: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 40px 0;
+}
+
+
+.userAccount__list li::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ff6b08;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+
+.userAccount__favorite-list-item,
+.userAccount__ads-list-item,
+.userAccount__list-item {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  color: #1e2939;
+}
+
+.userAccount__favorite-list-item:hover,
+.userAccount__favorite-list-item:focus,
+.userAccount__ads-list-item:hover,
+.userAccount__ads-list-item:focus {
+  background-color: #d8d8d8;
+}
+
+.userAccount__favorite-list-item:hover .userAccount__delete-button,
+.userAccount__favorite-list-item:focus .userAccount__delete-button,
+.userAccount__ads-list-item:hover .userAccount__delete-button,
+.userAccount__ads-list-item:focus .userAccount__delete-button {
+  /* display: block; */
+}
+
+.userAccount__img {
+  display: block;
+  width: 180px;
+  height: 126px;
+  border-radius: 10px;
+  margin: 0 auto;
+  /* margin-right: 20px;
+  margin-bottom: 10px; */
+}
+
+.userAccount__info {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.userAccount__price {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.userAccount__delete-button {
+  /* display: none; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  padding: 10px 20px;
+  background-color: #ff6b08;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.userAccount-close-Modal {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  border: none;
+  margin-bottom: 23px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  background-image: url("../../public/SVG-sprite/close-24px.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  z-index: 20;
+  transition: linear .2s;
+}
+
+.userAccount-close-Modal:hover,
+.userAccount-close-Modal:focus {
+  transform: rotate(90deg);
+}
+
+.useracc__del-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  color: #ff6b08;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+
+  .userAccount__overlay {
+    padding: 40px 20px;
+  }
+
+  .userAccount__favorite-list,
+  .userAccount__ads-list,
+  .userAccount__list {
+    padding: 40px 40px;
+  }
+
+  .userAccount__favorite-list-item,
+  .userAccount__ads-list-item,
+  .userAccount__list-item {
+    /* width: 80%; */
+  }
+
+  .userAccount__img {
+    margin: 0;
+    margin-right: 30px;
+  }
+
+  .userAccount-close-Modal {
+    top: 50px;
+  }
+}
+
+
+
+@media (min-width: 1200px) {
+
+  .userAccount__overlay {
+    display: none;
+    width: 100vw;
+    min-height: 100vh;
+    z-index: 12;
+    top: 0;
+    left: 0;
+    background: rgba(133, 128, 128, 0.5);
+    padding: 3rem 20rem;
+    position: absolute;
+    transition: transform 200ms ease-in-out;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .userAccount__modal {
+    /* position: fixed; */
+    position: relative;
+    background: #ffffff;
+    box-shadow: 12.5px 21.651px 55px 0px rgba(29, 29, 27, 0.3);
+    padding: 42px 18px;
+    font-family: 'Montserrat600', sans-serif;
+    font-size: 10px;
+    line-height: 17px;
+    letter-spacing: 0.3px;
+    max-height: 80vh;
+    border-radius: 40px;
+    transition: transform 200ms ease-in-out;
+    overflow: auto;
+  }
+
+  .userAccount__favorite-section-title,
+  .userAccount__ads-section-title {
+    text-align: center;
+    margin: 1.5rem 0;
+  }
+
+  .userAccount__favorite-list,
+  .userAccount__ads-list,
+  userAccount__list {
+    width: 100%;
+    overflow: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 40px 0;
+  }
+
+  .userAccount__favorite-list-item,
+  .userAccount__ads-list-item,
+  .userAccount__list-item {
+    width: 600px;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    color: #1e2939;
+  }
+
+  .userAccount__favorite-list-item:hover,
+  .userAccount__favorite-list-item:focus,
+  .userAccount__ads-list-item:hover,
+  .userAccount__ads-list-item:focus {
+    background-color: #d8d8d8;
+  }
+
+  .userAccount__favorite-list-item:hover .userAccount__delete-button,
+  .userAccount__favorite-list-item:focus .userAccount__delete-button,
+  .userAccount__ads-list-item:hover .userAccount__delete-button,
+  .userAccount__ads-list-item:focus .userAccount__delete-button {
+    /* display: block; */
+  }
+
+  .userAccount__img {
+    display: block;
+    width: 180px;
+    height: 126px;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
+
+  .userAccount__info {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .userAccount__price {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .userAccount__delete-button {
+    bottom: 8px;
+    right: 0px;
+    top: 119px;
+    left: 505px;
+    transform: translate(0, 0);
+  }
+
+  .userAccount-close-Modal {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    border: none;
+    margin-bottom: 23px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    background-image: url("../../public/SVG-sprite/close-24px.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: linear .2s;
+  }
+
+  .userAccount-close-Modal:hover,
+  .userAccount-close-Modal:focus {
+    transform: rotate(90deg);
+  }
+}
+
+p.text{
+  font-family: "Montserrat-Regular";
+  font-size: 18px;
+  color: #ff6b08;
+  border-bottom: 1px dashed  #ff6b08;
+}

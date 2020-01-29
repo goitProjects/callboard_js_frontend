@@ -1,0 +1,15 @@
+
+.return-to-top{
+    border: none;
+    background: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    z-index: 5;
+    bottom: 30px;
+    right: 30px;
+    display: block;
+    transition: all 0.1s ease;
+    cursor: pointer;
+}
