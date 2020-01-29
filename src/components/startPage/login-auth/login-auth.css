@@ -173,13 +173,13 @@ input[type="text"] {
     margin: 0 0 42px 0;
   }
 
-  input[name="email"],
+  /* input[name="email"],
   input[name="password"],
   input[type="text"] {
     width: 96%;
     font-family: 'Montserrat500', sans-serif;
     font-size: 13px;
-  }
+  } */
 
   input[name="password"] {
     margin-bottom: 36px;
