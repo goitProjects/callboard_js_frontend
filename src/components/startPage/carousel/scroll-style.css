@@ -65,7 +65,9 @@
 .prv-scroll:hover,
 .nxt-scroll:hover {
     /* background-color: #d3d3d3; */
-    outline: 1px solid #ff6b08;
+    /* outline: 1px solid #ff6b08; */
+    background-color: #ebebeb;
+
 }
 
 .prv-scroll::after,
