@@ -89,8 +89,8 @@ function loadDefaultPage(e) {
 }
 
 document.querySelector(".button-popularAll").addEventListener("click", handlClickPopupal);
-document.querySelector(".category__list").addEventListener("click", handlClickPopupal2);
-document.querySelector(".menu__box").addEventListener("click", handlClickPopupal2);
+document.querySelector("#category__list-desktop").addEventListener("click", handlClickPopupal2);
+document.querySelector("#category__list").addEventListener("click", handlClickPopupal2);
 document.querySelector(".button-category-view").addEventListener("click", handlClickPopupal2);
 
 function allCategoryViewCreate(element){
