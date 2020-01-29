@@ -88,7 +88,9 @@ async function handleClick(e) {
         } 
         else {
           handleAddingIfNotLoggedIn();
-          PNotify_1.closeAll();
+          setTimeout(e=>{
+            PNotify_1.closeAll();
+          }, 2000);
           icon.classList.remove("js-fav");
           fav.style.visibility = "hidden";
         }
@@ -99,7 +101,7 @@ async function handleClick(e) {
 function handleAddingIfNotLoggedIn(){
   let icon = document.querySelector("#modal-info__favorite");
   icon.addEventListener('click',  e =>{
-    PNotify_1.error({
+    let pnotify=PNotify_1.error({
     text: "You need to go to your personal account to add to favorites!",
     modules: {
       Mobile: {
@@ -112,6 +114,13 @@ function handleAddingIfNotLoggedIn(){
     }
   }
 })
+pnotify.on('click', function(){
+  pnotify.close()
+});
+
+setTimeout(e=>{
+  PNotify_1.closeAll()
+},2000)
 })
 }
 
@@ -136,7 +145,7 @@ async function getFavoritesList(e) {
         fav.style.width = "16px";
         fav.style.visibility = "visible";
 
-        PNotify_1.notice({
+        let pnot=PNotify_1.notice({
           text: "Product already added to your favorites!",
           modules: {
             Mobile: {
@@ -149,6 +158,13 @@ async function getFavoritesList(e) {
           }
           }
         });
+        pnot.on('click', function(){
+          pnot.close()
+        });
+
+        setTimeout(e=>{
+          PNotify_1.closeAll()
+        },2000)
       } 
       else {
 
@@ -183,7 +199,8 @@ async function addToFavorite(e) {
       fav.style.height = "16px";
       fav.style.width = "16px";
     });
-  PNotify_1.success({
+
+   let pn=PNotify_1.success({
     text: "Added to favorites!",
     modules: {
       Mobile: {
@@ -197,13 +214,22 @@ async function addToFavorite(e) {
     }
     }
   });
+  pn.on('click', function(){
+    pn.close()
+  })
+  setTimeout(e=>{
+   PNotify_1.closeAll()
+  },2000);
 
 }
 
 // FUNCTION FOR CLOSING MODAL
 function closeModal(e) {
   overlay.classList.remove("show-modal");
-  PNotify_1.closeAll();
+  // setTimeout(e=>{
+  //   PNotify_1.closeAll()
+  // }, 2000)
+  
   overlay.style = "none";
   document.querySelector("body").style.overflow = "auto"; 
   section.addEventListener("click", handleClick, true);

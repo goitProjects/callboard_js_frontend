@@ -111,7 +111,8 @@ function deleteFavAd(e) {
     if (itemID === el._id) {
       const idxOfElement = allFavAds.indexOf(el);
       allFavAds.splice(idxOfElement, 1);
-      PNotify_1.success({
+      
+      let pnSuccessFav=PNotify_1.success({
         text: "Deleted from favorites!",
         modules: {
           Mobile: {
@@ -124,6 +125,14 @@ function deleteFavAd(e) {
         }
       }
     });
+    pnSuccessFav.on('click', function(){
+      pnSuccessFav.close()
+    });
+    
+    setTimeout(e=>{
+      PNotify_1.closeAll()
+    },2000)
+
       parentLi.remove();
       services.deleteFavorites(`${itemID}`, { headers: { Authorization: tokenUserAcc } })
     }
@@ -142,7 +151,7 @@ function deleteMyAd(e) {
     if (itemID === el._id) {
       const idxOfElement = allMyAds.indexOf(el);
       allMyAds.splice(idxOfElement, 1);
-      PNotify_1.success({
+      let pnSuccessAds=PNotify_1.success({
         text: "Deleted from ads!",
         modules: {
           Mobile: {
@@ -155,6 +164,14 @@ function deleteMyAd(e) {
         }
       }
     });
+    pnSuccessAds.on('click', function(){
+      pnSuccessAds.close()
+    });
+    
+    setTimeout(e=>{
+      PNotify_1.closeAll()
+    },2000)
+
       parentLi.remove();
       services.deleteAdById(`${itemID}`, { headers: { Authorization: tokenUserAcc } })
     }
