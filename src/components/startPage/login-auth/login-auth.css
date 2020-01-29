@@ -98,11 +98,12 @@ input[type="text"] {
   width: 260px;
   height: 57px;
   border: 1px solid #ced2d1;
-  color: #bbbbbb;
+  color: #313131;
   padding-left: 17px;
   margin-bottom: 20px;
   font-family: 'Montserrat600', sans-serif;
   font-size: 10px;
+  font-weight: 300;
 }
 
 .auth-btns {
