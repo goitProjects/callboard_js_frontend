@@ -69,12 +69,17 @@ export default {
     e.preventDefault();
 
     if(document.querySelector("#search_input").value<1){ 
-      PNotify.error({
+      let pnoErr=PNotify.error({
       title: 'Oops!',
       text: 'You need enter your search title'})
-      setTimeout(closePhotyfy,1000);
-      function closePhotyfy(){
-      PNotify.closeAll()}
+
+      pnoErr.on('click', function(){
+        pnoErr.close()
+      });
+      
+      setTimeout(e=>{
+        PNotify.closeAll()
+      },2000)
        }
       else
       {
