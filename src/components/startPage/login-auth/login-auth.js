@@ -84,7 +84,8 @@ async function login(e) {
       localStorage.setItem("name", services.userData.name);
       changeUIforLoggedUser();
     } catch (e) {
-      PNotify.error({
+      
+      let pnError=PNotify.error({
         title: "Oops!",
         text: "Email or password is incorrect.",
         delay: 1500,
@@ -94,6 +95,13 @@ async function login(e) {
             styling: true
           }
       }});
+      pnError.on('click', function(){
+        pnError.close()
+      });
+      
+      setTimeout(e=>{
+        PNotify.closeAll()
+      },2000)
     }
   }
 }
@@ -134,7 +142,8 @@ async function register(e) {
       localStorage.setItem("token", dataRegister.data.token);
       changeUIforLoggedUser();
     } catch (e) {
-      PNotify.error({
+
+      let pnoErr=PNotify.error({
         title: "Oops!",
         text: "Email or password is incorrect.",
         delay: 1500,
@@ -145,6 +154,13 @@ async function register(e) {
           }
  }
       });
+      pnoErr.on('click', function(){
+        pnoErr.close()
+      });
+      
+      setTimeout(e=>{
+        PNotify.closeAll()
+      },2000)
     }
   }
 }
@@ -172,7 +188,7 @@ function closeModal(e) {
   if (e.target.classList == "close-icon") {
     refs.overlayLogin.style.display = "none";
     refs.overlayRegister.style.display = "none";
-    PNotify.closeAll();
+    // PNotify.closeAll();
     document.querySelector("body").style.overflow = "auto";
   }
 }
@@ -215,9 +231,7 @@ function changeUIforLoggedUser() {
   refs.overlayRegister.style.display = "none";
   document.querySelector("body").style.overflow = "auto";
 
-
-
-    PNotify.success({
+let pnSucc=PNotify.success({
       title: "Success!",
       text: "You are logged in.",
       delay: 1500,
@@ -228,6 +242,13 @@ function changeUIforLoggedUser() {
         }
 
     }});
+    pnSucc.on('click', function(){
+      pnSucc.close()
+    });
+    
+    setTimeout(e=>{
+      PNotify.closeAll()
+    },2000)
 }
 
 function stayLoggedIn() {

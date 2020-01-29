@@ -20,23 +20,30 @@ if (window.innerWidth < 1200) {
 
 const tokenLoad = localStorage.getItem('token') || [];
 if (tokenLoad.length < 1) {
-  document.querySelector('header').addEventListener('click', needLogin);
+  document.querySelector(".navigation-promo").addEventListener("click", needLogin);
   function needLogin(e) {
     if (e.target.classList == 'navigation-promo') {
-      PNotify.error({
+      let pnotErr=PNotify.error({
         title: 'Oops!',
         text: 'You need to go to your personal account to add an advertisement'
       });
+      pnotErr.on('click', function(){
+        pnotErr.close()
+      });
+      
+      setTimeout(e=>{
+        PNotify.closeAll()
+      },2000)
+
     }
-    setTimeout(closePhotyfy,1000);
-    function closePhotyfy(){
-    PNotify.closeAll()}
+   
      }
 }else{
   //Getting category names for selector in modal window (o4eNb ToPmo3it)
   async function getCategories() {
-    const response = await services.getAllAds();
-    const categories = response.categories;
+    // const response = await services.getAllAds();
+    // console.log(response.categories)
+    const categories = [{_id: 3, category: "Робота"},{_id: 2, category: "Транспорт"},{_id: 4, category: "Електроніка"},{_id: 5, category: "Бізнес та послуги"},{_id: 7, category: "Віддам безкоштовно"},{_id: 8, category: "Обмін"},{_id: 6, category: "Відпочинок і спорт"},{_id: 1, category: "Нерухомість"},];
     return categories;
   }
 
@@ -84,7 +91,7 @@ if (tokenLoad.length < 1) {
         submit: document.querySelector('.modal-create-ad__submit')
       };
       const input = {
-        name: document.querySelector('.modal-create-ad__input-name'),
+        name: document.querySelector('#modal-create-ad__input-name'),
         photo: document.querySelector('.modal-create-ad__input-upload-photos'),
         description: document.querySelector(
           '.modal-create-ad__input-description'
@@ -127,10 +134,17 @@ if (tokenLoad.length < 1) {
           .then(console.log)
           .then(() => {
             closeModal();
-            PNotify.success({
+            let pnotSucc=PNotify.success({
               title: 'Поздравляем!',
               text: 'Ваше объявление добавлено.'
             });
+            pnotSucc.on('click', function(){
+              pnotSucc.close()
+            });
+            
+            setTimeout(e=>{
+              PNotify.closeAll()
+            },2000)
           });
       }
 
@@ -138,31 +152,59 @@ if (tokenLoad.length < 1) {
       const verifyAndPostAd = () => {
         switch (true) {
           case input.name.value == '':
-            PNotify.error({
+            let pnErr=PNotify.error({
               title: 'Ошибка!',
               text: 'Введите название товара.'
             });
+            pnErr.on('click', function(){
+              pnErr.close()
+            });
+            
+            setTimeout(e=>{
+              PNotify.closeAll()
+            },2000)
             break;
 
           case input.description.value == '':
-            PNotify.error({
+            let pnoError=PNotify.error({
               title: 'Ошибка!',
               text: 'Введите описание товара.'
             });
+            pnoError.on('click', function(){
+              pnoError.close()
+            });
+            
+            setTimeout(e=>{
+              PNotify.closeAll()
+            },2000)
             break;
 
           case input.price.value == '':
-            PNotify.error({
+            let p=PNotify.error({
               title: 'Ошибка!',
               text: 'Введите цену товара.'
             });
+            p.on('click', function(){
+              p.close()
+            });
+            
+            setTimeout(e=>{
+              PNotify.closeAll()
+            },2000)
             break;
 
           case input.phone.value == '':
-            PNotify.error({
+            let pnE=PNotify.error({
               title: 'Ошибка!',
               text: 'Введите номер телефона.'
             });
+            pnE.on('click', function(){
+              pnE.close()
+            });
+            
+            setTimeout(e=>{
+              PNotify.closeAll()
+            },2000)
             break;
 
           default:

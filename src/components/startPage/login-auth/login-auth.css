@@ -98,11 +98,12 @@ input[type="text"] {
   width: 260px;
   height: 57px;
   border: 1px solid #ced2d1;
-  color: #bbbbbb;
+  color: #313131;
   padding-left: 17px;
   margin-bottom: 20px;
   font-family: 'Montserrat600', sans-serif;
   font-size: 10px;
+  font-weight: 300;
 }
 
 .auth-btns {
@@ -172,13 +173,13 @@ input[type="text"] {
     margin: 0 0 42px 0;
   }
 
-  input[name="email"],
+  /* input[name="email"],
   input[name="password"],
   input[type="text"] {
     width: 96%;
     font-family: 'Montserrat500', sans-serif;
     font-size: 13px;
-  }
+  } */
 
   input[name="password"] {
     margin-bottom: 36px;

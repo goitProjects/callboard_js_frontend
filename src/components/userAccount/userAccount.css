@@ -329,3 +329,10 @@
     transform: rotate(90deg);
   }
 }
+
+p.text{
+  font-family: "Montserrat-Regular";
+  font-size: 18px;
+  color: #ff6b08;
+  border-bottom: 1px dashed  #ff6b08;
+}
