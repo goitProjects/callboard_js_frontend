@@ -89,7 +89,9 @@ function loadDefaultPage(e) {
 }
 
 document.querySelector(".button-popularAll").addEventListener("click", handlClickPopupal);
-document.addEventListener("click", handlClickPopupal2);
+document.querySelector(".category__list").addEventListener("click", handlClickPopupal2);
+document.querySelector(".menu__box").addEventListener("click", handlClickPopupal2);
+document.querySelector(".button-category-view").addEventListener("click", handlClickPopupal2);
 
 function allCategoryViewCreate(element){
   const categoryLayout = OpenAndSearcItemHbs(element);
@@ -136,6 +138,7 @@ async function handlClickPopupal(e) {
 //Add More for all categories
 async function handlClickPopupal2(e) {
   e.preventDefault();
+  document.querySelector("#menu__toggle").checked = false;
   if (
     e.target.classList == "button-category-view"||
     e.target.classList == "category__list-item-label") {
