@@ -119,8 +119,8 @@ export default {
             createSearchElement(filterArr)
           )}else{
             searchBar.refsearch.list.innerHTML="";
-            searchBar.refsearch.list.innerHTML=`<p class="searchNotFound">По вашему запросу ничего не найдено!</p>
-            <button class="button-popularAll btnRefreshSearch" id="searchBackToMain">Вернутся на главную страницу.</button>`
+            searchBar.refsearch.list.innerHTML=`<div class="searchNotF"><p class="searchNotFound">По вашему запросу ничего не найдено!</p>
+            <button class="button-popularAll btnRefreshSearch" id="searchBackToMain">Вернутся на главную страницу.</button></div>`
           }
         showPreloader.hide();
       }
@@ -150,8 +150,8 @@ export default {
            "beforeend",
            createSearchElement(filterArr)
          );}else{
-           searchBar.refsearch.list.innerHTML=`<p class="searchNotFound">По вашему запросу ничего не найдено!</p>
-           <button class="button-popularAll btnRefreshSearch" id="searchBackToMain">Вернутся на главную страницу.</button>`
+           searchBar.refsearch.list.innerHTML=`<div class="searchNotF"><p class="searchNotFound">По вашему запросу ничего не найдено!</p>
+           <button class="button-popularAll btnRefreshSearch" id="searchBackToMain">Вернутся на главную страницу.</button></div>`
          };
         // searchBar.refsearch.btn.disabled = false;
         showPreloader.hide();

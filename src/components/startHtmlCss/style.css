@@ -416,6 +416,8 @@ html {
 }
 
 .searchNotFound{
+  margin-bottom: 20px;
+  font-family: "Montserrat-Regular";
   font-size: 20px;
   color: #ff6b08;
   border-bottom: 1px solid  #ff6b08 ;
@@ -442,8 +444,8 @@ html {
   background-color: #1e2939;
 }
 
-
-
-
-
+.searchNotF{
+  margin: 0 auto;
+  margin-bottom: 500px;
+}
 
