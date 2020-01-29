@@ -105,6 +105,7 @@ img.modal-info__image-item {
   height: 180px;
   transform: translate(15.5%, 17%);
   background-size: contain;
+  overflow: hidden;
 }
 
 button.modal-info__buy-button {
@@ -188,7 +189,9 @@ p.modal-info__about {
   font-size: 13px;
   margin-left: 12.5%;
   padding-right: 20px;
+  overflow: initial;
 }
+
 
 button#modal-info__favorite {
   background-image: url("../../icons/heart/heart.svg");
@@ -305,15 +308,18 @@ button#modal-info__favorite:focus {
   span.modal-info__description {
     position: absolute;
     left: 40%;
-    bottom: 23%;
+    bottom: 27%;
   }
 
   p.modal-info__about {
     position: absolute;
     left: 40%;
-    bottom: 16%;
+    bottom: 18%;
     padding-right: 20px;
+    margin-bottom: -2%;
+    padding-bottom: 10px;
   }
+
 }
 
 @media (min-width: 1036px) {
