@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/a-sapon"
   },
-  "homepage": "link to yours github",
+  "homepage": "https://goitprojects.github.io/callboard_js_frontend/",
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
