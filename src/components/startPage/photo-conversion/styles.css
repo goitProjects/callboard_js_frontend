@@ -13,8 +13,9 @@
   color: #a8a8a8;
 }
 
-.products a {
+.button-category-view,.button-popularAll {
   color: #ff6b08;
   cursor: pointer;
   text-decoration: none;
+  font-family: "Montserrat-Regular";
 }

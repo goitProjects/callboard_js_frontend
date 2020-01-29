@@ -179,7 +179,7 @@ html {
 
 .block-footer__item > p {
   font-family: "Montserrat-Regular";
-  font-size: 12px;
+  font-size: 8px;
   letter-spacing: 0.36px;
   line-height: 23px;
   color: rgba(255, 255, 255, 0.2);
@@ -369,7 +369,7 @@ html {
   height: 100px;
   margin: 0 auto;
   font-family: "Montserrat-SemiBold";
-  font-size: 18px;
+  font-size: 15px;
   color: #ffffff;
   background-color: #121d2e;
   border: none;
@@ -386,7 +386,7 @@ html {
   padding: 16px 0;
   width: 200px;
   font-family: "Montserrat-Bold";
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 0.28px;
   color: #ffffff;
   background-color: #ff6b08;
@@ -416,7 +416,9 @@ html {
 }
 
 .searchNotFound{
-  font-size: 20px;
+  margin-bottom: 20px;
+  font-family: "Montserrat-Regular";
+  font-size: 18px;
   color: #ff6b08;
   border-bottom: 1px solid  #ff6b08 ;
 }
@@ -424,7 +426,7 @@ html {
 .btnRefreshSearch{
   display: block;
   font-family: "Montserrat-Regular";
-  font-size: 16px;
+  font-size: 14px;
   line-height: 30px;
   color: #ff6b08;
   background-color: transparent;
@@ -442,8 +444,8 @@ html {
   background-color: #1e2939;
 }
 
-
-
-
-
+.searchNotF{
+  margin: 0 auto;
+  margin-bottom: 500px;
+}
 
