@@ -69,7 +69,7 @@ button.modal-create-ad__btn-close {
 }
 
 .modal-create-ad__content h4 {
-  font-family: "Montserrat";
+  font-family: "Montserrat-Medium";
   /* font-size: 18px; */
   text-align: center;
 }
@@ -79,7 +79,7 @@ button.modal-create-ad__btn-close {
   background: none;
   margin: 0;
   padding: 0;
-  font-family: "Montserrat";
+  font-family: "Montserrat-Medium";
   font-size: 12px;
   color: #ffffff;
   background-color: #ff6b08;
