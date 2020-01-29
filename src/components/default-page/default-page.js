@@ -39,6 +39,7 @@ services.ref.body.addEventListener("click", loadDefaultPage);
 
 const itemPopular = services.getAdsLimit(10,1).then(res => {
   defaultInfo.popularInfo=res.data.ads.docs;
+
   popularCategory(defaultInfo.popularInfo, services.ref.popularItem);
 });
 const itemComputer = services.getAdsByCategory(4,10).then(res => {
@@ -83,16 +84,14 @@ function loadDefaultPage(e) {
     services.ref.allCategoryView.innerHTML = "";
     document.querySelector(".products-button").style.display = "none";
     document.querySelector("#menu__toggle").checked = false;
-    const deActivateRadioBtn = document.querySelectorAll(".category__list-item-radio");
-    deActivateRadioBtn.forEach(el => (el.checked = false));
     document.querySelector(".search-bar__input").value="";
   }
 }
 
 document.querySelector(".button-popularAll").addEventListener("click", handlClickPopupal);
-services.ref.mainTable.addEventListener("click", handlClickPopupal2);
+document.addEventListener("click", handlClickPopupal2);
 
-function allCategoryViewCreate(element) {
+function allCategoryViewCreate(element){
   const categoryLayout = OpenAndSearcItemHbs(element);
   services.ref.allCategoryView.insertAdjacentHTML("beforeend", categoryLayout);
 }
@@ -100,6 +99,7 @@ function allCategoryViewCreate(element) {
 async function handlClickPopupal(e) {
   e.preventDefault();
   if (e.target.className === "button-popularAll") {
+     services.ref.allCategoryView.innerHTML = "";
     let favoritCategory = [];
     let page = 1;
     const limit = 8;
@@ -136,8 +136,11 @@ async function handlClickPopupal(e) {
 //Add More for all categories
 async function handlClickPopupal2(e) {
   e.preventDefault();
-  if (e.target.className === "button-category-view") {
-    let itemsFromCategory = [];
+  if (
+    e.target.classList == "button-category-view"||
+    e.target.classList == "category__list-item-label") {
+ services.ref.allCategoryView.innerHTML = "";
+  let itemsFromCategory = [];
     let page = 1;
     const limit = 8;
     const category = e.target.id;
@@ -173,10 +176,3 @@ async function handlClickPopupal2(e) {
     }
   }
 }
-
-
-
-
-
-
-
