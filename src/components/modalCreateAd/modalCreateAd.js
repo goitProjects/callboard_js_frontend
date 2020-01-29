@@ -187,9 +187,22 @@ if (tokenLoad.length < 1) {
           document.addEventListener("keydown", closeOnEcs);
         }
       };
+<<<<<<< HEAD
       addModalListeners();
     }
     getCategories().then(createModal);
+=======
+    
+      if (document.querySelector(".modal-create-ad")){
+      input.photo.addEventListener('change', addImage);
+      modal.submit.addEventListener('click', verifyAndPostAd);
+      modal.close.addEventListener('click', closeModal);
+      modal.overlay.addEventListener('click', closeOnOverlay);
+      document.addEventListener('keydown', closeOnEcs);}
+    };
+    addModalListeners();
+    
+>>>>>>> default-page
   };
   document.querySelector("body").addEventListener("click", createNewAd);
 }

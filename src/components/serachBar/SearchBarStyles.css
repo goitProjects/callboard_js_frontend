@@ -112,6 +112,7 @@ color: rgb(192, 192, 192);
 
 .category__list-item {
     margin: 5px;
+    background-color: transparent;
 }
 
 .category__list-item-label:hover {
@@ -120,6 +121,7 @@ color: rgb(192, 192, 192);
 }
 
 .category__list-item-label {
+    background-color: transparent;
     display: block;
     border: 1px solid rgba(172, 172, 172, .4);
     opacity: 1;
