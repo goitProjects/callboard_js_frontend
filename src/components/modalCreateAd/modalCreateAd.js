@@ -84,7 +84,7 @@ if (tokenLoad.length < 1) {
         submit: document.querySelector('.modal-create-ad__submit')
       };
       const input = {
-        name: document.querySelector('.modal-create-ad__input-name'),
+        name: document.querySelector('#modal-create-ad__input-name'),
         photo: document.querySelector('.modal-create-ad__input-upload-photos'),
         description: document.querySelector(
           '.modal-create-ad__input-description'
