@@ -177,7 +177,7 @@
               </div>
               <!-- END Кнопки "Фильтр" и "Очистить" -->
             </div>
-           
+
           </div>
         </div>
       </div>
@@ -189,6 +189,7 @@
   <!-- HEADER END-->
 
   <!-- MAIN START -->
+  <main class="main">
     <section class="products">
       <div class="container mainTable">
         <ul id="search_list" class="search_list-item">
@@ -264,17 +265,17 @@
           <div class="modal-info__modal"></div>
         </div>
         <!-- END MODAL-INFO -->
-
+        <div class="products-button">
+          <button class="products-button__load">Загрузить еще</button>
+        </div>
       </div>
     </section>
   </main>
   <!-- MAIN END -->
-        <!-- LOAD MORE BUTTON -->
-  <div class="products-button">
-    <button class="products-button__load">Загрузить еще</button>
-</div>
-      <!-- LOAD MORE BUTTON -->
-<!-- FOOTER START -->
+  <!-- LOAD MORE BUTTON -->
+
+  <!-- LOAD MORE BUTTON -->
+  <!-- FOOTER START -->
   <footer class="footer">
     <div class="container ">
       <ul class="block-footer">
@@ -319,7 +320,7 @@
         <form class="auth-modal-register">
           <img src="../icons/close/close-24px.svg" alt="close-icon" class="close-icon" />
           <p class="auth-text">
-              Войдите в приложение используя <span>e-mail и пароль:</span>
+            Войдите в приложение используя <span>e-mail и пароль:</span>
           </p>
           <div class="inputs-container">
             <input type="text" name="name" placeholder="Имя" />
@@ -343,50 +344,53 @@
             <div class="team__sign-number">17</div>
             Camp products
           </div>
-          </div>
         </div>
       </div>
-      <!-- MODAL SHOWTEAM -->
-
-      <!-- PRELOADER -->
-      <div class="preloader js-preloader is-hidden" id="spinner">
-        <span class="load"></span>
-      </div>
-      <!-- PRELOADER -->
-
     </div>
-          <!-- MODAL USER ACCOUNT -->
-          <div class="userAccount__overlay">
-            <div class="userAccount__modal">
-              <button class="userAccount-close-Modal"></button>
-                <h2 class="userAccount__favorite-section-title"><svg class="" style="width: 20px;fill:#ff6b08;" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32">
-                  <title>favorite-icon-hover</title>
-                  <path
-                    d="M16 30.72l-2.24-2.24c-8.32-7.36-13.76-12.32-13.76-18.4 0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.080 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.080-5.44 11.040-13.76 18.4l-2.24 2.24z">
-                  </path>
-                </svg>Избранные объявления</h2>
-                <ul class="userAccount__favorite-list">
-                </ul>
-                <h2 class="userAccount__ads-section-title">
-                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" style="width: 20px;fill:#ff6b08;" viewBox="0 0 512 512">
-                    <title></title>
-                    <g id="icomoon-ignore">
-                    </g>
-                    <path d="M432 0c44.182 0 80 35.817 80 80 0 18.010-5.955 34.629-16 48l-32 32-112-112 32-32c13.371-10.045 29.989-16 48-16zM32 368l-32 144 144-32 296-296-112-112-296 296zM357.789 181.789l-224 224-27.578-27.578 224-224 27.578 27.578z"></path>
-                    </svg>
-                    Мои объявления</h2>
-                <ul class="userAccount__ads-list">
-                </ul>
-            </div>
-          </div>
-          <!-- MODAL USER ACCOUNT  -->
-    
-  </footer>
-<!-- FOOTER END -->
+    <!-- MODAL SHOWTEAM -->
 
-<!-- SECTION MODAL WINDOW -->
+    <!-- PRELOADER -->
+    <div class="preloader js-preloader is-hidden" id="spinner">
+      <span class="load"></span>
+    </div>
+    <!-- PRELOADER -->
+
+    <!-- MODAL USER ACCOUNT -->
+    <div class="userAccount__overlay">
+      <div class="userAccount__modal">
+        <button class="userAccount-close-Modal"></button>
+        <h2 class="userAccount__favorite-section-title"><svg class="" style="width: 20px;fill:#ff6b08;" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32">
+            <title>favorite-icon-hover</title>
+            <path
+              d="M16 30.72l-2.24-2.24c-8.32-7.36-13.76-12.32-13.76-18.4 0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.080 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.080-5.44 11.040-13.76 18.4l-2.24 2.24z">
+            </path>
+          </svg>Избранные объявления</h2>
+        <ul class="userAccount__favorite-list">
+        </ul>
+        <h2 class="userAccount__ads-section-title">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" style="width: 20px;fill:#ff6b08;"
+            viewBox="0 0 512 512">
+            <title></title>
+            <g id="icomoon-ignore">
+            </g>
+            <path
+              d="M432 0c44.182 0 80 35.817 80 80 0 18.010-5.955 34.629-16 48l-32 32-112-112 32-32c13.371-10.045 29.989-16 48-16zM32 368l-32 144 144-32 296-296-112-112-296 296zM357.789 181.789l-224 224-27.578-27.578 224-224 27.578 27.578z">
+            </path>
+          </svg>
+          Мои объявления</h2>
+        <ul class="userAccount__ads-list">
+        </ul>
+      </div>
+    </div>
+    <!-- MODAL USER ACCOUNT  -->
+
+  </footer>
+  <!-- FOOTER END -->
+
+  <!-- SECTION MODAL WINDOW -->
   <div class="containet-modal-window" style="display: none;"></div>
-<!-- CLOSE SECTION MODAL WINDOW -->
+  <!-- CLOSE SECTION MODAL WINDOW -->
 
 </body>
 

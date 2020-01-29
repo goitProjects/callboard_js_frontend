@@ -230,6 +230,15 @@
 
 /* @MEDIA =======================================================*/
 @media (min-width: 1280px) {
+
+  .header {
+    margin-bottom: 0;
+  }
+
+  .main {
+    min-height: calc(100vh - 290px);
+  }
+
   .container {
     width: 1200px;
   }

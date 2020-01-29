@@ -168,6 +168,7 @@ input[type="radio"].visually-hidden {
     }
     .search_list-item{
         flex-direction:row;
+        margin-top: 30px;
     }
 
     .search-bar__input {
@@ -216,6 +217,10 @@ input[type="radio"].visually-hidden {
 
     .category__list-item:not(:last-child) {
         margin-bottom: 0;
+    }
+
+    .search_list {
+        justify-content: center;
     }
 
 }
