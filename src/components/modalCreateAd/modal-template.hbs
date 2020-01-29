@@ -2,28 +2,47 @@
 	<div class="modal-create-ad__window">
 		<button class="modal-create-ad__btn-close"></button>
 		<div class="modal-create-ad__content">
-			
-			
+
+
 			<h4>Создать объявление</h4>
-			<label>Название товара</label>
-			<input class="modal-create-ad__input-name" type="text" name="title" placeholder="Название товара" />
-			<label>Фото</label>
-			<input class="modal-create-ad__input-upload-photos" type="file" />
-		
-			<label>Описание товара</label>
-			<textarea class="modal-create-ad__input-description" name="desc" placeholder="Описание товара"></textarea>
-			<label>Категория</label>
-			<select class="modal-create-ad__select-category" >
-				{{#each this}}
-				<option value="{{this._id}}">{{this.category}}</option>
-				{{/each}}
-			
-			</select>
-			<label>Цена</label>
-			<input class="modal-create-ad__input-price" type="number" name="price"placeholder="0.00 грн" />
-			<label>Телефон</label>
-			<input class="modal-create-ad__input-phone" type="tel" name="phone" placeholder="+38 (0--) --- -- --" />
+
+			<div class="creat_add_field">
+				<label class="create_ad-label">Название товара</label class="create_ad-label"> <br>
+				<input id="modal-create-ad__input-name" type="text" name="title" placeholder="" />
+			</div class="creat_add_field">
+
+			<div class="creat_add_field">
+				<labe class="create_ad-label"l>Фото</label>
+				<input class="modal-create-ad__input-upload-photos" type="file" />
+				<span class="load_photo-att">* внимание: размер изображения должен быть не более 100Кб</span>
+			</div>
+
+			<div class="creat_add_field">
+			<label class="create_ad-label">Описание товара</label> <br>
+			<textarea class="modal-create-ad__input-description" name="desc" placeholder=""></textarea><br>
+			</div>
+
+			<div class="creat_add_field">
+				<label class="create_ad-label">Категория</label> <br>
+				<select class="modal-create-ad__select-category">
+					{{#each this}}
+					<option value="{{this._id}}">{{this.category}}</option>
+					{{/each}}
+
+				</select>
+			</div>
+			<div class="creat_add_field">
+				<label class="create_ad-label">Цена</label>  <br>
+				<input class="modal-create-ad__input-price" type="number" name="price" placeholder="0.00 грн" />
+			</div>
+
+			<div class="creat_add_field">
+				<label class="create_ad-label">Телефон</label> <br>
+				<input class="modal-create-ad__input-phone" type="tel" name="phone" placeholder="+38 (0--) --- -- --" />
+			</div>
+
 			<button class="modal-create-ad__submit">Добавить</button>
+
 		</div>
 	</div>
 	<div class="modal-create-ad__overlay"></div>

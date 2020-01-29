@@ -1,6 +1,6 @@
 .scrolling {
     position: relative;
-    padding: 30px 0 56px;
+    /* padding: 30px 0 56px; */
 }
 
 .scrolling_main-box {
@@ -64,7 +64,10 @@
 
 .prv-scroll:hover,
 .nxt-scroll:hover {
-    background-color: rgb(233, 97, 5);
+    /* background-color: #d3d3d3; */
+    /* outline: 1px solid #ff6b08; */
+    background-color: #ebebeb;
+
 }
 
 .prv-scroll::after,

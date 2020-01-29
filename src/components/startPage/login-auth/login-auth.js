@@ -2,7 +2,7 @@ import services from "../../../services";
 import "./login-auth.css";
 import "../../../../node_modules/pnotify/dist/PNotifyBrightTheme.css";
 import PNotify from "../../../../node_modules/pnotify/dist/es/PNotify.js";
-import PNotifyMobile from 'pnotify/dist/es/PNotifyMobile';
+import PNotifyMobile from "pnotify/dist/es/PNotifyMobile";
 
 // START - Делаем проверку вьюпорта, чтобы отрисовать кнопки входа/регистрации/выхода/ЛК
 const domLoginBlockForMob = document.getElementById("user_login-bar-mobile");
@@ -45,14 +45,13 @@ refs.logout.addEventListener("click", logoutFromAcc);
 services.ref.body.addEventListener("click", closeModal);
 services.ref.body.addEventListener("click", closeModal);
 document.addEventListener("DOMContentLoaded", stayLoggedIn);
-window.addEventListener('keydown', closeModalByEscape);
-refs.overlayLogin.addEventListener('click', closeModalOutside);
-refs.overlayRegister.addEventListener('click', closeModalOutside);
-
+window.addEventListener("keydown", closeModalByEscape);
+refs.overlayLogin.addEventListener("click", closeModalOutside);
+refs.overlayRegister.addEventListener("click", closeModalOutside);
 
 function showLoginModal(e) {
   if (e.target.classList == "registration-enter") {
-        document.querySelector("body").style.overflow = "hidden";
+    document.querySelector("body").style.overflow = "hidden";
     refs.overlayLogin.style.display = "flex";
     document.querySelector("#menu__toggle").checked = false;
   }
@@ -61,9 +60,8 @@ function showLoginModal(e) {
 async function login(e) {
   if (e.target.classList == "registration-enter") {
     e.preventDefault();
-  
-    showRegisterModal();
 
+    showRegisterModal();
   } else if (e.target.classList.contains("btn-login")) {
     document.querySelector("#menu__toggle").checked = false;
     try {
@@ -83,6 +81,7 @@ async function login(e) {
       localStorage.setItem("token", services.token);
       localStorage.setItem("name", services.userData.name);
       changeUIforLoggedUser();
+      location.reload();
     } catch (e) {
       
       let pnError=PNotify.error({
@@ -152,7 +151,7 @@ async function register(e) {
             swipeDismiss: true,
             styling: true
           }
- }
+        }
       });
       pnoErr.on('click', function(){
         pnoErr.close()
@@ -198,7 +197,6 @@ function closeModalByEscape(e) {
     refs.overlayLogin.style.display = "none";
     refs.overlayRegister.style.display = "none";
     document.querySelector("body").style.overflow = "auto";
-
   }
 }
 

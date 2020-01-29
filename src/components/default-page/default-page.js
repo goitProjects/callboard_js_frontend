@@ -42,35 +42,35 @@ const itemPopular = services.getAdsLimit(10,1).then(res => {
 
   popularCategory(defaultInfo.popularInfo, services.ref.popularItem);
 });
-const itemComputer = services.getAdsByCategory(4,10).then(res => {
+const itemComputer = services.getAdsByCategory(4,15).then(res => {
   defaultInfo.computerInfo=res.data.ads.docs;
   compCategory(res.data.ads.docs, services.ref.computerCategory);
 });
-const itemPasTime = services.getAdsByCategory(6,10).then(res => {
+const itemPasTime = services.getAdsByCategory(6,15).then(res => {
   defaultInfo.workInfo=res.data.ads.docs;
   worksCategory(res.data.ads.docs, services.ref.pastimeCategory);
 });
-const itemTrade = services.getAdsByCategory(8,10).then(res => {
+const itemTrade = services.getAdsByCategory(8,15).then(res => {
   defaultInfo.tradeInfo=res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.exchangeCategory);
 });
-const ItemTransport = services.getAdsByCategory(2,10).then(res => {
+const ItemTransport = services.getAdsByCategory(2,15).then(res => {
   defaultInfo.tradeInfo=res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.transportCategory);
 });
-const Itembisness = services.getAdsByCategory(5,10).then(res => {
+const Itembisness = services.getAdsByCategory(5,15).then(res => {
   defaultInfo.tradeInfo=res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.businessCategory);
 });
-const ItemWOrk = services.getAdsByCategory(3,10).then(res => {
+const ItemWOrk = services.getAdsByCategory(3,15).then(res => {
   defaultInfo.tradeInfo=res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.workCategory);
 });
-const Itemrealestate = services.getAdsByCategory(1,10).then(res => {
+const Itemrealestate = services.getAdsByCategory(1,15).then(res => {
   defaultInfo.tradeInfo=res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.realEstateCategory);
 });
-const ItemFree = services.getAdsByCategory(7,10).then(res => {
+const ItemFree = services.getAdsByCategory(7,15).then(res => {
   defaultInfo.tradeInfo=res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.freeCategory);
 });
@@ -89,8 +89,8 @@ function loadDefaultPage(e) {
 }
 
 document.querySelector(".button-popularAll").addEventListener("click", handlClickPopupal);
-document.querySelector(".category__list").addEventListener("click", handlClickPopupal2);
-document.querySelector(".menu__box").addEventListener("click", handlClickPopupal2);
+document.querySelector("#category__list-desktop").addEventListener("click", handlClickPopupal2);
+document.querySelector("#category__list").addEventListener("click", handlClickPopupal2);
 document.querySelector(".button-category-view").addEventListener("click", handlClickPopupal2);
 
 function allCategoryViewCreate(element){
