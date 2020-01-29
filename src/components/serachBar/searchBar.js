@@ -49,16 +49,14 @@ export default {
         searchBar.refsearch.catList.insertAdjacentHTML(
           "beforeend",
           ` <li class="category__list-item">
-          <input class="category__list-item-radio visually-hidden" type="radio" id="${el._id}" name="checkCategory" >
-          <label class="category__list-item-label" for="${el._id}">${el.category}</label>
+         <button class="category__list-item-label" id="${el._id}" >${el.category}</button>
           </li> `
         );
       } else {
         searchBar.refsearch.catListDesktop.insertAdjacentHTML(
           "beforeend",
           ` <li class="category__list-item">
-          <input class="category__list-item-radio visually-hidden" type="radio" id="${el._id}" name="checkCategory" >
-          <label class="category__list-item-label" for="${el._id}">${el.category}</label>
+          <button class="category__list-item-label" id="${el._id}" >${el.category}</button>
           </li> `
         );
       }

@@ -71,7 +71,9 @@ if (tokenLoad.length < 1) {
 
   //Main function
   const createNewAd = async (e) => {
-    if(e.target.classList== "navigation-promo"){
+    const Tokenlogin = localStorage.getItem('token') || [];
+    if(Tokenlogin.length>1 && e.target.classList== "navigation-promo"){
+
     const body = document.querySelector('body');
 
     //console.log(categories);
@@ -226,7 +228,7 @@ if (tokenLoad.length < 1) {
       document.addEventListener('keydown', closeOnEcs);}
     };
     addModalListeners();
-  
+    
   };
   getCategories().then(createModal);
 }
