@@ -1,9 +1,9 @@
-import services from '../../services';
-import modalTemplate from './modal-template.hbs';
-import './modal-styles.css';
-import PNotify from 'pnotify/dist/es/PNotify';
-import '../../../node_modules/pnotify/dist/PNotifyBrightTheme.css';
-import PNotifyMobile from 'pnotify/dist/es/PNotifyMobile';
+import services from "../../services";
+import modalTemplate from "./modal-template.hbs";
+import "./modal-styles.css";
+import PNotify from "pnotify/dist/es/PNotify";
+import "../../../node_modules/pnotify/dist/PNotifyBrightTheme.css";
+import PNotifyMobile from "pnotify/dist/es/PNotifyMobile";
 
 // START - Делаем проверку вьюпорта, чтобы отрисовать кнопку добавления новго объявления
 const domDivForBtnNewAddDesktop = document.querySelector(".addnewad_desktop");
@@ -17,31 +17,32 @@ if (window.innerWidth < 1200) {
 }
 // END - Делаем проверку вьюпорта, чтобы отрисовать кнопку добавления новго объявления
 
-
-const tokenLoad = localStorage.getItem('token') || [];
+const tokenLoad = localStorage.getItem("token") || [];
 if (tokenLoad.length < 1) {
-  document.querySelector('header').addEventListener('click', needLogin);
+  document.querySelector(".navigation-promo").addEventListener("click", needLogin);
   function needLogin(e) {
-    if (e.target.classList == 'navigation-promo') {
+    if (e.target.classList == "navigation-promo") {
       PNotify.error({
-        title: 'Oops!',
-        text: 'You need to go to your personal account to add an advertisement'
+        title: "Oops!",
+        text: "You need to go to your personal account to add an advertisement"
       });
     }
-    setTimeout(closePhotyfy,1000);
-    function closePhotyfy(){
-    PNotify.closeAll()}
-     }
-}else{
+    setTimeout(closePhotyfy, 1000);
+    function closePhotyfy() {
+      PNotify.closeAll();
+    }
+  }
+} else {
   //Getting category names for selector in modal window (o4eNb ToPmo3it)
   async function getCategories() {
-    const response = await services.getAllAds();
-    const categories = response.categories;
+    // const response = await services.getAllAds();
+    // console.log(response.categories)
+    const categories = [{_id: 3, category: "Робота"},{_id: 2, category: "Транспорт"},{_id: 4, category: "Електроніка"},{_id: 5, category: "Бізнес та послуги"},{_id: 7, category: "Віддам безкоштовно"},{_id: 8, category: "Обмін"},{_id: 6, category: "Відпочинок і спорт"},{_id: 1, category: "Нерухомість"},];
     return categories;
   }
 
   //Add modal window to DOM from handlebars template
-  let markup = '';
+  let markup = "";
   function createModal(cat) {
     markup = modalTemplate(cat);
   }
@@ -111,71 +112,85 @@ if (tokenLoad.length < 1) {
       const closeOnEcs = () => {
         if (event.code == 'Escape') {
           closeModal();
-        }
-      };
+        };
 
-      //Posting Ad to server
-      async function postAd(getInputData) {
-        const token = localStorage.getItem('token');
-        console.log(getInputData);
-        await services
-          .postAddNewAd(getInputData, {
-            headers: {
-              Authorization: token
-            }
-          })
-          .then(console.log)
-          .then(() => {
+        const closeOnEcs = () => {
+          if (event.code == "Escape") {
             closeModal();
-            PNotify.success({
-              title: 'Поздравляем!',
-              text: 'Ваше объявление добавлено.'
-            });
-          });
-      }
+          }
+        };
 
-      //Cheching for empty fields
-      const verifyAndPostAd = () => {
-        switch (true) {
-          case input.name.value == '':
-            PNotify.error({
-              title: 'Ошибка!',
-              text: 'Введите название товара.'
+        //Posting Ad to server
+        async function postAd(getInputData) {
+          const token = localStorage.getItem("token");
+          console.log(getInputData);
+          await services
+            .postAddNewAd(getInputData, {
+              headers: {
+                Authorization: token
+              }
+            })
+            .then(console.log)
+            .then(() => {
+              closeModal();
+              PNotify.success({
+                title: "Поздравляем!",
+                text: "Ваше объявление добавлено."
+              });
             });
-            break;
+        }
 
-          case input.description.value == '':
-            PNotify.error({
-              title: 'Ошибка!',
-              text: 'Введите описание товара.'
-            });
-            break;
+        //Cheching for empty fields
+        const verifyAndPostAd = () => {
+          switch (true) {
+            case input.name.value == "":
+              PNotify.error({
+                title: "Ошибка!",
+                text: "Введите название товара."
+              });
+              break;
 
-          case input.price.value == '':
-            PNotify.error({
-              title: 'Ошибка!',
-              text: 'Введите цену товара.'
-            });
-            break;
+            case input.description.value == "":
+              PNotify.error({
+                title: "Ошибка!",
+                text: "Введите описание товара."
+              });
+              break;
 
-          case input.phone.value == '':
-            PNotify.error({
-              title: 'Ошибка!',
-              text: 'Введите номер телефона.'
-            });
-            break;
+            case input.price.value == "":
+              PNotify.error({
+                title: "Ошибка!",
+                text: "Введите цену товара."
+              });
+              break;
 
-          default:
-            const dataFromInputs = {
-              images: photos,
-              title: input.name.value,
-              category: parseInt(input.category.value, 10), //convert to num
-              price: parseInt(input.price.value, 10),
-              phone: input.phone.value,
-              description: input.description.value
-            };
-            postAd(dataFromInputs);
-            break;
+            case input.phone.value == "":
+              PNotify.error({
+                title: "Ошибка!",
+                text: "Введите номер телефона."
+              });
+              break;
+
+            default:
+              const dataFromInputs = {
+                images: photos,
+                title: input.name.value,
+                category: parseInt(input.category.value, 10), //convert to num
+                price: parseInt(input.price.value, 10),
+                phone: input.phone.value,
+                description: input.description.value
+              };
+              postAd(dataFromInputs);
+              break;
+          }
+        };
+
+        if (document.querySelector(".modal-create-ad")) {
+          input.photo.addEventListener("change", addImage);
+          modal.submit.addEventListener("click", verifyAndPostAd);
+          modal.close.addEventListener("click", closeModal);
+          modal.overlay.addEventListener("click", closeOnOverlay);
+          document.addEventListener("keydown", closeOnEcs);
         }
       };
     
