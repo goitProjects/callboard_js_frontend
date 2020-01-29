@@ -40,7 +40,7 @@ function handleCLickOpenModalAcc(e) {
       .then(res => {
         allFavAds = res.data.user.favorites;
         const listFav = document.querySelector(".userAccount__favorite-list");
-        const itemFav = document.createElement("li");
+        if(res.data.user.favorites.length>0){
         // const addDelBtn = document.createElement("button");
         listFav.innerHTML="";
         // allFavAds.forEach(el => {
@@ -54,7 +54,9 @@ function handleCLickOpenModalAcc(e) {
           // addDelBtn.dataset.id = el._id;
           // itemFav.appendChild(addDelBtn);
           const body = document.querySelector("body");
-          body.addEventListener("click", deleteFavAd);
+          body.addEventListener("click", deleteFavAd);}else{
+            listFav.innerHTML=`<p class="text">Список обраних порожній. Додайте!</p>`
+          }
         // });
       });
 
