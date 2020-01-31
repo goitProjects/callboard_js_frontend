@@ -4,10 +4,9 @@ import preloader from "./../preloader/js/preloader";
 import OpenAndSearcItemHbs from "./openItemcategory.hbs";
 import "./return-to-top.js";
 import "./return-toTop.css";
-import  randomItemHBS from "./random-item.hbs";
+import randomItemHBS from "./random-item.hbs";
 
 function popularCategory(categoryArr, domElement) {
-  
   const categoryLayout = itemHBS(categoryArr);
   domElement.insertAdjacentHTML("beforeend", categoryLayout);
 }
@@ -28,7 +27,7 @@ const defaultInfo = {
   computerInfo: null,
   workInfo: null,
   tradeInfo: null,
-  defaultBtnClear: document.querySelector(".btn-refresh"),
+  defaultBtnClear: document.querySelector(".btn-refresh")
 };
 
 //          CREATE DEFAULT PAGE
@@ -36,64 +35,75 @@ const defaultInfoBord = document.querySelector(".category-favorite_list");
 
 services.ref.body.addEventListener("click", loadDefaultPage);
 
-
-const itemPopular = services.getAdsLimit(10,1).then(res => {
-  defaultInfo.popularInfo=res.data.ads.docs;
+const itemPopular = services.getAdsLimit(10, 1).then(res => {
+  defaultInfo.popularInfo = res.data.ads.docs;
 
   popularCategory(defaultInfo.popularInfo, services.ref.popularItem);
 });
-const itemComputer = services.getAdsByCategory(4,15).then(res => {
-  defaultInfo.computerInfo=res.data.ads.docs;
+const itemComputer = services.getAdsByCategory(4, 15).then(res => {
+  defaultInfo.computerInfo = res.data.ads.docs;
   compCategory(res.data.ads.docs, services.ref.computerCategory);
 });
-const itemPasTime = services.getAdsByCategory(6,15).then(res => {
-  defaultInfo.workInfo=res.data.ads.docs;
+const itemPasTime = services.getAdsByCategory(6, 15).then(res => {
+  defaultInfo.workInfo = res.data.ads.docs;
   worksCategory(res.data.ads.docs, services.ref.pastimeCategory);
 });
-const itemTrade = services.getAdsByCategory(8,15).then(res => {
-  defaultInfo.tradeInfo=res.data.ads.docs;
+const itemTrade = services.getAdsByCategory(8, 15).then(res => {
+  defaultInfo.tradeInfo = res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.exchangeCategory);
 });
-const ItemTransport = services.getAdsByCategory(2,15).then(res => {
-  defaultInfo.tradeInfo=res.data.ads.docs;
+const ItemTransport = services.getAdsByCategory(2, 15).then(res => {
+  defaultInfo.tradeInfo = res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.transportCategory);
 });
-const Itembisness = services.getAdsByCategory(5,15).then(res => {
-  defaultInfo.tradeInfo=res.data.ads.docs;
+const Itembisness = services.getAdsByCategory(5, 15).then(res => {
+  defaultInfo.tradeInfo = res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.businessCategory);
 });
-const ItemWOrk = services.getAdsByCategory(3,15).then(res => {
-  defaultInfo.tradeInfo=res.data.ads.docs;
+const ItemWOrk = services.getAdsByCategory(3, 15).then(res => {
+  defaultInfo.tradeInfo = res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.workCategory);
 });
-const Itemrealestate = services.getAdsByCategory(1,15).then(res => {
-  defaultInfo.tradeInfo=res.data.ads.docs;
+const Itemrealestate = services.getAdsByCategory(1, 15).then(res => {
+  defaultInfo.tradeInfo = res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.realEstateCategory);
 });
-const ItemFree = services.getAdsByCategory(7,15).then(res => {
-  defaultInfo.tradeInfo=res.data.ads.docs;
+const ItemFree = services.getAdsByCategory(7, 15).then(res => {
+  defaultInfo.tradeInfo = res.data.ads.docs;
   tradeCategory(res.data.ads.docs, services.ref.freeCategory);
 });
-
 
 ////////////// CLOSE CREATE PAGE
 
 function loadDefaultPage(e) {
-  if (e.target.id == "logo-btn" ||e.target.id == "btn_refresh-desktop"|| e.target.id=="btn_refresh"|| e.target.id=="searchBackToMain") {
+  if (
+    e.target.id == "logo-btn" ||
+    e.target.id == "btn_refresh-desktop" ||
+    e.target.id == "btn_refresh" ||
+    e.target.id == "searchBackToMain"
+  ) {
     defaultInfoBord.style.display = "block";
     services.ref.allCategoryView.innerHTML = "";
     document.querySelector(".products-button").style.display = "none";
     document.querySelector("#menu__toggle").checked = false;
-    document.querySelector(".search-bar__input").value="";
+    document.querySelector(".search-bar__input").value = "";
   }
 }
 
-document.querySelector(".button-popularAll").addEventListener("click", handlClickPopupal);
-document.querySelector("#category__list-desktop").addEventListener("click", handlClickPopupal2);
-document.querySelector("#category__list").addEventListener("click", handlClickPopupal2);
-document.querySelector(".button-category-view").addEventListener("click", handlClickPopupal2);
+document
+  .querySelector(".button-popularAll")
+  .addEventListener("click", handlClickPopupal);
+document
+  .querySelector("#category__list-desktop")
+  .addEventListener("click", handlClickPopupal2);
+document
+  .querySelector("#category__list")
+  .addEventListener("click", handlClickPopupal2);
+document
+  .querySelector(".products")
+  .addEventListener("click", handlClickPopupal2);
 
-function allCategoryViewCreate(element){
+function allCategoryViewCreate(element) {
   const categoryLayout = OpenAndSearcItemHbs(element);
   services.ref.allCategoryView.insertAdjacentHTML("beforeend", categoryLayout);
 }
@@ -101,7 +111,7 @@ function allCategoryViewCreate(element){
 async function handlClickPopupal(e) {
   e.preventDefault();
   if (e.target.className === "button-popularAll") {
-     services.ref.allCategoryView.innerHTML = "";
+    services.ref.allCategoryView.innerHTML = "";
     let favoritCategory = [];
     let page = 1;
     const limit = 8;
@@ -121,8 +131,8 @@ async function handlClickPopupal(e) {
       page++;
       preloader.show();
       await services.getAdsLimit(limit, page).then(res => {
-         favoritCategory = res.data.ads.docs;
-          if (favoritCategory.length<1) {
+        favoritCategory = res.data.ads.docs;
+        if (favoritCategory.length < 1) {
           document.querySelector(".products-button").style.display = "none";
         } else {
           allCategoryViewCreate(favoritCategory);
@@ -140,10 +150,11 @@ async function handlClickPopupal2(e) {
   e.preventDefault();
   document.querySelector("#menu__toggle").checked = false;
   if (
-    e.target.classList == "button-category-view"||
-    e.target.classList == "category__list-item-label") {
- services.ref.allCategoryView.innerHTML = "";
-  let itemsFromCategory = [];
+    e.target.classList == "button-category-view" ||
+    e.target.classList == "category__list-item-label"
+  ) {
+    services.ref.allCategoryView.innerHTML = "";
+    let itemsFromCategory = [];
     let page = 1;
     const limit = 8;
     const category = e.target.id;
@@ -168,7 +179,7 @@ async function handlClickPopupal2(e) {
       preloader.show();
       await services.getAdsByCategory(category, limit, page).then(res => {
         itemsFromCategory = res.data.ads.docs;
-        if (itemsFromCategory.length <1) {
+        if (itemsFromCategory.length < 1) {
           document.querySelector(".products-button").style.display = "none";
         } else {
           allCategoryViewCreate(itemsFromCategory);
