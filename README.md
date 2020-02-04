@@ -11,6 +11,7 @@ https://goitprojects.github.io/callboard_js_frontend/
 ## Bootcamp 17 🔥
 
 [Trello](https://trello.com/invite/b/Q8zzxdyU/325756c89520fe8514819ad18b2c853a/bootcamp17)
+[Приглашение к доске в trello](https://trello.com/invite/b/Q8zzxdyU/765007104c1a8ed6d2b6c41e4209768e/bootcamp17)
 
 [Макеты](https://drive.google.com/drive/folders/1pN4P5RzBIJdDANwGznuTnohpYPm1SuyX)
 
