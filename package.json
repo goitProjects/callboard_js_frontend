@@ -47,7 +47,7 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "cordova-plugin-file": "^6.0.2",
     "core-js": "^3.3.4",
