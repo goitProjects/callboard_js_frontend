@@ -51,7 +51,7 @@
     "babel-polyfill": "^6.26.0",
     "cordova-plugin-file": "^6.0.2",
     "core-js": "^3.3.4",
-    "handlebars": "^4.5.3",
+    "handlebars": "^4.7.7",
     "jquery": "^3.4.1",
     "masonry-layout": "^4.2.2",
     "page-preloader": "^1.2.44",
